@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+<title>Konkou — Joue pour Gagner</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ÉCRAN D'ACCUEIL -->
+  <section id="screen-home" class="screen active">
+    <div class="hero">
+      <div class="illustration">
+        <svg width="140" height="100" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="140" height="100" rx="12" fill="url(#g)"/>
+          <g fill="white" opacity="0.95">
+            <circle cx="36" cy="50" r="8" />
+            <rect x="56" y="40" width="58" height="20" rx="4" />
+          </g>
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#60A5FA"/>
+              <stop offset="1" stop-color="#34D399"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1>Konkou</h1>
+      <p>Bienvenue dans ton jeu-concours de culture générale.</p>
+      <p>Réponds vite, marque des points et grimpe au classement.</p>
+      <div class="ticket-line">Tickets aujourd'hui : 🎟️ <span id="ticket-count">3</span></div>
+    </div>
+
+    <div id="category-list" class="category-list"></div>
+  </section>
+
+  <!-- ÉCRAN QUIZ -->
+  <section id="screen-quiz" class="screen">
+    <div class="progress" id="quiz-progress">Question 1 sur 5</div>
+    <div class="timer-line">
+      <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+      <div class="timer" id="timer">15</div>
+    </div>
+
+    <span id="quiz-category" class="quiz-category"></span>
+    <h2 id="quiz-question">—</h2>
+    <div id="quiz-choices"></div>
+
+    <div class="result" id="quiz-score-line">Score : <span id="quiz-score">0</span></div>
+    <button class="restart-btn" id="btn-quit">Quitter la partie</button>
+  </section>
+
+  <!-- ÉCRAN RÉSULTAT -->
+  <section id="screen-result" class="screen">
+    <div class="result">Quiz terminé !</div>
+    <div class="result">Ton score : <span id="result-score">0</span>/<span id="result-total">0</span></div>
+    <div class="result" id="result-message"></div>
+    <div class="badge" id="result-badge" style="display:none;">Bien joué !</div>
+    <button class="start-btn" id="btn-replay">Rejouer</button>
+    <button class="restart-btn" id="btn-home">Retour aux catégories</button>
+  </section>
+
+</div>
+
+<script src="js/quiz.js"></script>
+</body>
+</html>
