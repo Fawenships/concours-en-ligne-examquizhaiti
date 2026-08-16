@@ -4,10 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2563eb">
+
 <title>Konkou — Joue pour gagner</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
@@ -16,8 +26,19 @@ body{
   min-height:100vh;
 }
 
-button,input{font:inherit}
-button{cursor:pointer}
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+/* =========================
+   APPLICATION
+========================= */
 
 .app{
   width:100%;
@@ -27,19 +48,32 @@ button{cursor:pointer}
   padding-bottom:30px;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 .topbar{
   position:sticky;
   top:0;
   z-index:20;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   padding:15px 20px;
-  background:linear-gradient(135deg,#2563eb,#4f46e5);
+
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5
+  );
+
   color:white;
-  box-shadow:0 5px 20px rgba(37,99,235,.25);
+
+  box-shadow:
+    0 5px 20px rgba(37,99,235,.25);
 }
 
 .logo{
@@ -51,11 +85,15 @@ button{cursor:pointer}
 .logo-icon{
   width:45px;
   height:45px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:rgba(255,255,255,.18);
+
   border-radius:14px;
+
   font-size:25px;
 }
 
@@ -64,8 +102,14 @@ button{cursor:pointer}
   display:block;
 }
 
-.logo strong{font-size:21px}
-.logo small{opacity:.8;margin-top:3px}
+.logo strong{
+  font-size:21px;
+}
+
+.logo small{
+  opacity:.8;
+  margin-top:3px;
+}
 
 .topbar-right{
   display:flex;
@@ -75,23 +119,34 @@ button{cursor:pointer}
 
 .tickets{
   background:rgba(255,255,255,.16);
+
   padding:10px 14px;
+
   border-radius:14px;
+
   font-weight:bold;
 }
 
 .profile-button{
   border:0;
+
   background:rgba(255,255,255,.15);
+
   color:white;
+
   padding:7px 10px;
+
   border-radius:14px;
+
   display:flex;
   align-items:center;
+
   gap:8px;
 }
 
-.profile-avatar{font-size:24px}
+.profile-avatar{
+  font-size:24px;
+}
 
 .profile-info{
   text-align:left;
@@ -107,7 +162,10 @@ button{cursor:pointer}
   font-size:11px;
 }
 
-/* SCREENS */
+
+/* =========================
+   ECRANS
+========================= */
 
 .screen{
   display:none;
@@ -118,15 +176,30 @@ button{cursor:pointer}
   display:block;
 }
 
-/* HOME */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    );
+
   color:white;
+
   border-radius:25px;
+
   padding:35px 25px;
+
   text-align:center;
-  box-shadow:0 15px 35px rgba(37,99,235,.25);
+
+  box-shadow:
+    0 15px 35px rgba(37,99,235,.25);
+
   margin-bottom:25px;
 }
 
@@ -147,44 +220,73 @@ button{cursor:pointer}
 
 .ticket-info{
   margin-top:20px;
+
   background:rgba(255,255,255,.15);
+
   padding:13px;
+
   border-radius:14px;
 }
 
 .ticket-countdown{
   margin-top:8px;
+
   font-size:13px;
+
   opacity:.9;
 }
+
+
+/* =========================
+   TITRES
+========================= */
 
 .section-title{
   margin-bottom:15px;
 }
 
-.section-title h2{font-size:22px}
+.section-title h2{
+  font-size:22px;
+}
 
 .section-title p{
   color:#64748b;
   margin-top:5px;
 }
 
+
+/* =========================
+   CATEGORIES
+========================= */
+
 .category-grid{
   display:grid;
+
   grid-template-columns:1fr;
+
   gap:13px;
 }
 
 .category-grid button{
   border:0;
+
   border-radius:18px;
+
   background:white;
+
   padding:20px;
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   text-align:left;
-  box-shadow:0 6px 18px rgba(15,23,42,.08);
+
+  box-shadow:
+    0 6px 18px rgba(15,23,42,.08);
+
   transition:.2s;
 }
 
@@ -202,107 +304,166 @@ button{cursor:pointer}
   font-size:13px;
 }
 
-.paid-contest-btn{
-  background:linear-gradient(135deg,#f59e0b,#ef4444)!important;
-  color:white;
-}
 
-.paid-contest-btn span:first-child{
-  color:white!important;
-}
-
-/* INFO */
+/* =========================
+   CARTES INFORMATIONS
+========================= */
 
 .info-card{
   width:100%;
+
   border:0;
+
   padding:18px;
+
   margin-bottom:15px;
+
   border-radius:18px;
-  background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    );
+
   color:white;
+
   display:flex;
+
   align-items:center;
+
   gap:13px;
+
   text-align:left;
-  box-shadow:0 8px 20px rgba(37,99,235,.2);
+
+  box-shadow:
+    0 8px 20px rgba(37,99,235,.2);
 }
 
-.info-card span:nth-child(2){flex:1}
+.info-card span:nth-child(2){
+  flex:1;
+}
 
 .info-card strong,
-.info-card small{display:block}
+.info-card small{
+  display:block;
+}
 
 .info-card small{
   margin-top:4px;
   opacity:.85;
 }
 
-.info-icon{font-size:27px}
-.info-arrow{font-size:27px}
+.info-icon{
+  font-size:27px;
+}
 
-/* QUIZ */
+.info-arrow{
+  font-size:27px;
+}
+
+
+/* =========================
+   QUIZ
+========================= */
 
 .quiz-top{
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   margin-bottom:12px;
+
   font-weight:bold;
 }
 
 #timer{
   background:#2563eb;
+
   color:white;
+
   min-width:45px;
+
   padding:8px 12px;
+
   border-radius:12px;
+
   text-align:center;
 }
 
-#timer.low{background:#ef4444}
+#timer.low{
+  background:#ef4444;
+}
 
 .progress-track{
   height:8px;
+
   background:#dbeafe;
+
   border-radius:10px;
+
   overflow:hidden;
+
   margin-bottom:25px;
 }
 
 .progress-fill{
   height:100%;
-  background:linear-gradient(90deg,#2563eb,#7c3aed);
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #7c3aed
+    );
+
   transition:.3s;
 }
 
 .quiz-category{
   display:inline-block;
+
   padding:7px 12px;
+
   background:#dbeafe;
+
   color:#1d4ed8;
+
   border-radius:20px;
+
   font-size:13px;
+
   font-weight:bold;
+
   margin-bottom:12px;
 }
 
 #quiz-question{
   font-size:25px;
+
   line-height:1.35;
+
   margin-bottom:20px;
 }
 
 .quiz-choices{
   display:grid;
+
   gap:12px;
 }
 
 .quiz-choices button{
   padding:17px;
+
   border:2px solid #e2e8f0;
+
   background:white;
+
   border-radius:15px;
+
   text-align:left;
 }
 
@@ -323,44 +484,70 @@ button{cursor:pointer}
 
 .score-line{
   margin:20px 0;
+
   font-weight:bold;
+
   color:#2563eb;
 }
 
-/* BUTTONS */
+
+/* =========================
+   BOUTONS
+========================= */
 
 .start-btn,
 .restart-btn{
   width:100%;
+
   border:0;
+
   border-radius:15px;
+
   padding:15px;
+
   font-weight:bold;
+
   margin-top:12px;
 }
 
 .start-btn{
-  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
   color:white;
 }
 
 .restart-btn{
   background:#e2e8f0;
+
   color:#334155;
 }
 
-/* BOXES */
+
+/* =========================
+   BOX
+========================= */
 
 .payment-box,
 .result-box,
 .ranking-box,
 .how-to-box{
   max-width:600px;
+
   margin:20px auto;
+
   background:white;
+
   padding:28px;
+
   border-radius:25px;
-  box-shadow:0 12px 35px rgba(15,23,42,.1);
+
+  box-shadow:
+    0 12px 35px rgba(15,23,42,.1);
 }
 
 .payment-box h2,
@@ -368,14 +555,18 @@ button{cursor:pointer}
 .ranking-box h2,
 .how-to-box h2{
   text-align:center;
+
   color:#1e3a8a;
+
   margin-bottom:12px;
 }
 
 .payment-sub,
 .how-to-intro{
   text-align:center;
+
   color:#64748b;
+
   line-height:1.5;
 }
 
@@ -385,28 +576,39 @@ button{cursor:pointer}
 
 .payment-row{
   display:flex;
+
   justify-content:space-between;
+
   padding:13px 0;
+
   border-bottom:1px solid #e2e8f0;
 }
 
 .payment-row-total{
   color:#2563eb;
+
   font-size:18px;
 }
 
 .payment-label{
   display:block;
+
   font-weight:bold;
+
   margin-bottom:8px;
+
   margin-top:12px;
 }
 
 .payment-input{
   width:100%;
+
   padding:14px;
+
   border:2px solid #e2e8f0;
+
   border-radius:13px;
+
   outline:none;
 }
 
@@ -416,43 +618,65 @@ button{cursor:pointer}
 
 .payment-status{
   text-align:center;
+
   margin-top:15px;
 }
 
-.payment-status.success{color:#16a34a}
-.payment-status.error{color:#dc2626}
+.payment-status.success{
+  color:#16a34a;
+}
 
-/* RESULT */
+.payment-status.error{
+  color:#dc2626;
+}
+
+
+/* =========================
+   RESULTAT
+========================= */
 
 .result-icon{
   text-align:center;
+
   font-size:65px;
 }
 
-.result-box h2{font-size:28px}
+.result-box h2{
+  font-size:28px;
+}
 
 .result-score{
   text-align:center;
+
   margin:15px 0;
+
   font-size:18px;
 }
 
 .result-score strong{
   color:#2563eb;
+
   font-size:35px;
 }
 
 .result-stats{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:10px;
+
   margin:20px 0;
 }
 
 .result-stat{
   background:#eff6ff;
+
   padding:15px 8px;
+
   border-radius:15px;
+
   text-align:center;
 }
 
@@ -463,154 +687,235 @@ button{cursor:pointer}
 
 .result-stat span{
   color:#64748b;
+
   font-size:12px;
 }
 
 .result-stat strong{
   margin-top:6px;
+
   color:#1e3a8a;
+
   font-size:20px;
 }
 
 .result-message{
   text-align:center;
+
   color:#475569;
+
   line-height:1.5;
 }
 
-/* RANKING */
 
-.ranking-list{margin:20px 0}
+/* =========================
+   CLASSEMENT
+========================= */
+
+.ranking-list{
+  margin:20px 0;
+}
 
 .ranking-row{
   display:flex;
+
   align-items:center;
+
   gap:12px;
+
   padding:15px;
+
   margin-bottom:10px;
+
   background:#f8fafc;
+
   border-radius:14px;
 }
 
 .rank-number{
   font-size:22px;
+
   font-weight:bold;
 }
 
 .ranking-name{
   flex:1;
+
   font-weight:bold;
 }
 
 .ranking-score{
   color:#2563eb;
+
   font-weight:bold;
 }
 
-/* HOW TO */
+
+/* =========================
+   COMMENT FONCTIONNER
+========================= */
 
 .how-to-icon{
   text-align:center;
+
   font-size:55px;
+
   margin-bottom:10px;
 }
 
 .how-to-step{
   display:flex;
+
   gap:14px;
+
   padding:16px 0;
+
   border-bottom:1px solid #e2e8f0;
 }
 
 .how-to-step>span{
   width:35px;
+
   height:35px;
+
   min-width:35px;
+
   border-radius:50%;
+
   background:#2563eb;
+
   color:white;
+
   display:flex;
+
   justify-content:center;
+
   align-items:center;
+
   font-weight:bold;
 }
 
-.how-to-step strong{color:#1e293b}
+.how-to-step strong{
+  color:#1e293b;
+}
 
 .how-to-step p{
   color:#64748b;
+
   margin-top:4px;
+
   line-height:1.4;
 }
 
-/* PROFILE */
+
+/* =========================
+   PROFIL
+========================= */
 
 .profile-panel{
   display:none;
+
   position:fixed;
+
   inset:0;
+
   z-index:100;
+
   background:rgba(15,23,42,.55);
+
   padding:20px;
+
   align-items:center;
+
   justify-content:center;
 }
 
-.profile-panel.active{display:flex}
+.profile-panel.active{
+  display:flex;
+}
 
 .profile-box{
   width:100%;
+
   max-width:450px;
+
   background:white;
+
   border-radius:25px;
+
   padding:30px;
+
   text-align:center;
+
   position:relative;
 }
 
 .close-profile{
   position:absolute;
+
   right:15px;
+
   top:15px;
+
   border:0;
+
   background:#f1f5f9;
+
   border-radius:50%;
+
   width:35px;
+
   height:35px;
 }
 
 .big-profile-avatar{
   width:85px;
+
   height:85px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   margin:auto;
+
   background:#dbeafe;
+
   border-radius:50%;
+
   font-size:45px;
 }
 
 .profile-box h2{
   margin-top:15px;
+
   color:#1e3a8a;
 }
 
 .profile-box>p{
   color:#64748b;
+
   margin-top:5px;
 }
 
 .profile-stats{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:10px;
+
   margin-top:25px;
 }
 
 .profile-stats div{
   padding:14px 5px;
+
   background:#f8fafc;
+
   border-radius:15px;
 }
 
@@ -620,32 +925,50 @@ button{cursor:pointer}
   display:block;
 }
 
-.profile-stats span{font-size:20px}
+.profile-stats span{
+  font-size:20px;
+}
 
 .profile-stats strong{
   color:#2563eb;
+
   margin-top:5px;
 }
 
 .profile-stats small{
   color:#64748b;
+
   margin-top:3px;
+
   font-size:11px;
 }
 
-/* MOBILE */
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:600px){
 
-  .topbar{padding:12px}
+  .topbar{
+    padding:12px;
+  }
 
-  .profile-info{display:none}
+  .profile-info{
+    display:none;
+  }
 
-  .hero h1{font-size:25px}
+  .hero h1{
+    font-size:25px;
+  }
 
-  #quiz-question{font-size:21px}
+  #quiz-question{
+    font-size:21px;
+  }
 
-  .result-stats{grid-template-columns:1fr}
+  .result-stats{
+    grid-template-columns:1fr;
+  }
 
   .payment-box,
   .result-box,
@@ -653,42 +976,78 @@ button{cursor:pointer}
   .how-to-box{
     padding:22px;
   }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 <main class="app">
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="topbar">
 
   <div class="logo">
 
-    <div class="logo-icon">🏆</div>
+    <div class="logo-icon">
+      🏆
+    </div>
 
     <div>
+
       <strong>Konkou</strong>
-      <small>Joue pour gagner</small>
+
+      <small>
+        Joue pour gagner
+      </small>
+
     </div>
 
   </div>
 
+
   <div class="topbar-right">
 
-    <button id="btn-profile" class="profile-button" type="button">
+    <button
+      id="btn-profile"
+      class="profile-button"
+      type="button"
+    >
 
-      <span class="profile-avatar">👤</span>
+      <span class="profile-avatar">
+        👤
+      </span>
 
       <span class="profile-info">
-        <strong id="profile-name">Joueur</strong>
-        <small>Mon profil</small>
+
+        <strong id="profile-name">
+          Joueur
+        </strong>
+
+        <small>
+          Mon profil
+        </small>
+
       </span>
 
     </button>
 
+
     <div class="tickets">
-      🎟️ <span id="ticket-count">3</span>
+
+      🎟️
+
+      <span id="ticket-count">
+        3
+      </span>
+
     </div>
 
   </div>
@@ -696,27 +1055,46 @@ button{cursor:pointer}
 </header>
 
 
-<!-- ACCUEIL -->
 
-<section id="screen-home" class="screen active">
+<!-- =========================
+     ACCUEIL
+========================= -->
+
+<section
+  id="screen-home"
+  class="screen active"
+>
 
   <div class="hero">
 
-    <div class="hero-icon">🏆</div>
+    <div class="hero-icon">
+      🏆
+    </div>
 
-    <h1>Prêt à relever le défi ?</h1>
+    <h1>
+      Prêt à relever le défi ?
+    </h1>
 
     <p>
-      Teste tes connaissances, gagne des points
-      et grimpe dans le classement.
+      Teste tes connaissances,
+      gagne des points et grimpe
+      dans le classement.
     </p>
+
 
     <div class="ticket-info">
 
       🎟️ Tickets disponibles :
-      <strong id="ticket-count-home">3</strong>
 
-      <div id="ticket-countdown-home" class="ticket-countdown">
+      <strong id="ticket-count-home">
+        3
+      </strong>
+
+
+      <div
+        id="ticket-countdown-home"
+        class="ticket-countdown"
+      >
         🎟️ 3 tickets disponibles
       </div>
 
@@ -725,68 +1103,192 @@ button{cursor:pointer}
   </div>
 
 
-  <button id="btn-how-to" class="info-card" type="button">
 
-    <span class="info-icon">❓</span>
+  <!-- COMMENT FONCTIONNER -->
 
-    <span>
-      <strong>Comment ça fonctionne ?</strong>
-      <small>Découvre les règles de Konkou</small>
+  <button
+    id="btn-how-to"
+    class="info-card"
+    type="button"
+  >
+
+    <span class="info-icon">
+      ❓
     </span>
 
-    <span class="info-arrow">›</span>
+    <span>
+
+      <strong>
+        Comment ça fonctionne ?
+      </strong>
+
+      <small>
+        Découvre les règles de Konkou
+      </small>
+
+    </span>
+
+    <span class="info-arrow">
+      ›
+    </span>
 
   </button>
 
 
+
+  <!-- GAINS -->
+
+  <button
+    id="btn-gains"
+    class="info-card"
+    type="button"
+  >
+
+    <span class="info-icon">
+      💰
+    </span>
+
+    <span>
+
+      <strong>
+        Mes gains
+      </strong>
+
+      <small>
+        Consulter ton solde et tes gains
+      </small>
+
+    </span>
+
+    <span class="info-arrow">
+      ›
+    </span>
+
+  </button>
+
+
+
+  <!-- HISTORIQUE -->
+
+  <button
+    id="btn-history"
+    class="info-card"
+    type="button"
+  >
+
+    <span class="info-icon">
+      📜
+    </span>
+
+    <span>
+
+      <strong>
+        Historique
+      </strong>
+
+      <small>
+        Voir tes parties et transactions
+      </small>
+
+    </span>
+
+    <span class="info-arrow">
+      ›
+    </span>
+
+  </button>
+
+
+
   <div class="section-title">
 
-    <h2>Choisis une catégorie</h2>
+    <h2>
+      Choisis une catégorie
+    </h2>
 
-    <p>Teste tes connaissances</p>
+    <p>
+      Teste tes connaissances
+    </p>
 
   </div>
 
 
-  <div id="category-list" class="category-grid"></div>
+  <div
+    id="category-list"
+    class="category-grid"
+  ></div>
 
 </section>
 
 
-<!-- PAIEMENT SIMULÉ -->
 
-<section id="screen-payment" class="screen">
+<!-- =========================
+     PAIEMENT
+========================= -->
+
+<section
+  id="screen-payment"
+  class="screen"
+>
 
   <div class="payment-box">
 
-    <h2>Rejoindre le concours</h2>
+    <h2>
+      Rejoindre le concours
+    </h2>
 
     <p class="payment-sub">
       Cette version utilise une simulation.
     </p>
 
+
     <div class="payment-summary">
 
       <div class="payment-row">
-        <span>Frais d'entrée</span>
-        <strong id="payment-fee">50 HTG</strong>
+
+        <span>
+          Frais d'entrée
+        </span>
+
+        <strong id="payment-fee">
+          50 HTG
+        </strong>
+
       </div>
+
 
       <div class="payment-row">
-        <span>Joueurs inscrits</span>
-        <strong id="payment-players">0</strong>
+
+        <span>
+          Joueurs inscrits
+        </span>
+
+        <strong id="payment-players">
+          0
+        </strong>
+
       </div>
 
+
       <div class="payment-row payment-row-total">
-        <span>Pot actuel</span>
-        <strong id="payment-pot">0 HTG</strong>
+
+        <span>
+          Pot actuel
+        </span>
+
+        <strong id="payment-pot">
+          0 HTG
+        </strong>
+
       </div>
 
     </div>
 
+
     <label class="payment-label">
       Numéro MonCash
     </label>
+
 
     <input
       id="payment-phone"
@@ -795,24 +1297,44 @@ button{cursor:pointer}
       placeholder="Ex : 3712 3456"
     >
 
-    <button id="btn-pay" class="start-btn" type="button">
+
+    <button
+      id="btn-pay"
+      class="start-btn"
+      type="button"
+    >
       Simuler le paiement
     </button>
 
-    <button id="btn-payment-cancel" class="restart-btn" type="button">
+
+    <button
+      id="btn-payment-cancel"
+      class="restart-btn"
+      type="button"
+    >
       Annuler
     </button>
 
-    <p id="payment-status" class="payment-status"></p>
+
+    <p
+      id="payment-status"
+      class="payment-status"
+    ></p>
 
   </div>
 
 </section>
 
 
-<!-- QUIZ -->
 
-<section id="screen-quiz" class="screen">
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section
+  id="screen-quiz"
+  class="screen"
+>
 
   <div class="quiz-top">
 
@@ -820,75 +1342,159 @@ button{cursor:pointer}
       Question 1 sur 1
     </span>
 
-    <span id="timer">15</span>
+    <span id="timer">
+      15
+    </span>
 
   </div>
+
 
   <div class="progress-track">
-    <div id="progress-fill" class="progress-fill"></div>
+
+    <div
+      id="progress-fill"
+      class="progress-fill"
+    ></div>
+
   </div>
 
-  <span id="quiz-category" class="quiz-category"></span>
 
-  <h2 id="quiz-question">—</h2>
+  <span
+    id="quiz-category"
+    class="quiz-category"
+  ></span>
 
-  <div id="quiz-choices" class="quiz-choices"></div>
+
+  <h2 id="quiz-question">
+    —
+  </h2>
+
+
+  <div
+    id="quiz-choices"
+    class="quiz-choices"
+  ></div>
+
 
   <div class="score-line">
+
     Score :
-    <span id="quiz-score">0</span>
+
+    <span id="quiz-score">
+      0
+    </span>
+
   </div>
 
-  <button id="btn-quit" class="restart-btn" type="button">
+
+  <button
+    id="btn-quit"
+    class="restart-btn"
+    type="button"
+  >
     Quitter la partie
   </button>
 
 </section>
 
 
-<!-- RESULTAT -->
 
-<section id="screen-result" class="screen">
+<!-- =========================
+     RESULTAT
+========================= -->
+
+<section
+  id="screen-result"
+  class="screen"
+>
 
   <div class="result-box">
 
-    <div class="result-icon">🏆</div>
+    <div class="result-icon">
+      🏆
+    </div>
 
-    <h2>Quiz terminé !</h2>
+    <h2>
+      Quiz terminé !
+    </h2>
+
 
     <p class="result-score">
+
       Ton score :
-      <strong id="result-score">0</strong>
+
+      <strong id="result-score">
+        0
+      </strong>
+
     </p>
+
 
     <div class="result-stats">
 
       <div class="result-stat">
-        <span>Score maximum</span>
-        <strong id="result-total">0</strong>
+
+        <span>
+          Score maximum
+        </span>
+
+        <strong id="result-total">
+          0
+        </strong>
+
       </div>
 
-      <div class="result-stat">
-        <span>Bonnes réponses</span>
-        <strong id="result-correct">0</strong>
-      </div>
 
       <div class="result-stat">
-        <span>Mauvaises réponses</span>
-        <strong id="result-wrong">0</strong>
+
+        <span>
+          Bonnes réponses
+        </span>
+
+        <strong id="result-correct">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="result-stat">
+
+        <span>
+          Mauvaises réponses
+        </span>
+
+        <strong id="result-wrong">
+          0
+        </strong>
+
       </div>
 
     </div>
 
-    <p id="result-message" class="result-message">
+
+    <p
+      id="result-message"
+      class="result-message"
+    >
       Bravo !
     </p>
 
-    <button id="btn-replay" class="start-btn" type="button">
+
+    <button
+      id="btn-replay"
+      class="start-btn"
+      type="button"
+    >
       Rejouer
     </button>
 
-    <button id="btn-home" class="restart-btn" type="button">
+
+    <button
+      id="btn-home"
+      class="restart-btn"
+      type="button"
+    >
       Retour à l'accueil
     </button>
 
@@ -897,21 +1503,38 @@ button{cursor:pointer}
 </section>
 
 
-<!-- CLASSEMENT -->
 
-<section id="screen-ranking" class="screen">
+<!-- =========================
+     CLASSEMENT
+========================= -->
+
+<section
+  id="screen-ranking"
+  class="screen"
+>
 
   <div class="ranking-box">
 
-    <h2>🏆 Classement</h2>
+    <h2>
+      🏆 Classement
+    </h2>
 
     <p class="how-to-intro">
       Les meilleurs scores de Konkou
     </p>
 
-    <div id="ranking-list" class="ranking-list"></div>
 
-    <button id="btn-ranking-home" class="restart-btn" type="button">
+    <div
+      id="ranking-list"
+      class="ranking-list"
+    ></div>
+
+
+    <button
+      id="btn-ranking-home"
+      class="restart-btn"
+      type="button"
+    >
       Retour à l'accueil
     </button>
 
@@ -920,62 +1543,278 @@ button{cursor:pointer}
 </section>
 
 
-<!-- COMMENT CA FONCTIONNE -->
 
-<section id="screen-how-to" class="screen">
+<!-- =========================
+     COMMENT FONCTIONNER
+========================= -->
+
+<section
+  id="screen-how-to"
+  class="screen"
+>
 
   <div class="how-to-box">
 
-    <div class="how-to-icon">💡</div>
+    <div class="how-to-icon">
+      💡
+    </div>
 
-    <h2>Comment fonctionne Konkou ?</h2>
+    <h2>
+      Comment fonctionne Konkou ?
+    </h2>
+
 
     <p class="how-to-intro">
-      Teste tes connaissances et accumule des points.
+      Teste tes connaissances et
+      accumule des points.
     </p>
 
+
     <div class="how-to-step">
+
       <span>1</span>
+
       <div>
-        <strong>Choisis une catégorie</strong>
-        <p>Sélectionne le domaine dans lequel tu veux jouer.</p>
+
+        <strong>
+          Choisis une catégorie
+        </strong>
+
+        <p>
+          Sélectionne le domaine
+          dans lequel tu veux jouer.
+        </p>
+
       </div>
+
     </div>
 
+
     <div class="how-to-step">
+
       <span>2</span>
+
       <div>
-        <strong>Utilise un ticket</strong>
-        <p>Un ticket est utilisé lorsque tu commences un quiz gratuit.</p>
+
+        <strong>
+          Utilise un ticket
+        </strong>
+
+        <p>
+          Un ticket est utilisé
+          lorsque tu commences
+          un quiz gratuit.
+        </p>
+
       </div>
+
     </div>
 
+
     <div class="how-to-step">
+
       <span>3</span>
+
       <div>
-        <strong>Réponds aux questions</strong>
-        <p>Chaque question possède un chronomètre.</p>
+
+        <strong>
+          Réponds aux questions
+        </strong>
+
+        <p>
+          Chaque question possède
+          un chronomètre.
+        </p>
+
       </div>
+
     </div>
 
+
     <div class="how-to-step">
+
       <span>4</span>
+
       <div>
-        <strong>Gagne des points</strong>
-        <p>Chaque bonne réponse rapporte 10 points.</p>
+
+        <strong>
+          Gagne des points
+        </strong>
+
+        <p>
+          Chaque bonne réponse
+          rapporte 10 points.
+        </p>
+
       </div>
+
     </div>
+
 
     <div class="how-to-step">
+
       <span>5</span>
+
       <div>
-        <strong>Recharge tes tickets</strong>
-        <p>Les 3 tickets sont renouvelés toutes les 4 heures.</p>
+
+        <strong>
+          Recharge tes tickets
+        </strong>
+
+        <p>
+          Les 3 tickets sont renouvelés
+          toutes les 4 heures.
+        </p>
+
       </div>
+
     </div>
 
-    <button id="btn-how-to-back" class="restart-btn" type="button">
+
+    <button
+      id="btn-how-to-back"
+      class="restart-btn"
+      type="button"
+    >
       ← Retour à l'accueil
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     GAINS
+========================= -->
+
+<section
+  id="screen-gains"
+  class="screen"
+>
+
+  <div class="payment-box">
+
+    <div class="how-to-icon">
+      💰
+    </div>
+
+    <h2>
+      Mes gains
+    </h2>
+
+
+    <p class="how-to-intro">
+      Voici le résumé de ton compte.
+    </p>
+
+
+    <div class="payment-summary">
+
+      <div class="payment-row">
+
+        <span>
+          Solde disponible
+        </span>
+
+        <strong id="available-balance">
+          0 HTG
+        </strong>
+
+      </div>
+
+
+      <div class="payment-row">
+
+        <span>
+          Total gagné
+        </span>
+
+        <strong id="total-winnings">
+          0 HTG
+        </strong>
+
+      </div>
+
+
+      <div class="payment-row">
+
+        <span>
+          Total retiré
+        </span>
+
+        <strong id="total-withdrawn">
+          0 HTG
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="btn-withdraw"
+      class="start-btn"
+      type="button"
+    >
+      💸 Demander un retrait
+    </button>
+
+
+    <button
+      id="btn-gains-back"
+      class="restart-btn"
+      type="button"
+    >
+      ← Retour
+    </button>
+
+
+    <p
+      id="withdraw-status"
+      class="payment-status"
+    ></p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     HISTORIQUE
+========================= -->
+
+<section
+  id="screen-history"
+  class="screen"
+>
+
+  <div class="ranking-box">
+
+    <h2>
+      📜 Historique
+    </h2>
+
+
+    <p class="how-to-intro">
+      Tes dernières activités
+    </p>
+
+
+    <div
+      id="history-list"
+      class="ranking-list"
+    ></div>
+
+
+    <button
+      id="btn-history-back"
+      class="restart-btn"
+      type="button"
+    >
+      ← Retour
     </button>
 
   </div>
@@ -985,28 +1824,47 @@ button{cursor:pointer}
 </main>
 
 
-<!-- PROFIL UNIQUE -->
 
-<section id="profile-panel" class="profile-panel">
+<!-- =========================
+     PROFIL
+========================= -->
+
+<section
+  id="profile-panel"
+  class="profile-panel"
+>
 
   <div class="profile-box">
 
-    <button id="btn-close-profile" class="close-profile" type="button">
+
+    <button
+      id="btn-close-profile"
+      class="close-profile"
+      type="button"
+    >
       ✕
     </button>
+
 
     <div class="big-profile-avatar">
       👤
     </div>
 
-    <h2 id="profile-panel-name">Joueur</h2>
 
-    <p>Mon profil Konkou</p>
+    <h2 id="profile-panel-name">
+      Joueur
+    </h2>
+
+
+    <p>
+      Mon profil Konkou
+    </p>
 
 
     <label class="payment-label">
       Nom
     </label>
+
 
     <input
       id="profile-name-input"
@@ -1019,6 +1877,7 @@ button{cursor:pointer}
     <label class="payment-label">
       Numéro de téléphone
     </label>
+
 
     <input
       id="profile-phone-input"
@@ -1039,23 +1898,57 @@ button{cursor:pointer}
 
     <div class="profile-stats">
 
-      <div>
-        <span>⭐</span>
-        <strong id="profile-score">0</strong>
-        <small>Points</small>
-      </div>
 
       <div>
-        <span>🎟️</span>
-        <strong id="profile-tickets">3</strong>
-        <small>Tickets</small>
+
+        <span>
+          ⭐
+        </span>
+
+        <strong id="profile-score">
+          0
+        </strong>
+
+        <small>
+          Points
+        </small>
+
       </div>
 
+
       <div>
-        <span>🏆</span>
-        <strong id="profile-rank">—</strong>
-        <small>Classement</small>
+
+        <span>
+          🎟️
+        </span>
+
+        <strong id="profile-tickets">
+          3
+        </strong>
+
+        <small>
+          Tickets
+        </small>
+
       </div>
+
+
+      <div>
+
+        <span>
+          🏆
+        </span>
+
+        <strong id="profile-rank">
+          —
+        </strong>
+
+        <small>
+          Classement
+        </small>
+
+      </div>
+
 
     </div>
 
@@ -1073,11 +1966,18 @@ button{cursor:pointer}
 </section>
 
 
+
 <script>
 
-/* ================================
+/* =====================================================
+   KONKOU
+   APPLICATION
+===================================================== */
+
+
+/* =========================
    ETAT
-================================ */
+========================= */
 
 const state={
 
@@ -1104,9 +2004,9 @@ const state={
 };
 
 
-/* ================================
+/* =========================
    CONFIGURATION
-================================ */
+========================= */
 
 const FREE_TICKETS=3;
 
@@ -1116,211 +2016,326 @@ const TICKET_RESET_TIME=
 const TIME_PER_QUESTION=15;
 
 
-/* ================================
-   QUESTIONS
-================================ */
+/* =========================
+   CATEGORIES
+========================= */
 
 const CATEGORIES=[
 
-{
-  id:"histoire",
-  name:"📚 Histoire d'Haïti",
-  questions:[
+  {
+    id:"histoire",
 
-    {
-      question:"En quelle année Haïti est-elle devenue indépendante ?",
-      choices:["1791","1804","1815","1822"],
-      answerIndex:1
-    },
+    name:"📚 Histoire d'Haïti",
 
-    {
-      question:"Qui a été le premier chef d'État d'Haïti après l'indépendance ?",
-      choices:[
-        "Toussaint Louverture",
-        "Henri Christophe",
-        "Jean-Jacques Dessalines",
-        "Alexandre Pétion"
-      ],
-      answerIndex:2
-    },
+    questions:[
 
-    {
-      question:"Quelle bataille marque une étape importante de la lutte pour l'indépendance ?",
-      choices:[
-        "Bataille de Vertières",
-        "Bataille de Léogâne",
-        "Bataille de Jacmel",
-        "Bataille de Port-au-Prince"
-      ],
-      answerIndex:0
-    }
+      {
+        question:
+          "En quelle année Haïti est-elle devenue indépendante ?",
 
-  ]
-},
+        choices:[
+          "1791",
+          "1804",
+          "1815",
+          "1822"
+        ],
 
-{
-  id:"geographie",
-  name:"🌎 Géographie",
-  questions:[
+        answerIndex:1
+      },
 
-    {
-      question:"Quelle est la capitale d'Haïti ?",
-      choices:[
-        "Cap-Haïtien",
-        "Jacmel",
-        "Port-au-Prince",
-        "Gonaïves"
-      ],
-      answerIndex:2
-    },
 
-    {
-      question:"Avec quel pays Haïti partage-t-elle l'île d'Hispaniola ?",
-      choices:[
-        "Cuba",
-        "Jamaïque",
-        "République Dominicaine",
-        "Porto Rico"
-      ],
-      answerIndex:2
-    }
+      {
+        question:
+          "Qui a proclamé l'indépendance d'Haïti en 1804 ?",
 
-  ]
-},
+        choices:[
+          "Toussaint Louverture",
+          "Jean-Jacques Dessalines",
+          "Alexandre Pétion",
+          "Henri Christophe"
+        ],
 
-{
-  id:"sport",
-  name:"⚽ Sport",
-  questions:[
+        answerIndex:1
+      },
 
-    {
-      question:"Quel sport est le plus populaire en Haïti ?",
-      choices:[
-        "Basketball",
-        "Football",
-        "Baseball",
-        "Boxe"
-      ],
-      answerIndex:1
-    }
 
-  ]
-},
+      {
+        question:
+          "Quelle bataille est associée à la victoire décisive de l'armée indigène ?",
 
-{
-  id:"informatique",
-  name:"💻 Informatique",
-  questions:[
+        choices:[
+          "Vertières",
+          "Jacmel",
+          "Léogâne",
+          "Cap-Haïtien"
+        ],
 
-    {
-      question:"Que signifie HTML ?",
-      choices:[
-        "HyperText Markup Language",
-        "HighText Machine Language",
-        "HyperTool Modern Language",
-        "Home Tool Markup Language"
-      ],
-      answerIndex:0
-    },
+        answerIndex:0
+      }
 
-    {
-      question:"Quel langage est principalement utilisé pour rendre une page web interactive ?",
-      choices:[
-        "JavaScript",
-        "HTML",
-        "SQL",
-        "XML"
-      ],
-      answerIndex:0
-    }
+    ]
+  },
 
-  ]
-}
+
+  {
+    id:"geographie",
+
+    name:"🌎 Géographie",
+
+    questions:[
+
+      {
+        question:
+          "Quelle est la capitale d'Haïti ?",
+
+        choices:[
+          "Cap-Haïtien",
+          "Jacmel",
+          "Port-au-Prince",
+          "Gonaïves"
+        ],
+
+        answerIndex:2
+      },
+
+
+      {
+        question:
+          "Avec quel pays Haïti partage-t-elle l'île d'Hispaniola ?",
+
+        choices:[
+          "Cuba",
+          "Jamaïque",
+          "République Dominicaine",
+          "Porto Rico"
+        ],
+
+        answerIndex:2
+      }
+
+    ]
+  },
+
+
+  {
+    id:"sport",
+
+    name:"⚽ Sport",
+
+    questions:[
+
+      {
+        question:
+          "Combien de joueurs une équipe de football a-t-elle normalement sur le terrain ?",
+
+        choices:[
+          "7",
+          "9",
+          "11",
+          "13"
+        ],
+
+        answerIndex:2
+      }
+
+    ]
+  },
+
+
+  {
+    id:"informatique",
+
+    name:"💻 Informatique",
+
+    questions:[
+
+      {
+        question:
+          "Que signifie HTML ?",
+
+        choices:[
+          "HyperText Markup Language",
+          "HighText Machine Language",
+          "HyperTool Modern Language",
+          "Home Tool Markup Language"
+        ],
+
+        answerIndex:0
+      },
+
+
+      {
+        question:
+          "Quel langage est principalement utilisé pour rendre une page web interactive ?",
+
+        choices:[
+          "JavaScript",
+          "HTML",
+          "SQL",
+          "XML"
+        ],
+
+        answerIndex:0
+      }
+
+    ]
+  }
 
 ];
 
 
-/* ================================
-   NAVIGATION
-================================ */
+/* =========================
+   ECRANS
+========================= */
 
 const screens={
 
-  home:document.getElementById("screen-home"),
+  home:
+    document.getElementById(
+      "screen-home"
+    ),
 
-  payment:document.getElementById("screen-payment"),
+  payment:
+    document.getElementById(
+      "screen-payment"
+    ),
 
-  quiz:document.getElementById("screen-quiz"),
+  quiz:
+    document.getElementById(
+      "screen-quiz"
+    ),
 
-  result:document.getElementById("screen-result"),
+  result:
+    document.getElementById(
+      "screen-result"
+    ),
 
-  ranking:document.getElementById("screen-ranking"),
+  ranking:
+    document.getElementById(
+      "screen-ranking"
+    ),
 
-  howTo:document.getElementById("screen-how-to")
+  howTo:
+    document.getElementById(
+      "screen-how-to"
+    ),
+
+  gains:
+    document.getElementById(
+      "screen-gains"
+    ),
+
+  history:
+    document.getElementById(
+      "screen-history"
+    )
 
 };
 
 
 function showScreen(name){
 
-  Object.values(screens).forEach(
-    screen=>screen.classList.remove("active")
-  );
+  Object.values(screens)
+    .forEach(
+      screen =>
+        screen.classList.remove(
+          "active"
+        )
+    );
 
-  screens[name].classList.add("active");
+  screens[name]
+    .classList.add(
+      "active"
+    );
 
 }
 
 
-/* ================================
+/* =========================
    TICKETS
-================================ */
+========================= */
 
 function updateTickets(){
 
-  const saved=JSON.parse(
-    localStorage.getItem("konkou_tickets")||"null"
-  );
+  const saved=
+    JSON.parse(
+      localStorage.getItem(
+        "konkou_tickets"
+      ) || "null"
+    );
+
 
   const now=Date.now();
 
+
   if(!saved){
 
-    state.tickets=FREE_TICKETS;
+    state.tickets=
+      FREE_TICKETS;
+
 
     localStorage.setItem(
+
       "konkou_tickets",
+
       JSON.stringify({
-        count:FREE_TICKETS,
-        lastReset:now
+
+        count:
+          FREE_TICKETS,
+
+        lastReset:
+          now
+
       })
+
     );
 
-  }else{
+  }
+
+  else{
 
     const elapsed=
       now-saved.lastReset;
 
-    if(elapsed>=TICKET_RESET_TIME){
 
-      state.tickets=FREE_TICKETS;
-
-      localStorage.setItem(
-        "konkou_tickets",
-        JSON.stringify({
-          count:FREE_TICKETS,
-          lastReset:now
-        })
-      );
-
-    }else{
+    if(
+      elapsed>=
+      TICKET_RESET_TIME
+    ){
 
       state.tickets=
-        Number(saved.count);
+        FREE_TICKETS;
+
+
+      localStorage.setItem(
+
+        "konkou_tickets",
+
+        JSON.stringify({
+
+          count:
+            FREE_TICKETS,
+
+          lastReset:
+            now
+
+        })
+
+      );
+
+    }
+
+    else{
+
+      state.tickets=
+        Number(
+          saved.count
+        );
 
     }
 
   }
+
 
   refreshTicketDisplay();
 
@@ -1329,23 +2344,32 @@ function updateTickets(){
 
 function saveTickets(){
 
-  const saved=JSON.parse(
-    localStorage.getItem("konkou_tickets")||"null"
-  );
+  const saved=
+    JSON.parse(
+      localStorage.getItem(
+        "konkou_tickets"
+      ) || "null"
+    );
+
 
   localStorage.setItem(
+
     "konkou_tickets",
+
     JSON.stringify({
 
-      count:state.tickets,
+      count:
+        state.tickets,
 
       lastReset:
-        saved ?
-        saved.lastReset :
-        Date.now()
+        saved
+          ? saved.lastReset
+          : Date.now()
 
     })
+
   );
+
 
   refreshTicketDisplay();
 
@@ -1356,22 +2380,29 @@ function refreshTicketDisplay(){
 
   document.getElementById(
     "ticket-count"
-  ).textContent=state.tickets;
+  ).textContent=
+    state.tickets;
+
 
   document.getElementById(
     "ticket-count-home"
-  ).textContent=state.tickets;
+  ).textContent=
+    state.tickets;
+
 
   document.getElementById(
     "profile-tickets"
-  ).textContent=state.tickets;
+  ).textContent=
+    state.tickets;
 
 }
 
 
 function useTicket(){
 
-  if(state.tickets<=0){
+  if(
+    state.tickets<=0
+  ){
 
     alert(
       "🎟️ Tu n'as plus de tickets.\n\n"+
@@ -1381,6 +2412,7 @@ function useTicket(){
     return false;
 
   }
+
 
   state.tickets--;
 
@@ -1393,16 +2425,24 @@ function useTicket(){
 
 function updateTicketCountdown(){
 
-  const saved=JSON.parse(
-    localStorage.getItem("konkou_tickets")||"null"
-  );
+  const saved=
+    JSON.parse(
+      localStorage.getItem(
+        "konkou_tickets"
+      ) || "null"
+    );
+
 
   const countdown=
     document.getElementById(
       "ticket-countdown-home"
     );
 
-  if(!saved){
+
+  if(
+    !saved ||
+    state.tickets>=FREE_TICKETS
+  ){
 
     countdown.textContent=
       "🎟️ 3 tickets disponibles";
@@ -1411,18 +2451,11 @@ function updateTicketCountdown(){
 
   }
 
-  if(state.tickets>=FREE_TICKETS){
-
-    countdown.textContent=
-      "🎟️ 3 tickets disponibles";
-
-    return;
-
-  }
 
   const resetTime=
     saved.lastReset+
     TICKET_RESET_TIME;
+
 
   const remaining=
     Math.max(
@@ -1430,27 +2463,34 @@ function updateTicketCountdown(){
       resetTime-Date.now()
     );
 
+
   const hours=
     Math.floor(
       remaining/3600000
     );
+
 
   const minutes=
     Math.floor(
       (remaining%3600000)/60000
     );
 
+
   const seconds=
     Math.floor(
       (remaining%60000)/1000
     );
+
 
   countdown.textContent=
     `⏱️ Recharge dans ${hours}h `+
     `${String(minutes).padStart(2,"0")}min `+
     `${String(seconds).padStart(2,"0")}s`;
 
-  if(remaining<=0){
+
+  if(
+    remaining<=0
+  ){
 
     updateTickets();
 
@@ -1459,9 +2499,9 @@ function updateTicketCountdown(){
 }
 
 
-/* ================================
+/* =========================
    CATEGORIES
-================================ */
+========================= */
 
 function renderCategories(){
 
@@ -1470,53 +2510,84 @@ function renderCategories(){
       "category-list"
     );
 
+
   list.innerHTML="";
 
-  CATEGORIES.forEach(category=>{
 
-    const button=
-      document.createElement("button");
+  CATEGORIES.forEach(
+    category=>{
 
-    button.innerHTML=`
-      <span>${category.name}</span>
-      <span class="cat-count">
-        ${category.questions.length} questions
-      </span>
-    `;
+      const button=
+        document.createElement(
+          "button"
+        );
 
-    button.addEventListener(
-      "click",
-      ()=>startQuiz(category)
-    );
 
-    list.appendChild(button);
+      button.innerHTML=`
 
-  });
+        <span>
+          ${category.name}
+        </span>
+
+        <span class="cat-count">
+          ${category.questions.length}
+          questions
+        </span>
+
+      `;
+
+
+      button.addEventListener(
+        "click",
+        ()=>{
+          startQuiz(category);
+        }
+      );
+
+
+      list.appendChild(
+        button
+      );
+
+    }
+  );
 
 
   const ranking=
-    document.createElement("button");
+    document.createElement(
+      "button"
+    );
+
 
   ranking.innerHTML=`
-    <span>🏆 Classement</span>
+
+    <span>
+      🏆 Classement
+    </span>
+
     <span class="cat-count">
       Voir les scores
     </span>
+
   `;
+
 
   ranking.addEventListener(
     "click",
     showRanking
   );
 
-  list.appendChild(ranking);
+
+  list.appendChild(
+    ranking
+  );
 
 }
 
 
-/* ================================
+/* =========================
    MELANGE
-================================ */
+========================= */
 
 function shuffle(array){
 
@@ -1528,8 +2599,10 @@ function shuffle(array){
 
     const j=
       Math.floor(
-        Math.random()*(i+1)
+        Math.random()*
+        (i+1)
       );
+
 
     [
       array[i],
@@ -1541,30 +2614,36 @@ function shuffle(array){
 
   }
 
+
   return array;
 
 }
 
 
-/* ================================
+/* =========================
    QUIZ
-================================ */
+========================= */
 
 function startQuiz(category){
 
-  if(!useTicket()){
+  if(
+    !useTicket()
+  ){
 
     return;
 
   }
 
+
   state.currentCategory=
     category;
+
 
   state.currentQuestions=
     shuffle([
       ...category.questions
     ]);
+
 
   state.currentIndex=0;
 
@@ -1574,7 +2653,11 @@ function startQuiz(category){
 
   state.wrong=0;
 
-  showScreen("quiz");
+
+  showScreen(
+    "quiz"
+  );
+
 
   showQuestion();
 
@@ -1585,30 +2668,40 @@ function showQuestion(){
 
   state.answered=false;
 
+
   const question=
     state.currentQuestions[
       state.currentIndex
     ];
+
 
   document.getElementById(
     "quiz-category"
   ).textContent=
     state.currentCategory.name;
 
+
   document.getElementById(
     "quiz-question"
   ).textContent=
     question.question;
+
 
   document.getElementById(
     "quiz-score"
   ).textContent=
     state.score;
 
+
   document.getElementById(
     "quiz-progress"
   ).textContent=
-    `Question ${state.currentIndex+1} sur ${state.currentQuestions.length}`;
+    `Question ${
+      state.currentIndex+1
+    } sur ${
+      state.currentQuestions.length
+    }`;
+
 
   document.getElementById(
     "progress-fill"
@@ -1627,40 +2720,55 @@ function showQuestion(){
         text:text,
 
         correct:
-          index===question.answerIndex
+          index===
+          question.answerIndex
 
       })
     );
 
+
   shuffle(choices);
+
 
   const container=
     document.getElementById(
       "quiz-choices"
     );
 
+
   container.innerHTML="";
 
 
-  choices.forEach(choice=>{
+  choices.forEach(
+    choice=>{
 
-    const button=
-      document.createElement("button");
+      const button=
+        document.createElement(
+          "button"
+        );
 
-    button.textContent=
-      choice.text;
 
-    button.addEventListener(
-      "click",
-      ()=>selectAnswer(
-        button,
-        choice.correct
-      )
-    );
+      button.textContent=
+        choice.text;
 
-    container.appendChild(button);
 
-  });
+      button.addEventListener(
+        "click",
+        ()=>{
+          selectAnswer(
+            button,
+            choice.correct
+          );
+        }
+      );
+
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
 
 
   startTimer();
@@ -1670,52 +2778,77 @@ function showQuestion(){
 
 function startTimer(){
 
-  clearInterval(state.timer);
+  clearInterval(
+    state.timer
+  );
+
 
   state.timeLeft=
     TIME_PER_QUESTION;
+
 
   const timer=
     document.getElementById(
       "timer"
     );
 
+
   timer.textContent=
     state.timeLeft;
 
-  timer.classList.remove("low");
+
+  timer.classList.remove(
+    "low"
+  );
 
 
   state.timer=
-    setInterval(()=>{
+    setInterval(
+      ()=>{
 
-      state.timeLeft--;
+        state.timeLeft--;
 
-      timer.textContent=
-        state.timeLeft;
 
-      if(state.timeLeft<=5){
+        timer.textContent=
+          state.timeLeft;
 
-        timer.classList.add("low");
 
-      }
+        if(
+          state.timeLeft<=5
+        ){
 
-      if(state.timeLeft<=0){
-
-        clearInterval(state.timer);
-
-        if(!state.answered){
-
-          selectAnswer(
-            null,
-            false
+          timer.classList.add(
+            "low"
           );
 
         }
 
-      }
 
-    },1000);
+        if(
+          state.timeLeft<=0
+        ){
+
+          clearInterval(
+            state.timer
+          );
+
+
+          if(
+            !state.answered
+          ){
+
+            selectAnswer(
+              null,
+              false
+            );
+
+          }
+
+        }
+
+      },
+      1000
+    );
 
 }
 
@@ -1725,20 +2858,28 @@ function selectAnswer(
   correct
 ){
 
-  if(state.answered){
+  if(
+    state.answered
+  ){
 
     return;
 
   }
 
+
   state.answered=true;
 
-  clearInterval(state.timer);
+
+  clearInterval(
+    state.timer
+  );
+
 
   const buttons=
     document.querySelectorAll(
       "#quiz-choices button"
     );
+
 
   buttons.forEach(
     item=>{
@@ -1750,9 +2891,9 @@ function selectAnswer(
   if(button){
 
     button.classList.add(
-      correct ?
-      "correct" :
-      "wrong"
+      correct
+        ? "correct"
+        : "wrong"
     );
 
   }
@@ -1764,7 +2905,9 @@ function selectAnswer(
 
     state.correct++;
 
-  }else{
+  }
+
+  else{
 
     state.wrong++;
 
@@ -1777,53 +2920,67 @@ function selectAnswer(
     state.score;
 
 
-  setTimeout(()=>{
+  setTimeout(
+    ()=>{
 
-    state.currentIndex++;
+      state.currentIndex++;
 
-    if(
-      state.currentIndex<
-      state.currentQuestions.length
-    ){
 
-      showQuestion();
+      if(
+        state.currentIndex<
+        state.currentQuestions.length
+      ){
 
-    }else{
+        showQuestion();
 
-      finishQuiz();
+      }
 
-    }
+      else{
 
-  },700);
+        finishQuiz();
+
+      }
+
+    },
+    700
+  );
 
 }
 
 
-/* ================================
+/* =========================
    RESULTAT
-================================ */
+========================= */
 
 function finishQuiz(){
 
-  clearInterval(state.timer);
+  clearInterval(
+    state.timer
+  );
+
 
   const total=
-    state.currentQuestions.length*10;
+    state.currentQuestions.length*
+    10;
+
 
   document.getElementById(
     "result-score"
   ).textContent=
     state.score;
 
+
   document.getElementById(
     "result-total"
   ).textContent=
     total;
 
+
   document.getElementById(
     "result-correct"
   ).textContent=
     state.correct;
+
 
   document.getElementById(
     "result-wrong"
@@ -1834,27 +2991,35 @@ function finishQuiz(){
   const ratio=
     state.score/total;
 
+
   const message=
     document.getElementById(
       "result-message"
     );
+
 
   if(ratio===1){
 
     message.textContent=
       "🏆 Excellent ! Score parfait !";
 
-  }else if(ratio>=.7){
+  }
+
+  else if(ratio>=.7){
 
     message.textContent=
       "👏 Très bon résultat !";
 
-  }else if(ratio>=.5){
+  }
+
+  else if(ratio>=.5){
 
     message.textContent=
       "👍 Pas mal ! Continue à t'entraîner.";
 
-  }else{
+  }
+
+  else{
 
     message.textContent=
       "💪 Continue à jouer pour progresser.";
@@ -1864,14 +3029,25 @@ function finishQuiz(){
 
   saveScore();
 
-  showScreen("result");
+
+  addHistory(
+    "quiz",
+    "Partie de quiz - "+
+    state.currentCategory.name,
+    0
+  );
+
+
+  showScreen(
+    "result"
+  );
 
 }
 
 
-/* ================================
+/* =========================
    SCORES
-================================ */
+========================= */
 
 function saveScore(){
 
@@ -1879,20 +3055,22 @@ function saveScore(){
     JSON.parse(
       localStorage.getItem(
         "konkou_scores"
-      )||"[]"
+      ) || "[]"
     );
+
 
   const name=
     localStorage.getItem(
       "konkou_name"
-    )||"Joueur";
+    ) || "Joueur";
 
 
   scores.push({
 
     name:name,
 
-    score:state.score,
+    score:
+      state.score,
 
     category:
       state.currentCategory.name,
@@ -1905,8 +3083,11 @@ function saveScore(){
 
   localStorage.setItem(
     "konkou_scores",
-    JSON.stringify(scores)
+    JSON.stringify(
+      scores
+    )
   );
+
 
   updateProfile();
 
@@ -1919,78 +3100,398 @@ function showRanking(){
     JSON.parse(
       localStorage.getItem(
         "konkou_scores"
-      )||"[]"
+      ) || "[]"
     );
 
+
   scores.sort(
-    (a,b)=>b.score-a.score
+    (a,b)=>
+      b.score-a.score
   );
+
 
   const list=
     document.getElementById(
       "ranking-list"
     );
 
+
   list.innerHTML="";
 
 
-  if(scores.length===0){
+  if(
+    scores.length===0
+  ){
 
-    list.innerHTML=
-      "<p>Aucun score enregistré.</p>";
+    list.innerHTML=`
 
-  }else{
+      <p style="
+        text-align:center;
+        color:#64748b;
+      ">
 
-    scores.slice(0,10).forEach(
-      (player,index)=>{
+        Aucun score enregistré.
 
-        const row=
-          document.createElement("div");
+      </p>
 
-        row.className=
-          "ranking-row";
-
-        row.innerHTML=`
-          <span class="rank-number">
-            ${
-              index===0 ? "🥇" :
-              index===1 ? "🥈" :
-              index===2 ? "🥉" :
-              "#"+(index+1)
-            }
-          </span>
-
-          <span class="ranking-name">
-            ${escapeHTML(player.name)}
-          </span>
-
-          <span class="ranking-score">
-            ${player.score} pts
-          </span>
-        `;
-
-        list.appendChild(row);
-
-      }
-    );
+    `;
 
   }
 
-  showScreen("ranking");
+  else{
+
+    scores
+      .slice(0,10)
+      .forEach(
+        (player,index)=>{
+
+          const row=
+            document.createElement(
+              "div"
+            );
+
+
+          row.className=
+            "ranking-row";
+
+
+          row.innerHTML=`
+
+            <span class="rank-number">
+
+              ${
+                index===0
+                  ? "🥇"
+                  : index===1
+                  ? "🥈"
+                  : index===2
+                  ? "🥉"
+                  : "#"+(index+1)
+              }
+
+            </span>
+
+
+            <span class="ranking-name">
+
+              ${
+                escapeHTML(
+                  player.name
+                )
+              }
+
+            </span>
+
+
+            <span class="ranking-score">
+
+              ${player.score}
+              pts
+
+            </span>
+
+          `;
+
+
+          list.appendChild(
+            row
+          );
+
+        }
+      );
+
+  }
+
+
+  showScreen(
+    "ranking"
+  );
 
 }
 
 
-/* ================================
+/* =========================
+   PORTEFEUILLE
+========================= */
+
+function getWallet(){
+
+  const saved=
+    localStorage.getItem(
+      "konkou_wallet"
+    );
+
+
+  if(saved){
+
+    return JSON.parse(
+      saved
+    );
+
+  }
+
+
+  const wallet={
+
+    balance:0,
+
+    winnings:0,
+
+    withdrawn:0,
+
+    transactions:[]
+
+  };
+
+
+  localStorage.setItem(
+    "konkou_wallet",
+    JSON.stringify(
+      wallet
+    )
+  );
+
+
+  return wallet;
+
+}
+
+
+function saveWallet(
+  wallet
+){
+
+  localStorage.setItem(
+
+    "konkou_wallet",
+
+    JSON.stringify(
+      wallet
+    )
+
+  );
+
+}
+
+
+function updateWalletDisplay(){
+
+  const wallet=
+    getWallet();
+
+
+  document.getElementById(
+    "available-balance"
+  ).textContent=
+    wallet.balance+
+    " HTG";
+
+
+  document.getElementById(
+    "total-winnings"
+  ).textContent=
+    wallet.winnings+
+    " HTG";
+
+
+  document.getElementById(
+    "total-withdrawn"
+  ).textContent=
+    wallet.withdrawn+
+    " HTG";
+
+}
+
+
+/* =========================
+   HISTORIQUE
+========================= */
+
+function addHistory(
+  type,
+  description,
+  amount
+){
+
+  const wallet=
+    getWallet();
+
+
+  wallet.transactions.unshift({
+
+    type:type,
+
+    description:
+      description,
+
+    amount:
+      amount,
+
+    date:
+      new Date()
+        .toLocaleString(
+          "fr-FR"
+        )
+
+  });
+
+
+  wallet.transactions=
+    wallet.transactions
+      .slice(0,50);
+
+
+  saveWallet(
+    wallet
+  );
+
+}
+
+
+function showHistory(){
+
+  const wallet=
+    getWallet();
+
+
+  const list=
+    document.getElementById(
+      "history-list"
+    );
+
+
+  list.innerHTML="";
+
+
+  if(
+    wallet.transactions.length===0
+  ){
+
+    list.innerHTML=`
+
+      <p style="
+        text-align:center;
+        color:#64748b;
+      ">
+
+        Aucune activité
+        pour le moment.
+
+      </p>
+
+    `;
+
+
+    showScreen(
+      "history"
+    );
+
+
+    return;
+
+  }
+
+
+  wallet.transactions
+    .forEach(
+      transaction=>{
+
+        const row=
+          document.createElement(
+            "div"
+          );
+
+
+        row.className=
+          "ranking-row";
+
+
+        row.innerHTML=`
+
+          <span style="
+            font-size:24px;
+          ">
+
+            ${
+              transaction.type===
+              "gain"
+                ? "💰"
+                : transaction.type===
+                  "retrait"
+                ? "💸"
+                : "🎮"
+            }
+
+          </span>
+
+
+          <span class="ranking-name">
+
+            ${
+              escapeHTML(
+                transaction.description
+              )
+            }
+
+
+            <small style="
+              display:block;
+              color:#64748b;
+              margin-top:4px;
+            ">
+
+              ${
+                escapeHTML(
+                  transaction.date
+                )
+              }
+
+            </small>
+
+          </span>
+
+
+          <span class="ranking-score">
+
+            ${
+              transaction.amount>0
+                ? "+"+
+                  transaction.amount+
+                  " HTG"
+                : transaction.amount+
+                  " HTG"
+            }
+
+          </span>
+
+        `;
+
+
+        list.appendChild(
+          row
+        );
+
+      }
+    );
+
+
+  showScreen(
+    "history"
+  );
+
+}
+
+
+/* =========================
    PROFIL
-================================ */
+========================= */
 
 function updateProfile(){
 
   const name=
     localStorage.getItem(
       "konkou_name"
-    )||"Joueur";
+    ) || "Joueur";
 
 
   document.getElementById(
@@ -2021,28 +3522,30 @@ function updateProfile(){
     JSON.parse(
       localStorage.getItem(
         "konkou_scores"
-      )||"[]"
+      ) || "[]"
     );
 
 
   const sorted=
     [...scores].sort(
-      (a,b)=>b.score-a.score
+      (a,b)=>
+        b.score-a.score
     );
 
 
   const index=
     sorted.findIndex(
-      item=>item.name===name
+      item =>
+        item.name===name
     );
 
 
   document.getElementById(
     "profile-rank"
   ).textContent=
-    index>=0 ?
-    "#"+(index+1) :
-    "—";
+    index>=0
+      ? "#"+(index+1)
+      : "—";
 
 }
 
@@ -2052,19 +3555,21 @@ function getTotalScore(){
   const name=
     localStorage.getItem(
       "konkou_name"
-    )||"Joueur";
+    ) || "Joueur";
+
 
   const scores=
     JSON.parse(
       localStorage.getItem(
         "konkou_scores"
-      )||"[]"
+      ) || "[]"
     );
 
 
   return scores
     .filter(
-      item=>item.name===name
+      item =>
+        item.name===name
     )
     .reduce(
       (total,item)=>
@@ -2075,22 +3580,28 @@ function getTotalScore(){
 }
 
 
-function escapeHTML(text){
+function escapeHTML(
+  text
+){
 
   const div=
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   div.textContent=
     text;
+
 
   return div.innerHTML;
 
 }
 
 
-/* ================================
-   OUVRIR PROFIL
-================================ */
+/* =========================
+   PROFIL - OUVRIR
+========================= */
 
 document.getElementById(
   "btn-profile"
@@ -2103,28 +3614,33 @@ document.getElementById(
     ).value=
       localStorage.getItem(
         "konkou_name"
-      )||"";
+      ) || "";
+
 
     document.getElementById(
       "profile-phone-input"
     ).value=
       localStorage.getItem(
         "konkou_phone"
-      )||"";
+      ) || "";
+
 
     updateProfile();
 
+
     document.getElementById(
       "profile-panel"
-    ).classList.add("active");
+    ).classList.add(
+      "active"
+    );
 
   }
 );
 
 
-/* ================================
-   ENREGISTRER PROFIL
-================================ */
+/* =========================
+   PROFIL - SAUVEGARDER
+========================= */
 
 document.getElementById(
   "btn-save-profile"
@@ -2144,7 +3660,9 @@ document.getElementById(
       ).value.trim();
 
 
-    if(name.length<2){
+    if(
+      name.length<2
+    ){
 
       alert(
         "Entre ton nom."
@@ -2155,7 +3673,9 @@ document.getElementById(
     }
 
 
-    if(phone.length<8){
+    if(
+      phone.length<8
+    ){
 
       alert(
         "Entre un numéro valide."
@@ -2180,6 +3700,7 @@ document.getElementById(
 
     updateProfile();
 
+
     alert(
       "✅ Profil enregistré !"
     );
@@ -2188,9 +3709,9 @@ document.getElementById(
 );
 
 
-/* ================================
-   FERMER PROFIL
-================================ */
+/* =========================
+   PROFIL - FERMER
+========================= */
 
 function closeProfile(){
 
@@ -2219,16 +3740,20 @@ document.getElementById(
 );
 
 
-/* ================================
-   COMMENT FONCTIONNE
-================================ */
+/* =========================
+   COMMENT FONCTIONNER
+========================= */
 
 document.getElementById(
   "btn-how-to"
 ).addEventListener(
   "click",
   ()=>{
-    showScreen("howTo");
+
+    showScreen(
+      "howTo"
+    );
+
   }
 );
 
@@ -2238,14 +3763,150 @@ document.getElementById(
 ).addEventListener(
   "click",
   ()=>{
-    showScreen("home");
+
+    showScreen(
+      "home"
+    );
+
   }
 );
 
 
-/* ================================
-   BOUTONS
-================================ */
+/* =========================
+   GAINS
+========================= */
+
+document.getElementById(
+  "btn-gains"
+).addEventListener(
+  "click",
+  ()=>{
+
+    updateWalletDisplay();
+
+    showScreen(
+      "gains"
+    );
+
+  }
+);
+
+
+document.getElementById(
+  "btn-gains-back"
+).addEventListener(
+  "click",
+  ()=>{
+
+    showScreen(
+      "home"
+    );
+
+  }
+);
+
+
+/* =========================
+   RETRAIT
+========================= */
+
+document.getElementById(
+  "btn-withdraw"
+).addEventListener(
+  "click",
+  ()=>{
+
+    const wallet=
+      getWallet();
+
+
+    const phone=
+      localStorage.getItem(
+        "konkou_phone"
+      );
+
+
+    if(
+      !phone
+    ){
+
+      document.getElementById(
+        "withdraw-status"
+      ).textContent=
+        "⚠️ Enregistre d'abord ton numéro dans ton profil.";
+
+      document.getElementById(
+        "withdraw-status"
+      ).className=
+        "payment-status error";
+
+      return;
+
+    }
+
+
+    if(
+      wallet.balance<=0
+    ){
+
+      document.getElementById(
+        "withdraw-status"
+      ).textContent=
+        "⚠️ Ton solde est actuellement de 0 HTG.";
+
+      document.getElementById(
+        "withdraw-status"
+      ).className=
+        "payment-status error";
+
+      return;
+
+    }
+
+
+    document.getElementById(
+      "withdraw-status"
+    ).textContent=
+      "ℹ️ Les retraits réels seront activés lorsque le serveur de paiement sera connecté.";
+
+    document.getElementById(
+      "withdraw-status"
+    ).className=
+      "payment-status";
+
+  }
+);
+
+
+/* =========================
+   HISTORIQUE
+========================= */
+
+document.getElementById(
+  "btn-history"
+).addEventListener(
+  "click",
+  showHistory
+);
+
+
+document.getElementById(
+  "btn-history-back"
+).addEventListener(
+  "click",
+  ()=>{
+
+    showScreen(
+      "home"
+    );
+
+  }
+);
+
+
+/* =========================
+   QUIZ - BOUTONS
+========================= */
 
 document.getElementById(
   "btn-quit"
@@ -2253,9 +3914,14 @@ document.getElementById(
   "click",
   ()=>{
 
-    clearInterval(state.timer);
+    clearInterval(
+      state.timer
+    );
 
-    showScreen("home");
+
+    showScreen(
+      "home"
+    );
 
   }
 );
@@ -2267,7 +3933,9 @@ document.getElementById(
   "click",
   ()=>{
 
-    if(state.currentCategory){
+    if(
+      state.currentCategory
+    ){
 
       startQuiz(
         state.currentCategory
@@ -2285,9 +3953,14 @@ document.getElementById(
   "click",
   ()=>{
 
-    clearInterval(state.timer);
+    clearInterval(
+      state.timer
+    );
 
-    showScreen("home");
+
+    showScreen(
+      "home"
+    );
 
   }
 );
@@ -2298,20 +3971,26 @@ document.getElementById(
 ).addEventListener(
   "click",
   ()=>{
-    showScreen("home");
+
+    showScreen(
+      "home"
+    );
+
   }
 );
 
 
-/* ================================
+/* =========================
    INITIALISATION
-================================ */
+========================= */
 
 renderCategories();
 
 updateTickets();
 
 updateProfile();
+
+updateWalletDisplay();
 
 updateTicketCountdown();
 
@@ -2325,7 +4004,11 @@ setInterval(
 setInterval(
   ()=>{
     updateTickets();
+
     updateTicketCountdown();
+
+    updateProfile();
+
   },
   10000
 );
