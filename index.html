@@ -2,57 +2,1947 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Konkou</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+
+<title>Konkou — Joue pour gagner</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    background: #2563eb;
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-}
-
-.box {
-    margin: 100px auto;
-    max-width: 500px;
-    padding: 40px;
-    background: white;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #e0ecff, #f5f3ff);
     color: #172033;
-    border-radius: 25px;
 }
 
-h1 {
+.app {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 18px;
+    margin-bottom: 20px;
+
+    background: white;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+
+    border-radius: 14px;
+
+    font-size: 25px;
+}
+
+.logo strong {
+    display: block;
+    font-size: 21px;
+}
+
+.logo small {
+    color: #64748b;
+}
+
+.tickets {
+    padding: 10px 14px;
+
+    background: #dbeafe;
+    color: #1d4ed8;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+}
+
+/* =========================
+   ÉCRANS
+========================= */
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* =========================
+   ACCUEIL
+========================= */
+
+.hero {
+    padding: 40px 25px;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(37,99,235,.25);
+
+    margin-bottom: 25px;
+}
+
+.hero-icon {
+    font-size: 60px;
+}
+
+.hero h1 {
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+.hero p {
+    line-height: 1.6;
+}
+
+.ticket-info {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 10px 15px;
+
+    background: rgba(255,255,255,.2);
+
+    border-radius: 12px;
+}
+
+.section-title {
+    margin-bottom: 15px;
+}
+
+.section-title h2 {
+    margin-bottom: 5px;
+}
+
+.section-title p {
+    color: #64748b;
+}
+
+/* =========================
+   CATÉGORIES
+========================= */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.category-grid button {
+    min-height: 90px;
+
+    padding: 18px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 17px;
+
+    background: white;
+
+    color: #172033;
+
+    text-align: left;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.06);
+
+    transition: .2s;
+}
+
+.category-grid button:hover {
+    transform: translateY(-3px);
+
+    border-color: #2563eb;
+
+    background: #eff6ff;
+}
+
+.category-grid span {
+    display: block;
+}
+
+.cat-count {
+    margin-top: 8px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    font-weight: normal;
+}
+
+.category-grid .paid-contest-btn {
+    grid-column: 1 / -1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #ea580c
+        );
+
+    color: white;
+
+    border: none;
+}
+
+.category-grid
+.paid-contest-btn
+.cat-count {
+    color: white;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.start-btn {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+}
+
+.restart-btn {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 10px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 13px;
+
+    background: white;
+
+    color: #172033;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.restart-btn:hover {
+    background: #f8fafc;
+}
+
+/* =========================
+   PAIEMENT
+========================= */
+
+.payment-box {
+    max-width: 550px;
+
+    margin: 25px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.08);
+}
+
+.payment-box h2 {
+    margin-top: 0;
+}
+
+.payment-sub {
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.payment-summary {
+    padding: 15px;
+
+    margin: 20px 0;
+
+    background: #f8fafc;
+
+    border-radius: 15px;
+}
+
+.payment-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid #e2e8f0;
+}
+
+.payment-row:last-child {
+    border-bottom: none;
+}
+
+.payment-row-total {
+    color: #2563eb;
+
+    font-size: 18px;
+}
+
+.payment-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+.payment-input {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-bottom: 15px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.payment-input:focus {
+    border-color: #2563eb;
+}
+
+.payment-status {
+    text-align: center;
+
+    margin-top: 15px;
+
+    min-height: 20px;
+}
+
+.payment-status.error {
+    color: #dc2626;
+}
+
+.payment-status.success {
+    color: #16a34a;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    font-weight: bold;
+}
+
+#timer {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #dbeafe;
+
+    color: #2563eb;
+
+    font-weight: bold;
+}
+
+#timer.low {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+.progress-track {
+    height: 8px;
+
+    margin-bottom: 25px;
+
+    background: #dbe3f0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    transition: width .3s;
+}
+
+.quiz-category {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+#quiz-question {
+    padding: 25px;
+
+    margin: 15px 0;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.08);
+
+    font-size: 22px;
+}
+
+.quiz-choices {
+    display: grid;
+
+    gap: 12px;
+}
+
+.quiz-choices button {
+    padding: 16px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 14px;
+
+    background: white;
+
+    text-align: left;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.quiz-choices button:hover {
+    border-color: #2563eb;
+
+    background: #eff6ff;
+}
+
+.quiz-choices button.correct {
+    background: #dcfce7;
+
+    border-color: #16a34a;
+
+    color: #166534;
+}
+
+.quiz-choices button.wrong {
+    background: #fee2e2;
+
+    border-color: #dc2626;
+
+    color: #991b1b;
+}
+
+.quiz-choices button:disabled {
+    cursor: default;
+}
+
+.score-line {
+    text-align: center;
+
+    margin: 20px;
+
+    font-weight: bold;
+
+    font-size: 18px;
+}
+
+/* =========================
+   RESULTAT
+========================= */
+
+.result-box {
+    max-width: 600px;
+
+    margin: 25px auto;
+
+    padding: 35px 25px;
+
+    background: white;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.08);
+}
+
+.result-icon {
+    font-size: 65px;
+}
+
+.result-score {
+    color: #64748b;
+
+    font-size: 20px;
+}
+
+.result-score strong {
+    display: block;
+
+    color: #2563eb;
+
+    font-size: 48px;
+
+    margin-top: 5px;
+}
+
+.result-badge {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    margin: 10px;
+
+    border-radius: 20px;
+
+    background: #f59e0b;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+.result-stat {
+    padding: 15px;
+
+    margin: 15px 0;
+
+    border-radius: 14px;
+
+    background: #f8fafc;
+}
+
+.result-stat span {
+    display: block;
+
+    color: #64748b;
+}
+
+.result-stat strong {
+    font-size: 22px;
+
     color: #2563eb;
 }
 
-button {
-    padding: 15px 30px;
-    border: 0;
-    border-radius: 12px;
-    background: #7c3aed;
-    color: white;
-    font-size: 18px;
-}
-</style>
+.result-message {
+    color: #64748b;
 
+    line-height: 1.5;
+}
+
+.contest-standings {
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+    border-radius: 15px;
+
+    background: #f8fafc;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-grid
+    .paid-contest-btn {
+        grid-column: auto;
+    }
+
+    .hero {
+        padding: 30px 18px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    #quiz-question {
+        font-size: 19px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="box">
+<main class="app">
 
-    <div style="font-size:60px;">🏆</div>
+<!-- =========================
+     HEADER
+========================= -->
 
-    <h1>KONKOU</h1>
+<header class="topbar">
 
-    <p>Joue pour gagner</p>
+    <div class="logo">
 
-    <button>
-        Commencer
+        <div class="logo-icon">
+            🏆
+        </div>
+
+        <div>
+            <strong>Konkou</strong>
+            <small>Joue pour gagner</small>
+        </div>
+
+    </div>
+
+    <div class="tickets">
+        🎟️
+        <span id="ticket-count">3</span>
+    </div>
+
+</header>
+
+
+<!-- =========================
+     ACCUEIL
+========================= -->
+
+<section
+    id="screen-home"
+    class="screen active"
+>
+
+    <div class="hero">
+
+        <div class="hero-icon">
+            🏆
+        </div>
+
+        <h1>
+            Prêt à relever le défi ?
+        </h1>
+
+        <p>
+            Teste tes connaissances,
+            gagne des points et grimpe
+            dans le classement.
+        </p>
+
+        <div class="ticket-info">
+
+            🎟️ Tickets disponibles :
+            <strong id="ticket-count-home">
+                3
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+
+        <h2>
+            Choisis une catégorie
+        </h2>
+
+        <p>
+            Teste tes connaissances
+        </p>
+
+    </div>
+
+
+    <div
+        id="category-list"
+        class="category-grid"
+    ></div>
+
+</section>
+
+
+<!-- =========================
+     PAIEMENT
+========================= -->
+
+<section
+    id="screen-payment"
+    class="screen"
+>
+
+    <div class="payment-box">
+
+        <h2>
+            🏆 Rejoindre le concours
+        </h2>
+
+        <p class="payment-sub">
+            Ce concours est payant.
+            Le gagnant remporte une part
+            du pot.
+        </p>
+
+        <div class="payment-summary">
+
+            <div class="payment-row">
+
+                <span>
+                    Frais d'entrée
+                </span>
+
+                <strong id="payment-fee">
+                    50 HTG
+                </strong>
+
+            </div>
+
+            <div class="payment-row">
+
+                <span>
+                    Joueurs inscrits
+                </span>
+
+                <strong id="payment-players">
+                    0
+                </strong>
+
+            </div>
+
+            <div
+                class="payment-row
+                       payment-row-total"
+            >
+
+                <span>
+                    Pot actuel
+                </span>
+
+                <strong id="payment-pot">
+                    0 HTG
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <label
+            class="payment-label"
+            for="payment-phone"
+        >
+            Numéro MonCash
+        </label>
+
+
+        <input
+            id="payment-phone"
+            class="payment-input"
+            type="tel"
+            placeholder="Ex : 3712 3456"
+            inputmode="numeric"
+        >
+
+
+        <button
+            id="btn-pay"
+            class="start-btn"
+            type="button"
+        >
+            Payer et rejoindre
+        </button>
+
+
+        <button
+            id="btn-payment-cancel"
+            class="restart-btn"
+            type="button"
+        >
+            Annuler
+        </button>
+
+
+        <p
+            id="payment-status"
+            class="payment-status"
+        ></p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section
+    id="screen-quiz"
+    class="screen"
+>
+
+    <div class="quiz-top">
+
+        <span id="quiz-progress">
+            Question 1 sur 3
+        </span>
+
+        <span id="timer">
+            15
+        </span>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div
+            id="progress-fill"
+            class="progress-fill"
+            style="width:0%"
+        ></div>
+
+    </div>
+
+
+    <span
+        id="quiz-category"
+        class="quiz-category"
+    ></span>
+
+
+    <h2 id="quiz-question">
+        —
+    </h2>
+
+
+    <div
+        id="quiz-choices"
+        class="quiz-choices"
+    ></div>
+
+
+    <div class="score-line">
+
+        Score :
+        <span id="quiz-score">
+            0
+        </span>
+
+    </div>
+
+
+    <button
+        id="btn-quit"
+        class="restart-btn"
+        type="button"
+    >
+        Quitter la partie
     </button>
 
-</div>
+</section>
+
+
+<!-- =========================
+     RESULTAT
+========================= -->
+
+<section
+    id="screen-result"
+    class="screen"
+>
+
+    <div class="result-box">
+
+        <div class="result-icon">
+            🏆
+        </div>
+
+        <h2>
+            Quiz terminé !
+        </h2>
+
+
+        <p class="result-score">
+
+            Ton score :
+
+            <strong id="result-score">
+                0
+            </strong>
+
+        </p>
+
+
+        <div
+            id="result-badge"
+            class="result-badge"
+            style="display:none"
+        ></div>
+
+
+        <div class="result-stat">
+
+            <span>
+                Score maximum
+            </span>
+
+            <strong id="result-total">
+                0
+            </strong>
+
+        </div>
+
+
+        <p
+            id="result-message"
+            class="result-message"
+        >
+            Bravo !
+        </p>
+
+
+        <div
+            id="contest-standings"
+            class="contest-standings"
+            style="display:none"
+        ></div>
+
+
+        <button
+            id="btn-replay"
+            class="start-btn"
+            type="button"
+        >
+            🔄 Rejouer
+        </button>
+
+
+        <button
+            id="btn-home"
+            class="restart-btn"
+            type="button"
+        >
+            🏠 Retour à l'accueil
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   KONKOU — JAVASCRIPT
+===================================================== */
+
+
+/* QUESTIONS */
+
+const CATEGORIES = [
+
+    {
+        id: "histoire",
+        name: "📚 Histoire d'Haïti",
+
+        questions: [
+
+            {
+                question:
+                    "En quelle année Haïti est-elle devenue indépendante ?",
+
+                choices:
+                    ["1791", "1804", "1815", "1822"],
+
+                answerIndex: 1
+            },
+
+            {
+                question:
+                    "Qui a été le premier chef d'État d'Haïti après l'indépendance ?",
+
+                choices: [
+                    "Toussaint Louverture",
+                    "Henri Christophe",
+                    "Jean-Jacques Dessalines",
+                    "Alexandre Pétion"
+                ],
+
+                answerIndex: 2
+            },
+
+            {
+                question:
+                    "Quelle bataille marque une étape importante de la lutte pour l'indépendance en 1803 ?",
+
+                choices: [
+                    "Bataille de Vertières",
+                    "Bataille de Crête-à-Pierrot",
+                    "Bataille de Santo Domingo",
+                    "Bataille de Léogâne"
+                ],
+
+                answerIndex: 0
+            }
+
+        ]
+    },
+
+
+    {
+        id: "geographie",
+
+        name: "🌎 Géographie",
+
+        questions: [
+
+            {
+                question:
+                    "Quelle est la capitale d'Haïti ?",
+
+                choices: [
+                    "Cap-Haïtien",
+                    "Jacmel",
+                    "Port-au-Prince",
+                    "Gonaïves"
+                ],
+
+                answerIndex: 2
+            },
+
+
+            {
+                question:
+                    "Avec quel pays Haïti partage-t-elle l'île d'Hispaniola ?",
+
+                choices: [
+                    "Cuba",
+                    "Jamaïque",
+                    "République Dominicaine",
+                    "Porto Rico"
+                ],
+
+                answerIndex: 2
+            }
+
+        ]
+    },
+
+
+    {
+        id: "sport",
+
+        name: "⚽ Sport",
+
+        questions: [
+
+            {
+                question:
+                    "Quel sport est le plus populaire en Haïti ?",
+
+                choices: [
+                    "Basketball",
+                    "Football",
+                    "Baseball",
+                    "Boxe"
+                ],
+
+                answerIndex: 1
+            }
+
+        ]
+    }
+
+];
+
+
+/* CONCOURS */
+
+const PAID_CONTEST = {
+
+    id: "concours",
+
+    name: "🏆 Concours de la semaine",
+
+    entryFee: 50,
+
+    questions: [
+
+        {
+            question:
+                "En quelle année Haïti est-elle devenue indépendante ?",
+
+            choices:
+                ["1791", "1804", "1815", "1822"],
+
+            answerIndex: 1
+        },
+
+
+        {
+            question:
+                "Quelle est la capitale d'Haïti ?",
+
+            choices: [
+                "Cap-Haïtien",
+                "Jacmel",
+                "Port-au-Prince",
+                "Gonaïves"
+            ],
+
+            answerIndex: 2
+        },
+
+
+        {
+            question:
+                "Quel sport est le plus populaire en Haïti ?",
+
+            choices: [
+                "Basketball",
+                "Football",
+                "Baseball",
+                "Boxe"
+            ],
+
+            answerIndex: 1
+        }
+
+    ]
+
+};
+
+
+/* ETAT */
+
+let currentCategory = null;
+
+let questions = [];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let correct = 0;
+
+let timer = null;
+
+let timeLeft = 15;
+
+let answered = false;
+
+let tickets = 3;
+
+
+/* ELEMENTS */
+
+const home =
+    document.getElementById(
+        "screen-home"
+    );
+
+const payment =
+    document.getElementById(
+        "screen-payment"
+    );
+
+const quiz =
+    document.getElementById(
+        "screen-quiz"
+    );
+
+const result =
+    document.getElementById(
+        "screen-result"
+    );
+
+
+/* AFFICHAGE */
+
+function showScreen(screen) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(s => {
+            s.classList.remove("active");
+        });
+
+    screen.classList.add("active");
+}
+
+
+/* MELANGE */
+
+function shuffle(array) {
+
+    for (
+        let i = array.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+        [
+            array[i],
+            array[j]
+        ] =
+        [
+            array[j],
+            array[i]
+        ];
+
+    }
+
+    return array;
+}
+
+
+/* CATEGORIES */
+
+function displayCategories() {
+
+    const list =
+        document.getElementById(
+            "category-list"
+        );
+
+    list.innerHTML = "";
+
+
+    const contest =
+        document.createElement(
+            "button"
+        );
+
+    contest.className =
+        "paid-contest-btn";
+
+    contest.innerHTML = `
+        <span>
+            🏆 ${PAID_CONTEST.name}
+        </span>
+
+        <span class="cat-count">
+            Entrée : ${PAID_CONTEST.entryFee} HTG
+        </span>
+    `;
+
+    contest.onclick =
+        openPayment;
+
+    list.appendChild(contest);
+
+
+    CATEGORIES.forEach(category => {
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.innerHTML = `
+            <span>
+                ${category.name}
+            </span>
+
+            <span class="cat-count">
+                ${category.questions.length}
+                questions
+            </span>
+        `;
+
+        button.onclick = () =>
+            startQuiz(category);
+
+        list.appendChild(button);
+
+    });
+
+}
+
+
+/* TICKETS */
+
+function updateTickets() {
+
+    document.getElementById(
+        "ticket-count"
+    ).textContent = tickets;
+
+    document.getElementById(
+        "ticket-count-home"
+    ).textContent = tickets;
+
+}
+
+
+/* PAIEMENT */
+
+function openPayment() {
+
+    showScreen(payment);
+
+    document.getElementById(
+        "payment-phone"
+    ).value = "";
+
+    document.getElementById(
+        "payment-status"
+    ).textContent = "";
+
+}
+
+
+document.getElementById(
+    "btn-payment-cancel"
+).onclick = function() {
+
+    showScreen(home);
+
+};
+
+
+document.getElementById(
+    "btn-pay"
+).onclick = function() {
+
+    const phone =
+        document.getElementById(
+            "payment-phone"
+        ).value.trim();
+
+
+    if (
+        phone.replace(/\s/g,"").length < 8
+    ) {
+
+        const status =
+            document.getElementById(
+                "payment-status"
+            );
+
+        status.textContent =
+            "Entre un numéro MonCash valide.";
+
+        status.className =
+            "payment-status error";
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "btn-pay"
+        );
+
+    button.disabled = true;
+
+    button.textContent =
+        "Paiement en cours...";
+
+
+    setTimeout(() => {
+
+        button.textContent =
+            "Paiement confirmé ✓";
+
+        const status =
+            document.getElementById(
+                "payment-status"
+            );
+
+        status.textContent =
+            "Paiement confirmé (simulation). Bonne chance !";
+
+        status.className =
+            "payment-status success";
+
+
+        setTimeout(() => {
+
+            startQuiz(PAID_CONTEST);
+
+            button.disabled = false;
+
+            button.textContent =
+                "Payer et rejoindre";
+
+        }, 900);
+
+    }, 1200);
+
+};
+
+
+/* DEMARRER QUIZ */
+
+function startQuiz(category) {
+
+    if (
+        category.id !== "concours"
+    ) {
+
+        if (tickets <= 0) {
+
+            alert(
+                "Tu n'as plus de tickets aujourd'hui."
+            );
+
+            return;
+
+        }
+
+        tickets--;
+
+        updateTickets();
+
+    }
+
+
+    currentCategory =
+        category;
+
+    questions =
+        shuffle(
+            [...category.questions]
+        );
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    correct = 0;
+
+    showScreen(quiz);
+
+    displayQuestion();
+
+}
+
+
+/* QUESTION */
+
+function displayQuestion() {
+
+    answered = false;
+
+    clearInterval(timer);
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "quiz-category"
+    ).textContent =
+        currentCategory.name;
+
+
+    document.getElementById(
+        "quiz-question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "quiz-score"
+    ).textContent =
+        score;
+
+
+    document.getElementById(
+        "quiz-progress"
+    ).textContent =
+        `Question ${
+            currentQuestion + 1
+        } sur ${
+            questions.length
+        }`;
+
+
+    document.getElementById(
+        "progress-fill"
+    ).style.width =
+        (
+            currentQuestion /
+            questions.length *
+            100
+        ) + "%";
+
+
+    const choices =
+        q.choices.map(
+            (text,index) => ({
+
+                text: text,
+
+                correct:
+                    index ===
+                    q.answerIndex
+
+            })
+        );
+
+
+    shuffle(choices);
+
+
+    const container =
+        document.getElementById(
+            "quiz-choices"
+        );
+
+    container.innerHTML = "";
+
+
+    choices.forEach(choice => {
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.textContent =
+            choice.text;
+
+        button.onclick = () =>
+            answerQuestion(
+                button,
+                choice.correct
+            );
+
+        container.appendChild(
+            button
+        );
+
+    });
+
+
+    startTimer();
+
+}
+
+
+/* TIMER */
+
+function startTimer() {
+
+    timeLeft = 15;
+
+    const timerElement =
+        document.getElementById(
+            "timer"
+        );
+
+    timerElement.textContent =
+        timeLeft;
+
+    timerElement.classList.remove(
+        "low"
+    );
+
+
+    timer =
+        setInterval(() => {
+
+            timeLeft--;
+
+            timerElement.textContent =
+                timeLeft;
+
+
+            if (
+                timeLeft <= 5
+            ) {
+
+                timerElement.classList.add(
+                    "low"
+                );
+
+            }
+
+
+            if (
+                timeLeft <= 0
+            ) {
+
+                clearInterval(timer);
+
+                if (!answered) {
+
+                    answerQuestion(
+                        null,
+                        false
+                    );
+
+                }
+
+            }
+
+        },1000);
+
+}
+
+
+/* REPONSE */
+
+function answerQuestion(
+    button,
+    isCorrect
+) {
+
+    if (answered) {
+        return;
+    }
+
+    answered = true;
+
+    clearInterval(timer);
+
+
+    document
+        .querySelectorAll(
+            "#quiz-choices button"
+        )
+        .forEach(b => {
+
+            b.disabled = true;
+
+        });
+
+
+    if (button) {
+
+        button.classList.add(
+            isCorrect
+                ? "correct"
+                : "wrong"
+        );
+
+    }
+
+
+    if (isCorrect) {
+
+        score += 10;
+
+        correct++;
+
+    }
+
+
+    setTimeout(() => {
+
+        currentQuestion++;
+
+
+        if (
+            currentQuestion <
+            questions.length
+        ) {
+
+            displayQuestion();
+
+        } else {
+
+            finishQuiz();
+
+        }
+
+    },700);
+
+}
+
+
+/* RESULTAT */
+
+function finishQuiz() {
+
+    clearInterval(timer);
+
+
+    const total =
+        questions.length * 10;
+
+
+    document.getElementById(
+        "result-score"
+    ).textContent =
+        score;
+
+
+    document.getElementById(
+        "result-total"
+    ).textContent =
+        total;
+
+
+    const ratio =
+        score / total;
+
+
+    let message;
+
+
+    if (ratio === 1) {
+
+        message =
+            "🎉 Excellent ! Score parfait !";
+
+    }
+
+    else if (ratio >= .7) {
+
+        message =
+            "👏 Très bien !";
+
+    }
+
+    else if (ratio >= .5) {
+
+        message =
+            "👍 Bien joué !";
+
+    }
+
+    else {
+
+        message =
+            "💪 Continue à t'entraîner !";
+
+    }
+
+
+    document.getElementById(
+        "result-message"
+    ).textContent =
+        message;
+
+
+    const badge =
+        document.getElementById(
+            "result-badge"
+        );
+
+
+    if (ratio >= .7) {
+
+        badge.style.display =
+            "inline-block";
+
+        badge.textContent =
+            ratio === 1
+                ? "🏆 Score parfait !"
+                : "👍 Bien joué !";
+
+    }
+
+    else {
+
+        badge.style.display =
+            "none";
+
+    }
+
+
+    showScreen(result);
+
+}
+
+
+/* REJOUER */
+
+document.getElementById(
+    "btn-replay"
+).onclick = function() {
+
+    if (currentCategory) {
+
+        startQuiz(
+            currentCategory
+        );
+
+    }
+
+};
+
+
+/* ACCUEIL */
+
+document.getElementById(
+    "btn-home"
+).onclick = function() {
+
+    clearInterval(timer);
+
+    showScreen(home);
+
+};
+
+
+/* QUITTER */
+
+document.getElementById(
+    "btn-quit"
+).onclick = function() {
+
+    clearInterval(timer);
+
+    showScreen(home);
+
+};
+
+
+/* DEMARRAGE */
+
+displayCategories();
+
+updateTickets();
+
+showScreen(home);
+
+console.log(
+    "🏆 Konkou fonctionne !"
+);
+
+</script>
 
 </body>
 </html>
