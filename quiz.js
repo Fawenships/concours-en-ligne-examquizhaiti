@@ -34,10 +34,10 @@ const CATEGORIES = [
 const PAID_CONTEST = {
   id: "concours-semaine",
   name: "🏆 Concours de la semaine",
-  entryFee: 50, // HTG
+  entryFee: 50,
   winnersCount: 3,
-  prizeShares: [0.5, 0.3, 0.2], // 1er, 2e, 3e — % du pot net
-  commission: 0.2, // part gardée par la plateforme, sur le pot total
+  prizeShares: [0.5, 0.3, 0.2],
+  commission: 0.2,
   questions: [
     { question: "En quelle année Haïti est-elle devenue indépendante ?", choices: ["1791", "1804", "1815", "1822"], answerIndex: 1 },
     { question: "Quelle est la capitale d'Haïti ?", choices: ["Cap-Haïtien", "Jacmel", "Port-au-Prince", "Gonaïves"], answerIndex: 2 },
@@ -59,7 +59,8 @@ const state = {
   timer: null,
   timeLeft: 15,
   tickets: 3,
-  answered: false
+  answered: false,
+  currentPlayerPhone: null
 };
 
 // ==========================================
@@ -114,7 +115,6 @@ function showScreen(name) {
 function renderCategories() {
   el.categoryList.innerHTML = '';
 
-  // Carte spéciale : concours payant
   const paidBtn = document.createElement('button');
   paidBtn.className = 'paid-contest-btn';
   paidBtn.innerHTML = `<span>${PAID_CONTEST.name}</span><span class="cat-count">Entrée : ${PAID_CONTEST.entryFee} HTG</span>`;
@@ -163,7 +163,7 @@ function useTicket() {
 }
 
 // ==========================================
-// CONCOURS PAYANT — POT ET CLASSEMENT SIMULÉS (local uniquement)
+// CONCOURS PAYANT — POT ET CLASSEMENT SIMULÉS
 // ==========================================
 function getContestEntries() {
   return JSON.parse(localStorage.getItem('konkou_contest_entries') || '[]');
@@ -182,7 +182,6 @@ function addPlayerToPot(phone) {
 
 function recordPlayerScore(phone, score) {
   const entries = getContestEntries();
-  // On met à jour la dernière entrée de ce numéro sans score
   for (let i = entries.length - 1; i >= 0; i--) {
     if (entries[i].phone === phone && entries[i].score === null) {
       entries[i].score = score;
@@ -242,22 +241,6 @@ el.btnPay.addEventListener('click', () => {
   el.btnPay.textContent = 'Paiement en cours...';
   el.paymentStatus.textContent = '';
 
-  // ==========================================================
-  // ⚠️ ICI : appel réel à l'API MonCash
-  // Ceci nécessite un backend (le paiement ne peut pas se faire
-  // en sécurité directement depuis ce fichier JavaScript, car les
-  // identifiants marchands ne doivent jamais être exposés côté client).
-  // Le code ci-dessous SIMULE une réponse de paiement réussie
-  // après 1.5 seconde, pour que tu puisses tester le flux.
-  //
-  // Exemple de ce que ferait un vrai appel :
-  //   const res = await fetch('/api/moncash/pay', {
-  //     method: 'POST',
-  //     body: JSON.stringify({ phone, amount: PAID_CONTEST.entryFee })
-  //   });
-  //   const data = await res.json();
-  //   if (data.success) { ... }
-  // ==========================================================
   setTimeout(() => {
     state.currentPlayerPhone = phone;
     addPlayerToPot(phone);
@@ -408,7 +391,7 @@ function showContestStandings() {
         </div>
       `).join('')}
     </div>
-    <p class="standings-note">Classement provisoire — se met à jour à chaque nouvelle partie. Les gains réels seront envoyés par MonCash à la fin du concours.</p>
+    <p class="standings-note">Classement provisoire — se met à jour à chaque nouvelle partie.</p>
   `;
 
   showScreen('result');
