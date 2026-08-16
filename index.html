@@ -60,16 +60,13 @@
 
 
     <div class="section-title">
-
       <div>
         <h2>Choisis une catégorie</h2>
         <p>Teste tes connaissances</p>
       </div>
-
     </div>
 
 
-    <!-- Les catégories seront ajoutées par JavaScript -->
     <div id="category-list" class="category-grid"></div>
 
   </section>
@@ -248,21 +245,18 @@
       </p>
 
 
+      <!-- Badge du résultat -->
+      <div
+        id="result-badge"
+        class="result-badge"
+      ></div>
+
+
       <div class="result-stats">
 
         <div class="result-stat">
-          <span>Questions</span>
-          <strong id="result-total">5</strong>
-        </div>
-
-        <div class="result-stat">
-          <span>Bonnes réponses</span>
-          <strong id="result-correct">0</strong>
-        </div>
-
-        <div class="result-stat">
-          <span>Mauvais réponses</span>
-          <strong id="result-wrong">0</strong>
+          <span>Score maximum</span>
+          <strong id="result-total">0</strong>
         </div>
 
       </div>
@@ -274,6 +268,14 @@
       >
         Bravo !
       </p>
+
+
+      <!-- Classement du concours payant -->
+      <div
+        id="contest-standings"
+        class="contest-standings"
+        style="display: none;"
+      ></div>
 
 
       <button
@@ -339,7 +341,6 @@
 <!-- =========================
      JAVASCRIPT
 ========================== -->
-
 <script src="js/app.js"></script>
 
 </body>
