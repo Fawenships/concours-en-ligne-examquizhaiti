@@ -8,79 +8,58 @@
 <title>Konkou — Joue pour gagner</title>
 
 <style>
-
-/* =========================
-   BASE
-========================= */
-
 * {
     box-sizing: border-box;
 }
 
-html,
 body {
     margin: 0;
-    padding: 0;
-    min-height: 100%;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #e0ecff, #f5f3ff);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #f5f3ff);
     color: #172033;
 }
 
-/* L'espace en bas évite que le footer cache le contenu */
 .app {
-    width: 100%;
     max-width: 900px;
     margin: auto;
-    padding: 15px;
-    padding-bottom: 100px;
+    padding: 15px 15px 100px;
 }
 
-button,
-input {
-    font-family: inherit;
+.screen {
+    display: none;
 }
 
+.screen.active {
+    display: block;
+}
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    padding: 14px 18px;
-    margin-bottom: 20px;
-
     background: white;
+    padding: 14px 18px;
     border-radius: 18px;
-
+    margin-bottom: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,.08);
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .logo-icon {
     width: 48px;
     height: 48px;
-
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-
+    align-items: center;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
     border-radius: 14px;
-
     font-size: 25px;
 }
 
@@ -94,52 +73,22 @@ input {
 }
 
 .tickets {
-    padding: 10px 14px;
-
     background: #dbeafe;
     color: #1d4ed8;
-
+    padding: 10px 14px;
     border-radius: 12px;
-
     font-weight: bold;
 }
 
-
-/* =========================
-   ÉCRANS
-========================= */
-
-.screen {
-    display: none;
-}
-
-.screen.active {
-    display: block;
-}
-
-
-/* =========================
-   ACCUEIL
-========================= */
+/* HERO */
 
 .hero {
-    padding: 40px 25px;
-
     text-align: center;
-
     color: white;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    padding: 35px 20px;
     border-radius: 25px;
-
     box-shadow: 0 15px 35px rgba(37,99,235,.25);
-
-    margin-bottom: 25px;
 }
 
 .hero-icon {
@@ -147,8 +96,7 @@ input {
 }
 
 .hero h1 {
-    font-size: 30px;
-    margin: 15px 0;
+    font-size: 29px;
 }
 
 .hero p {
@@ -157,18 +105,15 @@ input {
 
 .ticket-info {
     display: inline-block;
-
-    margin-top: 10px;
-
-    padding: 10px 15px;
-
     background: rgba(255,255,255,.2);
-
+    padding: 10px 15px;
     border-radius: 12px;
 }
 
+/* TITRES */
+
 .section-title {
-    margin-bottom: 15px;
+    margin: 25px 0 15px;
 }
 
 .section-title h2 {
@@ -179,114 +124,54 @@ input {
     color: #64748b;
 }
 
-
-/* =========================
-   CATÉGORIES
-========================= */
+/* CATEGORIES */
 
 .category-grid {
     display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
+    grid-template-columns: repeat(2,1fr);
     gap: 15px;
 }
 
 .category-grid button {
-    min-height: 90px;
-
+    min-height: 95px;
     padding: 18px;
-
     border: 2px solid #e2e8f0;
-
     border-radius: 17px;
-
     background: white;
-
-    color: #172033;
-
-    text-align: left;
-
     font-size: 16px;
-
     font-weight: bold;
-
+    text-align: left;
     cursor: pointer;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,.06);
-
     transition: .2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,.05);
 }
 
 .category-grid button:hover {
     transform: translateY(-3px);
-
     border-color: #2563eb;
-
     background: #eff6ff;
 }
 
-.category-grid span {
-    display: block;
-}
-
 .cat-count {
+    display: block;
     margin-top: 8px;
-
     color: #64748b;
-
     font-size: 13px;
-
     font-weight: normal;
 }
 
-.category-grid .paid-contest-btn {
-    grid-column: 1 / -1;
-
-    background: linear-gradient(
-        135deg,
-        #f59e0b,
-        #ea580c
-    );
-
-    color: white;
-
-    border: none;
-}
-
-.category-grid .paid-contest-btn .cat-count {
-    color: white;
-}
-
-
-/* =========================
-   BOUTONS
-========================= */
+/* BOUTONS */
 
 .start-btn {
     width: 100%;
-
     padding: 15px;
-
     border: none;
-
     border-radius: 13px;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
     color: white;
-
     font-size: 16px;
-
     font-weight: bold;
-
     cursor: pointer;
-
-    transition: .2s;
 }
 
 .start-btn:hover {
@@ -295,305 +180,200 @@ input {
 
 .restart-btn {
     width: 100%;
-
     padding: 14px;
-
     margin-top: 10px;
-
     border: 2px solid #e2e8f0;
-
     border-radius: 13px;
-
     background: white;
-
-    color: #172033;
-
     font-weight: bold;
-
     cursor: pointer;
 }
 
-.restart-btn:hover {
-    background: #f8fafc;
-}
+/* CONNEXION */
 
-
-/* =========================
-   PAIEMENT
-========================= */
-
-.payment-box {
-    max-width: 550px;
-
+.auth-box,
+.profile-box,
+.result-box,
+.ranking-box {
+    max-width: 600px;
     margin: 25px auto;
-
-    padding: 30px;
-
+    padding: 30px 25px;
     background: white;
-
-    border-radius: 22px;
-
+    border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-.payment-box h2 {
-    margin-top: 0;
-}
-
-.payment-sub {
-    color: #64748b;
-
-    line-height: 1.5;
-}
-
-.payment-summary {
-    padding: 15px;
-
-    margin: 20px 0;
-
-    background: #f8fafc;
-
-    border-radius: 15px;
-}
-
-.payment-row {
-    display: flex;
-
-    justify-content: space-between;
-
-    padding: 12px 0;
-
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.payment-row:last-child {
-    border-bottom: none;
-}
-
-.payment-row-total {
-    color: #2563eb;
-
-    font-size: 18px;
-}
-
-.payment-label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-weight: bold;
-}
-
-.payment-input {
-    width: 100%;
-
-    padding: 14px;
-
-    margin-bottom: 15px;
-
-    border: 2px solid #e2e8f0;
-
-    border-radius: 12px;
-
-    font-size: 16px;
-
-    outline: none;
-}
-
-.payment-input:focus {
-    border-color: #2563eb;
-}
-
-.payment-status {
-    min-height: 20px;
-
-    margin-top: 15px;
-
+.auth-box h2,
+.profile-box h2,
+.ranking-box h2 {
     text-align: center;
 }
 
-.payment-status.error {
+.input-label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #2563eb;
+}
+
+.auth-message {
+    min-height: 20px;
+    text-align: center;
+    margin-top: 12px;
     color: #dc2626;
 }
 
-.payment-status.success {
-    color: #16a34a;
+/* PROFIL */
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    color: white;
+    font-size: 40px;
 }
 
+.profile-name {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 12px 0;
+}
 
-/* =========================
-   QUIZ
-========================= */
+.profile-phone {
+    text-align: center;
+    color: #64748b;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.stat {
+    text-align: center;
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 15px;
+}
+
+.stat strong {
+    display: block;
+    color: #2563eb;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+/* QUIZ */
 
 .quiz-top {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    margin-bottom: 10px;
-
     font-weight: bold;
 }
 
 #timer {
     width: 45px;
     height: 45px;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     border-radius: 50%;
-
     background: #dbeafe;
-
     color: #2563eb;
-
-    font-weight: bold;
 }
 
 #timer.low {
     background: #fee2e2;
-
     color: #dc2626;
 }
 
 .progress-track {
     height: 8px;
-
-    margin-bottom: 25px;
-
+    margin: 12px 0 25px;
     background: #dbe3f0;
-
     border-radius: 20px;
-
     overflow: hidden;
 }
 
 .progress-fill {
     height: 100%;
-
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    background: linear-gradient(90deg,#2563eb,#7c3aed);
     transition: width .3s;
 }
 
 .quiz-category {
     display: inline-block;
-
-    padding: 7px 12px;
-
-    border-radius: 20px;
-
     background: #ede9fe;
-
     color: #6d28d9;
-
+    padding: 7px 12px;
+    border-radius: 20px;
     font-size: 13px;
-
     font-weight: bold;
 }
 
 #quiz-question {
-    padding: 25px;
-
-    margin: 15px 0;
-
     background: white;
-
+    padding: 25px;
     border-radius: 18px;
-
     box-shadow: 0 8px 25px rgba(0,0,0,.08);
-
-    font-size: 22px;
 }
 
 .quiz-choices {
     display: grid;
-
     gap: 12px;
 }
 
 .quiz-choices button {
     padding: 16px;
-
     border: 2px solid #e2e8f0;
-
     border-radius: 14px;
-
     background: white;
-
     text-align: left;
-
     font-size: 16px;
-
     cursor: pointer;
-
-    transition: .2s;
-}
-
-.quiz-choices button:hover {
-    border-color: #2563eb;
-
-    background: #eff6ff;
 }
 
 .quiz-choices button.correct {
     background: #dcfce7;
-
     border-color: #16a34a;
-
-    color: #166534;
 }
 
 .quiz-choices button.wrong {
     background: #fee2e2;
-
     border-color: #dc2626;
-
-    color: #991b1b;
-}
-
-.quiz-choices button:disabled {
-    cursor: default;
 }
 
 .score-line {
     text-align: center;
-
     margin: 20px;
-
     font-weight: bold;
-
-    font-size: 18px;
 }
 
-
-/* =========================
-   RÉSULTAT
-========================= */
+/* RESULTAT */
 
 .result-box {
-    max-width: 600px;
-
-    margin: 25px auto;
-
-    padding: 35px 25px;
-
-    background: white;
-
-    border-radius: 24px;
-
     text-align: center;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
 .result-icon {
@@ -602,249 +382,81 @@ input {
 
 .result-score {
     color: #64748b;
-
     font-size: 20px;
 }
 
 .result-score strong {
     display: block;
-
     color: #2563eb;
-
     font-size: 48px;
-
-    margin-top: 5px;
-}
-
-.result-badge {
-    display: inline-block;
-
-    padding: 8px 15px;
-
-    margin: 10px;
-
-    border-radius: 20px;
-
-    background: #f59e0b;
-
-    color: white;
-
-    font-weight: bold;
-}
-
-.result-stat {
-    padding: 15px;
-
-    margin: 15px 0;
-
-    border-radius: 14px;
-
-    background: #f8fafc;
-}
-
-.result-stat span {
-    display: block;
-
-    color: #64748b;
-}
-
-.result-stat strong {
-    font-size: 22px;
-
-    color: #2563eb;
 }
 
 .result-message {
     color: #64748b;
-
     line-height: 1.5;
 }
 
-
-/* =========================
-   CLASSEMENT
-========================= */
+/* CLASSEMENT */
 
 .ranking-item {
     display: flex;
-
     align-items: center;
-
     gap: 12px;
-
     padding: 15px;
-
     margin-bottom: 10px;
-
     background: #f8fafc;
-
-    border: 2px solid #e2e8f0;
-
     border-radius: 15px;
-
-    text-align: left;
 }
 
-.ranking-position {
-    min-width: 45px;
-
-    font-size: 25px;
+.rank-number {
+    font-size: 24px;
 }
 
-.ranking-name {
+.rank-name {
     flex: 1;
-
     font-weight: bold;
 }
 
-.ranking-score {
+.rank-score {
     color: #2563eb;
-
     font-weight: bold;
 }
 
-.ranking-empty {
-    padding: 20px;
-
-    background: #f8fafc;
-
-    border-radius: 15px;
-
-    color: #64748b;
-}
-
-
-/* =========================
-   CONCOURS
-========================= */
-
-.contest-standings {
-    margin: 20px 0;
-
-    padding: 15px;
-
-    background: #f8fafc;
-
-    border-radius: 15px;
-}
-
-.standing-row {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 12px;
-
-    margin-top: 8px;
-
-    background: white;
-
-    border-radius: 10px;
-}
-
-.standing-rank {
-    font-weight: bold;
-}
-
-.standing-phone {
-    flex: 1;
-}
-
-.standing-score {
-    color: #2563eb;
-
-    font-weight: bold;
-}
-
-.standing-prize {
-    color: #16a34a;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   DÉVELOPPEUR FIXE
-========================= */
+/* FOOTER */
 
 #developer-footer {
     position: fixed;
-
-    left: 0;
     bottom: 0;
-
+    left: 0;
     width: 100%;
-
     min-height: 65px;
-
-    padding: 9px 15px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 5px;
-
-    text-align: center;
-
     background: rgba(255,255,255,.98);
-
     border-top: 2px solid #2563eb;
-
     box-shadow: 0 -5px 20px rgba(0,0,0,.10);
-
-    z-index: 99999;
-
+    z-index: 9999;
     color: #64748b;
-
     font-size: 13px;
 }
 
 #developer-footer strong {
     color: #2563eb;
-
     font-size: 15px;
 }
 
+/* MOBILE */
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 650px) {
-
-    .app {
-        padding: 10px;
-
-        padding-bottom: 100px;
-    }
+@media(max-width:650px) {
 
     .category-grid {
         grid-template-columns: 1fr;
     }
 
-    .category-grid .paid-contest-btn {
-        grid-column: auto;
-    }
-
-    .hero {
-        padding: 30px 18px;
-    }
-
-    .hero h1 {
-        font-size: 25px;
-    }
-
-    #quiz-question {
-        font-size: 19px;
-    }
-
-    .standing-row {
-        flex-wrap: wrap;
+    .profile-stats {
+        grid-template-columns: 1fr;
     }
 
     #developer-footer {
@@ -859,238 +471,215 @@ input {
 </style>
 </head>
 
-
 <body>
 
 <main class="app">
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header class="topbar">
 
     <div class="logo">
 
-        <div class="logo-icon">
-            🏆
-        </div>
+        <div class="logo-icon">🏆</div>
 
         <div>
-
             <strong>Konkou</strong>
-
-            <small>
-                Joue pour gagner
-            </small>
-
+            <small>Joue pour gagner</small>
         </div>
 
     </div>
 
     <div class="tickets">
-
-        🎟️
-        <span id="ticket-count">3</span>
-
+        🎟️ <span id="ticket-count">3</span>
     </div>
 
 </header>
 
 
-<!-- =========================
-     ACCUEIL
-========================= -->
+<!-- ACCUEIL -->
 
-<section
-    id="screen-home"
-    class="screen active"
->
+<section id="screen-home" class="screen active">
 
     <div class="hero">
 
-        <div class="hero-icon">
-            🏆
-        </div>
+        <div class="hero-icon">🏆</div>
 
-        <h1>
-            Prêt à relever le défi ?
-        </h1>
+        <h1>Prêt à relever le défi ?</h1>
 
         <p>
-            Teste tes connaissances,
-            gagne des points et grimpe
-            dans le classement.
+            Teste tes connaissances, gagne des points
+            et grimpe dans le classement.
         </p>
 
         <div class="ticket-info">
-
             🎟️ Tickets disponibles :
-
-            <strong id="ticket-count-home">
-                3
-            </strong>
-
+            <strong id="ticket-count-home">3</strong>
         </div>
 
     </div>
 
-
     <div class="section-title">
 
-        <h2>
-            Choisis une catégorie
-        </h2>
+        <h2>Choisis une catégorie</h2>
 
-        <p>
-            Teste tes connaissances
-        </p>
+        <p>Teste tes connaissances</p>
 
     </div>
 
+    <div id="category-list" class="category-grid"></div>
 
-    <div
-        id="category-list"
-        class="category-grid"
-    ></div>
-
+    <button
+        id="btn-profile"
+        class="start-btn"
+        style="margin-top:15px;"
+    >
+        👤 Mon profil
+    </button>
 
     <button
         id="btn-ranking"
-        class="start-btn"
-        type="button"
-        style="margin-top:20px;"
+        class="restart-btn"
     >
-        🏆 Voir le classement
+        🏆 Classement
     </button>
 
 </section>
 
 
-<!-- =========================
-     PAIEMENT
-========================= -->
+<!-- CONNEXION -->
 
-<section
-    id="screen-payment"
-    class="screen"
->
+<section id="screen-auth" class="screen">
 
-    <div class="payment-box">
+    <div class="auth-box">
 
-        <h2>
-            🏆 Rejoindre le concours
-        </h2>
+        <h2>👤 Créer ton profil</h2>
 
-        <p class="payment-sub">
-            Ce concours est payant.
-            Le gagnant remporte une part
-            du pot.
+        <p style="text-align:center;color:#64748b;">
+            Enregistre ton pseudo pour conserver tes scores.
         </p>
 
-
-        <div class="payment-summary">
-
-            <div class="payment-row">
-
-                <span>
-                    Frais d'entrée
-                </span>
-
-                <strong id="payment-fee">
-                    50 HTG
-                </strong>
-
-            </div>
-
-
-            <div class="payment-row">
-
-                <span>
-                    Joueurs inscrits
-                </span>
-
-                <strong id="payment-players">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="payment-row payment-row-total">
-
-                <span>
-                    Pot actuel
-                </span>
-
-                <strong id="payment-pot">
-                    0 HTG
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <label
-            class="payment-label"
-            for="payment-phone"
-        >
-            Numéro MonCash
+        <label class="input-label">
+            Ton pseudo
         </label>
 
+        <input
+            id="username"
+            class="input"
+            type="text"
+            maxlength="20"
+            placeholder="Ex : Fawen"
+        >
+
+        <label class="input-label">
+            Numéro de téléphone
+        </label>
 
         <input
-            id="payment-phone"
-            class="payment-input"
+            id="phone"
+            class="input"
             type="tel"
             placeholder="Ex : 3712 3456"
-            inputmode="numeric"
-            autocomplete="tel"
         >
 
-
         <button
-            id="btn-pay"
+            id="btn-create-account"
             class="start-btn"
-            type="button"
+            style="margin-top:20px;"
         >
-            Payer et rejoindre
+            Créer mon profil
         </button>
-
-
-        <button
-            id="btn-payment-cancel"
-            class="restart-btn"
-            type="button"
-        >
-            Annuler
-        </button>
-
 
         <p
-            id="payment-status"
-            class="payment-status"
+            id="auth-message"
+            class="auth-message"
         ></p>
+
+        <button
+            id="btn-auth-home"
+            class="restart-btn"
+        >
+            Retour
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     QUIZ
-========================= -->
+<!-- PROFIL -->
 
-<section
-    id="screen-quiz"
-    class="screen"
->
+<section id="screen-profile" class="screen">
+
+    <div class="profile-box">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div
+            id="profile-name"
+            class="profile-name"
+        >
+            Joueur
+        </div>
+
+        <div
+            id="profile-phone"
+            class="profile-phone"
+        ></div>
+
+        <div class="profile-stats">
+
+            <div class="stat">
+                Points
+                <strong id="profile-points">0</strong>
+            </div>
+
+            <div class="stat">
+                Parties
+                <strong id="profile-games">0</strong>
+            </div>
+
+            <div class="stat">
+                Meilleur score
+                <strong id="profile-best">0</strong>
+            </div>
+
+            <div class="stat">
+                Niveau
+                <strong id="profile-level">1</strong>
+            </div>
+
+        </div>
+
+        <button
+            id="btn-profile-home"
+            class="start-btn"
+        >
+            🏠 Accueil
+        </button>
+
+        <button
+            id="btn-logout"
+            class="restart-btn"
+        >
+            Déconnexion
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="screen-quiz" class="screen">
 
     <div class="quiz-top">
 
         <span id="quiz-progress">
-            Question 1 sur 3
+            Question 1
         </span>
 
         <span id="timer">
@@ -1099,64 +688,47 @@ input {
 
     </div>
 
-
     <div class="progress-track">
 
         <div
             id="progress-fill"
             class="progress-fill"
-            style="width:0%;"
         ></div>
 
     </div>
-
 
     <span
         id="quiz-category"
         class="quiz-category"
     ></span>
 
-
     <h2 id="quiz-question">
         —
     </h2>
-
 
     <div
         id="quiz-choices"
         class="quiz-choices"
     ></div>
 
-
     <div class="score-line">
-
-        Score :
-        <span id="quiz-score">
-            0
-        </span>
-
+        ⭐ Score :
+        <span id="quiz-score">0</span>
     </div>
-
 
     <button
         id="btn-quit"
         class="restart-btn"
-        type="button"
     >
-        Quitter la partie
+        Quitter
     </button>
 
 </section>
 
 
-<!-- =========================
-     RÉSULTAT
-========================= -->
+<!-- RESULTAT -->
 
-<section
-    id="screen-result"
-    class="screen"
->
+<section id="screen-result" class="screen">
 
     <div class="result-box">
 
@@ -1169,66 +741,33 @@ input {
         </h2>
 
         <p class="result-score">
-
             Ton score :
-
-            <strong id="result-score">
-                0
-            </strong>
-
+            <strong id="result-score">0</strong>
         </p>
 
-
-        <div
-            id="result-badge"
-            class="result-badge"
-            style="display:none;"
-        ></div>
-
-
-        <div class="result-stat">
-
-            <span>
-                Score maximum
-            </span>
-
-            <strong id="result-total">
-                0
-            </strong>
-
-        </div>
-
-
-        <p
-            id="result-message"
-            class="result-message"
-        >
+        <p id="result-message" class="result-message">
             Bravo !
         </p>
-
-
-        <div
-            id="contest-standings"
-            class="contest-standings"
-            style="display:none;"
-        ></div>
-
 
         <button
             id="btn-replay"
             class="start-btn"
-            type="button"
         >
             🔄 Rejouer
         </button>
 
+        <button
+            id="btn-result-profile"
+            class="restart-btn"
+        >
+            👤 Mon profil
+        </button>
 
         <button
-            id="btn-home"
+            id="btn-result-home"
             class="restart-btn"
-            type="button"
         >
-            🏠 Retour à l'accueil
+            🏠 Accueil
         </button>
 
     </div>
@@ -1236,26 +775,15 @@ input {
 </section>
 
 
-<!-- =========================
-     CLASSEMENT
-========================= -->
+<!-- CLASSEMENT -->
 
-<section
-    id="screen-ranking"
-    class="screen"
->
+<section id="screen-ranking" class="screen">
 
-    <div class="result-box">
+    <div class="ranking-box">
 
-        <div class="result-icon">
-            🏆
-        </div>
+        <h2>🏆 Classement</h2>
 
-        <h2>
-            Classement Konkou
-        </h2>
-
-        <p class="result-message">
+        <p style="text-align:center;color:#64748b;">
             Les meilleurs joueurs de Konkou
         </p>
 
@@ -1264,9 +792,8 @@ input {
         <button
             id="btn-ranking-home"
             class="restart-btn"
-            type="button"
         >
-            🏠 Retour à l'accueil
+            🏠 Retour
         </button>
 
     </div>
@@ -1276,9 +803,7 @@ input {
 </main>
 
 
-<!-- =========================
-     DÉVELOPPEUR
-========================= -->
+<!-- DEVELOPPEUR -->
 
 <footer id="developer-footer">
 
@@ -1301,241 +826,171 @@ input {
 
 const CATEGORIES = [
 
-    {
-        id: "histoire",
+{
+    id:"histoire",
+    name:"📚 Histoire d'Haïti",
 
-        name: "📚 Histoire d'Haïti",
-
-        questions: [
-
-            {
-                question:
-                "En quelle année Haïti est-elle devenue indépendante ?",
-
-                choices: [
-                    "1791",
-                    "1804",
-                    "1815",
-                    "1822"
-                ],
-
-                answerIndex: 1
-            },
-
-            {
-                question:
-                "Qui a été le premier chef d'État d'Haïti après l'indépendance ?",
-
-                choices: [
-                    "Toussaint Louverture",
-                    "Henri Christophe",
-                    "Jean-Jacques Dessalines",
-                    "Alexandre Pétion"
-                ],
-
-                answerIndex: 2
-            },
-
-            {
-                question:
-                "Quelle bataille marque une étape importante de la lutte pour l'indépendance en 1803 ?",
-
-                choices: [
-                    "Bataille de Vertières",
-                    "Bataille de Crête-à-Pierrot",
-                    "Bataille de Santo Domingo",
-                    "Bataille de Léogâne"
-                ],
-
-                answerIndex: 0
-            }
-
-        ]
-    },
-
-
-    {
-        id: "geographie",
-
-        name: "🌎 Géographie",
-
-        questions: [
-
-            {
-                question:
-                "Quelle est la capitale d'Haïti ?",
-
-                choices: [
-                    "Cap-Haïtien",
-                    "Jacmel",
-                    "Port-au-Prince",
-                    "Gonaïves"
-                ],
-
-                answerIndex: 2
-            },
-
-            {
-                question:
-                "Avec quel pays Haïti partage-t-elle l'île d'Hispaniola ?",
-
-                choices: [
-                    "Cuba",
-                    "Jamaïque",
-                    "République Dominicaine",
-                    "Porto Rico"
-                ],
-
-                answerIndex: 2
-            }
-
-        ]
-    },
-
-
-    {
-        id: "sport",
-
-        name: "⚽ Sport",
-
-        questions: [
-
-            {
-                question:
-                "Quel sport est le plus populaire en Haïti ?",
-
-                choices: [
-                    "Basketball",
-                    "Football",
-                    "Baseball",
-                    "Boxe"
-                ],
-
-                answerIndex: 1
-            }
-
-        ]
-    }
-
-];
-
-
-/* =========================
-   CONCOURS
-========================= */
-
-const PAID_CONTEST = {
-
-    id: "concours",
-
-    name: "🏆 Concours de la semaine",
-
-    entryFee: 50,
-
-    questions: [
+    questions:[
 
         {
-            question:
-            "En quelle année Haïti est-elle devenue indépendante ?",
-
-            choices: [
-                "1791",
-                "1804",
-                "1815",
-                "1822"
-            ],
-
-            answerIndex: 1
+            question:"En quelle année Haïti est-elle devenue indépendante ?",
+            choices:["1791","1804","1815","1822"],
+            answerIndex:1
         },
 
         {
-            question:
-            "Quelle est la capitale d'Haïti ?",
+            question:"Qui a été le premier chef d'État d'Haïti après l'indépendance ?",
+            choices:[
+                "Toussaint Louverture",
+                "Henri Christophe",
+                "Jean-Jacques Dessalines",
+                "Alexandre Pétion"
+            ],
+            answerIndex:2
+        },
 
-            choices: [
+        {
+            question:"Quelle bataille marque une étape importante de la lutte pour l'indépendance en 1803 ?",
+            choices:[
+                "Bataille de Vertières",
+                "Bataille de Crête-à-Pierrot",
+                "Bataille de Santo Domingo",
+                "Bataille de Léogâne"
+            ],
+            answerIndex:0
+        }
+
+    ]
+},
+
+{
+    id:"geographie",
+    name:"🌎 Géographie",
+
+    questions:[
+
+        {
+            question:"Quelle est la capitale d'Haïti ?",
+            choices:[
                 "Cap-Haïtien",
                 "Jacmel",
                 "Port-au-Prince",
                 "Gonaïves"
             ],
-
-            answerIndex: 2
+            answerIndex:2
         },
 
         {
-            question:
-            "Quel sport est le plus populaire en Haïti ?",
+            question:"Avec quel pays Haïti partage-t-elle l'île d'Hispaniola ?",
+            choices:[
+                "Cuba",
+                "Jamaïque",
+                "République Dominicaine",
+                "Porto Rico"
+            ],
+            answerIndex:2
+        }
 
-            choices: [
+    ]
+},
+
+{
+    id:"sport",
+    name:"⚽ Sport",
+
+    questions:[
+
+        {
+            question:"Quel sport est le plus populaire en Haïti ?",
+            choices:[
                 "Basketball",
                 "Football",
                 "Baseball",
                 "Boxe"
             ],
-
-            answerIndex: 1
+            answerIndex:1
         }
 
     ]
+}
 
-};
+];
 
 
 /* =========================
-   VARIABLES
+   DONNÉES
 ========================= */
 
 let currentCategory = null;
 let questions = [];
-let currentQuestion = 0;
+let currentIndex = 0;
 let score = 0;
 let timer = null;
 let timeLeft = 15;
 let answered = false;
-
 let tickets = 3;
+
+const USER_KEY = "konkou_user";
+const RANKING_KEY = "konkou_ranking";
 
 
 /* =========================
-   ÉCRANS
+   UTILITAIRES
 ========================= */
 
-const allScreens =
-document.querySelectorAll(".screen");
+function getUser() {
 
-
-function showScreen(screen) {
-
-    allScreens.forEach(
-        item => item.classList.remove("active")
+    return JSON.parse(
+        localStorage.getItem(USER_KEY) || "null"
     );
 
-    screen.classList.add("active");
+}
+
+function saveUser(user) {
+
+    localStorage.setItem(
+        USER_KEY,
+        JSON.stringify(user)
+    );
+
+}
+
+function showScreen(id) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+            screen.classList.remove("active");
+        });
+
+    document
+        .getElementById(id)
+        .classList.add("active");
 
 }
 
 
 /* =========================
-   MÉLANGE
+   MELANGE
 ========================= */
 
 function shuffle(array) {
 
-    for (
-        let i = array.length - 1;
-        i > 0;
+    for(
+        let i=array.length-1;
+        i>0;
         i--
-    ) {
+    ){
 
         const j =
-        Math.floor(
-            Math.random() * (i + 1)
-        );
+            Math.floor(
+                Math.random()*(i+1)
+            );
 
         [
             array[i],
             array[j]
-        ] = [
+        ]=[
             array[j],
             array[i]
         ];
@@ -1548,53 +1003,26 @@ function shuffle(array) {
 
 
 /* =========================
-   CATÉGORIES
+   CATEGORIES
 ========================= */
 
-function renderCategories() {
+function renderCategories(){
 
     const list =
-    document.getElementById("category-list");
+        document.getElementById(
+            "category-list"
+        );
 
-    list.innerHTML = "";
-
-
-    const paid =
-    document.createElement("button");
-
-    paid.className =
-    "paid-contest-btn";
-
-    paid.innerHTML = `
-
-        <span>
-            🏆 Concours de la semaine
-        </span>
-
-        <span class="cat-count">
-            Entrée : 50 HTG
-        </span>
-
-    `;
-
-    paid.addEventListener(
-        "click",
-        openPayment
-    );
-
-    list.appendChild(paid);
-
+    list.innerHTML="";
 
     CATEGORIES.forEach(category => {
 
         const button =
-        document.createElement("button");
+            document.createElement("button");
 
-        button.innerHTML = `
+        button.innerHTML=`
 
-            <span>
-                ${category.name}
-            </span>
+            <span>${category.name}</span>
 
             <span class="cat-count">
                 ${category.questions.length}
@@ -1603,10 +1031,19 @@ function renderCategories() {
 
         `;
 
-        button.addEventListener(
-            "click",
-            () => startQuiz(category)
-        );
+        button.onclick=()=>{
+
+            if(!getUser()){
+
+                showScreen("screen-auth");
+
+                return;
+
+            }
+
+            startQuiz(category);
+
+        };
 
         list.appendChild(button);
 
@@ -1619,294 +1056,316 @@ function renderCategories() {
    TICKETS
 ========================= */
 
-function updateTickets() {
+function updateTickets(){
 
     document.getElementById(
         "ticket-count"
-    ).textContent = tickets;
+    ).textContent=tickets;
 
     document.getElementById(
         "ticket-count-home"
-    ).textContent = tickets;
+    ).textContent=tickets;
 
 }
 
 
 /* =========================
-   PAIEMENT
+   COMPTE
 ========================= */
 
-function openPayment() {
-
-    document.getElementById(
-        "payment-phone"
-    ).value = "";
-
-    document.getElementById(
-        "payment-status"
-    ).textContent = "";
-
-    refreshPayment();
-
-    showScreen(
-        document.getElementById(
-            "screen-payment"
-        )
-    );
-
-}
-
-
-function refreshPayment() {
-
-    const players =
-    JSON.parse(
-        localStorage.getItem(
-            "konkou_players"
-        ) || "[]"
-    );
-
-    document.getElementById(
-        "payment-players"
-    ).textContent =
-    players.length;
-
-    document.getElementById(
-        "payment-pot"
-    ).textContent =
-    players.length * 50 + " HTG";
-
-}
-
-
 document.getElementById(
-    "btn-payment-cancel"
-).addEventListener(
-    "click",
-    () => {
+    "btn-profile"
+).onclick=()=>{
 
-        showScreen(
-            document.getElementById(
-                "screen-home"
-            )
-        );
+    if(!getUser()){
+
+        showScreen("screen-auth");
+
+    }else{
+
+        updateProfile();
+
+        showScreen("screen-profile");
 
     }
-);
+
+};
 
 
 document.getElementById(
-    "btn-pay"
-).addEventListener(
-    "click",
-    () => {
+    "btn-create-account"
+).onclick=()=>{
 
-        const phone =
+    const username =
         document.getElementById(
-            "payment-phone"
+            "username"
         ).value.trim();
 
-
-        if (
-            phone.replace(/\s/g, "").length < 8
-        ) {
-
-            const status =
-            document.getElementById(
-                "payment-status"
-            );
-
-            status.textContent =
-            "Entre un numéro MonCash valide.";
-
-            status.className =
-            "payment-status error";
-
-            return;
-
-        }
-
-
-        /*
-           Ceci est uniquement une simulation.
-           Aucun vrai paiement MonCash
-           n'est effectué ici.
-        */
-
-        const players =
-        JSON.parse(
-            localStorage.getItem(
-                "konkou_players"
-            ) || "[]"
-        );
-
-
-        players.push({
-            phone: phone,
-            score: null
-        });
-
-
-        localStorage.setItem(
-            "konkou_players",
-            JSON.stringify(players)
-        );
-
-
-        const status =
+    const phone =
         document.getElementById(
-            "payment-status"
+            "phone"
+        ).value.trim();
+
+    const message =
+        document.getElementById(
+            "auth-message"
         );
 
-        status.textContent =
-        "Paiement confirmé (simulation). Bonne chance !";
 
-        status.className =
-        "payment-status success";
+    if(username.length<2){
 
+        message.textContent =
+            "Choisis un pseudo d'au moins 2 caractères.";
 
-        setTimeout(
-            () => startQuiz(PAID_CONTEST),
-            800
-        );
+        return;
 
     }
-);
+
+
+    if(phone.length<8){
+
+        message.textContent =
+            "Entre un numéro de téléphone valide.";
+
+        return;
+
+    }
+
+
+    const old =
+        getUser();
+
+
+    const user = old || {
+
+        username:username,
+
+        phone:phone,
+
+        points:0,
+
+        games:0,
+
+        best:0
+
+    };
+
+
+    user.username=username;
+    user.phone=phone;
+
+
+    saveUser(user);
+
+
+    message.textContent="";
+
+
+    updateProfile();
+
+    showScreen("screen-profile");
+
+};
+
+
+document.getElementById(
+    "btn-auth-home"
+).onclick=()=>{
+
+    showScreen("screen-home");
+
+};
 
 
 /* =========================
-   DÉMARRER QUIZ
+   PROFIL
 ========================= */
 
-function startQuiz(category) {
+function updateProfile(){
 
-    if (
-        category.id !== PAID_CONTEST.id
-    ) {
+    const user=getUser();
 
-        if (tickets <= 0) {
+    if(!user) return;
 
-            alert(
-                "Tu n'as plus de tickets aujourd'hui."
-            );
 
-            return;
+    document.getElementById(
+        "profile-name"
+    ).textContent=user.username;
 
-        }
 
-        tickets--;
+    document.getElementById(
+        "profile-phone"
+    ).textContent=user.phone;
 
-        updateTickets();
+
+    document.getElementById(
+        "profile-points"
+    ).textContent=user.points;
+
+
+    document.getElementById(
+        "profile-games"
+    ).textContent=user.games;
+
+
+    document.getElementById(
+        "profile-best"
+    ).textContent=user.best;
+
+
+    document.getElementById(
+        "profile-level"
+    ).textContent=
+        Math.floor(user.points/100)+1;
+
+}
+
+
+document.getElementById(
+    "btn-profile-home"
+).onclick=()=>{
+
+    showScreen("screen-home");
+
+};
+
+
+document.getElementById(
+    "btn-logout"
+).onclick=()=>{
+
+    localStorage.removeItem(USER_KEY);
+
+    showScreen("screen-home");
+
+};
+
+
+/* =========================
+   QUIZ
+========================= */
+
+function startQuiz(category){
+
+    if(tickets<=0){
+
+        alert(
+            "Tu n'as plus de tickets aujourd'hui."
+        );
+
+        return;
 
     }
 
 
-    currentCategory = category;
+    tickets--;
 
-    questions =
-    shuffle([...category.questions]);
+    updateTickets();
 
-    currentQuestion = 0;
 
-    score = 0;
+    currentCategory=category;
 
-    showScreen(
-        document.getElementById(
-            "screen-quiz"
-        )
-    );
+    questions=
+        shuffle(
+            [...category.questions]
+        );
+
+    currentIndex=0;
+
+    score=0;
+
+    showScreen("screen-quiz");
 
     showQuestion();
 
 }
 
 
-/* =========================
-   QUESTION
-========================= */
+function showQuestion(){
 
-function showQuestion() {
-
-    answered = false;
+    answered=false;
 
     clearInterval(timer);
 
 
-    const question =
-    questions[currentQuestion];
+    const q =
+        questions[currentIndex];
 
 
     document.getElementById(
         "quiz-category"
-    ).textContent =
-    currentCategory.name;
+    ).textContent=
+        currentCategory.name;
 
 
     document.getElementById(
         "quiz-question"
-    ).textContent =
-    question.question;
+    ).textContent=
+        q.question;
 
 
     document.getElementById(
         "quiz-score"
-    ).textContent =
-    score;
+    ).textContent=
+        score;
 
 
     document.getElementById(
         "quiz-progress"
-    ).textContent =
-    `Question ${currentQuestion + 1} sur ${questions.length}`;
+    ).textContent=
+        `Question ${currentIndex+1} sur ${questions.length}`;
 
 
     document.getElementById(
         "progress-fill"
-    ).style.width =
-    (
-        currentQuestion /
-        questions.length *
-        100
-    ) + "%";
+    ).style.width=
+        (
+            currentIndex /
+            questions.length *
+            100
+        )+"%";
 
 
     const choices =
-    question.choices.map(
-        (text, index) => ({
-            text: text,
-            correct:
-            index === question.answerIndex
-        })
-    );
+        q.choices.map(
+            (text,index)=>({
+
+                text:text,
+
+                correct:
+                    index===q.answerIndex
+
+            })
+        );
 
 
     shuffle(choices);
 
 
     const container =
-    document.getElementById(
-        "quiz-choices"
-    );
+        document.getElementById(
+            "quiz-choices"
+        );
 
-    container.innerHTML = "";
+    container.innerHTML="";
 
 
-    choices.forEach(choice => {
+    choices.forEach(choice=>{
 
         const button =
-        document.createElement("button");
+            document.createElement("button");
 
-        button.textContent =
-        choice.text;
+        button.textContent=
+            choice.text;
 
-        button.addEventListener(
-            "click",
-            () =>
+        button.onclick=()=>{
+
             selectAnswer(
                 button,
                 choice.correct
-            )
-        );
+            );
+
+        };
 
         container.appendChild(button);
 
@@ -1922,40 +1381,39 @@ function showQuestion() {
    TIMER
 ========================= */
 
-function startTimer() {
+function startTimer(){
 
-    timeLeft = 15;
+    timeLeft=15;
 
     const timerElement =
-    document.getElementById("timer");
+        document.getElementById("timer");
 
-    timerElement.textContent =
-    timeLeft;
+    timerElement.textContent=
+        timeLeft;
 
     timerElement.classList.remove("low");
 
 
-    timer =
-    setInterval(() => {
+    timer=setInterval(()=>{
 
         timeLeft--;
 
-        timerElement.textContent =
-        timeLeft;
+        timerElement.textContent=
+            timeLeft;
 
 
-        if (timeLeft <= 5) {
+        if(timeLeft<=5){
 
             timerElement.classList.add("low");
 
         }
 
 
-        if (timeLeft <= 0) {
+        if(timeLeft<=0){
 
             clearInterval(timer);
 
-            if (!answered) {
+            if(!answered){
 
                 selectAnswer(
                     null,
@@ -1966,290 +1424,372 @@ function startTimer() {
 
         }
 
-    }, 1000);
+    },1000);
 
 }
 
 
 /* =========================
-   RÉPONSE
+   REPONSE
 ========================= */
 
 function selectAnswer(
     button,
-    isCorrect
-) {
+    correct
+){
 
-    if (answered) {
-        return;
-    }
+    if(answered) return;
 
-    answered = true;
+    answered=true;
 
     clearInterval(timer);
 
 
-    const buttons =
-    document.querySelectorAll(
-        "#quiz-choices button"
-    );
+    document
+        .querySelectorAll(
+            "#quiz-choices button"
+        )
+        .forEach(b=>{
+            b.disabled=true;
+        });
 
 
-    buttons.forEach(
-        item => item.disabled = true
-    );
-
-
-    if (button) {
+    if(button){
 
         button.classList.add(
-            isCorrect
-            ? "correct"
-            : "wrong"
+            correct
+                ? "correct"
+                : "wrong"
         );
 
     }
 
 
-    if (isCorrect) {
+    if(correct){
 
-        score += 10;
+        score+=10;
 
     }
 
 
-    setTimeout(() => {
+    document.getElementById(
+        "quiz-score"
+    ).textContent=score;
 
-        currentQuestion++;
+
+    setTimeout(()=>{
+
+        currentIndex++;
 
 
-        if (
-            currentQuestion <
+        if(
+            currentIndex<
             questions.length
-        ) {
+        ){
 
             showQuestion();
 
-        } else {
+        }else{
 
             finishQuiz();
 
         }
 
-    }, 700);
+    },700);
 
 }
 
 
 /* =========================
-   FIN
+   FIN DU QUIZ
 ========================= */
 
-function finishQuiz() {
+function finishQuiz(){
 
     clearInterval(timer);
 
 
-    const maximum =
-    questions.length * 10;
+    const user=getUser();
+
+
+    if(user){
+
+        user.points += score;
+
+        user.games += 1;
+
+        if(score>user.best){
+
+            user.best=score;
+
+        }
+
+        saveUser(user);
+
+        saveRanking(user);
+
+    }
 
 
     document.getElementById(
         "result-score"
-    ).textContent =
-    score;
+    ).textContent=score;
 
 
-    document.getElementById(
-        "result-total"
-    ).textContent =
-    maximum;
+    const maximum =
+        questions.length*10;
 
 
-    const ratio =
-    score / maximum;
+    if(score===maximum){
 
-
-    const message =
-    document.getElementById(
-        "result-message"
-    );
-
-
-    const badge =
-    document.getElementById(
-        "result-badge"
-    );
-
-
-    if (ratio === 1) {
-
-        message.textContent =
-        "🎉 Excellent ! Score parfait !";
-
-        badge.textContent =
-        "🏆 Score parfait !";
-
-        badge.style.display =
-        "inline-block";
-
-    }
-
-    else if (ratio >= 0.7) {
-
-        message.textContent =
-        "👏 Très bien ! Tu maîtrises bien cette catégorie.";
-
-        badge.textContent =
-        "👍 Bien joué !";
-
-        badge.style.display =
-        "inline-block";
-
-    }
-
-    else {
-
-        message.textContent =
-        "💪 Continue à t'entraîner pour améliorer ton score.";
-
-        badge.style.display =
-        "none";
-
-    }
-
-
-    showScreen(
         document.getElementById(
-            "screen-result"
-        )
-    );
+            "result-message"
+        ).textContent=
+            "🎉 Excellent ! Score parfait !";
+
+    }
+
+    else if(score>=maximum*0.7){
+
+        document.getElementById(
+            "result-message"
+        ).textContent=
+            "👏 Très bien ! Continue comme ça.";
+
+    }
+
+    else{
+
+        document.getElementById(
+            "result-message"
+        ).textContent=
+            "💪 Continue à t'entraîner pour progresser.";
+
+    }
+
+
+    showScreen("screen-result");
 
 }
-
-
-/* =========================
-   REJOUER
-========================= */
-
-document.getElementById(
-    "btn-replay"
-).addEventListener(
-    "click",
-    () => {
-
-        if (currentCategory) {
-
-            startQuiz(
-                currentCategory
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================
-   ACCUEIL
-========================= */
-
-document.getElementById(
-    "btn-home"
-).addEventListener(
-    "click",
-    () => {
-
-        clearInterval(timer);
-
-        showScreen(
-            document.getElementById(
-                "screen-home"
-            )
-        );
-
-    }
-);
-
-
-/* =========================
-   QUITTER
-========================= */
-
-document.getElementById(
-    "btn-quit"
-).addEventListener(
-    "click",
-    () => {
-
-        clearInterval(timer);
-
-        showScreen(
-            document.getElementById(
-                "screen-home"
-            )
-        );
-
-    }
-);
 
 
 /* =========================
    CLASSEMENT
 ========================= */
 
-document.getElementById(
-    "btn-ranking"
-).addEventListener(
-    "click",
-    () => {
+function saveRanking(user){
 
-        const list =
+    let ranking =
+        JSON.parse(
+            localStorage.getItem(
+                RANKING_KEY
+            ) || "[]"
+        );
+
+
+    const index =
+        ranking.findIndex(
+            p=>p.phone===user.phone
+        );
+
+
+    const player={
+
+        username:user.username,
+
+        phone:user.phone,
+
+        points:user.points,
+
+        best:user.best
+
+    };
+
+
+    if(index>=0){
+
+        ranking[index]=player;
+
+    }else{
+
+        ranking.push(player);
+
+    }
+
+
+    ranking.sort(
+        (a,b)=>b.points-a.points
+    );
+
+
+    ranking=ranking.slice(0,50);
+
+
+    localStorage.setItem(
+        RANKING_KEY,
+        JSON.stringify(ranking)
+    );
+
+}
+
+
+function showRanking(){
+
+    const list =
         document.getElementById(
             "ranking-list"
         );
 
 
-        list.innerHTML = `
+    const ranking =
+        JSON.parse(
+            localStorage.getItem(
+                RANKING_KEY
+            ) || "[]"
+        );
 
-            <div class="ranking-empty">
 
-                🏆 Aucun score enregistré
-                pour le moment.
+    if(ranking.length===0){
 
-            </div>
+        list.innerHTML=`
+
+            <p style="text-align:center;color:#64748b;">
+                Aucun joueur dans le classement.
+            </p>
 
         `;
 
-
-        showScreen(
-            document.getElementById(
-                "screen-ranking"
-            )
-        );
+        return;
 
     }
-);
 
 
-/* =========================
-   RETOUR CLASSEMENT
-========================= */
+    list.innerHTML="";
+
+
+    ranking.slice(0,10)
+        .forEach((player,index)=>{
+
+            const item =
+                document.createElement("div");
+
+            item.className=
+                "ranking-item";
+
+
+            let medal="";
+
+            if(index===0) medal="🥇";
+
+            else if(index===1) medal="🥈";
+
+            else if(index===2) medal="🥉";
+
+            else medal=`#${index+1}`;
+
+
+            item.innerHTML=`
+
+                <span class="rank-number">
+                    ${medal}
+                </span>
+
+                <span class="rank-name">
+                    ${escapeHTML(player.username)}
+                </span>
+
+                <span class="rank-score">
+                    ${player.points} pts
+                </span>
+
+            `;
+
+
+            list.appendChild(item);
+
+        });
+
+}
+
+
+function escapeHTML(text){
+
+    const div=
+        document.createElement("div");
+
+    div.textContent=text;
+
+    return div.innerHTML;
+
+}
+
+
+document.getElementById(
+    "btn-ranking"
+).onclick=()=>{
+
+    showRanking();
+
+    showScreen("screen-ranking");
+
+};
+
 
 document.getElementById(
     "btn-ranking-home"
-).addEventListener(
-    "click",
-    () => {
+).onclick=()=>{
 
-        showScreen(
-            document.getElementById(
-                "screen-home"
-            )
-        );
+    showScreen("screen-home");
+
+};
+
+
+/* =========================
+   RESULTAT
+========================= */
+
+document.getElementById(
+    "btn-replay"
+).onclick=()=>{
+
+    if(currentCategory){
+
+        startQuiz(currentCategory);
 
     }
-);
+
+};
+
+
+document.getElementById(
+    "btn-result-profile"
+).onclick=()=>{
+
+    updateProfile();
+
+    showScreen("screen-profile");
+
+};
+
+
+document.getElementById(
+    "btn-result-home"
+).onclick=()=>{
+
+    showScreen("screen-home");
+
+};
+
+
+document.getElementById(
+    "btn-quit"
+).onclick=()=>{
+
+    clearInterval(timer);
+
+    showScreen("screen-home");
+
+};
 
 
 /* =========================
@@ -2260,13 +1800,11 @@ renderCategories();
 
 updateTickets();
 
-refreshPayment();
+if(getUser()){
 
-showScreen(
-    document.getElementById(
-        "screen-home"
-    )
-);
+    updateProfile();
+
+}
 
 </script>
 
