@@ -8,27 +8,21 @@
 <title>Konkou — Joue pour gagner</title>
 
 <style>
-
-/* =========================
-   GENERAL
-========================= */
-
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #dbeafe, #ede9fe);
     color: #172033;
 }
 
 .app {
-    width: 100%;
     max-width: 900px;
     margin: auto;
-    padding: 15px 15px 90px;
+    padding: 15px 15px 80px;
 }
 
 .screen {
@@ -39,24 +33,17 @@ body {
     display: block;
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: white;
     padding: 12px 16px;
     margin-bottom: 20px;
-
     border-radius: 18px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
 }
 
 .logo {
@@ -68,19 +55,11 @@ body {
 .logo-icon {
     width: 48px;
     height: 48px;
-
     display: flex;
-    align-items: center;
     justify-content: center;
-
+    align-items: center;
     border-radius: 14px;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
     font-size: 25px;
 }
 
@@ -90,14 +69,8 @@ body {
 }
 
 .logo small {
-    display: block;
     color: #64748b;
 }
-
-
-/* =========================
-   ACTIONS HEADER
-========================= */
 
 .header-actions {
     display: flex;
@@ -108,66 +81,31 @@ body {
 .profile-top-btn {
     width: 45px;
     height: 45px;
-
     border: none;
     border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
     color: white;
-
     font-size: 21px;
-
     cursor: pointer;
-
-    box-shadow:
-        0 5px 15px rgba(37,99,235,0.25);
-
-    transition: 0.2s;
-}
-
-.profile-top-btn:hover {
-    transform: scale(1.08);
 }
 
 .tickets {
     padding: 10px 13px;
-
     border-radius: 12px;
-
     background: #dbeafe;
-
     color: #1d4ed8;
-
     font-weight: bold;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero {
     text-align: center;
-
     color: white;
-
     padding: 35px 20px;
-
     border-radius: 25px;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
-    box-shadow:
-        0 15px 35px rgba(37,99,235,0.25);
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    box-shadow: 0 15px 35px rgba(37,99,235,.25);
 }
 
 .hero-icon {
@@ -184,438 +122,264 @@ body {
 
 .ticket-info {
     display: inline-block;
-
     padding: 10px 15px;
-
     border-radius: 12px;
-
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,.2);
 }
 
-
-/* =========================
-   TITRES
-========================= */
+/* ================= CATEGORIES ================= */
 
 .section-title {
     margin: 25px 0 15px;
-}
-
-.section-title h2 {
-    margin-bottom: 5px;
 }
 
 .section-title p {
     color: #64748b;
 }
 
-
-/* =========================
-   CATEGORIES
-========================= */
-
 .category-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
+    grid-template-columns: repeat(2,1fr);
     gap: 15px;
 }
 
 .category-grid button {
     min-height: 100px;
-
     padding: 18px;
-
     border: 2px solid #e2e8f0;
-
     border-radius: 17px;
-
     background: white;
-
     font-size: 16px;
     font-weight: bold;
-
     text-align: left;
-
     cursor: pointer;
-
-    transition: 0.2s;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,0.05);
+    transition: .2s;
 }
 
 .category-grid button:hover {
     transform: translateY(-3px);
-
     border-color: #2563eb;
-
     background: #eff6ff;
 }
 
 .cat-count {
     display: block;
-
     margin-top: 8px;
-
     color: #64748b;
-
     font-size: 13px;
-
     font-weight: normal;
 }
 
+/* ================= BOUTONS ================= */
 
-/* =========================
-   BOUTONS
-========================= */
-
-.start-btn {
+.start-btn,
+.restart-btn {
     width: 100%;
-
     padding: 15px;
-
-    border: none;
-
     border-radius: 13px;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
-    color: white;
-
     font-size: 16px;
-
     font-weight: bold;
-
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
-.start-btn:hover {
-    transform: translateY(-2px);
+.start-btn {
+    border: none;
+    color: white;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
 }
 
 .restart-btn {
-    width: 100%;
-
-    padding: 14px;
-
     margin-top: 10px;
-
     border: 2px solid #e2e8f0;
-
-    border-radius: 13px;
-
     background: white;
-
-    font-weight: bold;
-
-    cursor: pointer;
 }
 
-.restart-btn:hover {
-    background: #f8fafc;
-}
-
-
-/* =========================
-   BOX
-========================= */
+/* ================= BOX ================= */
 
 .auth-box,
 .profile-box,
 .result-box,
-.ranking-box {
+.ranking-box,
+.info-box {
     max-width: 600px;
-
     margin: 25px auto;
-
     padding: 30px 25px;
-
     background: white;
-
     border-radius: 24px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
+/* ================= AUTH ================= */
 
-/* =========================
-   AUTH
-========================= */
-
-.auth-box h2 {
+.auth-box h2,
+.profile-box h2,
+.ranking-box h2,
+.info-box h2 {
     text-align: center;
 }
 
 .auth-description {
     text-align: center;
-
     color: #64748b;
-
     line-height: 1.5;
 }
 
 .input-label {
     display: block;
-
     margin: 15px 0 7px;
-
     font-weight: bold;
 }
 
 .input {
     width: 100%;
-
     padding: 14px;
-
     border: 2px solid #e2e8f0;
-
     border-radius: 12px;
-
     font-size: 16px;
-
-    outline: none;
-}
-
-.input:focus {
-    border-color: #2563eb;
 }
 
 .auth-message {
     min-height: 20px;
-
     text-align: center;
-
-    margin-top: 12px;
-
     color: #dc2626;
 }
 
-
-/* =========================
-   PROFIL
-========================= */
+/* ================= PROFIL ================= */
 
 .profile-avatar {
     width: 90px;
     height: 90px;
-
     margin: auto;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
     color: white;
-
     font-size: 40px;
 }
 
 .profile-name {
     text-align: center;
-
     font-size: 25px;
-
     font-weight: bold;
-
     margin: 12px 0;
 }
 
 .profile-phone {
     text-align: center;
-
     color: #64748b;
 }
 
 .profile-stats {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
+    grid-template-columns: repeat(2,1fr);
     gap: 12px;
-
     margin: 20px 0;
 }
 
 .stat {
     text-align: center;
-
     background: #f8fafc;
-
     padding: 18px;
-
     border-radius: 15px;
 }
 
 .stat strong {
     display: block;
-
     color: #2563eb;
-
     font-size: 25px;
-
     margin-top: 5px;
 }
 
-
-/* =========================
-   QUIZ
-========================= */
+/* ================= QUIZ ================= */
 
 .quiz-top {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     font-weight: bold;
 }
 
 #timer {
     width: 45px;
     height: 45px;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     border-radius: 50%;
-
     background: #dbeafe;
-
     color: #2563eb;
 }
 
 #timer.low {
     background: #fee2e2;
-
     color: #dc2626;
 }
 
 .progress-track {
     height: 8px;
-
     margin: 12px 0 25px;
-
     background: #dbe3f0;
-
     border-radius: 20px;
-
     overflow: hidden;
 }
 
 .progress-fill {
     height: 100%;
-
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
-
-    transition: width 0.3s;
+    background: linear-gradient(90deg,#2563eb,#7c3aed);
+    transition: width .3s;
 }
 
 .quiz-category {
     display: inline-block;
-
     padding: 7px 12px;
-
     border-radius: 20px;
-
     background: #ede9fe;
-
     color: #6d28d9;
-
     font-size: 13px;
-
     font-weight: bold;
 }
 
 #quiz-question {
     background: white;
-
     padding: 25px;
-
     border-radius: 18px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
 }
 
 .quiz-choices {
     display: grid;
-
     gap: 12px;
 }
 
 .quiz-choices button {
     padding: 16px;
-
     border: 2px solid #e2e8f0;
-
     border-radius: 14px;
-
     background: white;
-
     text-align: left;
-
     font-size: 16px;
-
     cursor: pointer;
-}
-
-.quiz-choices button:hover {
-    border-color: #2563eb;
-
-    background: #eff6ff;
 }
 
 .quiz-choices button.correct {
     background: #dcfce7;
-
     border-color: #16a34a;
 }
 
 .quiz-choices button.wrong {
     background: #fee2e2;
-
     border-color: #dc2626;
 }
 
 .score-line {
     text-align: center;
-
     margin: 20px;
-
     font-weight: bold;
 }
 
-
-/* =========================
-   RESULTAT
-========================= */
+/* ================= RESULTAT ================= */
 
 .result-box {
     text-align: center;
@@ -627,52 +391,46 @@ body {
 
 .result-score {
     color: #64748b;
-
     font-size: 20px;
 }
 
 .result-score strong {
     display: block;
-
     color: #2563eb;
-
     font-size: 48px;
 }
 
 .result-message {
     color: #64748b;
-
     line-height: 1.5;
 }
 
+/* ================= INFO ================= */
 
-/* =========================
-   CLASSEMENT
-========================= */
-
-.ranking-box h2 {
-    text-align: center;
+.info-box {
+    line-height: 1.7;
 }
 
-.ranking-box > p {
-    text-align: center;
-
-    color: #64748b;
+.info-card {
+    padding: 18px;
+    margin: 12px 0;
+    border-radius: 15px;
+    background: #f8fafc;
 }
+
+.info-card strong {
+    color: #2563eb;
+}
+
+/* ================= CLASSEMENT ================= */
 
 .ranking-item {
     display: flex;
-
     align-items: center;
-
     gap: 12px;
-
     padding: 15px;
-
     margin-bottom: 10px;
-
     background: #f8fafc;
-
     border-radius: 15px;
 }
 
@@ -682,63 +440,37 @@ body {
 
 .rank-name {
     flex: 1;
-
     font-weight: bold;
 }
 
 .rank-score {
     color: #2563eb;
-
     font-weight: bold;
 }
 
-
-/* =========================
-   DEVELOPPEUR
-========================= */
+/* ================= FOOTER ================= */
 
 #developer-footer {
     position: fixed;
-
     bottom: 0;
     left: 0;
-
     width: 100%;
-
-    min-height: 60px;
-
+    min-height: 55px;
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 5px;
-
     background: white;
-
     border-top: 2px solid #2563eb;
-
-    box-shadow:
-        0 -5px 20px rgba(0,0,0,0.10);
-
     z-index: 9999;
-
     color: #64748b;
-
-    font-size: 13px;
 }
 
 #developer-footer strong {
     color: #2563eb;
-
-    font-size: 15px;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:650px) {
 
@@ -753,46 +485,15 @@ body {
     .hero h1 {
         font-size: 24px;
     }
-
-    .logo strong {
-        font-size: 18px;
-    }
-
-    .logo small {
-        font-size: 11px;
-    }
-
-    .profile-top-btn {
-        width: 42px;
-        height: 42px;
-    }
-
-    .tickets {
-        padding: 8px 10px;
-    }
-
-    #developer-footer {
-        font-size: 11px;
-    }
-
-    #developer-footer strong {
-        font-size: 13px;
-    }
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <main class="app">
 
-
-<!-- =========================
-     HEADER
-========================= -->
+<!-- ================= HEADER ================= -->
 
 <header class="topbar">
 
@@ -803,42 +504,26 @@ body {
         </div>
 
         <div>
-
-            <strong>
-                Konkou
-            </strong>
-
-            <small>
-                Joue pour gagner
-            </small>
-
+            <strong>Konkou</strong>
+            <small>Joue pour gagner</small>
         </div>
 
     </div>
 
-
-    <!-- PROFIL + TICKETS -->
-
     <div class="header-actions">
 
+        <!-- UN SEUL PROFIL -->
         <button
             id="btn-profile-top"
             class="profile-top-btn"
             type="button"
-            title="Mon profil"
         >
             👤
         </button>
 
-
         <div class="tickets">
-
             🎟️
-
-            <span id="ticket-count">
-                3
-            </span>
-
+            <span id="ticket-count">3</span>
         </div>
 
     </div>
@@ -846,104 +531,56 @@ body {
 </header>
 
 
-<!-- =========================
-     ACCUEIL
-========================= -->
+<!-- ================= ACCUEIL ================= -->
 
-<section
-    id="screen-home"
-    class="screen active"
->
+<section id="screen-home" class="screen active">
 
     <div class="hero">
 
-        <div class="hero-icon">
-            🏆
-        </div>
+        <div class="hero-icon">🏆</div>
 
-        <h1>
-            Prêt à relever le défi ?
-        </h1>
+        <h1>Prêt à relever le défi ?</h1>
 
         <p>
-            Teste tes connaissances,
-            gagne des points et grimpe
-            dans le classement.
+            Teste tes connaissances, gagne des points
+            et grimpe dans le classement.
         </p>
 
         <div class="ticket-info">
-
             🎟️ Tickets disponibles :
-
-            <strong id="ticket-count-home">
-                3
-            </strong>
-
+            <strong id="ticket-count-home">3</strong>
         </div>
 
     </div>
 
-
     <div class="section-title">
 
-        <h2>
-            Choisis une catégorie
-        </h2>
+        <h2>Choisis une catégorie</h2>
 
-        <p>
-            Teste tes connaissances
-        </p>
+        <p>Teste tes connaissances</p>
 
     </div>
-
 
     <div
         id="category-list"
         class="category-grid"
     ></div>
 
-
-    <button
-        id="btn-profile"
-        class="start-btn"
-        style="margin-top:15px;"
-        type="button"
-    >
-        👤 Mon profil
-    </button>
-
-
-    <button
-        id="btn-ranking"
-        class="restart-btn"
-        type="button"
-    >
-        🏆 Classement
-    </button>
-
 </section>
 
 
-<!-- =========================
-     INSCRIPTION
-========================= -->
+<!-- ================= CREATION PROFIL ================= -->
 
-<section
-    id="screen-auth"
-    class="screen"
->
+<section id="screen-auth" class="screen">
 
     <div class="auth-box">
 
-        <h2>
-            👤 Créer ton profil
-        </h2>
+        <h2>👤 Créer ton profil</h2>
 
         <p class="auth-description">
-            Crée ton profil pour enregistrer
-            tes points et tes parties.
+            Crée ton profil pour sauvegarder
+            tes points et tes résultats.
         </p>
-
 
         <label class="input-label">
             Ton pseudo
@@ -957,7 +594,6 @@ body {
             placeholder="Ex : Fawen"
         >
 
-
         <label class="input-label">
             Numéro de téléphone
         </label>
@@ -969,29 +605,23 @@ body {
             placeholder="Ex : 3712 3456"
         >
 
-
         <button
             id="btn-create-account"
             class="start-btn"
-            style="margin-top:20px;"
+            style="margin-top:20px"
             type="button"
         >
             Créer mon profil
         </button>
 
-
-        <p
-            id="auth-message"
-            class="auth-message"
-        ></p>
-
+        <p id="auth-message" class="auth-message"></p>
 
         <button
             id="btn-auth-home"
             class="restart-btn"
             type="button"
         >
-            Retour
+            🏠 Retour à l'accueil
         </button>
 
     </div>
@@ -999,14 +629,9 @@ body {
 </section>
 
 
-<!-- =========================
-     PROFIL
-========================= -->
+<!-- ================= PROFIL ================= -->
 
-<section
-    id="screen-profile"
-    class="screen"
->
+<section id="screen-profile" class="screen">
 
     <div class="profile-box">
 
@@ -1014,69 +639,43 @@ body {
             👤
         </div>
 
-
-        <div
-            id="profile-name"
-            class="profile-name"
-        >
+        <div id="profile-name" class="profile-name">
             Joueur
         </div>
 
-
-        <div
-            id="profile-phone"
-            class="profile-phone"
-        ></div>
-
+        <div id="profile-phone" class="profile-phone"></div>
 
         <div class="profile-stats">
 
             <div class="stat">
                 ⭐ Points
-
-                <strong id="profile-points">
-                    0
-                </strong>
+                <strong id="profile-points">0</strong>
             </div>
-
 
             <div class="stat">
                 🎮 Parties
-
-                <strong id="profile-games">
-                    0
-                </strong>
+                <strong id="profile-games">0</strong>
             </div>
-
 
             <div class="stat">
                 🏆 Meilleur score
-
-                <strong id="profile-best">
-                    0
-                </strong>
+                <strong id="profile-best">0</strong>
             </div>
-
 
             <div class="stat">
                 🚀 Niveau
-
-                <strong id="profile-level">
-                    1
-                </strong>
+                <strong id="profile-level">1</strong>
             </div>
 
         </div>
 
-
         <button
             id="btn-profile-home"
-            class="start-btn"
+            class="restart-btn"
             type="button"
         >
-            🏠 Accueil
+            🏠 Retour à l'accueil
         </button>
-
 
         <button
             id="btn-logout"
@@ -1091,19 +690,14 @@ body {
 </section>
 
 
-<!-- =========================
-     QUIZ
-========================= -->
+<!-- ================= QUIZ ================= -->
 
-<section
-    id="screen-quiz"
-    class="screen"
->
+<section id="screen-quiz" class="screen">
 
     <div class="quiz-top">
 
         <span id="quiz-progress">
-            Question 1
+            Question 1 sur 3
         </span>
 
         <span id="timer">
@@ -1112,45 +706,31 @@ body {
 
     </div>
 
-
     <div class="progress-track">
 
         <div
             id="progress-fill"
             class="progress-fill"
-            style="width:0%;"
         ></div>
 
     </div>
-
 
     <span
         id="quiz-category"
         class="quiz-category"
     ></span>
 
-
-    <h2 id="quiz-question">
-        —
-    </h2>
-
+    <h2 id="quiz-question">—</h2>
 
     <div
         id="quiz-choices"
         class="quiz-choices"
     ></div>
 
-
     <div class="score-line">
-
         ⭐ Score :
-
-        <span id="quiz-score">
-            0
-        </span>
-
+        <span id="quiz-score">0</span>
     </div>
-
 
     <button
         id="btn-quit"
@@ -1163,14 +743,9 @@ body {
 </section>
 
 
-<!-- =========================
-     RESULTAT
-========================= -->
+<!-- ================= RESULTAT ================= -->
 
-<section
-    id="screen-result"
-    class="screen"
->
+<section id="screen-result" class="screen">
 
     <div class="result-box">
 
@@ -1178,22 +753,12 @@ body {
             🏆
         </div>
 
-
-        <h2>
-            Quiz terminé !
-        </h2>
-
+        <h2>Quiz terminé !</h2>
 
         <p class="result-score">
-
             Ton score :
-
-            <strong id="result-score">
-                0
-            </strong>
-
+            <strong id="result-score">0</strong>
         </p>
-
 
         <p
             id="result-message"
@@ -1201,7 +766,6 @@ body {
         >
             Bravo !
         </p>
-
 
         <button
             id="btn-replay"
@@ -1211,22 +775,12 @@ body {
             🔄 Rejouer
         </button>
 
-
-        <button
-            id="btn-result-profile"
-            class="restart-btn"
-            type="button"
-        >
-            👤 Mon profil
-        </button>
-
-
         <button
             id="btn-result-home"
             class="restart-btn"
             type="button"
         >
-            🏠 Accueil
+            🏠 Retour à l'accueil
         </button>
 
     </div>
@@ -1234,28 +788,85 @@ body {
 </section>
 
 
-<!-- =========================
-     CLASSEMENT
-========================= -->
+<!-- ================= INFO ================= -->
 
-<section
-    id="screen-ranking"
-    class="screen"
->
+<section id="screen-info" class="screen">
+
+    <div class="info-box">
+
+        <h2>💰 Comment ça fonctionne ?</h2>
+
+        <div class="info-card">
+            <strong>🎟️ 1. Les tickets</strong>
+            <p>
+                Chaque joueur reçoit
+                <strong>3 tickets gratuits par jour</strong>.
+                Une partie utilise un ticket.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <strong>🎮 2. Jouer</strong>
+            <p>
+                Choisis une catégorie et réponds
+                aux questions avant la fin du temps.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <strong>⭐ 3. Les points</strong>
+            <p>
+                Une bonne réponse rapporte
+                <strong>10 points</strong>.
+                Les points permettent de progresser
+                dans le classement.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <strong>🏆 4. Le classement</strong>
+            <p>
+                Les meilleurs scores apparaissent
+                dans le classement général.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <strong>🎁 5. Récompenses</strong>
+            <p>
+                Les récompenses réelles doivent être
+                gérées séparément et conformément
+                aux règles applicables. Cette version
+                utilise uniquement des points virtuels.
+            </p>
+        </div>
+
+        <button
+            id="btn-info-home"
+            class="restart-btn"
+            type="button"
+        >
+            🏠 Retour à l'accueil
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CLASSEMENT ================= -->
+
+<section id="screen-ranking" class="screen">
 
     <div class="ranking-box">
 
-        <h2>
-            🏆 Classement
-        </h2>
+        <h2>🏆 Classement</h2>
 
         <p>
             Les meilleurs joueurs de Konkou
         </p>
 
-
         <div id="ranking-list"></div>
-
 
         <button
             id="btn-ranking-home"
@@ -1272,15 +883,11 @@ body {
 </main>
 
 
-<!-- =========================
-     DEVELOPPEUR
-========================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer id="developer-footer">
 
-    <span>
-        Développé par
-    </span>
+    <span>Développé par</span>
 
     <strong>
         👨‍💻 Ing. Fawenbert Regis
@@ -1291,22 +898,21 @@ body {
 
 <script>
 
-/* =========================
+/* =========================================
    QUESTIONS
-========================= */
+========================================= */
 
 const CATEGORIES = [
 
     {
         id: "histoire",
-
         name: "📚 Histoire d'Haïti",
 
         questions: [
 
             {
                 question:
-                    "En quelle année Haïti est-elle devenue indépendante ?",
+                "En quelle année Haïti est-elle devenue indépendante ?",
 
                 choices: [
                     "1791",
@@ -1320,7 +926,7 @@ const CATEGORIES = [
 
             {
                 question:
-                    "Qui a été le premier chef d'État d'Haïti après l'indépendance ?",
+                "Qui a été le premier chef d'État d'Haïti après l'indépendance ?",
 
                 choices: [
                     "Toussaint Louverture",
@@ -1334,7 +940,7 @@ const CATEGORIES = [
 
             {
                 question:
-                    "Quelle bataille marque une étape importante de la lutte pour l'indépendance en 1803 ?",
+                "Quelle bataille marque une étape importante de la lutte pour l'indépendance en 1803 ?",
 
                 choices: [
                     "Bataille de Vertières",
@@ -1352,14 +958,13 @@ const CATEGORIES = [
 
     {
         id: "geographie",
-
         name: "🌎 Géographie",
 
         questions: [
 
             {
                 question:
-                    "Quelle est la capitale d'Haïti ?",
+                "Quelle est la capitale d'Haïti ?",
 
                 choices: [
                     "Cap-Haïtien",
@@ -1373,7 +978,7 @@ const CATEGORIES = [
 
             {
                 question:
-                    "Avec quel pays Haïti partage-t-elle l'île d'Hispaniola ?",
+                "Avec quel pays Haïti partage-t-elle l'île d'Hispaniola ?",
 
                 choices: [
                     "Cuba",
@@ -1391,14 +996,13 @@ const CATEGORIES = [
 
     {
         id: "sport",
-
         name: "⚽ Sport",
 
         questions: [
 
             {
                 question:
-                    "Quel sport est le plus populaire en Haïti ?",
+                "Quel sport est le plus populaire en Haïti ?",
 
                 choices: [
                     "Basketball",
@@ -1416,9 +1020,9 @@ const CATEGORIES = [
 ];
 
 
-/* =========================
+/* =========================================
    ETAT
-========================= */
+========================================= */
 
 let currentCategory = null;
 let questions = [];
@@ -1427,158 +1031,62 @@ let score = 0;
 let timer = null;
 let timeLeft = 15;
 let answered = false;
-let tickets = 3;
-
-const USER_KEY = "konkou_user";
-const RANKING_KEY = "konkou_ranking";
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* =========================================
+   TICKETS
+========================================= */
 
-function showScreen(id) {
+const FREE_TICKETS = 3;
 
-    document
-        .querySelectorAll(".screen")
-        .forEach(screen => {
+function getToday() {
 
-            screen.classList.remove(
-                "active"
-            );
+    const now = new Date();
 
-        });
-
-
-    document
-        .getElementById(id)
-        .classList.add("active");
+    return now.getFullYear()
+        + "-"
+        + String(now.getMonth()+1).padStart(2,"0")
+        + "-"
+        + String(now.getDate()).padStart(2,"0");
 
 }
 
 
-/* =========================
-   UTILISATEUR
-========================= */
+function loadTickets() {
 
-function getUser() {
-
-    return JSON.parse(
-        localStorage.getItem(USER_KEY)
-        || "null"
-    );
-
-}
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "konkou_tickets"
+            ) || "null"
+        );
 
 
-function saveUser(user) {
-
-    localStorage.setItem(
-        USER_KEY,
-        JSON.stringify(user)
-    );
-
-}
-
-
-/* =========================
-   MELANGE
-========================= */
-
-function shuffle(array) {
-
-    for (
-        let i = array.length - 1;
-        i > 0;
-        i--
+    if (
+        !saved ||
+        saved.date !== getToday()
     ) {
 
-        const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
+        localStorage.setItem(
+            "konkou_tickets",
+            JSON.stringify({
+                date: getToday(),
+                count: FREE_TICKETS
+            })
+        );
 
-        [
-            array[i],
-            array[j]
-        ] = [
-            array[j],
-            array[i]
-        ];
+        return FREE_TICKETS;
 
     }
 
-    return array;
+
+    return saved.count;
 
 }
 
 
-/* =========================
-   CATEGORIES
-========================= */
+let tickets = loadTickets();
 
-function renderCategories() {
-
-    const list =
-        document.getElementById(
-            "category-list"
-        );
-
-    list.innerHTML = "";
-
-
-    CATEGORIES.forEach(category => {
-
-        const button =
-            document.createElement(
-                "button"
-            );
-
-
-        button.innerHTML = `
-
-            <span>
-                ${category.name}
-            </span>
-
-            <span class="cat-count">
-                ${category.questions.length}
-                question(s)
-            </span>
-
-        `;
-
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                if (!getUser()) {
-
-                    showScreen(
-                        "screen-auth"
-                    );
-
-                    return;
-
-                }
-
-                startQuiz(category);
-
-            }
-        );
-
-
-        list.appendChild(button);
-
-    });
-
-}
-
-
-/* =========================
-   TICKETS
-========================= */
 
 function updateTickets() {
 
@@ -1594,174 +1102,99 @@ function updateTickets() {
 }
 
 
-/* =========================
-   PROFIL EN HAUT
-========================= */
+function useTicket() {
 
-document.getElementById(
-    "btn-profile-top"
-).addEventListener(
-    "click",
-    () => {
+    if (tickets <= 0) {
 
-        if (!getUser()) {
+        alert(
+            "🎟️ Tu n'as plus de tickets aujourd'hui. Reviens demain !"
+        );
 
-            showScreen(
-                "screen-auth"
-            );
-
-        } else {
-
-            updateProfile();
-
-            showScreen(
-                "screen-profile"
-            );
-
-        }
+        return false;
 
     }
-);
 
 
-/* =========================
-   PROFIL ACCUEIL
-========================= */
+    tickets--;
 
-document.getElementById(
-    "btn-profile"
-).addEventListener(
-    "click",
-    () => {
 
-        if (!getUser()) {
+    localStorage.setItem(
+        "konkou_tickets",
+        JSON.stringify({
+            date: getToday(),
+            count: tickets
+        })
+    );
 
-            showScreen(
-                "screen-auth"
+
+    updateTickets();
+
+
+    return true;
+
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function showScreen(id) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove(
+                "active"
             );
 
-        } else {
-
-            updateProfile();
-
-            showScreen(
-                "screen-profile"
-            );
-
-        }
-
-    }
-);
+        });
 
 
-/* =========================
-   CREATION PROFIL
-========================= */
-
-document.getElementById(
-    "btn-create-account"
-).addEventListener(
-    "click",
-    () => {
-
-        const username =
-            document.getElementById(
-                "username"
-            ).value.trim();
+    const screen =
+        document.getElementById(id);
 
 
-        const phone =
-            document.getElementById(
-                "phone"
-            ).value.trim();
+    if (screen) {
 
-
-        const message =
-            document.getElementById(
-                "auth-message"
-            );
-
-
-        if (username.length < 2) {
-
-            message.textContent =
-                "Le pseudo doit contenir au moins 2 caractères.";
-
-            return;
-
-        }
-
-
-        if (phone.length < 8) {
-
-            message.textContent =
-                "Entre un numéro valide.";
-
-            return;
-
-        }
-
-
-        const oldUser =
-            getUser();
-
-
-        const user =
-            oldUser || {
-
-                username:
-                    username,
-
-                phone:
-                    phone,
-
-                points:
-                    0,
-
-                games:
-                    0,
-
-                best:
-                    0
-
-            };
-
-
-        user.username =
-            username;
-
-
-        user.phone =
-            phone;
-
-
-        saveUser(user);
-
-
-        message.textContent =
-            "";
-
-
-        updateProfile();
-
-
-        showScreen(
-            "screen-profile"
+        screen.classList.add(
+            "active"
         );
 
     }
-);
+
+}
 
 
-/* =========================
+/* =========================================
    PROFIL
-========================= */
+========================================= */
+
+function getUser() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "konkou_user"
+        ) || "null"
+    );
+
+}
+
+
+function saveUser(user) {
+
+    localStorage.setItem(
+        "konkou_user",
+        JSON.stringify(user)
+    );
+
+}
+
 
 function updateProfile() {
 
-    const user =
-        getUser();
-
+    const user = getUser();
 
     if (!user) return;
 
@@ -1806,15 +1239,152 @@ function updateProfile() {
 }
 
 
-/* =========================
-   RETOUR PROFIL
-========================= */
+/* =========================================
+   PROFIL EN HAUT
+========================================= */
+
+document.getElementById(
+    "btn-profile-top"
+).addEventListener(
+    "click",
+    function() {
+
+        if (!getUser()) {
+
+            showScreen(
+                "screen-auth"
+            );
+
+        } else {
+
+            updateProfile();
+
+            showScreen(
+                "screen-profile"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   CREATION PROFIL
+========================================= */
+
+document.getElementById(
+    "btn-create-account"
+).addEventListener(
+    "click",
+    function() {
+
+        const username =
+            document.getElementById(
+                "username"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "phone"
+            ).value.trim();
+
+
+        const message =
+            document.getElementById(
+                "auth-message"
+            );
+
+
+        if (username.length < 2) {
+
+            message.textContent =
+                "Entre un pseudo valide.";
+
+            return;
+
+        }
+
+
+        if (phone.length < 8) {
+
+            message.textContent =
+                "Entre un numéro valide.";
+
+            return;
+
+        }
+
+
+        const existing =
+            getUser();
+
+
+        const user = existing || {
+
+            username: username,
+
+            phone: phone,
+
+            points: 0,
+
+            games: 0,
+
+            best: 0
+
+        };
+
+
+        user.username =
+            username;
+
+
+        user.phone =
+            phone;
+
+
+        saveUser(user);
+
+
+        message.textContent =
+            "";
+
+
+        updateProfile();
+
+
+        showScreen(
+            "screen-profile"
+        );
+
+    }
+);
+
+
+/* =========================================
+   RETOURS
+========================================= */
+
+document.getElementById(
+    "btn-auth-home"
+).addEventListener(
+    "click",
+    function() {
+
+        showScreen(
+            "screen-home"
+        );
+
+    }
+);
+
 
 document.getElementById(
     "btn-profile-home"
 ).addEventListener(
     "click",
-    () => {
+    function() {
 
         showScreen(
             "screen-home"
@@ -1824,19 +1394,48 @@ document.getElementById(
 );
 
 
-/* =========================
+document.getElementById(
+    "btn-info-home"
+).addEventListener(
+    "click",
+    function() {
+
+        showScreen(
+            "screen-home"
+        );
+
+    }
+);
+
+
+document.getElementById(
+    "btn-ranking-home"
+).addEventListener(
+    "click",
+    function() {
+
+        showScreen(
+            "screen-home"
+        );
+
+    }
+);
+
+
+/* =========================================
    DECONNEXION
-========================= */
+========================================= */
 
 document.getElementById(
     "btn-logout"
 ).addEventListener(
     "click",
-    () => {
+    function() {
 
         localStorage.removeItem(
-            USER_KEY
+            "konkou_user"
         );
+
 
         showScreen(
             "screen-home"
@@ -1846,26 +1445,190 @@ document.getElementById(
 );
 
 
-/* =========================
-   QUIZ
-========================= */
+/* =========================================
+   MELANGE
+========================================= */
 
-function startQuiz(category) {
+function shuffle(array) {
 
-    if (tickets <= 0) {
+    for (
+        let i = array.length - 1;
+        i > 0;
+        i--
+    ) {
 
-        alert(
-            "Tu n'as plus de tickets aujourd'hui."
-        );
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
 
-        return;
+
+        [
+            array[i],
+            array[j]
+        ] = [
+            array[j],
+            array[i]
+        ];
 
     }
 
 
-    tickets--;
+    return array;
 
-    updateTickets();
+}
+
+
+/* =========================================
+   CATEGORIES
+========================================= */
+
+function renderCategories() {
+
+    const list =
+        document.getElementById(
+            "category-list"
+        );
+
+
+    list.innerHTML = "";
+
+
+    /* INFO */
+
+    const infoButton =
+        document.createElement(
+            "button"
+        );
+
+
+    infoButton.innerHTML = `
+        <span>💰 Comment ça fonctionne ?</span>
+        <span class="cat-count">
+            Tickets, points et récompenses
+        </span>
+    `;
+
+
+    infoButton.addEventListener(
+        "click",
+        function() {
+
+            showScreen(
+                "screen-info"
+            );
+
+        }
+    );
+
+
+    list.appendChild(
+        infoButton
+    );
+
+
+    /* CATEGORIES */
+
+    CATEGORIES.forEach(
+        category => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.innerHTML = `
+                <span>
+                    ${category.name}
+                </span>
+
+                <span class="cat-count">
+                    ${category.questions.length}
+                    question(s)
+                </span>
+            `;
+
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    if (!getUser()) {
+
+                        showScreen(
+                            "screen-auth"
+                        );
+
+                        return;
+
+                    }
+
+
+                    startQuiz(
+                        category
+                    );
+
+                }
+            );
+
+
+            list.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    /* CLASSEMENT */
+
+    const rankingButton =
+        document.createElement(
+            "button"
+        );
+
+
+    rankingButton.innerHTML = `
+        <span>🏆 Classement</span>
+        <span class="cat-count">
+            Voir les meilleurs joueurs
+        </span>
+    `;
+
+
+    rankingButton.addEventListener(
+        "click",
+        function() {
+
+            showRanking();
+
+            showScreen(
+                "screen-ranking"
+            );
+
+        }
+    );
+
+
+    list.appendChild(
+        rankingButton
+    );
+
+}
+
+
+/* =========================================
+   START QUIZ
+========================================= */
+
+function startQuiz(category) {
+
+    if (!useTicket()) {
+
+        return;
+
+    }
 
 
     currentCategory =
@@ -1879,6 +1642,7 @@ function startQuiz(category) {
 
 
     currentIndex = 0;
+
     score = 0;
 
 
@@ -1892,11 +1656,18 @@ function startQuiz(category) {
 }
 
 
+/* =========================================
+   QUESTION
+========================================= */
+
 function showQuestion() {
 
     answered = false;
 
-    clearInterval(timer);
+
+    clearInterval(
+        timer
+    );
 
 
     const q =
@@ -1924,11 +1695,8 @@ function showQuestion() {
     document.getElementById(
         "quiz-progress"
     ).textContent =
-        `Question ${
-            currentIndex + 1
-        } sur ${
-            questions.length
-        }`;
+        `Question ${currentIndex + 1}
+         sur ${questions.length}`;
 
 
     document.getElementById(
@@ -1955,7 +1723,9 @@ function showQuestion() {
         );
 
 
-    shuffle(choices);
+    shuffle(
+        choices
+    );
 
 
     const container =
@@ -1967,36 +1737,38 @@ function showQuestion() {
     container.innerHTML = "";
 
 
-    choices.forEach(choice => {
+    choices.forEach(
+        choice => {
 
-        const button =
-            document.createElement(
-                "button"
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.textContent =
+                choice.text;
+
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    selectAnswer(
+                        button,
+                        choice.correct
+                    );
+
+                }
             );
 
 
-        button.textContent =
-            choice.text;
+            container.appendChild(
+                button
+            );
 
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                selectAnswer(
-                    button,
-                    choice.correct
-                );
-
-            }
-        );
-
-
-        container.appendChild(
-            button
-        );
-
-    });
+        }
+    );
 
 
     startTimer();
@@ -2004,9 +1776,9 @@ function showQuestion() {
 }
 
 
-/* =========================
+/* =========================================
    TIMER
-========================= */
+========================================= */
 
 function startTimer() {
 
@@ -2030,15 +1802,18 @@ function startTimer() {
 
     timer =
         setInterval(
-            () => {
+            function() {
 
                 timeLeft--;
+
 
                 timerElement.textContent =
                     timeLeft;
 
 
-                if (timeLeft <= 5) {
+                if (
+                    timeLeft <= 5
+                ) {
 
                     timerElement.classList.add(
                         "low"
@@ -2047,9 +1822,13 @@ function startTimer() {
                 }
 
 
-                if (timeLeft <= 0) {
+                if (
+                    timeLeft <= 0
+                ) {
 
-                    clearInterval(timer);
+                    clearInterval(
+                        timer
+                    );
 
 
                     if (!answered) {
@@ -2070,9 +1849,9 @@ function startTimer() {
 }
 
 
-/* =========================
+/* =========================================
    REPONSE
-========================= */
+========================================= */
 
 function selectAnswer(
     button,
@@ -2084,7 +1863,10 @@ function selectAnswer(
 
     answered = true;
 
-    clearInterval(timer);
+
+    clearInterval(
+        timer
+    );
 
 
     document
@@ -2125,7 +1907,7 @@ function selectAnswer(
 
 
     setTimeout(
-        () => {
+        function() {
 
             currentIndex++;
 
@@ -2150,13 +1932,15 @@ function selectAnswer(
 }
 
 
-/* =========================
-   FIN
-========================= */
+/* =========================================
+   FIN DU QUIZ
+========================================= */
 
 function finishQuiz() {
 
-    clearInterval(timer);
+    clearInterval(
+        timer
+    );
 
 
     const user =
@@ -2170,16 +1954,25 @@ function finishQuiz() {
         user.games += 1;
 
 
-        if (score > user.best) {
+        if (
+            score >
+            user.best
+        ) {
 
-            user.best = score;
+            user.best =
+                score;
 
         }
 
 
-        saveUser(user);
+        saveUser(
+            user
+        );
 
-        saveRanking(user);
+
+        saveRanking(
+            user
+        );
 
     }
 
@@ -2200,13 +1993,15 @@ function finishQuiz() {
         );
 
 
-    if (score === maximum) {
+    if (
+        score === maximum
+    ) {
 
         message.textContent =
             "🎉 Excellent ! Score parfait !";
 
     } else if (
-        score >= maximum * 0.7
+        score >= maximum * .7
     ) {
 
         message.textContent =
@@ -2215,7 +2010,7 @@ function finishQuiz() {
     } else {
 
         message.textContent =
-            "💪 Continue à t'entraîner pour progresser.";
+            "💪 Continue à t'entraîner !";
 
     }
 
@@ -2227,17 +2022,95 @@ function finishQuiz() {
 }
 
 
-/* =========================
+/* =========================================
+   REJOUER
+========================================= */
+
+document.getElementById(
+    "btn-replay"
+).addEventListener(
+    "click",
+    function() {
+
+        if (
+            currentCategory
+        ) {
+
+            startQuiz(
+                currentCategory
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   RESULTAT → ACCUEIL
+========================================= */
+
+document.getElementById(
+    "btn-result-home"
+).addEventListener(
+    "click",
+    function() {
+
+        clearInterval(
+            timer
+        );
+
+
+        showScreen(
+            "screen-home"
+        );
+
+    }
+);
+
+
+/* =========================================
+   QUITTER QUIZ
+========================================= */
+
+document.getElementById(
+    "btn-quit"
+).addEventListener(
+    "click",
+    function() {
+
+        clearInterval(
+            timer
+        );
+
+
+        showScreen(
+            "screen-home"
+        );
+
+    }
+);
+
+
+/* =========================================
    CLASSEMENT
-========================= */
+========================================= */
 
 function saveRanking(user) {
 
     let ranking =
         JSON.parse(
             localStorage.getItem(
-                RANKING_KEY
+                "konkou_ranking"
             ) || "[]"
+        );
+
+
+    const index =
+        ranking.findIndex(
+            player =>
+                player.phone ===
+                user.phone
         );
 
 
@@ -2255,22 +2128,18 @@ function saveRanking(user) {
     };
 
 
-    const existing =
-        ranking.findIndex(
-            p =>
-                p.phone ===
-                user.phone
-        );
+    if (
+        index >= 0
+    ) {
 
-
-    if (existing >= 0) {
-
-        ranking[existing] =
+        ranking[index] =
             player;
 
     } else {
 
-        ranking.push(player);
+        ranking.push(
+            player
+        );
 
     }
 
@@ -2283,8 +2152,10 @@ function saveRanking(user) {
 
 
     localStorage.setItem(
-        RANKING_KEY,
-        JSON.stringify(ranking)
+        "konkou_ranking",
+        JSON.stringify(
+            ranking
+        )
     );
 
 }
@@ -2301,7 +2172,7 @@ function showRanking() {
     const ranking =
         JSON.parse(
             localStorage.getItem(
-                RANKING_KEY
+                "konkou_ranking"
             ) || "[]"
         );
 
@@ -2309,15 +2180,16 @@ function showRanking() {
     list.innerHTML = "";
 
 
-    if (ranking.length === 0) {
+    if (
+        ranking.length === 0
+    ) {
 
         list.innerHTML = `
             <p style="
                 text-align:center;
                 color:#64748b;
             ">
-                Aucun joueur enregistré
-                pour le moment.
+                Aucun joueur pour le moment.
             </p>
         `;
 
@@ -2326,7 +2198,8 @@ function showRanking() {
     }
 
 
-    ranking.slice(0,10)
+    ranking
+        .slice(0,10)
         .forEach(
             (player,index) => {
 
@@ -2340,51 +2213,47 @@ function showRanking() {
                     "ranking-item";
 
 
-                let medal;
+                let medal =
+                    "#" +
+                    (index + 1);
 
 
-                if (index === 0)
+                if (
+                    index === 0
+                )
                     medal = "🥇";
 
-                else if (index === 1)
+                if (
+                    index === 1
+                )
                     medal = "🥈";
 
-                else if (index === 2)
+                if (
+                    index === 2
+                )
                     medal = "🥉";
-
-                else
-                    medal =
-                        "#" +
-                        (index + 1);
 
 
                 item.innerHTML = `
 
-                    <span
-                        class="rank-number"
-                    >
+                    <span class="rank-number">
                         ${medal}
                     </span>
 
-                    <span
-                        class="rank-name"
-                    >
-                        ${escapeHTML(
-                            player.username
-                        )}
+                    <span class="rank-name">
+                        ${player.username}
                     </span>
 
-                    <span
-                        class="rank-score"
-                    >
-                        ${player.points}
-                        pts
+                    <span class="rank-score">
+                        ${player.points} pts
                     </span>
 
                 `;
 
 
-                list.appendChild(item);
+                list.appendChild(
+                    item
+                );
 
             }
         );
@@ -2392,130 +2261,9 @@ function showRanking() {
 }
 
 
-function escapeHTML(text) {
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-    div.textContent =
-        text;
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================
-   BOUTON CLASSEMENT
-========================= */
-
-document.getElementById(
-    "btn-ranking"
-).addEventListener(
-    "click",
-    () => {
-
-        showRanking();
-
-        showScreen(
-            "screen-ranking"
-        );
-
-    }
-);
-
-
-document.getElementById(
-    "btn-ranking-home"
-).addEventListener(
-    "click",
-    () => {
-
-        showScreen(
-            "screen-home"
-        );
-
-    }
-);
-
-
-/* =========================
-   RESULTAT
-========================= */
-
-document.getElementById(
-    "btn-replay"
-).addEventListener(
-    "click",
-    () => {
-
-        if (currentCategory) {
-
-            startQuiz(
-                currentCategory
-            );
-
-        }
-
-    }
-);
-
-
-document.getElementById(
-    "btn-result-profile"
-).addEventListener(
-    "click",
-    () => {
-
-        updateProfile();
-
-        showScreen(
-            "screen-profile"
-        );
-
-    }
-);
-
-
-document.getElementById(
-    "btn-result-home"
-).addEventListener(
-    "click",
-    () => {
-
-        showScreen(
-            "screen-home"
-        );
-
-    }
-);
-
-
-/* =========================
-   QUITTER
-========================= */
-
-document.getElementById(
-    "btn-quit"
-).addEventListener(
-    "click",
-    () => {
-
-        clearInterval(timer);
-
-        showScreen(
-            "screen-home"
-        );
-
-    }
-);
-
-
-/* =========================
+/* =========================================
    LANCEMENT
-========================= */
+========================================= */
 
 renderCategories();
 
