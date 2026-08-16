@@ -1,253 +1,346 @@
 {
-  "id": "histoire",
-  "name": "Histoire d'Haïti",
-  "questions": [
+  id: "histoire",
+  name: "Histoire d'Haïti",
+  questions: [
     {
-      "question": "En quelle année Haïti est-elle devenue indépendante ?",
-      "choices": ["1791", "1804", "1815", "1822"],
-      "answerIndex": 1
+      question: "En quelle année Haïti est-elle devenue indépendante ?",
+      choices: ["1791", "1804", "1815", "1822"],
+      answerIndex: 1
     },
     {
-      "question": "Quelle date marque la proclamation de l'indépendance d'Haïti ?",
-      "choices": ["1er janvier 1804", "18 novembre 1803", "20 mai 1802", "14 août 1791"],
-      "answerIndex": 0
+      question: "Quelle date marque la proclamation de l'indépendance d'Haïti ?",
+      choices: ["1er janvier 1804", "18 novembre 1803", "20 mai 1802", "14 août 1791"],
+      answerIndex: 0
     },
     {
-      "question": "Qui a proclamé l'indépendance d'Haïti en 1804 ?",
-      "choices": ["Toussaint Louverture", "Jean-Jacques Dessalines", "Henri Christophe", "Alexandre Pétion"],
-      "answerIndex": 1
+      question: "Qui a proclamé l'indépendance d'Haïti en 1804 ?",
+      choices: [
+        "Toussaint Louverture",
+        "Jean-Jacques Dessalines",
+        "Henri Christophe",
+        "Alexandre Pétion"
+      ],
+      answerIndex: 1
     },
     {
-      "question": "Quelle bataille décisive a eu lieu le 18 novembre 1803 ?",
-      "choices": ["Vertières", "Crête-à-Pierrot", "Léogâne", "Tiburon"],
-      "answerIndex": 0
+      question: "Quelle bataille décisive a eu lieu le 18 novembre 1803 ?",
+      choices: ["Vertières", "Crête-à-Pierrot", "Léogâne", "Tiburon"],
+      answerIndex: 0
     },
     {
-      "question": "Qui était Toussaint Louverture ?",
-      "choices": ["Un général de la Révolution haïtienne", "Un président américain", "Un explorateur français", "Un roi espagnol"],
-      "answerIndex": 0
+      question: "Qui était Toussaint Louverture ?",
+      choices: [
+        "Un général de la Révolution haïtienne",
+        "Un président américain",
+        "Un explorateur français",
+        "Un roi espagnol"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "En quelle année la cérémonie du Bois Caïman est-elle traditionnellement située ?",
-      "choices": ["1776", "1789", "1791", "1804"],
-      "answerIndex": 2
+      question: "En quelle année la cérémonie du Bois Caïman est-elle traditionnellement située ?",
+      choices: ["1776", "1789", "1791", "1804"],
+      answerIndex: 2
     },
     {
-      "question": "Quel événement est associé au Bois Caïman ?",
-      "choices": ["Le lancement de la Révolution haïtienne", "La proclamation de l'indépendance", "La fin de la guerre", "La création de Port-au-Prince"],
-      "answerIndex": 0
+      question: "Quel événement est associé au Bois Caïman ?",
+      choices: [
+        "Le lancement de la Révolution haïtienne",
+        "La proclamation de l'indépendance",
+        "La fin de la guerre",
+        "La création de Port-au-Prince"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel était le nom de la colonie française correspondant à l'ouest de l'île d'Hispaniola ?",
-      "choices": ["Saint-Domingue", "Martinique", "Guadeloupe", "Louisiane"],
-      "answerIndex": 0
+      question: "Quel était le nom de la colonie française correspondant à l'ouest d'Hispaniola ?",
+      choices: ["Saint-Domingue", "Martinique", "Guadeloupe", "Louisiane"],
+      answerIndex: 0
     },
     {
-      "question": "Comment s'appelait l'île d'Hispaniola dans certaines sources de l'époque coloniale française ?",
-      "choices": ["Saint-Domingue", "Cuba", "Porto Rico", "Jamaïque"],
-      "answerIndex": 0
+      question: "Quelle puissance coloniale contrôlait Saint-Domingue avant l'indépendance d'Haïti ?",
+      choices: ["France", "Espagne", "Angleterre", "Portugal"],
+      answerIndex: 0
     },
     {
-      "question": "Quelle puissance coloniale contrôlait Saint-Domingue avant l'indépendance d'Haïti ?",
-      "choices": ["France", "Espagne", "Angleterre", "Portugal"],
-      "answerIndex": 0
+      question: "Quel nom portait Haïti avant la colonisation européenne ?",
+      choices: ["Ayiti", "Borinquen", "Cuba", "Quisqueya uniquement"],
+      answerIndex: 0
     },
     {
-      "question": "Quel nom portait Haïti avant la colonisation européenne ?",
-      "choices": ["Ayiti", "Borinquen", "Cuba", "Quisqueya uniquement"],
-      "answerIndex": 0
+      question: "Quel peuple vivait notamment sur Hispaniola avant l'arrivée de Christophe Colomb ?",
+      choices: ["Taïnos", "Aztèques", "Incas", "Maya"],
+      answerIndex: 0
     },
     {
-      "question": "Quel peuple vivait notamment sur l'île d'Hispaniola avant l'arrivée de Christophe Colomb ?",
-      "choices": ["Taïnos", "Aztèques", "Incas", "Maya"],
-      "answerIndex": 0
+      question: "En quelle année Christophe Colomb est-il arrivé dans les Caraïbes ?",
+      choices: ["1492", "1502", "1515", "1480"],
+      answerIndex: 0
     },
     {
-      "question": "En quelle année Christophe Colomb est-il arrivé dans les Caraïbes ?",
-      "choices": ["1492", "1502", "1515", "1480"],
-      "answerIndex": 0
+      question: "Comment s'appelait le premier établissement espagnol fondé par Colomb sur Hispaniola ?",
+      choices: ["La Navidad", "Port-au-Prince", "Cap-Français", "Jacmel"],
+      answerIndex: 0
     },
     {
-      "question": "Comment s'appelait le premier établissement espagnol fondé par Colomb sur Hispaniola ?",
-      "choices": ["La Navidad", "Port-au-Prince", "Cap-Français", "Jacmel"],
-      "answerIndex": 0
+      question: "Quel monument est associé au règne d'Henri Christophe ?",
+      choices: [
+        "Citadelle Laferrière",
+        "Fort de Joux",
+        "Fort Boyard",
+        "Fort-de-France"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel fort est associé à la construction réalisée sous Henri Christophe ?",
-      "choices": ["Citadelle Laferrière", "Fort de Joux", "Fort Boyard", "Fort-de-France"],
-      "answerIndex": 0
+      question: "Qui a fait construire la Citadelle Laferrière ?",
+      choices: [
+        "Henri Christophe",
+        "Alexandre Pétion",
+        "Toussaint Louverture",
+        "Dutty Boukman"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Qui a fait construire la Citadelle Laferrière ?",
-      "choices": ["Henri Christophe", "Alexandre Pétion", "Toussaint Louverture", "Dutty Boukman"],
-      "answerIndex": 0
+      question: "Dans quelle région se trouve la Citadelle Laferrière ?",
+      choices: ["Nord d'Haïti", "Sud d'Haïti", "Ouest d'Haïti", "Sud-Est d'Haïti"],
+      answerIndex: 0
     },
     {
-      "question": "Dans quelle région se trouve la Citadelle Laferrière ?",
-      "choices": ["Nord d'Haïti", "Sud d'Haïti", "Ouest d'Haïti", "Sud-Est d'Haïti"],
-      "answerIndex": 0
+      question: "Quel personnage est associé à la cérémonie du Bois Caïman ?",
+      choices: [
+        "Dutty Boukman",
+        "Alexandre Pétion",
+        "François Duvalier",
+        "Jean-Claude Duvalier"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel personnage est associé à la cérémonie du Bois Caïman ?",
-      "choices": ["Dutty Boukman", "Alexandre Pétion", "François Duvalier", "Jean-Claude Duvalier"],
-      "answerIndex": 0
+      question: "Quel événement a commencé en 1791 à Saint-Domingue ?",
+      choices: [
+        "Une grande insurrection d'esclaves",
+        "La construction de la Citadelle",
+        "La proclamation de l'indépendance",
+        "La création de la République"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel événement a commencé en 1791 à Saint-Domingue ?",
-      "choices": ["Une grande insurrection d'esclaves", "La construction de la Citadelle", "La proclamation de l'indépendance", "La création de la République"],
-      "answerIndex": 0
+      question: "Quel texte français de 1789 a influencé les débats sur les droits et libertés dans les colonies ?",
+      choices: [
+        "Déclaration des droits de l'homme et du citoyen",
+        "Code Napoléon",
+        "Traité de Versailles",
+        "Constitution de 1958"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel texte français de 1789 a influencé les débats sur les droits et libertés dans les colonies ?",
-      "choices": ["Déclaration des droits de l'homme et du citoyen", "Code Napoléon", "Traité de Versailles", "Constitution de 1958"],
-      "answerIndex": 0
+      question: "Quel événement français de 1789 a contribué au contexte politique de la Révolution haïtienne ?",
+      choices: [
+        "Révolution française",
+        "Guerre de Crimée",
+        "Commune de Paris",
+        "Révolution russe"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel événement français de 1789 a contribué au contexte politique de la Révolution haïtienne ?",
-      "choices": ["Révolution française", "Guerre de Crimée", "Commune de Paris", "Révolution russe"],
-      "answerIndex": 0
+      question: "Quel général français a été envoyé par Napoléon Bonaparte à Saint-Domingue en 1802 ?",
+      choices: ["Charles Leclerc", "Napoléon III", "Lafayette", "Foch"],
+      answerIndex: 0
     },
     {
-      "question": "Quel général français a été envoyé par Napoléon Bonaparte à Saint-Domingue en 1802 ?",
-      "choices": ["Charles Leclerc", "Napoléon III", "Lafayette", "Foch"],
-      "answerIndex": 0
+      question: "Pourquoi Toussaint Louverture a-t-il été arrêté en 1802 ?",
+      choices: [
+        "Il a été capturé par les forces françaises",
+        "Il a quitté Saint-Domingue volontairement",
+        "Il a été élu président",
+        "Il a été capturé par les Espagnols"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Pourquoi Toussaint Louverture a-t-il été arrêté en 1802 ?",
-      "choices": ["Il a été capturé par les forces françaises", "Il a quitté Saint-Domingue volontairement", "Il a été élu président", "Il a été capturé par les Espagnols"],
-      "answerIndex": 0
+      question: "Où Toussaint Louverture est-il mort en 1803 ?",
+      choices: ["Fort de Joux", "Paris", "Port-au-Prince", "Londres"],
+      answerIndex: 0
     },
     {
-      "question": "Où Toussaint Louverture est-il mort en 1803 ?",
-      "choices": ["Fort de Joux", "Paris", "Port-au-Prince", "Londres"],
-      "answerIndex": 0
+      question: "Dans quel pays se trouve aujourd'hui le Fort de Joux ?",
+      choices: ["France", "Haïti", "Espagne", "Italie"],
+      answerIndex: 0
     },
     {
-      "question": "Dans quel pays se trouve aujourd'hui le Fort de Joux ?",
-      "choices": ["France", "Haïti", "Espagne", "Italie"],
-      "answerIndex": 0
+      question: "Quel ancien esclave devenu général est associé à la Révolution haïtienne ?",
+      choices: [
+        "Jean-Jacques Dessalines",
+        "Christophe Colomb",
+        "Louis XIV",
+        "Charles Leclerc"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel ancien esclave devenu général est associé à la Révolution haïtienne ?",
-      "choices": ["Jean-Jacques Dessalines", "Christophe Colomb", "Louis XIV", "Charles Leclerc"],
-      "answerIndex": 0
+      question: "Quel titre Jean-Jacques Dessalines a-t-il pris après l'indépendance ?",
+      choices: [
+        "Empereur",
+        "Roi de France",
+        "Président américain",
+        "Gouverneur général"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel était le nom de guerre de Jean-Jacques Dessalines dans certains récits ?",
-      "choices": ["Jacques", "Napoléon", "Boukman", "Christophe"],
-      "answerIndex": 0
+      question: "Quel nom Jean-Jacques Dessalines adopta-t-il comme empereur ?",
+      choices: ["Jacques Ier", "Henri Ier", "Alexandre Ier", "Toussaint Ier"],
+      answerIndex: 0
     },
     {
-      "question": "Quel titre Jean-Jacques Dessalines a-t-il pris après l'indépendance ?",
-      "choices": ["Empereur", "Roi de France", "Président américain", "Gouverneur général"],
-      "answerIndex": 0
+      question: "En quelle année Dessalines est-il devenu empereur d'Haïti ?",
+      choices: ["1804", "1791", "1802", "1815"],
+      answerIndex: 0
     },
     {
-      "question": "Quel nom Jean-Jacques Dessalines adopta-t-il comme empereur ?",
-      "choices": ["Jacques Ier", "Henri Ier", "Alexandre Ier", "Toussaint Ier"],
-      "answerIndex": 0
+      question: "Qui succéda à Dessalines dans le Nord après sa mort ?",
+      choices: ["Henri Christophe", "Alexandre Pétion", "Toussaint Louverture", "Boyer"],
+      answerIndex: 0
     },
     {
-      "question": "En quelle année Dessalines est-il devenu empereur d'Haïti ?",
-      "choices": ["1804", "1791", "1802", "1815"],
-      "answerIndex": 0
+      question: "Qui dirigea la République d'Haïti dans le Sud après la division du pays ?",
+      choices: [
+        "Alexandre Pétion",
+        "Henri Christophe",
+        "Dessalines",
+        "Christophe Colomb"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Qui succéda à Dessalines dans le nord après sa mort ?",
-      "choices": ["Henri Christophe", "Alexandre Pétion", "Toussaint Louverture", "Boyer"],
-      "answerIndex": 0
+      question: "Quel dirigeant contrôlait principalement le Nord après la division du pays ?",
+      choices: [
+        "Henri Christophe",
+        "Alexandre Pétion",
+        "Jean-Pierre Boyer",
+        "Dutty Boukman"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Qui dirigea la République d'Haïti dans le sud après la division du pays au début du XIXe siècle ?",
-      "choices": ["Alexandre Pétion", "Henri Christophe", "Dessalines", "Christophe Colomb"],
-      "answerIndex": 0
+      question: "Quel dirigeant haïtien a établi un royaume dans le Nord ?",
+      choices: [
+        "Henri Christophe",
+        "Alexandre Pétion",
+        "Toussaint Louverture",
+        "Boyer"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel dirigeant haïtien contrôlait principalement le Nord après la division du pays ?",
-      "choices": ["Henri Christophe", "Alexandre Pétion", "Jean-Pierre Boyer", "Dutty Boukman"],
-      "answerIndex": 0
+      question: "Quel titre Henri Christophe a-t-il porté ?",
+      choices: [
+        "Roi",
+        "Empereur de France",
+        "Président des États-Unis",
+        "Gouverneur espagnol"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel dirigeant haïtien a établi un royaume dans le Nord ?",
-      "choices": ["Henri Christophe", "Alexandre Pétion", "Toussaint Louverture", "Boyer"],
-      "answerIndex": 0
+      question: "Comment s'appelait la capitale du royaume de Henri Christophe ?",
+      choices: ["Cap-Haïtien", "Port-au-Prince", "Jacmel", "Les Cayes"],
+      answerIndex: 0
     },
     {
-      "question": "Quel titre Henri Christophe a-t-il porté ?",
-      "choices": ["Roi", "Empereur de France", "Président des États-Unis", "Gouverneur espagnol"],
-      "answerIndex": 0
+      question: "Quel nom historique portait Cap-Haïtien ?",
+      choices: ["Cap-Français", "Port-Royal", "Saint-Pierre", "Ville-Christophe"],
+      answerIndex: 0
     },
     {
-      "question": "Comment s'appelait la capitale du royaume de Henri Christophe ?",
-      "choices": ["Cap-Haïtien", "Port-au-Prince", "Jacmel", "Les Cayes"],
-      "answerIndex": 0
+      question: "Quel président a réuni le Nord et le Sud d'Haïti en 1820 ?",
+      choices: [
+        "Jean-Pierre Boyer",
+        "Alexandre Pétion",
+        "Henri Christophe",
+        "Dessalines"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel nom historique portait Cap-Haïtien ?",
-      "choices": ["Cap-Français", "Port-Royal", "Saint-Pierre", "Ville-Christophe"],
-      "answerIndex": 0
+      question: "En quelle année Jean-Pierre Boyer a-t-il pris le contrôle du Nord ?",
+      choices: ["1820", "1804", "1810", "1830"],
+      answerIndex: 0
     },
     {
-      "question": "Quel président a réuni le Nord et le Sud d'Haïti en 1820 ?",
-      "choices": ["Jean-Pierre Boyer", "Alexandre Pétion", "Henri Christophe", "Dessalines"],
-      "answerIndex": 0
+      question: "Quel territoire voisin Boyer a-t-il occupé en 1822 ?",
+      choices: [
+        "La partie orientale d'Hispaniola",
+        "Cuba",
+        "Jamaïque",
+        "Porto Rico"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "En quelle année Jean-Pierre Boyer a-t-il pris le contrôle du Nord après la mort de Christophe ?",
-      "choices": ["1820", "1804", "1810", "1830"],
-      "answerIndex": 0
+      question: "En quelle année la République dominicaine a-t-elle proclamé son indépendance de la domination haïtienne ?",
+      choices: ["1844", "1804", "1822", "1863"],
+      answerIndex: 0
     },
     {
-      "question": "Quel territoire voisin Boyer a-t-il occupé en 1822 ?",
-      "choices": ["La partie orientale d'Hispaniola", "Cuba", "Jamaïque", "Porto Rico"],
-      "answerIndex": 0
+      question: "Quel personnage est considéré comme un père fondateur de la République dominicaine ?",
+      choices: [
+        "Juan Pablo Duarte",
+        "Jean-Jacques Dessalines",
+        "Henri Christophe",
+        "Alexandre Pétion"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quelle ville est aujourd'hui la capitale de la République dominicaine ?",
-      "choices": ["Saint-Domingue", "Cap-Haïtien", "Jacmel", "Gonaïves"],
-      "answerIndex": 0
+      question: "Quel événement marque la séparation politique entre Haïti et la partie orientale de l'île en 1844 ?",
+      choices: [
+        "Indépendance dominicaine",
+        "Indépendance d'Haïti",
+        "Bataille de Vertières",
+        "Révolution française"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "En quelle année la République dominicaine a-t-elle proclamé son indépendance de la domination haïtienne ?",
-      "choices": ["1844", "1804", "1822", "1863"],
-      "answerIndex": 0
+      question: "Quel pays a reconnu l'indépendance d'Haïti en 1825 contre une indemnité imposée ?",
+      choices: ["France", "Espagne", "Angleterre", "États-Unis"],
+      answerIndex: 0
     },
     {
-      "question": "Quel personnage est considéré comme un père fondateur de la République dominicaine ?",
-      "choices": ["Juan Pablo Duarte", "Jean-Jacques Dessalines", "Henri Christophe", "Alexandre Pétion"],
-      "answerIndex": 0
+      question: "Quel terme désigne l'indemnité imposée à Haïti par la France après l'indépendance ?",
+      choices: [
+        "Indemnité de 1825",
+        "Dette de Versailles",
+        "Traité de Paris",
+        "Taxe de Saint-Domingue"
+      ],
+      answerIndex: 0
     },
     {
-      "question": "Quel événement marque le début de la séparation politique entre Haïti et la partie orientale de l'île en 1844 ?",
-      "choices": ["Indépendance dominicaine", "Indépendance d'Haïti", "Bataille de Vertières", "Révolution française"],
-      "answerIndex": 0
+      question: "Quel roi français régnait lors de la reconnaissance de l'indépendance d'Haïti par la France en 1825 ?",
+      choices: ["Charles X", "Louis XIV", "Louis XVI", "Napoléon III"],
+      answerIndex: 0
     },
     {
-      "question": "Quel pays a reconnu l'indépendance d'Haïti en 1825 contre une indemnité imposée ?",
-      "choices": ["France", "Espagne", "Angleterre", "États-Unis"],
-      "answerIndex": 0
+      question: "Quel pays a établi des relations diplomatiques avec Haïti en 1862 après avoir longtemps refusé de reconnaître son indépendance ?",
+      choices: ["États-Unis", "Canada", "Mexique", "Brésil"],
+      answerIndex: 0
     },
     {
-      "question": "Quel terme désigne l'indemnité imposée à Haïti par la France après l'indépendance ?",
-      "choices": ["Indemnité de 1825", "Dette de Versailles", "Traité de Paris", "Taxe de Saint-Domingue"],
-      "answerIndex": 0
-    },
-    {
-      "question": "Quel roi français régnait lors de la reconnaissance de l'indépendance d'Haïti par la France en 1825 ?",
-      "choices": ["Charles X", "Louis XIV", "Louis XVI", "Napoléon III"],
-      "answerIndex": 0
-    },
-    {
-      "question": "Quel pays fut le premier à reconnaître officiellement l'indépendance d'Haïti parmi les grandes puissances européennes ?",
-      "choices": ["France en 1825", "Espagne en 1804", "Portugal en 1805", "Italie en 1804"],
-      "answerIndex": 0
-    },
-    {
-      "question": "Quel pays a établi des relations diplomatiques avec Haïti en 1862, après avoir longtemps refusé de reconnaître son indépendance ?",
-      "choices": ["États-Unis", "Canada", "Mexique", "Brésil"],
-      "answerIndex": 0
-    },
-    {
-      "question": "Quel président américain a reconnu Haïti en 1862 ?",
-      "choices": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "Andrew Jackson"],
-      "answer
+      question: "Quel président américain a reconnu Haïti en 1862 ?",
+      choices: [
+        "Abraham Lincoln",
+        "George Washington",
+        "Thomas Jefferson",
+        "Andrew Jackson"
+      ],
+      answerIndex: 0
+    }
+  ]
+}
