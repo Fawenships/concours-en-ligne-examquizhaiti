@@ -1,3 +1,5 @@
+const API_URL = "https://konkou-server-6.onrender.com";
+
 const CATEGORIES = [
   {
     id: "histoire",
@@ -275,8 +277,13 @@ function saveTickets() {
 }
 
 function refreshTicketDisplay() {
-  el.ticketCount.textContent = state.tickets;
-  el.ticketCountHome.textContent = state.tickets;
+  if (el.ticketCount) {
+    el.ticketCount.textContent = state.tickets;
+  }
+
+  if (el.ticketCountHome) {
+    el.ticketCountHome.textContent = state.tickets;
+  }
 }
 
 function useTicket() {
@@ -468,9 +475,7 @@ function shuffle(array) {
     i--
   ) {
     const j =
-      Math.floor(
-        Math.random() * (i + 1)
-      );
+      Math.floor(Math.random() * (i + 1));
 
     [
       array[i],
@@ -651,10 +656,68 @@ function selectAnswer(
 
 
 /* =========================
+   ENVOYER LE SCORE AU SERVEUR
+========================= */
+
+async function sendScoreToServer() {
+
+  const playerName =
+    localStorage.getItem("konkou_player_name") ||
+    localStorage.getItem("playerName") ||
+    "Joueur";
+
+  try {
+
+    const response = await fetch(
+      `${API_URL}/api/players`,
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          name: playerName,
+          score: state.score
+        })
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Erreur serveur : ${response.status}`
+      );
+    }
+
+    const data =
+      await response.json();
+
+    console.log(
+      "✅ Score envoyé au serveur Konkou :",
+      data
+    );
+
+    return data;
+
+  } catch (error) {
+
+    console.error(
+      "❌ Impossible d'envoyer le score :",
+      error
+    );
+
+    return null;
+  }
+}
+
+
+/* =========================
    FIN
 ========================= */
 
-function finishQuiz() {
+async function finishQuiz() {
+
   clearInterval(state.timer);
 
   const total =
@@ -670,17 +733,25 @@ function finishQuiz() {
     state.score / total;
 
   if (ratio === 1) {
+
     el.resultMessage.textContent =
       "🎉 Parfait ! Tu as répondu juste à toutes les questions !";
+
   } else if (ratio >= 0.7) {
+
     el.resultMessage.textContent =
       "👏 Très bien ! Tu maîtrises bien cette catégorie.";
+
   } else if (ratio >= 0.5) {
+
     el.resultMessage.textContent =
       "👍 Bien joué ! Tu peux encore progresser.";
+
   } else {
+
     el.resultMessage.textContent =
       "💪 Continue à t'entraîner pour améliorer ton score !";
+
   }
 
   el.resultBadge.style.display =
@@ -695,6 +766,12 @@ function finishQuiz() {
 
   el.contestStandings.style.display =
     "none";
+
+  /*
+   * NOUVEAU :
+   * Envoi du résultat vers Render.
+   */
+  await sendScoreToServer();
 
   showScreen("result");
 }
@@ -742,4 +819,9 @@ showScreen("home");
 
 console.log(
   "🏆 KONKOU est prêt !"
+);
+
+console.log(
+  "🌐 Serveur :",
+  API_URL
 );
