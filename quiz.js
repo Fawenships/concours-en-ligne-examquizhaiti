@@ -1,320 +1,555 @@
-// ===============================
-// KONKOU — QUIZ
-// ===============================
+// ==========================================
+// KONKOU
+// SYSTÈME DE QUIZ
+// ==========================================
+
+
+// ==========================================
+// ÉTAT DU JEU
+// ==========================================
 
 const state = {
-  categories: [],
-  currentCategory: null,
-  currentQuestions: [],
-  currentIndex: 0,
-  score: 0,
-  timer: null,
-  timeLeft: 15,
-  tickets: 3,
-  answered: false
-};
 
-const TIME_PER_QUESTION = 15;
-const FREE_TICKETS_PER_DAY = 3;
+  categories: [
+
+    {
+      name: "Culture générale",
+      icon: "🧠",
+
+      questions: [
+
+        {
+          question:
+            "Quelle est la capitale de la France ?",
+
+          choices: [
+            "Paris",
+            "Madrid",
+            "Rome",
+            "Berlin"
+          ],
+
+          answerIndex: 0
+        },
+
+        {
+          question:
+            "Quelle est la plus grande planète du système solaire ?",
+
+          choices: [
+            "Mars",
+            "Terre",
+            "Jupiter",
+            "Vénus"
+          ],
+
+          answerIndex: 2
+        },
+
+        {
+          question:
+            "Combien y a-t-il de continents ?",
+
+          choices: [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+
+          answerIndex: 2
+        },
+
+        {
+          question:
+            "Quel est le plus grand océan du monde ?",
+
+          choices: [
+            "Atlantique",
+            "Pacifique",
+            "Indien",
+            "Arctique"
+          ],
+
+          answerIndex: 1
+        },
+
+        {
+          question:
+            "Combien de jours compte une année normale ?",
+
+          choices: [
+            "360",
+            "365",
+            "366",
+            "370"
+          ],
+
+          answerIndex: 1
+        }
+
+      ]
+    },
 
 
-// ===============================
-// ÉLÉMENTS
-// ===============================
+    {
+      name: "Culture haïtienne",
+      icon: "🇭🇹",
 
-const screens = {
-  home: document.getElementById("screen-home"),
-  quiz: document.getElementById("screen-quiz"),
-  result: document.getElementById("screen-result")
-};
+      questions: [
 
-const el = {
-  ticketCount: document.getElementById("ticket-count"),
-  ticketCountHome: document.getElementById("ticket-count-home"),
-  categoryList: document.getElementById("category-list"),
+        {
+          question:
+            "Quelle est la capitale d'Haïti ?",
 
-  quizCategory: document.getElementById("quiz-category"),
-  quizQuestion: document.getElementById("quiz-question"),
-  quizChoices: document.getElementById("quiz-choices"),
-  quizScore: document.getElementById("quiz-score"),
-  quizProgress: document.getElementById("quiz-progress"),
+          choices: [
+            "Les Cayes",
+            "Jacmel",
+            "Port-au-Prince",
+            "Cap-Haïtien"
+          ],
 
-  progressFill: document.getElementById("progress-fill"),
-  timer: document.getElementById("timer"),
+          answerIndex: 2
+        },
 
-  resultScore: document.getElementById("result-score"),
-  resultTotal: document.getElementById("result-total"),
-  resultMessage: document.getElementById("result-message"),
-  resultBadge: document.getElementById("result-badge"),
+        {
+          question:
+            "Quelle est la fête nationale d'Haïti ?",
 
-  btnQuit: document.getElementById("btn-quit"),
-  btnReplay: document.getElementById("btn-replay"),
-  btnHome: document.getElementById("btn-home")
-};
+          choices: [
+            "1er janvier",
+            "18 mai",
+            "17 octobre",
+            "20 mai"
+          ],
+
+          answerIndex: 0
+        },
+
+        {
+          question:
+            "Quelles sont les deux langues officielles d'Haïti ?",
+
+          choices: [
+            "Français et créole",
+            "Français et anglais",
+            "Créole et espagnol",
+            "Anglais et espagnol"
+          ],
+
+          answerIndex: 0
+        }
+
+      ]
+    },
 
 
-// ===============================
-// CHARGER LES QUESTIONS
-// ===============================
+    {
+      name: "Sport",
+      icon: "⚽",
 
-async function loadQuestions() {
+      questions: [
 
-  try {
+        {
+          question:
+            "Combien de joueurs une équipe de football a-t-elle sur le terrain ?",
 
-    const response =
-      await fetch("data/questions.json");
+          choices: [
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
 
-    if (!response.ok) {
-      throw new Error(
-        "Impossible de charger questions.json"
-      );
+          answerIndex: 2
+        },
+
+        {
+          question:
+            "Quel sport utilise un volant ?",
+
+          choices: [
+            "Tennis",
+            "Badminton",
+            "Basketball",
+            "Football"
+          ],
+
+          answerIndex: 1
+        },
+
+        {
+          question:
+            "Combien vaut un tir à trois points au basketball ?",
+
+          choices: [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+
+          answerIndex: 2
+        }
+
+      ]
+    },
+
+
+    {
+      name: "Sciences",
+      icon: "🔬",
+
+      questions: [
+
+        {
+          question:
+            "Quelle est la formule chimique de l'eau ?",
+
+          choices: [
+            "CO2",
+            "H2O",
+            "O2",
+            "NaCl"
+          ],
+
+          answerIndex: 1
+        },
+
+        {
+          question:
+            "Quelle planète est la plus proche du Soleil ?",
+
+          choices: [
+            "Terre",
+            "Vénus",
+            "Mercure",
+            "Mars"
+          ],
+
+          answerIndex: 2
+        },
+
+        {
+          question:
+            "Quel organe pompe le sang dans le corps humain ?",
+
+          choices: [
+            "Le cerveau",
+            "Le foie",
+            "Le cœur",
+            "Le poumon"
+          ],
+
+          answerIndex: 2
+        }
+
+      ]
+    },
+
+
+    {
+      name: "Informatique",
+      icon: "💻",
+
+      questions: [
+
+        {
+          question:
+            "Que signifie HTML ?",
+
+          choices: [
+            "HyperText Markup Language",
+            "HighText Machine Language",
+            "Hyper Tool Modern Language",
+            "HomeText Markup Language"
+          ],
+
+          answerIndex: 0
+        },
+
+        {
+          question:
+            "Quel langage est utilisé pour styliser une page web ?",
+
+          choices: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Python"
+          ],
+
+          answerIndex: 1
+        },
+
+        {
+          question:
+            "Quel langage permet d'ajouter de l'interactivité à une page web ?",
+
+          choices: [
+            "CSS",
+            "HTML",
+            "JavaScript",
+            "SQL"
+          ],
+
+          answerIndex: 2
+        }
+
+      ]
     }
 
-    const data =
-      await response.json();
-
-    state.categories =
-      data.categories || [];
-
-    renderCategories();
-
-  } catch (error) {
-
-    console.error(error);
-
-    el.categoryList.innerHTML = `
-      <div class="error-message">
-        <strong>Impossible de charger les catégories.</strong>
-        <p>
-          Vérifie que le fichier
-          <b>data/questions.json</b>
-          existe et que tu utilises un serveur local.
-        </p>
-      </div>
-    `;
-
-  }
-
-}
+  ],
 
 
-// ===============================
+  currentCategory: null,
+
+  currentQuestions: [],
+
+  currentIndex: 0,
+
+  score: 0,
+
+  timer: null,
+
+  timeLeft: 15,
+
+  tickets: 3,
+
+  answered: false
+
+};
+
+
+const TIME_PER_QUESTION = 15;
+
+
+// ==========================================
+// ÉLÉMENTS HTML
+// ==========================================
+
+const screens = {
+
+  home:
+    document.getElementById("screen-home"),
+
+  quiz:
+    document.getElementById("screen-quiz"),
+
+  result:
+    document.getElementById("screen-result")
+
+};
+
+
+const el = {
+
+  ticketCount:
+    document.getElementById("ticket-count"),
+
+  ticketCountHome:
+    document.getElementById("ticket-count-home"),
+
+  categoryList:
+    document.getElementById("category-list"),
+
+  quizCategory:
+    document.getElementById("quiz-category"),
+
+  quizQuestion:
+    document.getElementById("quiz-question"),
+
+  quizChoices:
+    document.getElementById("quiz-choices"),
+
+  quizScore:
+    document.getElementById("quiz-score"),
+
+  quizProgress:
+    document.getElementById("quiz-progress"),
+
+  progressFill:
+    document.getElementById("progress-fill"),
+
+  timer:
+    document.getElementById("timer"),
+
+  resultScore:
+    document.getElementById("result-score"),
+
+  resultTotal:
+    document.getElementById("result-total"),
+
+  resultMessage:
+    document.getElementById("result-message"),
+
+  resultBadge:
+    document.getElementById("result-badge"),
+
+  btnQuit:
+    document.getElementById("btn-quit"),
+
+  btnReplay:
+    document.getElementById("btn-replay"),
+
+  btnHome:
+    document.getElementById("btn-home")
+
+};
+
+
+// ==========================================
+// VÉRIFICATION
+// ==========================================
+
+console.log("KONKOU : JavaScript chargé.");
+
+
+// ==========================================
 // AFFICHER LES CATÉGORIES
-// ===============================
+// ==========================================
 
 function renderCategories() {
 
+  console.log("Création des catégories...");
+
   el.categoryList.innerHTML = "";
 
-  state.categories.forEach((category) => {
 
-    const button =
-      document.createElement("button");
+  state.categories.forEach(
+    (category) => {
 
-    button.className =
-      "category-card";
-
-    const icon =
-      getCategoryIcon(category.name);
-
-    button.innerHTML = `
-
-      <div class="category-icon">
-        ${icon}
-      </div>
-
-      <h3>
-        ${category.name}
-      </h3>
-
-      <p>
-        ${category.questions.length}
-        questions
-      </p>
-
-      <span class="category-arrow">
-        →
-      </span>
-
-    `;
-
-    button.addEventListener(
-      "click",
-      () => startQuiz(category)
-    );
-
-    el.categoryList.appendChild(button);
-
-  });
-
-}
+      const button =
+        document.createElement("button");
 
 
-// ===============================
-// ICÔNES DES CATÉGORIES
-// ===============================
-
-function getCategoryIcon(name) {
-
-  const icons = {
-    "Culture générale": "🧠",
-    "Culture haïtienne": "🇭🇹",
-    "Sport": "⚽",
-    "Actualité": "📰",
-    "Sciences": "🔬",
-    "Informatique": "💻"
-  };
-
-  return icons[name] || "🎯";
-
-}
+      button.type = "button";
 
 
-// ===============================
-// TICKETS
-// ===============================
-
-function loadTickets() {
-
-  const today =
-    new Date()
-      .toISOString()
-      .slice(0, 10);
-
-  const saved =
-    JSON.parse(
-      localStorage.getItem(
-        "konkou_tickets"
-      ) || "{}"
-    );
-
-  if (saved.date === today) {
-
-    state.tickets =
-      Number(saved.count);
-
-  } else {
-
-    state.tickets =
-      FREE_TICKETS_PER_DAY;
-
-    saveTickets();
-
-  }
-
-  updateTickets();
-
-}
+      button.className =
+        "category-card";
 
 
-function saveTickets() {
+      button.innerHTML = `
 
-  const today =
-    new Date()
-      .toISOString()
-      .slice(0, 10);
+        <div class="category-icon">
+          ${category.icon}
+        </div>
 
-  localStorage.setItem(
-    "konkou_tickets",
+        <h3>
+          ${category.name}
+        </h3>
 
-    JSON.stringify({
-      date: today,
-      count: state.tickets
-    })
+        <p>
+          ${category.questions.length}
+          questions
+        </p>
+
+        <span class="category-arrow">
+          →
+        </span>
+
+      `;
+
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          console.log(
+            "Catégorie sélectionnée :",
+            category.name
+          );
+
+          startQuiz(category);
+
+        }
+      );
+
+
+      el.categoryList.appendChild(
+        button
+      );
+
+    }
   );
 
-  updateTickets();
-
 }
 
+
+// ==========================================
+// TICKETS
+// ==========================================
 
 function updateTickets() {
 
   if (el.ticketCount) {
+
     el.ticketCount.textContent =
       state.tickets;
+
   }
 
+
   if (el.ticketCountHome) {
+
     el.ticketCountHome.textContent =
       state.tickets;
+
   }
 
 }
 
 
-function useTicket() {
+// ==========================================
+// CHANGER D'ÉCRAN
+// ==========================================
+
+function showScreen(name) {
+
+  screens.home.classList.remove("active");
+
+  screens.quiz.classList.remove("active");
+
+  screens.result.classList.remove("active");
+
+
+  screens[name].classList.add("active");
+
+}
+
+
+// ==========================================
+// DÉMARRER LE QUIZ
+// ==========================================
+
+function startQuiz(category) {
 
   if (state.tickets <= 0) {
 
     alert(
-      "Tu n'as plus de tickets aujourd'hui."
+      "Tu n'as plus de tickets disponibles."
     );
 
-    return false;
+    return;
 
   }
+
 
   state.tickets--;
 
-  saveTickets();
+  updateTickets();
 
-  return true;
-
-}
-
-
-// ===============================
-// NAVIGATION
-// ===============================
-
-function showScreen(name) {
-
-  Object.values(screens).forEach(
-    (screen) => {
-      screen.classList.remove("active");
-    }
-  );
-
-  screens[name].classList.add("active");
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-}
-
-
-// ===============================
-// DÉMARRER LE QUIZ
-// ===============================
-
-function startQuiz(category) {
-
-  if (!category.questions ||
-      category.questions.length === 0) {
-
-    alert(
-      "Cette catégorie ne contient aucune question."
-    );
-
-    return;
-
-  }
-
-  if (!useTicket()) {
-    return;
-  }
 
   state.currentCategory =
     category;
 
-  // Copie des questions puis mélange
+
   state.currentQuestions =
     shuffle(
       [...category.questions]
     );
+
 
   state.currentIndex = 0;
 
@@ -322,16 +557,18 @@ function startQuiz(category) {
 
   state.answered = false;
 
+
   showScreen("quiz");
+
 
   showQuestion();
 
 }
 
 
-// ===============================
+// ==========================================
 // MÉLANGER
-// ===============================
+// ==========================================
 
 function shuffle(array) {
 
@@ -346,35 +583,43 @@ function shuffle(array) {
         Math.random() * (i + 1)
       );
 
+
     [
       array[i],
       array[j]
-    ] = [
+    ] =
+    [
       array[j],
       array[i]
     ];
 
   }
 
+
   return array;
 
 }
 
 
-// ===============================
-// AFFICHER UNE QUESTION
-// ===============================
+// ==========================================
+// AFFICHER QUESTION
+// ==========================================
 
 function showQuestion() {
 
-  clearInterval(state.timer);
+  clearInterval(
+    state.timer
+  );
+
 
   state.answered = false;
+
 
   const question =
     state.currentQuestions[
       state.currentIndex
     ];
+
 
   if (!question) {
 
@@ -385,22 +630,18 @@ function showQuestion() {
   }
 
 
-  // Catégorie
   el.quizCategory.textContent =
     state.currentCategory.name;
 
 
-  // Question
   el.quizQuestion.textContent =
     question.question;
 
 
-  // Score
   el.quizScore.textContent =
     state.score;
 
 
-  // Progression
   el.quizProgress.textContent =
     `Question ${
       state.currentIndex + 1
@@ -415,26 +656,28 @@ function showQuestion() {
       state.currentQuestions.length
     ) * 100;
 
+
   el.progressFill.style.width =
-    `${progress}%`;
+    progress + "%";
 
 
-  // Supprimer les anciennes réponses
-  el.quizChoices.innerHTML = "";
+  el.quizChoices.innerHTML =
+    "";
 
 
-  // Créer les réponses
   const choices =
     question.choices.map(
       (text, index) => ({
+
         text: text,
-        isCorrect:
+
+        correct:
           index === question.answerIndex
+
       })
     );
 
 
-  // Mélanger les réponses
   shuffle(choices);
 
 
@@ -444,17 +687,27 @@ function showQuestion() {
       const button =
         document.createElement("button");
 
+
+      button.type =
+        "button";
+
+
       button.textContent =
         choice.text;
 
+
       button.addEventListener(
         "click",
-        () =>
+        function () {
+
           selectAnswer(
             button,
-            choice.isCorrect
-          )
+            choice.correct
+          );
+
+        }
       );
+
 
       el.quizChoices.appendChild(
         button
@@ -469,77 +722,102 @@ function showQuestion() {
 }
 
 
-// ===============================
+// ==========================================
 // CHRONOMÈTRE
-// ===============================
+// ==========================================
 
 function startTimer() {
 
-  clearInterval(state.timer);
+  clearInterval(
+    state.timer
+  );
+
 
   state.timeLeft =
     TIME_PER_QUESTION;
 
+
   el.timer.textContent =
     state.timeLeft;
 
-  el.timer.classList.remove("low");
+
+  el.timer.classList.remove(
+    "low"
+  );
 
 
   state.timer =
-    setInterval(() => {
+    setInterval(
+      function () {
 
-      state.timeLeft--;
-
-      el.timer.textContent =
-        state.timeLeft;
+        state.timeLeft--;
 
 
-      if (state.timeLeft <= 5) {
-
-        el.timer.classList.add(
-          "low"
-        );
-
-      }
+        el.timer.textContent =
+          state.timeLeft;
 
 
-      if (state.timeLeft <= 0) {
+        if (
+          state.timeLeft <= 5
+        ) {
 
-        clearInterval(
-          state.timer
-        );
-
-        if (!state.answered) {
-
-          selectAnswer(
-            null,
-            false
+          el.timer.classList.add(
+            "low"
           );
 
         }
 
-      }
 
-    }, 1000);
+        if (
+          state.timeLeft <= 0
+        ) {
+
+          clearInterval(
+            state.timer
+          );
+
+
+          if (
+            !state.answered
+          ) {
+
+            selectAnswer(
+              null,
+              false
+            );
+
+          }
+
+        }
+
+      },
+      1000
+    );
 
 }
 
 
-// ===============================
+// ==========================================
 // RÉPONDRE
-// ===============================
+// ==========================================
 
 function selectAnswer(
   button,
-  isCorrect
+  correct
 ) {
 
-  if (state.answered) {
+  if (
+    state.answered
+  ) {
+
     return;
+
   }
 
-  state.answered = true;
+
+  state.answered =
+    true;
+
 
   clearInterval(
     state.timer
@@ -548,18 +826,24 @@ function selectAnswer(
 
   const buttons =
     el.quizChoices
-      .querySelectorAll("button");
+      .querySelectorAll(
+        "button"
+      );
 
 
   buttons.forEach(
     (btn) => {
 
-      btn.disabled = true;
+      btn.disabled =
+        true;
 
-      if (btn === button) {
+
+      if (
+        btn === button
+      ) {
 
         btn.classList.add(
-          isCorrect
+          correct
             ? "correct"
             : "wrong"
         );
@@ -570,49 +854,53 @@ function selectAnswer(
   );
 
 
-  if (isCorrect) {
+  if (correct) {
 
     state.score += 10;
-
-    el.quizScore.textContent =
-      state.score;
 
   }
 
 
-  // Petite pause avant la question suivante
-  setTimeout(() => {
-
-    state.currentIndex++;
+  el.quizScore.textContent =
+    state.score;
 
 
-    if (
-      state.currentIndex <
-      state.currentQuestions.length
-    ) {
+  setTimeout(
+    function () {
 
-      showQuestion();
+      state.currentIndex++;
 
-    } else {
 
-      finishQuiz();
+      if (
+        state.currentIndex <
+        state.currentQuestions.length
+      ) {
 
-    }
+        showQuestion();
 
-  }, 900);
+      } else {
+
+        finishQuiz();
+
+      }
+
+    },
+    800
+  );
 
 }
 
 
-// ===============================
-// FIN DU QUIZ
-// ===============================
+// ==========================================
+// TERMINER LE QUIZ
+// ==========================================
 
 function finishQuiz() {
 
   clearInterval(
     state.timer
   );
+
 
   const total =
     state.currentQuestions.length *
@@ -622,55 +910,61 @@ function finishQuiz() {
   el.resultScore.textContent =
     state.score;
 
+
   el.resultTotal.textContent =
     total;
 
 
   const ratio =
-    total > 0
-      ? state.score / total
-      : 0;
+    state.score / total;
 
 
-  let message =
-    "Continue à t'entraîner pour améliorer ton score !";
+  if (
+    ratio === 1
+  ) {
+
+    el.resultMessage.textContent =
+      "Excellent ! Score parfait !";
 
 
-  if (ratio === 1) {
+    el.resultBadge.textContent =
+      "🏆 Score parfait !";
 
-    message =
-      "Excellent ! Tu as obtenu un score parfait !";
 
-  } else if (ratio >= 0.7) {
+    el.resultBadge.style.display =
+      "inline-block";
 
-    message =
-      "Très bien ! Tu maîtrises bien cette catégorie.";
+  }
 
-  } else if (ratio >= 0.5) {
+  else if (
+    ratio >= 0.7
+  ) {
 
-    message =
-      "Pas mal ! Tu peux encore améliorer ton score.";
+    el.resultMessage.textContent =
+      "Très bien ! Tu maîtrises cette catégorie.";
+
+
+    el.resultBadge.textContent =
+      "👍 Très bon score !";
+
+
+    el.resultBadge.style.display =
+      "inline-block";
+
+  }
+
+  else {
+
+    el.resultMessage.textContent =
+      "Pas mal ! Continue à t'entraîner.";
+
+
+    el.resultBadge.style.display =
+      "none";
 
   }
 
 
-  el.resultMessage.textContent =
-    message;
-
-
-  el.resultBadge.style.display =
-    ratio >= 0.7
-      ? "inline-block"
-      : "none";
-
-
-  el.resultBadge.textContent =
-    ratio === 1
-      ? "🏆 Score parfait !"
-      : "👍 Bien joué !";
-
-
-  // Barre de progression terminée
   el.progressFill.style.width =
     "100%";
 
@@ -680,13 +974,13 @@ function finishQuiz() {
 }
 
 
-// ===============================
-// QUITTER LE QUIZ
-// ===============================
+// ==========================================
+// BOUTON QUITTER
+// ==========================================
 
 el.btnQuit.addEventListener(
   "click",
-  () => {
+  function () {
 
     clearInterval(
       state.timer
@@ -698,15 +992,17 @@ el.btnQuit.addEventListener(
 );
 
 
-// ===============================
-// REJOUER
-// ===============================
+// ==========================================
+// BOUTON REJOUER
+// ==========================================
 
 el.btnReplay.addEventListener(
   "click",
-  () => {
+  function () {
 
-    if (state.currentCategory) {
+    if (
+      state.currentCategory
+    ) {
 
       startQuiz(
         state.currentCategory
@@ -718,13 +1014,13 @@ el.btnReplay.addEventListener(
 );
 
 
-// ===============================
-// RETOUR AUX CATÉGORIES
-// ===============================
+// ==========================================
+// BOUTON ACCUEIL
+// ==========================================
 
 el.btnHome.addEventListener(
   "click",
-  () => {
+  function () {
 
     clearInterval(
       state.timer
@@ -736,12 +1032,14 @@ el.btnHome.addEventListener(
 );
 
 
-// ===============================
-// INITIALISATION
-// ===============================
+// ==========================================
+// LANCEMENT
+// ==========================================
 
-loadTickets();
+renderCategories();
 
-loadQuestions();
+updateTickets();
 
 showScreen("home");
+
+console.log("KONKOU : interface prête.");
