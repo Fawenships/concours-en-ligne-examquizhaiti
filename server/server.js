@@ -1,31 +1,47 @@
 ```js
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 const PORT = 3000;
 
+/* =========================
+   CONFIGURATION
+========================= */
+
 app.use(cors());
 app.use(express.json());
 
+// Permet au serveur d'afficher index.html
+app.use(express.static(__dirname));
+
+
 /* =========================
-   DONNÉES DES JOUEURS
+   DONNÉES TEMPORAIRES
 ========================= */
 
 let players = [];
 
 
 /* =========================
-   PAGE D'ACCUEIL DU SERVEUR
+   PAGE D'ACCUEIL
 ========================= */
 
 app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 
+
+/* =========================
+   TEST DU SERVEUR
+========================= */
+
+app.get("/api/test", (req, res) => {
     res.json({
         success: true,
         message: "🏆 Serveur Konkou fonctionne !"
     });
-
 });
 
 
@@ -37,7 +53,8 @@ app.post("/api/players", (req, res) => {
 
     const { name, score } = req.body;
 
-    if (!name || typeof name !== "string") {
+    // Vérification du nom
+    if (!name || typeof name !== "string" || name.trim().length < 2) {
 
         return res.status(400).json({
             success: false,
@@ -46,53 +63,29 @@ app.post("/api/players", (req, res) => {
 
     }
 
-    const playerName = name.trim();
+    const cleanName = name.trim();
 
-    if (playerName.length < 2) {
-
-        return res.status(400).json({
-            success: false,
-            message: "Le nom est trop court."
-        });
-
-    }
-
+    // Chercher le joueur
     let player = players.find(
-        p =>
-            p.name.toLowerCase() ===
-            playerName.toLowerCase()
+        p => p.name.toLowerCase() === cleanName.toLowerCase()
     );
 
 
-    /* =========================
-       NOUVEAU JOUEUR
-    ========================= */
-
+    // Créer le joueur s'il n'existe pas
     if (!player) {
 
         player = {
-
             id: players.length + 1,
-
-            name: playerName,
-
+            name: cleanName,
             score: 0,
-
-            games: 0,
-
-            bestScore: 0
-
+            games: 0
         };
 
         players.push(player);
-
     }
 
 
-    /* =========================
-       AJOUT DU SCORE
-    ========================= */
-
+    // Ajouter le score
     if (
         typeof score === "number" &&
         Number.isFinite(score) &&
@@ -100,26 +93,14 @@ app.post("/api/players", (req, res) => {
     ) {
 
         player.score += score;
-
         player.games++;
-
-        if (score > player.bestScore) {
-
-            player.bestScore = score;
-
-        }
 
     }
 
 
     res.json({
-
         success: true,
-
-        message: "Score enregistré.",
-
         player: player
-
     });
 
 });
@@ -132,46 +113,23 @@ app.post("/api/players", (req, res) => {
 app.get("/api/ranking", (req, res) => {
 
     const ranking = [...players]
-
-        .sort((a, b) => {
-
-            if (b.score !== a.score) {
-
-                return b.score - a.score;
-
-            }
-
-            return b.bestScore - a.bestScore;
-
-        })
-
+        .sort((a, b) => b.score - a.score)
         .map((player, index) => {
 
             return {
-
                 rank: index + 1,
-
                 id: player.id,
-
                 name: player.name,
-
                 score: player.score,
-
-                games: player.games,
-
-                bestScore: player.bestScore
-
+                games: player.games
             };
 
         });
 
 
     res.json({
-
         success: true,
-
         ranking: ranking
-
     });
 
 });
@@ -183,140 +141,84 @@ app.get("/api/ranking", (req, res) => {
 
 app.get("/api/players/:name", (req, res) => {
 
-    const name =
-        decodeURIComponent(req.params.name)
-        .trim()
-        .toLowerCase();
+    const name = decodeURIComponent(
+        req.params.name
+    ).trim().toLowerCase();
 
 
     const player = players.find(
-
-        p =>
-            p.name.toLowerCase() === name
-
+        p => p.name.toLowerCase() === name
     );
 
 
     if (!player) {
 
         return res.status(404).json({
-
             success: false,
-
             message: "Joueur introuvable."
-
         });
 
     }
 
 
-    const ranking = [...players]
-        .sort((a, b) => b.score - a.score);
-
-    const position =
-        ranking.findIndex(
-            p => p.id === player.id
-        );
-
-
     res.json({
-
         success: true,
-
-        player: {
-
-            ...player,
-
-            rank: position + 1
-
-        }
-
+        player: player
     });
 
 });
 
 
 /* =========================
-   STATISTIQUES DU SERVEUR
+   SUPPRIMER TOUS LES JOUEURS
+   POUR TEST UNIQUEMENT
 ========================= */
 
-app.get("/api/stats", (req, res) => {
+app.delete("/api/players", (req, res) => {
 
-    const totalPlayers =
-        players.length;
-
-
-    const totalGames =
-        players.reduce(
-            (total, player) =>
-                total + player.games,
-            0
-        );
-
-
-    const totalPoints =
-        players.reduce(
-            (total, player) =>
-                total + player.score,
-            0
-        );
-
+    players = [];
 
     res.json({
-
         success: true,
-
-        statistics: {
-
-            players: totalPlayers,
-
-            games: totalGames,
-
-            points: totalPoints
-
-        }
-
+        message: "Classement réinitialisé."
     });
 
 });
 
 
 /* =========================
-   DEMARRAGE DU SERVEUR
+   GESTION DES ERREURS JSON
+========================= */
+
+app.use((err, req, res, next) => {
+
+    console.error(err);
+
+    res.status(500).json({
+        success: false,
+        message: "Erreur interne du serveur."
+    });
+
+});
+
+
+/* =========================
+   DÉMARRAGE
 ========================= */
 
 app.listen(PORT, () => {
 
     console.log("");
-
-    console.log(
-        "================================="
-    );
-
-    console.log(
-        "🏆 KONKOU"
-    );
-
-    console.log(
-        "================================="
-    );
-
-    console.log(
-        `Serveur : http://localhost:${PORT}`
-    );
-
-    console.log(
-        "Classement : http://localhost:3000/api/ranking"
-    );
-
-    console.log(
-        "Statistiques : http://localhost:3000/api/stats"
-    );
-
-    console.log(
-        "================================="
-    );
-
+    console.log("=================================");
+    console.log("🏆 KONKOU");
+    console.log("=================================");
+    console.log(`Serveur : http://localhost:${PORT}`);
+    console.log(`Test : http://localhost:${PORT}/api/test`);
+    console.log(`Classement : http://localhost:${PORT}/api/ranking`);
+    console.log("=================================");
+    console.log("");
+    console.log("Le serveur est prêt !");
+    console.log("Ne ferme pas cette fenêtre.");
     console.log("");
 
 });
