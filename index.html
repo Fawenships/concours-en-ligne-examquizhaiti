@@ -328,6 +328,11 @@ color:white;
 background:linear-gradient(135deg,#2563eb,#4f46e5)
 }
 
+.primary:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
 .secondary{
 color:#334155;
 background:#e2e8f0
@@ -469,6 +474,16 @@ font-size:20px
 text-align:center;
 margin:20px 0;
 color:#475569
+}
+
+.result-winnings{
+text-align:center;
+margin:14px 0;
+padding:12px;
+border-radius:13px;
+background:#ecfdf5;
+color:#047857;
+font-weight:bold
 }
 
 /* =========================
@@ -780,6 +795,80 @@ color:#2563eb;
 font-size:18px
 }
 
+.payment-methods{
+display:grid;
+gap:10px;
+margin-top:14px
+}
+
+.payment-methods button{
+border:2px solid #e2e8f0;
+background:white;
+padding:14px;
+border-radius:13px;
+display:flex;
+align-items:center;
+gap:10px;
+text-align:left;
+font-weight:bold;
+color:#1e3a8a
+}
+
+.payment-methods button.selected{
+border-color:#2563eb;
+background:#eff6ff
+}
+
+.payment-modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:110;
+padding:20px;
+background:rgba(15,23,42,.55);
+align-items:center;
+justify-content:center
+}
+
+.payment-modal.active{
+display:flex
+}
+
+.payment-box{
+width:100%;
+max-width:420px;
+padding:26px;
+background:white;
+border-radius:22px;
+text-align:center
+}
+
+.payment-spinner{
+width:46px;
+height:46px;
+margin:18px auto;
+border-radius:50%;
+border:5px solid #dbeafe;
+border-top-color:#2563eb;
+animation:spin 0.8s linear infinite
+}
+
+@keyframes spin{
+to{transform:rotate(360deg)}
+}
+
+.payment-step{
+display:none
+}
+
+.payment-step.active{
+display:block
+}
+
+.payment-success-icon{
+font-size:50px
+}
+
 /* =========================
    MOBILE
 ========================= */
@@ -897,6 +986,31 @@ class="ticket-countdown">
 </div>
 
 </div>
+
+
+<button id="btn-register" class="info-card" style="background:linear-gradient(135deg,#f59e0b,#ea580c)">
+
+<span class="info-icon" id="register-icon">
+🎟️
+</span>
+
+<span>
+
+<strong id="register-title">
+S'inscrire au concours — 50 HTG
+</strong>
+
+<small id="register-subtitle">
+Paiement unique pour participer
+</small>
+
+</span>
+
+<span class="info-arrow">
+›
+</span>
+
+</button>
 
 
 <button id="btn-how-to" class="info-card">
@@ -1093,6 +1207,9 @@ Score :
 
 </div>
 
+<p id="result-winnings" class="result-winnings">
+</p>
+
 <p id="result-message"
 class="result-message">
 </p>
@@ -1184,6 +1301,25 @@ Comment ça fonctionne ?
 <div>
 
 <strong>
+Inscris-toi au concours
+</strong>
+
+<p>
+Paie 50 HTG (simulation) pour participer pendant la durée du concours.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="how-to-step">
+
+<b>2</b>
+
+<div>
+
+<strong>
 Choisis une catégorie
 </strong>
 
@@ -1198,7 +1334,7 @@ Sélectionne ton domaine.
 
 <div class="how-to-step">
 
-<b>2</b>
+<b>3</b>
 
 <div>
 
@@ -1217,7 +1353,7 @@ Un ticket est utilisé au début d'une partie.
 
 <div class="how-to-step">
 
-<b>3</b>
+<b>4</b>
 
 <div>
 
@@ -1236,7 +1372,7 @@ Chaque question possède un chronomètre.
 
 <div class="how-to-step">
 
-<b>4</b>
+<b>5</b>
 
 <div>
 
@@ -1255,7 +1391,7 @@ Chaque bonne réponse rapporte 10 points.
 
 <div class="how-to-step">
 
-<b>5</b>
+<b>6</b>
 
 <div>
 
@@ -1433,6 +1569,9 @@ class="close-profile">
 Joueur
 </h2>
 
+<p id="profile-panel-location" class="muted" style="text-align:center;margin-top:-8px;margin-bottom:6px">
+</p>
+
 <label>
 Nom
 </label>
@@ -1451,6 +1590,16 @@ Numéro
 id="profile-phone-input"
 type="tel"
 placeholder="Ton numéro"
+>
+
+<label>
+Lieu
+</label>
+
+<input
+id="profile-location-input"
+type="text"
+placeholder="Ta ville / commune"
 >
 
 <button id="btn-save-profile"
@@ -1584,6 +1733,123 @@ Gains
 </div>
 
 
+<!-- =========================
+     MODAL PAIEMENT (RETRAIT)
+========================= -->
+
+<div id="payment-modal" class="payment-modal">
+
+<div class="payment-box">
+
+<div id="pay-step-method" class="payment-step active">
+
+<h2>Retirer mes gains</h2>
+
+<p class="muted">Solde disponible : <strong id="pay-modal-balance">0 HTG</strong></p>
+
+<label>Montant à retirer (HTG)</label>
+<input id="pay-amount-input" type="number" min="1" placeholder="Ex: 500">
+
+<label>Moyen de paiement</label>
+
+<div class="payment-methods">
+
+<button type="button" class="pay-method" data-method="MonCash">📱 MonCash</button>
+<button type="button" class="pay-method" data-method="NatCash">📲 NatCash</button>
+<button type="button" class="pay-method" data-method="Virement bancaire">🏦 Virement bancaire</button>
+
+</div>
+
+<button id="btn-pay-confirm" class="primary">Confirmer le retrait</button>
+<button id="btn-pay-cancel" class="secondary">Annuler</button>
+
+<p id="pay-method-status" class="status"></p>
+
+</div>
+
+<div id="pay-step-processing" class="payment-step">
+
+<div class="payment-spinner"></div>
+<h2>Paiement en cours…</h2>
+<p class="muted" id="pay-processing-text">Traitement de ta demande de retrait.</p>
+
+</div>
+
+<div id="pay-step-success" class="payment-step">
+
+<div class="payment-success-icon">✅</div>
+<h2>Retrait simulé réussi</h2>
+<p class="muted" id="pay-success-text"></p>
+<p class="muted" style="margin-top:10px;font-size:12px">
+Ceci est une simulation — aucun argent réel n'a été transféré.
+</p>
+
+<button id="btn-pay-close" class="primary">Fermer</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     MODAL INSCRIPTION AU CONCOURS
+========================= -->
+
+<div id="register-modal" class="payment-modal">
+
+<div class="payment-box">
+
+<div id="reg-step-method" class="payment-step active">
+
+<h2>Inscription au concours</h2>
+
+<p class="muted">Frais d'inscription : <strong>50 HTG</strong></p>
+
+<label>Moyen de paiement</label>
+
+<div class="payment-methods">
+
+<button type="button" class="reg-method" data-method="MonCash">📱 MonCash</button>
+<button type="button" class="reg-method" data-method="NatCash">📲 NatCash</button>
+<button type="button" class="reg-method" data-method="Virement bancaire">🏦 Virement bancaire</button>
+
+</div>
+
+<button id="btn-reg-confirm" class="primary">Payer 50 HTG et m'inscrire</button>
+<button id="btn-reg-cancel" class="secondary">Annuler</button>
+
+<p id="reg-method-status" class="status"></p>
+
+</div>
+
+<div id="reg-step-processing" class="payment-step">
+
+<div class="payment-spinner"></div>
+<h2>Paiement en cours…</h2>
+<p class="muted" id="reg-processing-text">Traitement de ton inscription au concours.</p>
+
+</div>
+
+<div id="reg-step-success" class="payment-step">
+
+<div class="payment-success-icon">✅</div>
+<h2>Inscription confirmée</h2>
+<p class="muted" id="reg-success-text"></p>
+<p class="muted" style="margin-top:10px;font-size:12px">
+Ceci est une simulation — aucun argent réel n'a été transféré.
+</p>
+
+<button id="btn-reg-close" class="primary">Commencer à jouer</button>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
 
 /* =========================
@@ -1615,6 +1881,8 @@ tickets:3
 const RESET=4*60*60*1000;
 
 const QUESTION_TIME=15;
+
+const HTG_PER_POINT=2;
 
 
 /* =========================
@@ -2073,6 +2341,16 @@ box.appendChild(ranking);
 
 function startQuiz(i){
 
+if(!isRegistered()){
+
+pendingCategory=i;
+
+openRegistrationModal();
+
+return;
+
+}
+
 if(!useTicket())
 return;
 
@@ -2375,6 +2653,26 @@ ratio===1
 
 
 saveScore();
+
+const earned=
+state.score*HTG_PER_POINT;
+
+if(earned>0){
+
+addWinnings(
+earned,
+categories[state.category].name
+);
+
+}
+
+document.getElementById(
+"result-winnings"
+).textContent=
+earned>0
+?`💰 +${earned} HTG ajoutés à ton solde`
+:"";
+
 
 screen("result");
 
@@ -2768,6 +3066,19 @@ document.getElementById(
 name;
 
 
+const location=
+localStorage.getItem(
+"location"
+);
+
+document.getElementById(
+"profile-panel-location"
+).textContent=
+location
+?"📍 "+location
+:"";
+
+
 const scores=
 getScores();
 
@@ -2889,6 +3200,46 @@ history:[]
 })
 
 );
+
+}
+
+
+function saveWallet(w){
+
+localStorage.setItem(
+"wallet",
+JSON.stringify(w)
+);
+
+}
+
+
+function addWinnings(amount,category){
+
+const w=
+getWallet();
+
+w.balance+=amount;
+
+w.winnings+=amount;
+
+w.history.unshift({
+
+icon:"🎉",
+
+text:`Gains — ${category}`,
+
+amount:"+"+amount,
+
+date:new Date().toLocaleString()
+
+});
+
+saveWallet(w);
+
+updateWallet();
+
+updateProfile();
 
 }
 
@@ -3018,6 +3369,14 @@ localStorage.getItem(
 
 
 document.getElementById(
+"profile-location-input"
+).value=
+localStorage.getItem(
+"location"
+)||"";
+
+
+document.getElementById(
 "profile-panel"
 ).classList.add("active");
 
@@ -3059,6 +3418,12 @@ document.getElementById(
 ).value.trim();
 
 
+const location=
+document.getElementById(
+"profile-location-input"
+).value.trim();
+
+
 if(name.length<2){
 
 alert(
@@ -3081,6 +3446,17 @@ return;
 }
 
 
+if(location.length<2){
+
+alert(
+"Entre ton lieu (ville / commune)."
+);
+
+return;
+
+}
+
+
 localStorage.setItem(
 "name",
 name
@@ -3090,6 +3466,12 @@ name
 localStorage.setItem(
 "phone",
 phone
+);
+
+
+localStorage.setItem(
+"location",
+location
 );
 
 
@@ -3204,28 +3586,23 @@ state.category
 
 
 /* =========================
-   RETRAIT
+   RETRAIT — SIMULATION DE PAIEMENT
 ========================= */
 
-document.getElementById(
-"btn-withdraw"
-).onclick=()=>{
+let selectedMethod=null;
+
+function openPaymentModal(){
 
 const phone=
-localStorage.getItem(
-"phone"
-);
-
+localStorage.getItem("phone");
 
 const w=
 getWallet();
-
 
 const status=
 document.getElementById(
 "withdraw-status"
 );
-
 
 if(!phone){
 
@@ -3236,7 +3613,6 @@ return;
 
 }
 
-
 if(w.balance<=0){
 
 status.textContent=
@@ -3246,9 +3622,431 @@ return;
 
 }
 
+status.textContent="";
+
+selectedMethod=null;
+
+document.querySelectorAll(
+".pay-method"
+).forEach(b=>b.classList.remove("selected"));
+
+document.getElementById(
+"pay-amount-input"
+).value="";
+
+document.getElementById(
+"pay-method-status"
+).textContent="";
+
+document.getElementById(
+"pay-modal-balance"
+).textContent=
+w.balance+" HTG";
+
+showPaymentStep("method");
+
+document.getElementById(
+"payment-modal"
+).classList.add("active");
+
+}
+
+
+function showPaymentStep(step){
+
+["method","processing","success"].forEach(s=>{
+
+document.getElementById(
+"pay-step-"+s
+).classList.toggle(
+"active",
+s===step
+);
+
+});
+
+}
+
+
+document.querySelectorAll(".pay-method").forEach(btn=>{
+
+btn.onclick=()=>{
+
+selectedMethod=btn.dataset.method;
+
+document.querySelectorAll(".pay-method").forEach(
+b=>b.classList.remove("selected")
+);
+
+btn.classList.add("selected");
+
+};
+
+});
+
+
+document.getElementById(
+"btn-pay-confirm"
+).onclick=()=>{
+
+const w=
+getWallet();
+
+const status=
+document.getElementById(
+"pay-method-status"
+);
+
+const amount=
+parseInt(
+document.getElementById(
+"pay-amount-input"
+).value,
+10
+);
+
+if(!selectedMethod){
 
 status.textContent=
-"⚠️ Le retrait réel n'est pas encore connecté.";
+"⚠️ Choisis un moyen de paiement.";
+
+return;
+
+}
+
+if(!amount||amount<=0){
+
+status.textContent=
+"⚠️ Entre un montant valide.";
+
+return;
+
+}
+
+if(amount>w.balance){
+
+status.textContent=
+"⚠️ Montant supérieur à ton solde disponible.";
+
+return;
+
+}
+
+
+status.textContent="";
+
+showPaymentStep("processing");
+
+document.getElementById(
+"pay-processing-text"
+).textContent=
+`Envoi de ${amount} HTG via ${selectedMethod}…`;
+
+
+setTimeout(
+()=>{
+
+const wallet=
+getWallet();
+
+wallet.balance-=amount;
+
+wallet.withdrawn+=amount;
+
+wallet.history.unshift({
+
+icon:"💸",
+
+text:`Retrait — ${selectedMethod}`,
+
+amount:"-"+amount,
+
+date:new Date().toLocaleString()
+
+});
+
+saveWallet(wallet);
+
+updateWallet();
+
+updateProfile();
+
+
+document.getElementById(
+"pay-success-text"
+).textContent=
+`${amount} HTG envoyés via ${selectedMethod}.`;
+
+
+showPaymentStep("success");
+
+},
+2000
+);
+
+};
+
+
+document.getElementById(
+"btn-pay-cancel"
+).onclick=()=>{
+
+document.getElementById(
+"payment-modal"
+).classList.remove("active");
+
+};
+
+
+document.getElementById(
+"btn-pay-close"
+).onclick=()=>{
+
+document.getElementById(
+"payment-modal"
+).classList.remove("active");
+
+document.getElementById(
+"withdraw-status"
+).textContent=
+"✅ Retrait simulé effectué avec succès.";
+
+};
+
+
+document.getElementById(
+"btn-withdraw"
+).onclick=
+openPaymentModal;
+
+
+/* =========================
+   INSCRIPTION AU CONCOURS — SIMULATION DE PAIEMENT
+========================= */
+
+const REGISTRATION_FEE=50;
+
+let pendingCategory=null;
+
+let selectedRegMethod=null;
+
+
+function isRegistered(){
+
+return localStorage.getItem("registered")==="1";
+
+}
+
+
+function updateRegisterUI(){
+
+const title=
+document.getElementById("register-title");
+
+const subtitle=
+document.getElementById("register-subtitle");
+
+const icon=
+document.getElementById("register-icon");
+
+if(isRegistered()){
+
+title.textContent=
+"✅ Inscrit(e) au concours";
+
+subtitle.textContent=
+"Tu peux jouer dans toutes les catégories";
+
+icon.textContent="✅";
+
+}
+
+else{
+
+title.textContent=
+`S'inscrire au concours — ${REGISTRATION_FEE} HTG`;
+
+subtitle.textContent=
+"Paiement unique pour participer";
+
+icon.textContent="🎟️";
+
+}
+
+}
+
+
+function showRegStep(step){
+
+["method","processing","success"].forEach(s=>{
+
+document.getElementById(
+"reg-step-"+s
+).classList.toggle(
+"active",
+s===step
+);
+
+});
+
+}
+
+
+function openRegistrationModal(){
+
+if(isRegistered()){
+
+updateRegisterUI();
+
+return;
+
+}
+
+selectedRegMethod=null;
+
+document.querySelectorAll(
+".reg-method"
+).forEach(b=>b.classList.remove("selected"));
+
+document.getElementById(
+"reg-method-status"
+).textContent="";
+
+showRegStep("method");
+
+document.getElementById(
+"register-modal"
+).classList.add("active");
+
+}
+
+
+document.getElementById(
+"btn-register"
+).onclick=()=>{
+
+pendingCategory=null;
+
+openRegistrationModal();
+
+};
+
+
+document.querySelectorAll(".reg-method").forEach(btn=>{
+
+btn.onclick=()=>{
+
+selectedRegMethod=btn.dataset.method;
+
+document.querySelectorAll(".reg-method").forEach(
+b=>b.classList.remove("selected")
+);
+
+btn.classList.add("selected");
+
+};
+
+});
+
+
+document.getElementById(
+"btn-reg-confirm"
+).onclick=()=>{
+
+const status=
+document.getElementById(
+"reg-method-status"
+);
+
+if(!selectedRegMethod){
+
+status.textContent=
+"⚠️ Choisis un moyen de paiement.";
+
+return;
+
+}
+
+status.textContent="";
+
+showRegStep("processing");
+
+document.getElementById(
+"reg-processing-text"
+).textContent=
+`Envoi de ${REGISTRATION_FEE} HTG via ${selectedRegMethod}…`;
+
+setTimeout(
+()=>{
+
+localStorage.setItem(
+"registered",
+"1"
+);
+
+const w=
+getWallet();
+
+w.history.unshift({
+
+icon:"🎟️",
+
+text:`Inscription au concours — ${selectedRegMethod}`,
+
+amount:"-"+REGISTRATION_FEE,
+
+date:new Date().toLocaleString()
+
+});
+
+saveWallet(w);
+
+document.getElementById(
+"reg-success-text"
+).textContent=
+`Inscription payée (${REGISTRATION_FEE} HTG via ${selectedRegMethod}). Bonne chance !`;
+
+updateRegisterUI();
+
+showRegStep("success");
+
+},
+2000
+);
+
+};
+
+
+document.getElementById(
+"btn-reg-cancel"
+).onclick=()=>{
+
+document.getElementById(
+"register-modal"
+).classList.remove("active");
+
+pendingCategory=null;
+
+};
+
+
+document.getElementById(
+"btn-reg-close"
+).onclick=()=>{
+
+document.getElementById(
+"register-modal"
+).classList.remove("active");
+
+if(pendingCategory!==null){
+
+const cat=pendingCategory;
+
+pendingCategory=null;
+
+startQuiz(cat);
+
+}
 
 };
 
@@ -3264,6 +4062,8 @@ loadTickets();
 updateProfile();
 
 updateWallet();
+
+updateRegisterUI();
 
 
 setInterval(
