@@ -8,97 +8,717 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#eef2ff;color:#172033;min-height:100vh}
+
+body{
+font-family:Arial,sans-serif;
+background:#eef2ff;
+color:#172033;
+min-height:100vh
+}
+
 button,input{font:inherit}
 button{cursor:pointer}
-.app{max-width:850px;min-height:100vh;margin:auto}
-.topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px;color:white;background:linear-gradient(135deg,#2563eb,#4f46e5)}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:43px;height:43px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.15);border-radius:13px;font-size:24px}
-.logo strong,.logo small{display:block}
+
+.app{
+max-width:850px;
+min-height:100vh;
+margin:auto
+}
+
+/* BARRE */
+
+.topbar{
+position:sticky;
+top:0;
+z-index:20;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px;
+color:white;
+background:linear-gradient(135deg,#2563eb,#4f46e5)
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px
+}
+
+.logo-icon{
+width:43px;
+height:43px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,.15);
+border-radius:13px;
+font-size:24px
+}
+
+.logo strong,.logo small{
+display:block
+}
+
 .logo strong{font-size:20px}
-.logo small{font-size:11px;opacity:.8}
-.topbar-right{display:flex;align-items:center;gap:8px}
-.profile-button{border:0;color:white;background:rgba(255,255,255,.15);border-radius:13px;padding:6px 9px;display:flex;align-items:center;gap:7px}
-.profile-info strong,.profile-info small{display:block}
-.profile-info small{font-size:10px;opacity:.8}
-.tickets{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.15);font-weight:bold}
-.screen{display:none;padding:22px 16px}
-.screen.active{display:block}
-.hero{color:white;text-align:center;padding:35px 22px;margin-bottom:20px;border-radius:25px;background:linear-gradient(135deg,#2563eb,#7c3aed);box-shadow:0 12px 30px rgba(37,99,235,.2)}
+.logo small{
+font-size:11px;
+opacity:.8
+}
+
+.topbar-right{
+display:flex;
+align-items:center;
+gap:8px
+}
+
+.profile-button{
+border:0;
+color:white;
+background:rgba(255,255,255,.15);
+border-radius:13px;
+padding:6px 9px;
+display:flex;
+align-items:center;
+gap:7px
+}
+
+.profile-info strong,
+.profile-info small{
+display:block
+}
+
+.profile-info small{
+font-size:10px;
+opacity:.8
+}
+
+.tickets{
+padding:10px 12px;
+border-radius:12px;
+background:rgba(255,255,255,.15);
+font-weight:bold
+}
+
+/* ECRANS */
+
+.screen{
+display:none;
+padding:22px 16px
+}
+
+.screen.active{
+display:block
+}
+
+/* ACCUEIL */
+
+.hero{
+color:white;
+text-align:center;
+padding:35px 22px;
+margin-bottom:20px;
+border-radius:25px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+box-shadow:0 12px 30px rgba(37,99,235,.2)
+}
+
 .hero-icon{font-size:55px}
-.hero h1{margin:10px 0;font-size:28px}
-.hero p{line-height:1.5;opacity:.9}
-.ticket-info{margin-top:20px;padding:14px;border-radius:14px;background:rgba(255,255,255,.15)}
-.ticket-countdown{margin-top:7px;font-size:12px}
-.info-card{width:100%;border:0;margin-bottom:13px;padding:17px;border-radius:17px;color:white;display:flex;align-items:center;gap:12px;text-align:left;background:linear-gradient(135deg,#2563eb,#7c3aed)}
+
+.hero h1{
+margin:10px 0;
+font-size:28px
+}
+
+.hero p{
+line-height:1.5;
+opacity:.9
+}
+
+.ticket-info{
+margin-top:20px;
+padding:14px;
+border-radius:14px;
+background:rgba(255,255,255,.15)
+}
+
+.ticket-countdown{
+margin-top:7px;
+font-size:12px
+}
+
+.info-card{
+width:100%;
+border:0;
+margin-bottom:13px;
+padding:17px;
+border-radius:17px;
+color:white;
+display:flex;
+align-items:center;
+gap:12px;
+text-align:left;
+background:linear-gradient(135deg,#2563eb,#7c3aed)
+}
+
 .info-icon{font-size:25px}
-.info-card span:nth-child(2){flex:1}
-.info-card strong,.info-card small{display:block}
-.info-card small{margin-top:4px;opacity:.8}
-.info-arrow{font-size:26px}
-.section-title{margin:25px 0 14px}
-.section-title p,.muted{color:#64748b;margin-top:5px}
-.category-grid{display:grid;gap:12px}
-.category-grid button{border:0;padding:18px;border-radius:16px;background:white;display:flex;justify-content:space-between;box-shadow:0 5px 15px rgba(15,23,42,.08)}
-.category-grid button span:first-child{font-weight:bold;color:#1e3a8a}
-.cat-count{color:#64748b;font-size:12px}
-.card{max-width:600px;margin:15px auto;padding:26px;background:white;border-radius:24px;box-shadow:0 10px 30px rgba(15,23,42,.08)}
-.card h2{text-align:center;color:#1e3a8a;margin-bottom:12px}
-label{display:block;margin-top:15px;margin-bottom:7px;font-weight:bold}
-input{width:100%;padding:13px;border:2px solid #e2e8f0;border-radius:12px;outline:none}
-input:focus{border-color:#2563eb}
-.primary,.secondary{width:100%;border:0;padding:14px;border-radius:13px;margin-top:12px;font-weight:bold}
-.primary{color:white;background:linear-gradient(135deg,#2563eb,#4f46e5)}
-.secondary{color:#334155;background:#e2e8f0}
-.payment-summary{margin:20px 0}
-.payment-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #e2e8f0}
-.payment-row.total{color:#2563eb;font-size:18px}
-.status{text-align:center;margin-top:12px;color:#475569}
-.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:bold}
-#timer{padding:8px 12px;border-radius:10px;color:white;background:#2563eb}
-#timer.low{background:#ef4444}
-.progress-track{height:8px;background:#dbeafe;border-radius:10px;overflow:hidden}
-.progress-fill{height:100%;width:0;background:#2563eb}
-.quiz-category{display:inline-block;margin:22px 0 12px;padding:7px 12px;border-radius:20px;color:#1d4ed8;background:#dbeafe;font-size:12px;font-weight:bold}
-#quiz-question{font-size:24px;line-height:1.35;margin-bottom:18px}
-.quiz-choices{display:grid;gap:10px}
-.quiz-choices button{padding:16px;border:2px solid #e2e8f0;background:white;border-radius:13px;text-align:left}
-.quiz-choices button.correct{background:#dcfce7;border-color:#22c55e}
-.quiz-choices button.wrong{background:#fee2e2;border-color:#ef4444}
-.score-line{margin:18px 0;font-weight:bold;color:#2563eb}
-.result-icon,.how-to-icon{text-align:center;font-size:55px}
-.result-score{text-align:center;margin:15px 0}
-.result-score strong{display:block;font-size:38px;color:#2563eb}
-.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.result-stats div{padding:14px 5px;background:#eff6ff;border-radius:13px;text-align:center}
-.result-stats span,.result-stats strong{display:block}
-.result-stats span{color:#64748b;font-size:11px}
-.result-stats strong{color:#1e3a8a;margin-top:5px;font-size:20px}
-.result-message{text-align:center;margin:20px 0;color:#475569}
-.ranking-list{margin:18px 0}
-.ranking-row{display:flex;align-items:center;gap:10px;padding:14px;margin-bottom:9px;background:#f8fafc;border-radius:13px}
-.ranking-name{flex:1;font-weight:bold}
-.ranking-score{color:#2563eb;font-weight:bold}
-.how-to-step{display:flex;gap:13px;padding:15px 0;border-bottom:1px solid #e2e8f0}
-.how-to-step>b{width:33px;height:33px;min-width:33px;display:flex;justify-content:center;align-items:center;border-radius:50%;color:white;background:#2563eb}
-.how-to-step p{margin-top:4px;color:#64748b}
-.profile-panel{display:none;position:fixed;inset:0;z-index:100;padding:20px;background:rgba(15,23,42,.55);align-items:center;justify-content:center}
-.profile-panel.active{display:flex}
-.profile-box{width:100%;max-width:450px;padding:28px;background:white;border-radius:24px;position:relative}
-.close-profile{position:absolute;right:15px;top:15px;width:35px;height:35px;border:0;border-radius:50%;background:#e2e8f0}
-.big-avatar{width:80px;height:80px;margin:auto;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#dbeafe;font-size:42px}
-.profile-box h2{text-align:center;margin-top:12px;color:#1e3a8a}
-.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
-.profile-stats div{padding:12px 4px;background:#f8fafc;border-radius:12px;text-align:center}
-.profile-stats strong,.profile-stats small{display:block}
-.profile-stats strong{color:#2563eb;margin-top:4px}
-.profile-stats small{color:#64748b;font-size:10px;margin-top:3px}
+
+.info-card span:nth-child(2){
+flex:1
+}
+
+.info-card strong,
+.info-card small{
+display:block
+}
+
+.info-card small{
+margin-top:4px;
+opacity:.8
+}
+
+.info-arrow{
+font-size:26px
+}
+
+.section-title{
+margin:25px 0 14px
+}
+
+.section-title p,
+.muted{
+color:#64748b;
+margin-top:5px
+}
+
+.category-grid{
+display:grid;
+gap:12px
+}
+
+.category-grid button{
+border:0;
+padding:18px;
+border-radius:16px;
+background:white;
+display:flex;
+justify-content:space-between;
+box-shadow:0 5px 15px rgba(15,23,42,.08)
+}
+
+.category-grid button span:first-child{
+font-weight:bold;
+color:#1e3a8a
+}
+
+.cat-count{
+color:#64748b;
+font-size:12px
+}
+
+/* CARD */
+
+.card{
+max-width:600px;
+margin:15px auto;
+padding:26px;
+background:white;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(15,23,42,.08)
+}
+
+.card h2{
+text-align:center;
+color:#1e3a8a;
+margin-bottom:12px
+}
+
+label{
+display:block;
+margin-top:15px;
+margin-bottom:7px;
+font-weight:bold
+}
+
+input{
+width:100%;
+padding:13px;
+border:2px solid #e2e8f0;
+border-radius:12px;
+outline:none
+}
+
+input:focus{
+border-color:#2563eb
+}
+
+.primary,
+.secondary{
+width:100%;
+border:0;
+padding:14px;
+border-radius:13px;
+margin-top:12px;
+font-weight:bold
+}
+
+.primary{
+color:white;
+background:linear-gradient(135deg,#2563eb,#4f46e5)
+}
+
+.secondary{
+color:#334155;
+background:#e2e8f0
+}
+
+/* QUIZ */
+
+.quiz-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+font-weight:bold
+}
+
+#timer{
+padding:8px 12px;
+border-radius:10px;
+color:white;
+background:#2563eb
+}
+
+#timer.low{
+background:#ef4444
+}
+
+.progress-track{
+height:8px;
+background:#dbeafe;
+border-radius:10px;
+overflow:hidden
+}
+
+.progress-fill{
+height:100%;
+width:0;
+background:#2563eb
+}
+
+.quiz-category{
+display:inline-block;
+margin:22px 0 12px;
+padding:7px 12px;
+border-radius:20px;
+color:#1d4ed8;
+background:#dbeafe;
+font-size:12px;
+font-weight:bold
+}
+
+#quiz-question{
+font-size:24px;
+line-height:1.35;
+margin-bottom:18px
+}
+
+.quiz-choices{
+display:grid;
+gap:10px
+}
+
+.quiz-choices button{
+padding:16px;
+border:2px solid #e2e8f0;
+background:white;
+border-radius:13px;
+text-align:left
+}
+
+.quiz-choices button.correct{
+background:#dcfce7;
+border-color:#22c55e
+}
+
+.quiz-choices button.wrong{
+background:#fee2e2;
+border-color:#ef4444
+}
+
+.score-line{
+margin:18px 0;
+font-weight:bold;
+color:#2563eb
+}
+
+/* RESULTAT */
+
+.result-icon,
+.how-to-icon{
+text-align:center;
+font-size:55px
+}
+
+.result-score{
+text-align:center;
+margin:15px 0
+}
+
+.result-score strong{
+display:block;
+font-size:38px;
+color:#2563eb
+}
+
+.result-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
+}
+
+.result-stats div{
+padding:14px 5px;
+background:#eff6ff;
+border-radius:13px;
+text-align:center
+}
+
+.result-stats span,
+.result-stats strong{
+display:block
+}
+
+.result-stats span{
+color:#64748b;
+font-size:11px
+}
+
+.result-stats strong{
+color:#1e3a8a;
+margin-top:5px;
+font-size:20px
+}
+
+.result-message{
+text-align:center;
+margin:20px 0;
+color:#475569
+}
+
+/* NOUVEAU CLASSEMENT */
+
+.podium{
+display:flex;
+align-items:end;
+justify-content:center;
+gap:8px;
+margin:30px 0 25px
+}
+
+.podium-player{
+width:30%;
+text-align:center;
+position:relative
+}
+
+.podium-avatar{
+width:58px;
+height:58px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:#dbeafe;
+font-size:28px
+}
+
+.podium-player.first .podium-avatar{
+width:75px;
+height:75px;
+background:#fef3c7;
+font-size:38px
+}
+
+.podium-player.second .podium-avatar{
+background:#e2e8f0
+}
+
+.podium-player.third .podium-avatar{
+background:#fed7aa
+}
+
+.podium-name{
+font-weight:bold;
+margin-top:7px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
+}
+
+.podium-score{
+font-size:12px;
+color:#64748b;
+margin-top:3px
+}
+
+.podium-rank{
+margin-top:8px;
+padding:12px 5px;
+border-radius:12px 12px 0 0;
+font-weight:bold;
+color:white;
+background:#2563eb
+}
+
+.first .podium-rank{
+padding:25px 5px;
+background:#f59e0b
+}
+
+.second .podium-rank{
+padding:18px 5px;
+background:#64748b
+}
+
+.third .podium-rank{
+padding:12px 5px;
+background:#c2410c
+}
+
+.my-ranking{
+margin:20px 0;
+padding:18px;
+border-radius:18px;
+background:linear-gradient(135deg,#eff6ff,#eef2ff);
+border:2px solid #bfdbfe
+}
+
+.my-ranking-title{
+font-size:13px;
+color:#64748b
+}
+
+.my-ranking-main{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:8px
+}
+
+.my-ranking-main strong{
+font-size:24px;
+color:#2563eb
+}
+
+.ranking-list{
+margin:18px 0
+}
+
+.ranking-row{
+display:flex;
+align-items:center;
+gap:10px;
+padding:14px;
+margin-bottom:9px;
+background:#f8fafc;
+border-radius:13px
+}
+
+.ranking-row.me{
+background:#dbeafe;
+border:1px solid #93c5fd
+}
+
+.ranking-name{
+flex:1;
+font-weight:bold
+}
+
+.ranking-score{
+color:#2563eb;
+font-weight:bold
+}
+
+/* STATISTIQUES */
+
+.statistics{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin:20px 0
+}
+
+.stat-box{
+padding:17px;
+background:#f8fafc;
+border-radius:16px;
+text-align:center
+}
+
+.stat-icon{
+font-size:25px
+}
+
+.stat-box strong{
+display:block;
+font-size:23px;
+color:#2563eb;
+margin-top:5px
+}
+
+.stat-box small{
+color:#64748b
+}
+
+/* COMMENT */
+
+.how-to-step{
+display:flex;
+gap:13px;
+padding:15px 0;
+border-bottom:1px solid #e2e8f0
+}
+
+.how-to-step>b{
+width:33px;
+height:33px;
+min-width:33px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+color:white;
+background:#2563eb
+}
+
+.how-to-step p{
+margin-top:4px;
+color:#64748b
+}
+
+/* PROFIL */
+
+.profile-panel{
+display:none;
+position:fixed;
+inset:0;
+z-index:100;
+padding:20px;
+background:rgba(15,23,42,.55);
+align-items:center;
+justify-content:center
+}
+
+.profile-panel.active{
+display:flex
+}
+
+.profile-box{
+width:100%;
+max-width:450px;
+padding:28px;
+background:white;
+border-radius:24px;
+position:relative
+}
+
+.close-profile{
+position:absolute;
+right:15px;
+top:15px;
+width:35px;
+height:35px;
+border:0;
+border-radius:50%;
+background:#e2e8f0
+}
+
+.big-avatar{
+width:80px;
+height:80px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:#dbeafe;
+font-size:42px
+}
+
+.profile-box h2{
+text-align:center;
+margin-top:12px;
+color:#1e3a8a
+}
+
+.profile-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-top:20px
+}
+
+.profile-stats div{
+padding:12px 4px;
+background:#f8fafc;
+border-radius:12px;
+text-align:center
+}
+
+.profile-stats strong,
+.profile-stats small{
+display:block
+}
+
+.profile-stats strong{
+color:#2563eb;
+margin-top:4px
+}
+
+.profile-stats small{
+color:#64748b;
+font-size:10px;
+margin-top:3px
+}
+
+.status{
+text-align:center;
+margin-top:12px;
+color:#475569
+}
+
+.payment-row{
+display:flex;
+justify-content:space-between;
+padding:13px 0;
+border-bottom:1px solid #e2e8f0
+}
+
+.payment-row.total{
+color:#2563eb;
+font-size:18px
+}
+
 @media(max-width:600px){
-.profile-info{display:none}
-.hero h1{font-size:24px}
-#quiz-question{font-size:21px}
-.result-stats{grid-template-columns:1fr}
+
+.profile-info{
+display:none
+}
+
+.hero h1{
+font-size:24px
+}
+
+#quiz-question{
+font-size:21px
+}
+
+.statistics{
+grid-template-columns:repeat(2,1fr)
+}
+
 }
 </style>
 </head>
@@ -111,20 +731,25 @@ input:focus{border-color:#2563eb}
 
 <div class="logo">
 <div class="logo-icon">🏆</div>
+
 <div>
 <strong>Konkou</strong>
 <small>Joue pour gagner</small>
 </div>
+
 </div>
 
 <div class="topbar-right">
 
 <button id="btn-profile" class="profile-button">
+
 <span>👤</span>
+
 <span class="profile-info">
 <strong id="profile-name">Joueur</strong>
 <small>Mon profil</small>
 </span>
+
 </button>
 
 <div class="tickets">
@@ -132,6 +757,7 @@ input:focus{border-color:#2563eb}
 </div>
 
 </div>
+
 </header>
 
 
@@ -222,67 +848,13 @@ class="category-grid">
 </section>
 
 
-<!-- PAIEMENT -->
-
-<section id="screen-payment" class="screen">
-
-<div class="card">
-
-<h2>Rejoindre le concours</h2>
-
-<p class="muted">Mode démonstration</p>
-
-<div class="payment-summary">
-
-<div class="payment-row">
-<span>Frais d'entrée</span>
-<strong>50 HTG</strong>
-</div>
-
-<div class="payment-row">
-<span>Joueurs</span>
-<strong>0</strong>
-</div>
-
-<div class="payment-row total">
-<span>Pot</span>
-<strong>0 HTG</strong>
-</div>
-
-</div>
-
-<label>Numéro de téléphone</label>
-
-<input id="payment-phone"
-type="tel"
-placeholder="Ex : 37123456">
-
-<button id="btn-pay" class="primary">
-Continuer
-</button>
-
-<button id="btn-payment-cancel"
-class="secondary">
-Retour
-</button>
-
-<p id="payment-status"
-class="status"></p>
-
-</div>
-
-</section>
-
-
 <!-- QUIZ -->
 
 <section id="screen-quiz" class="screen">
 
 <div class="quiz-top">
 
-<span id="quiz-progress">
-Question
-</span>
+<span id="quiz-progress">Question</span>
 
 <span id="timer">15</span>
 
@@ -296,14 +868,12 @@ class="progress-fill"></div>
 </div>
 
 <span id="quiz-category"
-class="quiz-category">
-</span>
+class="quiz-category"></span>
 
 <h2 id="quiz-question">—</h2>
 
 <div id="quiz-choices"
-class="quiz-choices">
-</div>
+class="quiz-choices"></div>
 
 <div class="score-line">
 Score : <span id="quiz-score">0</span>
@@ -359,6 +929,11 @@ class="primary">
 Rejouer
 </button>
 
+<button id="btn-result-ranking"
+class="secondary">
+🏆 Voir le classement
+</button>
+
 <button id="btn-home"
 class="secondary">
 Accueil
@@ -371,16 +946,23 @@ Accueil
 
 <!-- CLASSEMENT -->
 
-<section id="screen-ranking"
-class="screen">
+<section id="screen-ranking" class="screen">
 
 <div class="card">
 
 <h2>🏆 Classement</h2>
 
 <p class="muted">
-Meilleurs scores
+Les meilleurs joueurs de Konkou
 </p>
+
+<div id="my-ranking"
+class="my-ranking"></div>
+
+<div id="podium"
+class="podium"></div>
+
+<h3>Classement général</h3>
 
 <div id="ranking-list"
 class="ranking-list">
@@ -398,8 +980,7 @@ Retour
 
 <!-- COMMENT FONCTIONNER -->
 
-<section id="screen-how-to"
-class="screen">
+<section id="screen-how-to" class="screen">
 
 <div class="card">
 
@@ -459,8 +1040,7 @@ Retour
 
 <!-- GAINS -->
 
-<section id="screen-gains"
-class="screen">
+<section id="screen-gains" class="screen">
 
 <div class="card">
 
@@ -507,8 +1087,7 @@ class="status"></p>
 
 <!-- HISTORIQUE -->
 
-<section id="screen-history"
-class="screen">
+<section id="screen-history" class="screen">
 
 <div class="card">
 
@@ -565,13 +1144,35 @@ class="primary">
 Enregistrer
 </button>
 
-<div class="profile-stats">
+<div class="statistics">
 
-<div>
-⭐
+<div class="stat-box">
+<div class="stat-icon">⭐</div>
 <strong id="profile-score">0</strong>
 <small>Points</small>
 </div>
+
+<div class="stat-box">
+<div class="stat-icon">🎮</div>
+<strong id="profile-games">0</strong>
+<small>Parties</small>
+</div>
+
+<div class="stat-box">
+<div class="stat-icon">🏆</div>
+<strong id="profile-best">0</strong>
+<small>Meilleur score</small>
+</div>
+
+<div class="stat-box">
+<div class="stat-icon">📊</div>
+<strong id="profile-average">0</strong>
+<small>Moyenne</small>
+</div>
+
+</div>
+
+<div class="profile-stats">
 
 <div>
 🎟️
@@ -580,14 +1181,21 @@ Enregistrer
 </div>
 
 <div>
-🏆
+🏅
 <strong id="profile-rank">—</strong>
 <small>Rang</small>
 </div>
 
+<div>
+💰
+<strong id="profile-win">0</strong>
+<small>Gains</small>
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 
@@ -608,16 +1216,19 @@ tickets:3
 const RESET=4*60*60*1000;
 const QUESTION_TIME=15;
 
+
 const categories=[
 
 {
 name:"📚 Histoire d'Haïti",
 questions:[
+
 {
 q:"En quelle année Haïti est-elle devenue indépendante ?",
 c:["1791","1804","1815","1822"],
 a:1
 },
+
 {
 q:"Qui a proclamé l'indépendance d'Haïti ?",
 c:[
@@ -628,17 +1239,20 @@ c:[
 ],
 a:1
 },
+
 {
 q:"Quelle bataille est associée à la victoire décisive de l'armée indigène ?",
 c:["Vertières","Jacmel","Léogâne","Port-au-Prince"],
 a:0
 }
+
 ]
 },
 
 {
 name:"🌎 Géographie",
 questions:[
+
 {
 q:"Quelle est la capitale d'Haïti ?",
 c:[
@@ -649,6 +1263,7 @@ c:[
 ],
 a:2
 },
+
 {
 q:"Avec quel pays Haïti partage-t-elle Hispaniola ?",
 c:[
@@ -659,23 +1274,27 @@ c:[
 ],
 a:2
 }
+
 ]
 },
 
 {
 name:"⚽ Sport",
 questions:[
+
 {
 q:"Combien de joueurs une équipe de football possède-t-elle normalement sur le terrain ?",
 c:["7","9","11","13"],
 a:2
 }
+
 ]
 },
 
 {
 name:"💻 Informatique",
 questions:[
+
 {
 q:"Que signifie HTML ?",
 c:[
@@ -686,6 +1305,7 @@ c:[
 ],
 a:0
 },
+
 {
 q:"Quel langage rend principalement une page web interactive ?",
 c:[
@@ -696,6 +1316,7 @@ c:[
 ],
 a:0
 }
+
 ]
 }
 
@@ -704,7 +1325,6 @@ a:0
 
 const screens=[
 "home",
-"payment",
 "quiz",
 "result",
 "ranking",
@@ -713,15 +1333,15 @@ const screens=[
 "history"
 ];
 
+
 function screen(name){
 
 screens.forEach(
 x=>{
-const el=document.getElementById(
-"screen-"+x
-);
+const el=document.getElementById("screen-"+x);
 if(el)el.classList.remove("active");
-});
+}
+);
 
 document.getElementById(
 "screen-"+name
@@ -733,8 +1353,7 @@ document.getElementById(
 function loadTickets(){
 
 const data=JSON.parse(
-localStorage.getItem("tickets")
-||"null"
+localStorage.getItem("tickets")||"null"
 );
 
 if(!data){
@@ -749,10 +1368,7 @@ time:Date.now()
 })
 );
 
-return;
-}
-
-if(Date.now()-data.time>=RESET){
+}else if(Date.now()-data.time>=RESET){
 
 state.tickets=3;
 
@@ -777,17 +1393,14 @@ updateTickets();
 
 function updateTickets(){
 
-document.getElementById(
-"ticket-count"
-).textContent=state.tickets;
+document.getElementById("ticket-count").textContent=
+state.tickets;
 
-document.getElementById(
-"ticket-count-home"
-).textContent=state.tickets;
+document.getElementById("ticket-count-home").textContent=
+state.tickets;
 
-document.getElementById(
-"profile-tickets"
-).textContent=state.tickets;
+document.getElementById("profile-tickets").textContent=
+state.tickets;
 
 }
 
@@ -795,29 +1408,24 @@ document.getElementById(
 function ticketTimer(){
 
 const data=JSON.parse(
-localStorage.getItem("tickets")
-||"null"
+localStorage.getItem("tickets")||"null"
 );
 
 const element=
-document.getElementById(
-"ticket-countdown-home"
-);
+document.getElementById("ticket-countdown-home");
 
 if(!data){
 
-element.textContent=
-"3 tickets disponibles";
-
+element.textContent="3 tickets disponibles";
 return;
+
 }
 
 if(state.tickets>=3){
 
-element.textContent=
-"3 tickets disponibles";
-
+element.textContent="3 tickets disponibles";
 return;
+
 }
 
 const remaining=
@@ -829,8 +1437,8 @@ data.time+RESET-Date.now()
 if(remaining<=0){
 
 loadTickets();
-
 return;
+
 }
 
 const h=Math.floor(
@@ -860,7 +1468,12 @@ alert(
 );
 
 return false;
+
 }
+
+const data=JSON.parse(
+localStorage.getItem("tickets")
+);
 
 state.tickets--;
 
@@ -868,9 +1481,7 @@ localStorage.setItem(
 "tickets",
 JSON.stringify({
 count:state.tickets,
-time:JSON.parse(
-localStorage.getItem("tickets")
-).time
+time:data.time
 })
 );
 
@@ -884,9 +1495,7 @@ return true;
 function renderCategories(){
 
 const box=
-document.getElementById(
-"category-list"
-);
+document.getElementById("category-list");
 
 box.innerHTML="";
 
@@ -916,7 +1525,9 @@ document.createElement("button");
 
 ranking.innerHTML=`
 <span>🏆 Classement</span>
-<span class="cat-count">Voir les scores</span>
+<span class="cat-count">
+Voir les scores
+</span>
 `;
 
 ranking.onclick=showRanking;
@@ -975,7 +1586,8 @@ document.getElementById(
 
 document.getElementById(
 "quiz-score"
-).textContent=state.score;
+).textContent=
+state.score;
 
 document.getElementById(
 "progress-fill"
@@ -995,9 +1607,7 @@ answers.sort(
 );
 
 const box=
-document.getElementById(
-"quiz-choices"
-);
+document.getElementById("quiz-choices");
 
 box.innerHTML="";
 
@@ -1042,8 +1652,7 @@ state.timer=setInterval(
 
 state.time--;
 
-timer.textContent=
-state.time;
+timer.textContent=state.time;
 
 if(state.time<=5)
 timer.classList.add("low");
@@ -1052,10 +1661,7 @@ if(state.time<=0){
 
 clearInterval(state.timer);
 
-answerQuestion(
-null,
-false
-);
+answerQuestion(null,false);
 
 }
 
@@ -1112,8 +1718,7 @@ setTimeout(
 state.index++;
 
 if(
-state.index<
-state.questions.length
+state.index<state.questions.length
 ){
 
 question();
@@ -1171,7 +1776,6 @@ ratio===1
 ?"👍 Bon travail."
 :"💪 Continue à t'entraîner.";
 
-
 saveScore();
 
 screen("result");
@@ -1179,23 +1783,37 @@ screen("result");
 }
 
 
-function saveScore(){
+function getScores(){
 
-const scores=
-JSON.parse(
-localStorage.getItem("scores")
-||"[]"
+return JSON.parse(
+localStorage.getItem("scores")||"[]"
 );
 
+}
+
+
+function saveScore(){
+
+const scores=getScores();
+
 const name=
-localStorage.getItem("name")
-||"Joueur";
+localStorage.getItem("name")||"Joueur";
 
 scores.push({
-name,
+
+name:name,
+
 score:state.score,
-category:categories[state.category].name,
+
+category:
+categories[state.category].name,
+
+correct:state.correct,
+
+wrong:state.wrong,
+
 date:new Date().toLocaleString()
+
 });
 
 localStorage.setItem(
@@ -1208,57 +1826,230 @@ updateProfile();
 }
 
 
+function calculatePlayers(){
+
+const scores=getScores();
+
+const players={};
+
+scores.forEach(game=>{
+
+if(!players[game.name]){
+
+players[game.name]={
+name:game.name,
+points:0,
+games:0,
+best:0
+};
+
+}
+
+players[game.name].points+=game.score;
+
+players[game.name].games++;
+
+players[game.name].best=
+Math.max(
+players[game.name].best,
+game.score
+);
+
+});
+
+return Object.values(players)
+.sort((a,b)=>b.points-a.points);
+
+}
+
+
 function showRanking(){
 
-const scores=
-JSON.parse(
-localStorage.getItem("scores")
-||"[]"
+const players=
+calculatePlayers();
+
+const name=
+localStorage.getItem("name")||"Joueur";
+
+const myIndex=
+players.findIndex(
+p=>p.name===name
 );
 
-scores.sort(
-(a,b)=>b.score-a.score
+const me=
+players[myIndex];
+
+const myBox=
+document.getElementById(
+"my-ranking"
 );
 
-const box=
+if(me){
+
+myBox.innerHTML=`
+
+<div class="my-ranking-title">
+TON CLASSEMENT
+</div>
+
+<div class="my-ranking-main">
+
+<div>
+<strong>#${myIndex+1}</strong>
+<div>${escapeHtml(me.name)}</div>
+</div>
+
+<div>
+<strong>${me.points}</strong>
+<div>points</div>
+</div>
+
+</div>
+`;
+
+}else{
+
+myBox.innerHTML=`
+<div class="my-ranking-title">
+TON CLASSEMENT
+</div>
+<p class="muted">
+Joue une partie pour apparaître dans le classement.
+</p>
+`;
+
+}
+
+
+const podium=
+document.getElementById("podium");
+
+podium.innerHTML="";
+
+const order=[
+1,
+0,
+2
+];
+
+order.forEach(
+position=>{
+
+const player=
+players[position];
+
+if(!player)return;
+
+const div=
+document.createElement("div");
+
+div.className=
+"podium-player "+
+(
+position===0
+?"first"
+:position===1
+?"second"
+:"third"
+);
+
+const medal=
+position===0
+?"🥇"
+:position===1
+?"🥈"
+:"🥉";
+
+div.innerHTML=`
+
+<div class="podium-avatar">
+${medal}
+</div>
+
+<div class="podium-name">
+${escapeHtml(player.name)}
+</div>
+
+<div class="podium-score">
+${player.points} points
+</div>
+
+<div class="podium-rank">
+#${position+1}
+</div>
+
+`;
+
+podium.appendChild(div);
+
+});
+
+
+const list=
 document.getElementById(
 "ranking-list"
 );
 
-box.innerHTML="";
+list.innerHTML="";
 
-if(!scores.length){
+if(!players.length){
 
-box.innerHTML=
-"<p class='muted'>Aucun score pour le moment.</p>";
+list.innerHTML=
+"<p class='muted'>Aucun joueur classé.</p>";
 
 }else{
 
-scores.slice(0,10).forEach(
+players.slice(0,20).forEach(
 (player,index)=>{
 
 const row=
 document.createElement("div");
 
-row.className="ranking-row";
+row.className=
+"ranking-row "+
+(player.name===name?"me":"");
 
 row.innerHTML=`
-<span>${index+1}.</span>
+
+<span>
+#${index+1}
+</span>
+
 <span class="ranking-name">
-${player.name}
+${escapeHtml(player.name)}
 </span>
+
+<span>
+${player.games} 🎮
+</span>
+
 <span class="ranking-score">
-${player.score} pts
+${player.points} pts
 </span>
+
 `;
 
-box.appendChild(row);
+list.appendChild(row);
 
 });
 
 }
 
+updateProfile();
+
 screen("ranking");
+
+}
+
+
+function escapeHtml(text){
+
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
@@ -1266,8 +2057,7 @@ screen("ranking");
 function updateProfile(){
 
 const name=
-localStorage.getItem("name")
-||"Joueur";
+localStorage.getItem("name")||"Joueur";
 
 document.getElementById(
 "profile-name"
@@ -1277,30 +2067,76 @@ document.getElementById(
 "profile-panel-name"
 ).textContent=name;
 
-const scores=
-JSON.parse(
-localStorage.getItem("scores")
-||"[]"
+const scores=getScores();
+
+const mine=
+scores.filter(
+x=>x.name===name
 );
 
-const total=
-scores
-.filter(x=>x.name===name)
-.reduce(
+const points=
+mine.reduce(
 (sum,x)=>sum+x.score,
 0
 );
 
+const games=mine.length;
+
+const best=
+games
+?Math.max(...mine.map(x=>x.score))
+:0;
+
+const average=
+games
+?Math.round(points/games)
+:0;
+
+const players=
+calculatePlayers();
+
+const position=
+players.findIndex(
+p=>p.name===name
+);
+
 document.getElementById(
 "profile-score"
-).textContent=total;
+).textContent=points;
+
+document.getElementById(
+"profile-games"
+).textContent=games;
+
+document.getElementById(
+"profile-best"
+).textContent=best;
+
+document.getElementById(
+"profile-average"
+).textContent=average;
+
+document.getElementById(
+"profile-rank"
+).textContent=
+position>=0
+?"#"+(position+1)
+:"—";
+
+const wallet=
+getWallet();
+
+document.getElementById(
+"profile-win"
+).textContent=
+wallet.winnings;
 
 updateTickets();
 
 }
 
 
-function wallet(){
+function getWallet(){
 
 return JSON.parse(
 localStorage.getItem("wallet")
@@ -1315,19 +2151,9 @@ history:[]
 }
 
 
-function saveWallet(data){
-
-localStorage.setItem(
-"wallet",
-JSON.stringify(data)
-);
-
-}
-
-
 function updateWallet(){
 
-const w=wallet();
+const w=getWallet();
 
 document.getElementById(
 "available-balance"
@@ -1349,7 +2175,7 @@ w.withdrawn+" HTG";
 
 function showHistory(){
 
-const w=wallet();
+const w=getWallet();
 
 const box=
 document.getElementById(
@@ -1374,15 +2200,19 @@ document.createElement("div");
 row.className="ranking-row";
 
 row.innerHTML=`
+
 <span>${item.icon}</span>
+
 <span class="ranking-name">
-${item.text}
+${escapeHtml(item.text)}
 <br>
-<small>${item.date}</small>
+<small>${escapeHtml(item.date)}</small>
 </span>
+
 <span class="ranking-score">
 ${item.amount} HTG
 </span>
+
 `;
 
 box.appendChild(row);
@@ -1405,14 +2235,12 @@ document.getElementById(
 document.getElementById(
 "profile-name-input"
 ).value=
-localStorage.getItem("name")
-||"";
+localStorage.getItem("name")||"";
 
 document.getElementById(
 "profile-phone-input"
 ).value=
-localStorage.getItem("phone")
-||"";
+localStorage.getItem("phone")||"";
 
 document.getElementById(
 "profile-panel"
@@ -1502,6 +2330,7 @@ document.getElementById(
 ).onclick=()=>{
 
 updateWallet();
+
 screen("gains");
 
 };
@@ -1527,6 +2356,10 @@ document.getElementById(
 ).onclick=()=>{
 screen("home");
 };
+
+document.getElementById(
+"btn-result-ranking"
+).onclick=showRanking;
 
 document.getElementById(
 "btn-home"
@@ -1562,7 +2395,7 @@ document.getElementById(
 const phone=
 localStorage.getItem("phone");
 
-const w=wallet();
+const w=getWallet();
 
 const status=
 document.getElementById(
@@ -1590,26 +2423,6 @@ return;
 status.textContent=
 "⚠️ Le retrait réel n'est pas encore connecté.";
 
-};
-
-
-/* PAIEMENT */
-
-document.getElementById(
-"btn-pay"
-).onclick=()=>{
-
-document.getElementById(
-"payment-status"
-).textContent=
-"⚠️ Paiement réel non connecté. Cette version est une démonstration.";
-
-};
-
-document.getElementById(
-"btn-payment-cancel"
-).onclick=()=>{
-screen("home");
 };
 
 
