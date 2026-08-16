@@ -10,29 +10,37 @@
 <style>
 
 /* =========================
-   GÉNÉRAL
+   BASE
 ========================= */
 
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    min-height: 100vh;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(135deg, #e0ecff, #f5f3ff);
     color: #172033;
 }
 
+/* L'espace en bas évite que le footer cache le contenu */
 .app {
     width: 100%;
     max-width: 900px;
     margin: auto;
     padding: 15px;
+    padding-bottom: 100px;
 }
 
-button {
+button,
+input {
     font-family: inherit;
 }
 
@@ -69,7 +77,7 @@ button {
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
 
     border-radius: 14px;
 
@@ -121,18 +129,15 @@ button {
 
     color: white;
 
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7c3aed
-        );
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
 
     border-radius: 25px;
 
-    box-shadow:
-        0 15px 35px
-        rgba(37,99,235,.25);
+    box-shadow: 0 15px 35px rgba(37,99,235,.25);
 
     margin-bottom: 25px;
 }
@@ -181,7 +186,9 @@ button {
 
 .category-grid {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 15px;
 }
 
@@ -206,9 +213,7 @@ button {
 
     cursor: pointer;
 
-    box-shadow:
-        0 5px 15px
-        rgba(0,0,0,.06);
+    box-shadow: 0 5px 15px rgba(0,0,0,.06);
 
     transition: .2s;
 }
@@ -238,21 +243,18 @@ button {
 .category-grid .paid-contest-btn {
     grid-column: 1 / -1;
 
-    background:
-        linear-gradient(
-            135deg,
-            #f59e0b,
-            #ea580c
-        );
+    background: linear-gradient(
+        135deg,
+        #f59e0b,
+        #ea580c
+    );
 
     color: white;
 
     border: none;
 }
 
-.category-grid
-.paid-contest-btn
-.cat-count {
+.category-grid .paid-contest-btn .cat-count {
     color: white;
 }
 
@@ -270,12 +272,11 @@ button {
 
     border-radius: 13px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7c3aed
-        );
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
 
     color: white;
 
@@ -332,9 +333,7 @@ button {
 
     border-radius: 22px;
 
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
 .payment-box h2 {
@@ -343,6 +342,7 @@ button {
 
 .payment-sub {
     color: #64748b;
+
     line-height: 1.5;
 }
 
@@ -363,8 +363,7 @@ button {
 
     padding: 12px 0;
 
-    border-bottom:
-        1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .payment-row:last-child {
@@ -373,6 +372,7 @@ button {
 
 .payment-row-total {
     color: #2563eb;
+
     font-size: 18px;
 }
 
@@ -405,11 +405,11 @@ button {
 }
 
 .payment-status {
-    text-align: center;
+    min-height: 20px;
 
     margin-top: 15px;
 
-    min-height: 20px;
+    text-align: center;
 }
 
 .payment-status.error {
@@ -457,6 +457,7 @@ button {
 
 #timer.low {
     background: #fee2e2;
+
     color: #dc2626;
 }
 
@@ -475,12 +476,11 @@ button {
 .progress-fill {
     height: 100%;
 
-    background:
-        linear-gradient(
-            90deg,
-            #2563eb,
-            #7c3aed
-        );
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
 
     transition: width .3s;
 }
@@ -510,15 +510,14 @@ button {
 
     border-radius: 18px;
 
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
 
     font-size: 22px;
 }
 
 .quiz-choices {
     display: grid;
+
     gap: 12px;
 }
 
@@ -542,6 +541,7 @@ button {
 
 .quiz-choices button:hover {
     border-color: #2563eb;
+
     background: #eff6ff;
 }
 
@@ -577,7 +577,7 @@ button {
 
 
 /* =========================
-   RESULTAT
+   RÉSULTAT
 ========================= */
 
 .result-box {
@@ -593,9 +593,7 @@ button {
 
     text-align: center;
 
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
 .result-icon {
@@ -604,6 +602,7 @@ button {
 
 .result-score {
     color: #64748b;
+
     font-size: 20px;
 }
 
@@ -645,16 +644,19 @@ button {
 
 .result-stat span {
     display: block;
+
     color: #64748b;
 }
 
 .result-stat strong {
     font-size: 22px;
+
     color: #2563eb;
 }
 
 .result-message {
     color: #64748b;
+
     line-height: 1.5;
 }
 
@@ -684,17 +686,20 @@ button {
 }
 
 .ranking-position {
-    font-size: 25px;
     min-width: 45px;
+
+    font-size: 25px;
 }
 
 .ranking-name {
     flex: 1;
+
     font-weight: bold;
 }
 
 .ranking-score {
     color: #2563eb;
+
     font-weight: bold;
 }
 
@@ -761,50 +766,48 @@ button {
 
 
 /* =========================
-   DÉVELOPPEUR
+   DÉVELOPPEUR FIXE
 ========================= */
 
-.developer-footer {
-    margin-top: 35px;
+#developer-footer {
+    position: fixed;
 
-    padding: 22px 10px;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    min-height: 65px;
+
+    padding: 9px 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
 
     text-align: center;
 
+    background: rgba(255,255,255,.98);
+
+    border-top: 2px solid #2563eb;
+
+    box-shadow: 0 -5px 20px rgba(0,0,0,.10);
+
+    z-index: 99999;
+
     color: #64748b;
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
-.developer-footer::before {
-    content: "";
-
-    display: block;
-
-    width: 80px;
-
-    height: 3px;
-
-    margin: 0 auto 15px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #2563eb,
-            #7c3aed
-        );
-
-    border-radius: 10px;
-}
-
-.developer-footer strong {
-    display: block;
-
-    margin-top: 6px;
-
+#developer-footer strong {
     color: #2563eb;
 
-    font-size: 17px;
+    font-size: 15px;
 }
 
 
@@ -816,6 +819,8 @@ button {
 
     .app {
         padding: 10px;
+
+        padding-bottom: 100px;
     }
 
     .category-grid {
@@ -842,6 +847,13 @@ button {
         flex-wrap: wrap;
     }
 
+    #developer-footer {
+        font-size: 11px;
+    }
+
+    #developer-footer strong {
+        font-size: 13px;
+    }
 }
 
 </style>
@@ -851,7 +863,6 @@ button {
 <body>
 
 <main class="app">
-
 
 <!-- =========================
      HEADER
@@ -867,9 +878,7 @@ button {
 
         <div>
 
-            <strong>
-                Konkou
-            </strong>
+            <strong>Konkou</strong>
 
             <small>
                 Joue pour gagner
@@ -879,14 +888,10 @@ button {
 
     </div>
 
-
     <div class="tickets">
 
         🎟️
-
-        <span id="ticket-count">
-            3
-        </span>
+        <span id="ticket-count">3</span>
 
     </div>
 
@@ -978,11 +983,9 @@ button {
         </h2>
 
         <p class="payment-sub">
-
             Ce concours est payant.
             Le gagnant remporte une part
             du pot.
-
         </p>
 
 
@@ -1128,7 +1131,6 @@ button {
     <div class="score-line">
 
         Score :
-
         <span id="quiz-score">
             0
         </span>
@@ -1148,7 +1150,7 @@ button {
 
 
 <!-- =========================
-     RESULTAT
+     RÉSULTAT
 ========================= -->
 
 <section
@@ -1162,11 +1164,9 @@ button {
             🏆
         </div>
 
-
         <h2>
             Quiz terminé !
         </h2>
-
 
         <p class="result-score">
 
@@ -1251,19 +1251,15 @@ button {
             🏆
         </div>
 
-
         <h2>
             Classement Konkou
         </h2>
 
-
         <p class="result-message">
-            Les meilleurs scores des joueurs
+            Les meilleurs joueurs de Konkou
         </p>
 
-
         <div id="ranking-list"></div>
-
 
         <button
             id="btn-ranking-home"
@@ -1277,25 +1273,24 @@ button {
 
 </section>
 
+</main>
+
 
 <!-- =========================
      DÉVELOPPEUR
 ========================= -->
 
-<footer class="developer-footer">
+<footer id="developer-footer">
 
     <span>
         Développé par
     </span>
 
     <strong>
-        Ing. Fawenbert Regis
+        👨‍💻 Ing. Fawenbert Regis
     </strong>
 
 </footer>
-
-
-</main>
 
 
 <script>
@@ -1433,7 +1428,7 @@ const PAID_CONTEST = {
 
     id: "concours",
 
-    name: "Concours de la semaine",
+    name: "🏆 Concours de la semaine",
 
     entryFee: 50,
 
@@ -1487,7 +1482,7 @@ const PAID_CONTEST = {
 
 
 /* =========================
-   ÉTAT
+   VARIABLES
 ========================= */
 
 let currentCategory = null;
@@ -1497,6 +1492,7 @@ let score = 0;
 let timer = null;
 let timeLeft = 15;
 let answered = false;
+
 let tickets = 3;
 
 
@@ -1504,15 +1500,14 @@ let tickets = 3;
    ÉCRANS
 ========================= */
 
-const screens =
+const allScreens =
 document.querySelectorAll(".screen");
 
 
 function showScreen(screen) {
 
-    screens.forEach(
-        item =>
-        item.classList.remove("active")
+    allScreens.forEach(
+        item => item.classList.remove("active")
     );
 
     screen.classList.add("active");
@@ -1540,8 +1535,7 @@ function shuffle(array) {
         [
             array[i],
             array[j]
-        ] =
-        [
+        ] = [
             array[j],
             array[i]
         ];
@@ -1549,6 +1543,7 @@ function shuffle(array) {
     }
 
     return array;
+
 }
 
 
@@ -1556,23 +1551,21 @@ function shuffle(array) {
    CATÉGORIES
 ========================= */
 
-function displayCategories() {
+function renderCategories() {
 
     const list =
-    document.getElementById(
-        "category-list"
-    );
+    document.getElementById("category-list");
 
     list.innerHTML = "";
 
 
-    const contest =
+    const paid =
     document.createElement("button");
 
-    contest.className =
+    paid.className =
     "paid-contest-btn";
 
-    contest.innerHTML = `
+    paid.innerHTML = `
 
         <span>
             🏆 Concours de la semaine
@@ -1584,38 +1577,40 @@ function displayCategories() {
 
     `;
 
-    contest.onclick =
-    openPayment;
-
-    list.appendChild(contest);
-
-
-    CATEGORIES.forEach(
-        category => {
-
-            const button =
-            document.createElement("button");
-
-            button.innerHTML = `
-
-                <span>
-                    ${category.name}
-                </span>
-
-                <span class="cat-count">
-                    ${category.questions.length}
-                    questions
-                </span>
-
-            `;
-
-            button.onclick =
-            () => startQuiz(category);
-
-            list.appendChild(button);
-
-        }
+    paid.addEventListener(
+        "click",
+        openPayment
     );
+
+    list.appendChild(paid);
+
+
+    CATEGORIES.forEach(category => {
+
+        const button =
+        document.createElement("button");
+
+        button.innerHTML = `
+
+            <span>
+                ${category.name}
+            </span>
+
+            <span class="cat-count">
+                ${category.questions.length}
+                question(s)
+            </span>
+
+        `;
+
+        button.addEventListener(
+            "click",
+            () => startQuiz(category)
+        );
+
+        list.appendChild(button);
+
+    });
 
 }
 
@@ -1664,72 +1659,6 @@ function openPayment() {
 
 function refreshPayment() {
 
-    const entries =
-    JSON.parse(
-        localStorage.getItem(
-            "konkou_players"
-        ) || "[]"
-    );
-
-
-    document.getElementById(
-        "payment-players"
-    ).textContent =
-    entries.length;
-
-
-    document.getElementById(
-        "payment-pot"
-    ).textContent =
-    entries.length * 50 +
-    " HTG";
-
-}
-
-
-document.getElementById(
-    "btn-payment-cancel"
-).onclick = function() {
-
-    showScreen(
-        document.getElementById(
-            "screen-home"
-        )
-    );
-
-};
-
-
-document.getElementById(
-    "btn-pay"
-).onclick = function() {
-
-    const phone =
-    document.getElementById(
-        "payment-phone"
-    ).value.trim();
-
-
-    if (
-        phone.replace(/\s/g,"").length < 8
-    ) {
-
-        const status =
-        document.getElementById(
-            "payment-status"
-        );
-
-        status.textContent =
-        "Entre un numéro MonCash valide.";
-
-        status.className =
-        "payment-status error";
-
-        return;
-
-    }
-
-
     const players =
     JSON.parse(
         localStorage.getItem(
@@ -1737,48 +1666,122 @@ document.getElementById(
         ) || "[]"
     );
 
-
-    players.push({
-        phone: phone,
-        score: null
-    });
-
-
-    localStorage.setItem(
-        "konkou_players",
-        JSON.stringify(players)
-    );
-
-
-    const status =
     document.getElementById(
-        "payment-status"
-    );
+        "payment-players"
+    ).textContent =
+    players.length;
+
+    document.getElementById(
+        "payment-pot"
+    ).textContent =
+    players.length * 50 + " HTG";
+
+}
 
 
-    status.textContent =
-    "Paiement confirmé (simulation). Bonne chance !";
+document.getElementById(
+    "btn-payment-cancel"
+).addEventListener(
+    "click",
+    () => {
 
-    status.className =
-    "payment-status success";
+        showScreen(
+            document.getElementById(
+                "screen-home"
+            )
+        );
+
+    }
+);
 
 
-    setTimeout(
-        () => startQuiz(PAID_CONTEST),
-        800
-    );
+document.getElementById(
+    "btn-pay"
+).addEventListener(
+    "click",
+    () => {
 
-};
+        const phone =
+        document.getElementById(
+            "payment-phone"
+        ).value.trim();
+
+
+        if (
+            phone.replace(/\s/g, "").length < 8
+        ) {
+
+            const status =
+            document.getElementById(
+                "payment-status"
+            );
+
+            status.textContent =
+            "Entre un numéro MonCash valide.";
+
+            status.className =
+            "payment-status error";
+
+            return;
+
+        }
+
+
+        /*
+           Ceci est uniquement une simulation.
+           Aucun vrai paiement MonCash
+           n'est effectué ici.
+        */
+
+        const players =
+        JSON.parse(
+            localStorage.getItem(
+                "konkou_players"
+            ) || "[]"
+        );
+
+
+        players.push({
+            phone: phone,
+            score: null
+        });
+
+
+        localStorage.setItem(
+            "konkou_players",
+            JSON.stringify(players)
+        );
+
+
+        const status =
+        document.getElementById(
+            "payment-status"
+        );
+
+        status.textContent =
+        "Paiement confirmé (simulation). Bonne chance !";
+
+        status.className =
+        "payment-status success";
+
+
+        setTimeout(
+            () => startQuiz(PAID_CONTEST),
+            800
+        );
+
+    }
+);
 
 
 /* =========================
-   QUIZ
+   DÉMARRER QUIZ
 ========================= */
 
 function startQuiz(category) {
 
     if (
-        category.id !== "concours"
+        category.id !== PAID_CONTEST.id
     ) {
 
         if (tickets <= 0) {
@@ -1798,13 +1801,10 @@ function startQuiz(category) {
     }
 
 
-    currentCategory =
-    category;
+    currentCategory = category;
 
     questions =
-    shuffle(
-        [...category.questions]
-    );
+    shuffle([...category.questions]);
 
     currentQuestion = 0;
 
@@ -1821,6 +1821,10 @@ function startQuiz(category) {
 }
 
 
+/* =========================
+   QUESTION
+========================= */
+
 function showQuestion() {
 
     answered = false;
@@ -1828,7 +1832,7 @@ function showQuestion() {
     clearInterval(timer);
 
 
-    const q =
+    const question =
     questions[currentQuestion];
 
 
@@ -1841,7 +1845,7 @@ function showQuestion() {
     document.getElementById(
         "quiz-question"
     ).textContent =
-    q.question;
+    question.question;
 
 
     document.getElementById(
@@ -1867,11 +1871,11 @@ function showQuestion() {
 
 
     const choices =
-    q.choices.map(
-        (text,index) => ({
+    question.choices.map(
+        (text, index) => ({
             text: text,
             correct:
-            index === q.answerIndex
+            index === question.answerIndex
         })
     );
 
@@ -1884,34 +1888,29 @@ function showQuestion() {
         "quiz-choices"
     );
 
-
     container.innerHTML = "";
 
 
-    choices.forEach(
-        choice => {
+    choices.forEach(choice => {
 
-            const button =
-            document.createElement(
-                "button"
-            );
+        const button =
+        document.createElement("button");
 
-            button.textContent =
-            choice.text;
+        button.textContent =
+        choice.text;
 
-            button.onclick =
+        button.addEventListener(
+            "click",
             () =>
             selectAnswer(
                 button,
                 choice.correct
-            );
+            )
+        );
 
-            container.appendChild(
-                button
-            );
+        container.appendChild(button);
 
-        }
-    );
+    });
 
 
     startTimer();
@@ -1928,59 +1927,46 @@ function startTimer() {
     timeLeft = 15;
 
     const timerElement =
-    document.getElementById(
-        "timer"
-    );
+    document.getElementById("timer");
 
     timerElement.textContent =
     timeLeft;
 
-    timerElement.classList.remove(
-        "low"
-    );
+    timerElement.classList.remove("low");
 
 
     timer =
-    setInterval(
-        () => {
+    setInterval(() => {
 
-            timeLeft--;
+        timeLeft--;
 
-            timerElement.textContent =
-            timeLeft;
+        timerElement.textContent =
+        timeLeft;
 
 
-            if (
-                timeLeft <= 5
-            ) {
+        if (timeLeft <= 5) {
 
-                timerElement.classList.add(
-                    "low"
+            timerElement.classList.add("low");
+
+        }
+
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timer);
+
+            if (!answered) {
+
+                selectAnswer(
+                    null,
+                    false
                 );
 
             }
 
+        }
 
-            if (
-                timeLeft <= 0
-            ) {
-
-                clearInterval(timer);
-
-                if (!answered) {
-
-                    selectAnswer(
-                        null,
-                        false
-                    );
-
-                }
-
-            }
-
-        },
-        1000
-    );
+    }, 1000);
 
 }
 
@@ -1991,7 +1977,7 @@ function startTimer() {
 
 function selectAnswer(
     button,
-    correct
+    isCorrect
 ) {
 
     if (answered) {
@@ -2003,19 +1989,21 @@ function selectAnswer(
     clearInterval(timer);
 
 
-    document
-    .querySelectorAll(
+    const buttons =
+    document.querySelectorAll(
         "#quiz-choices button"
-    )
-    .forEach(
-        b => b.disabled = true
+    );
+
+
+    buttons.forEach(
+        item => item.disabled = true
     );
 
 
     if (button) {
 
         button.classList.add(
-            correct
+            isCorrect
             ? "correct"
             : "wrong"
         );
@@ -2023,41 +2011,38 @@ function selectAnswer(
     }
 
 
-    if (correct) {
+    if (isCorrect) {
 
         score += 10;
 
     }
 
 
-    setTimeout(
-        () => {
+    setTimeout(() => {
 
-            currentQuestion++;
+        currentQuestion++;
 
 
-            if (
-                currentQuestion <
-                questions.length
-            ) {
+        if (
+            currentQuestion <
+            questions.length
+        ) {
 
-                showQuestion();
+            showQuestion();
 
-            } else {
+        } else {
 
-                finishQuiz();
+            finishQuiz();
 
-            }
+        }
 
-        },
-        700
-    );
+    }, 700);
 
 }
 
 
 /* =========================
-   FIN DU QUIZ
+   FIN
 ========================= */
 
 function finishQuiz() {
@@ -2065,7 +2050,7 @@ function finishQuiz() {
     clearInterval(timer);
 
 
-    const total =
+    const maximum =
     questions.length * 10;
 
 
@@ -2078,11 +2063,11 @@ function finishQuiz() {
     document.getElementById(
         "result-total"
     ).textContent =
-    total;
+    maximum;
 
 
     const ratio =
-    score / total;
+    score / maximum;
 
 
     const message =
@@ -2091,47 +2076,42 @@ function finishQuiz() {
     );
 
 
-    if (ratio === 1) {
-
-        message.textContent =
-        "🎉 Excellent ! Score parfait !";
-
-    }
-
-    else if (ratio >= .7) {
-
-        message.textContent =
-        "👏 Très bien !";
-
-    }
-
-    else {
-
-        message.textContent =
-        "💪 Continue à t'entraîner !";
-
-    }
-
-
     const badge =
     document.getElementById(
         "result-badge"
     );
 
 
-    if (ratio >= .7) {
+    if (ratio === 1) {
+
+        message.textContent =
+        "🎉 Excellent ! Score parfait !";
+
+        badge.textContent =
+        "🏆 Score parfait !";
 
         badge.style.display =
         "inline-block";
 
+    }
+
+    else if (ratio >= 0.7) {
+
+        message.textContent =
+        "👏 Très bien ! Tu maîtrises bien cette catégorie.";
+
         badge.textContent =
-        ratio === 1
-        ? "🏆 Score parfait !"
-        : "👍 Bien joué !";
+        "👍 Bien joué !";
+
+        badge.style.display =
+        "inline-block";
 
     }
 
     else {
+
+        message.textContent =
+        "💪 Continue à t'entraîner pour améliorer ton score.";
 
         badge.style.display =
         "none";
@@ -2154,17 +2134,20 @@ function finishQuiz() {
 
 document.getElementById(
     "btn-replay"
-).onclick = function() {
+).addEventListener(
+    "click",
+    () => {
 
-    if (currentCategory) {
+        if (currentCategory) {
 
-        startQuiz(
-            currentCategory
-        );
+            startQuiz(
+                currentCategory
+            );
+
+        }
 
     }
-
-};
+);
 
 
 /* =========================
@@ -2173,17 +2156,20 @@ document.getElementById(
 
 document.getElementById(
     "btn-home"
-).onclick = function() {
+).addEventListener(
+    "click",
+    () => {
 
-    clearInterval(timer);
+        clearInterval(timer);
 
-    showScreen(
-        document.getElementById(
-            "screen-home"
-        )
-    );
+        showScreen(
+            document.getElementById(
+                "screen-home"
+            )
+        );
 
-};
+    }
+);
 
 
 /* =========================
@@ -2192,17 +2178,20 @@ document.getElementById(
 
 document.getElementById(
     "btn-quit"
-).onclick = function() {
+).addEventListener(
+    "click",
+    () => {
 
-    clearInterval(timer);
+        clearInterval(timer);
 
-    showScreen(
-        document.getElementById(
-            "screen-home"
-        )
-    );
+        showScreen(
+            document.getElementById(
+                "screen-home"
+            )
+        );
 
-};
+    }
+);
 
 
 /* =========================
@@ -2211,51 +2200,63 @@ document.getElementById(
 
 document.getElementById(
     "btn-ranking"
-).onclick = function() {
+).addEventListener(
+    "click",
+    () => {
 
-    const list =
-    document.getElementById(
-        "ranking-list"
-    );
-
-    list.innerHTML = `
-
-        <div class="ranking-empty">
-
-            🏆 Le classement sera
-            disponible prochainement.
-
-        </div>
-
-    `;
-
-    showScreen(
+        const list =
         document.getElementById(
-            "screen-ranking"
-        )
-    );
-
-};
+            "ranking-list"
+        );
 
 
-document.getElementById(
-    "btn-ranking-home"
-).onclick = function() {
+        list.innerHTML = `
 
-    showScreen(
-        document.getElementById(
-            "screen-home"
-        )
-    );
+            <div class="ranking-empty">
 
-};
+                🏆 Aucun score enregistré
+                pour le moment.
+
+            </div>
+
+        `;
+
+
+        showScreen(
+            document.getElementById(
+                "screen-ranking"
+            )
+        );
+
+    }
+);
 
 
 /* =========================
-   DÉMARRAGE
+   RETOUR CLASSEMENT
 ========================= */
 
-displayCategories();
+document.getElementById(
+    "btn-ranking-home"
+).addEventListener(
+    "click",
+    () => {
+
+        showScreen(
+            document.getElementById(
+                "screen-home"
+            )
+        );
+
+    }
+);
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+renderCategories();
 
 updateTickets();
 
