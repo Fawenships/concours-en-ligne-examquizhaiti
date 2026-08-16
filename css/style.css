@@ -1,236 +1,53 @@
-* { box-sizing: border-box; }
+<section id="screen-result" class="screen">
 
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #2563eb, #38bdf8);
-  color: #0f172a;
-  margin: 0;
-  padding: 1.5rem 1rem;
-  min-height: 100vh;
-}
+  <div class="result-box">
 
-.app {
-  max-width: 680px;
-  margin: 0 auto;
-  background: white;
-  padding: 1.5rem 2rem 2rem;
-  border-radius: 18px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
+    <div class="result-icon">🏆</div>
 
-.screen { display: none; }
-.screen.active { display: block; }
+    <h2>Quiz terminé !</h2>
 
-/* ---------- HEADER ---------- */
+    <p class="result-score">
+      Ton score :
+      <strong id="result-score">0</strong>
+    </p>
 
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #e2e8f0;
-  margin-bottom: 1.5rem;
-}
+    <div id="result-badge" class="result-badge"></div>
 
-.logo { display: flex; align-items: center; gap: 10px; }
-.logo-icon { font-size: 1.6rem; }
-.logo strong { display: block; color: #1d4ed8; font-size: 1.1rem; }
-.logo small { color: #64748b; }
+    <div class="result-stats">
 
-.tickets {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  border-radius: 999px;
-  padding: 0.4rem 0.9rem;
-  font-weight: bold;
-  color: #1d4ed8;
-}
+      <div class="result-stat">
+        <span>Score maximum</span>
+        <strong id="result-total">0</strong>
+      </div>
 
-/* ---------- ACCUEIL ---------- */
+    </div>
 
-.hero {
-  text-align: center;
-  padding: 1.5rem 1rem 2rem;
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(34,197,94,0.06), rgba(59,130,246,0.05));
-  margin-bottom: 1.5rem;
-}
+    <p id="result-message" class="result-message">
+      Bravo !
+    </p>
 
-.hero-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.hero h1 { margin: 0 0 0.5rem; color: #1d4ed8; }
-.hero p { color: #334155; margin: 0 0 1rem; }
+    <div
+      id="contest-standings"
+      class="contest-standings"
+      style="display:none;"
+    ></div>
 
-.ticket-info {
-  display: inline-block;
-  background: white;
-  border-radius: 999px;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-}
+    <button
+      id="btn-replay"
+      class="start-btn"
+      type="button"
+    >
+      Rejouer
+    </button>
 
-.section-title { margin-bottom: 1rem; }
-.section-title h2 { margin: 0 0 0.2rem; color: #0f172a; }
-.section-title p { margin: 0; color: #64748b; font-size: 0.9rem; }
+    <button
+      id="btn-home"
+      class="restart-btn"
+      type="button"
+    >
+      Retour à l'accueil
+    </button>
 
-.category-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
+  </div>
 
-.category-grid button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0.95rem 1.1rem;
-  border: none;
-  border-radius: 10px;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: left;
-}
-
-.category-grid button:hover { background: #1d4ed8; }
-
-.category-grid .cat-count {
-  font-size: 0.85rem;
-  opacity: 0.85;
-}
-
-/* ---------- QUIZ ---------- */
-
-.quiz-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-  color: #64748b;
-  margin-bottom: 0.5rem;
-}
-
-#timer {
-  background: #2563eb;
-  color: white;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 0.85rem;
-}
-
-#timer.low { background: #f59e0b; }
-
-.progress-track {
-  height: 8px;
-  background: #e2e8f0;
-  border-radius: 999px;
-  overflow: hidden;
-  margin-bottom: 1.3rem;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: #2563eb;
-  transition: width .3s ease;
-}
-
-.quiz-category {
-  display: inline-block;
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: #1d4ed8;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
-#quiz-question { margin-top: 0; color: #0f172a; }
-
-.quiz-choices button {
-  display: block;
-  width: 100%;
-  margin: 0.7rem 0;
-  padding: 0.95rem;
-  border: none;
-  border-radius: 10px;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: left;
-}
-
-.quiz-choices button:hover { background: #1d4ed8; }
-.quiz-choices button:disabled { cursor: default; }
-.quiz-choices button.correct { background: #16a34a; }
-.quiz-choices button.wrong { background: #dc2626; }
-
-.score-line {
-  font-weight: bold;
-  color: #0f766e;
-  margin: 1rem 0;
-}
-
-/* ---------- PAIEMENT ---------- */
-
-.paid-contest-btn {
-  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
-}
-.paid-contest-btn:hover {
-  background: linear-gradient(135deg, #d97706, #b45309) !important;
-}
-
-.payment-box { text-align: left; }
-.payment-box h2 { color: #1d4ed8; margin-bottom: 0.2rem; }
-.payment-sub { color: #64748b; margin-bottom: 1.2rem; font-size: 0.92rem; }
-
-.payment-summary {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1rem 1.2rem;
-  margin-bottom: 1.2rem;
-}
-
-.payment-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.4rem 0;
-  color: #334155;
-  font-size: 0.95rem;
-}
-
-.payment-row-total {
-  border-top: 1px solid #e2e8f0;
-  margin-top: 0.4rem;
-  padding-top: 0.6rem;
-  color: #0f172a;
-  font-size: 1.05rem;
-}
-
-.payment-label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 0.4rem;
-}
-
-.payment-input {
-  display: block;
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.payment-status {
-  min-height:
+</section>
