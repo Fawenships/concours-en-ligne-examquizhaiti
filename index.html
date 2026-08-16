@@ -7,7 +7,6 @@
 
   <title>Konkou — Joue pour Gagner</title>
 
-  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -17,8 +16,10 @@
 
     <!-- HEADER -->
     <header class="topbar">
+
       <div class="logo">
         <div class="logo-icon">🏆</div>
+
         <div>
           <strong>Konkou</strong>
           <small>Joue pour gagner</small>
@@ -28,10 +29,14 @@
       <div class="tickets">
         🎟️ <span id="ticket-count">3</span>
       </div>
+
     </header>
 
 
-    <!-- ACCUEIL -->
+    <!-- =========================
+         ACCUEIL
+    ========================== -->
+
     <section id="screen-home" class="screen active">
 
       <div class="hero">
@@ -56,41 +61,71 @@
 
 
       <div class="section-title">
+
         <div>
           <h2>Choisis une catégorie</h2>
           <p>Teste tes connaissances</p>
         </div>
+
       </div>
 
-      <div id="category-list" class="category-grid"></div>
+
+      <!-- Les catégories seront ajoutées par JavaScript -->
+      <div
+        id="category-list"
+        class="category-grid">
+      </div>
 
 
-      <!-- AUTRES MODES -->
       <div class="section-title modes-title">
+
         <div>
           <h2>Autres modes</h2>
           <p>D'autres défis arrivent bientôt</p>
         </div>
+
       </div>
+
 
       <div class="modes">
 
-        <button class="mode-card disabled">
-          <span class="mode-icon">⚔️</span>
+        <button
+          type="button"
+          class="mode-card disabled">
+
+          <span class="mode-icon">
+            ⚔️
+          </span>
+
           <span>
             <strong>Battle</strong>
-            <small>Affronte un autre joueur</small>
+            <small>
+              Affronte un autre joueur
+            </small>
           </span>
+
           <b>Bientôt</b>
+
         </button>
 
-        <button class="mode-card disabled">
-          <span class="mode-icon">🏆</span>
+
+        <button
+          type="button"
+          class="mode-card disabled">
+
+          <span class="mode-icon">
+            🏆
+          </span>
+
           <span>
             <strong>Classement</strong>
-            <small>Compare ton score</small>
+            <small>
+              Compare ton score
+            </small>
           </span>
+
           <b>Bientôt</b>
+
         </button>
 
       </div>
@@ -98,22 +133,44 @@
     </section>
 
 
-    <!-- QUIZ -->
-    <section id="screen-quiz" class="screen">
+    <!-- =========================
+         QUIZ
+    ========================== -->
+
+    <section
+      id="screen-quiz"
+      class="screen">
 
       <div class="quiz-header">
 
-        <button id="btn-quit" class="icon-button">
+        <button
+          type="button"
+          id="btn-quit"
+          class="icon-button">
+
           ←
+
         </button>
 
+
         <div class="quiz-info">
-          <span id="quiz-category">Culture générale</span>
-          <strong id="quiz-progress">Question 1 sur 10</strong>
+
+          <span id="quiz-category">
+            Culture générale
+          </span>
+
+          <strong id="quiz-progress">
+            Question 1 sur 5
+          </strong>
+
         </div>
 
+
         <div class="score-box">
-          ⭐ <span id="quiz-score">0</span>
+
+          ⭐
+          <span id="quiz-score">0</span>
+
         </div>
 
       </div>
@@ -122,11 +179,21 @@
       <div class="timer-area">
 
         <div class="progress-track">
-          <div id="progress-fill" class="progress-fill"></div>
+
+          <div
+            id="progress-fill"
+            class="progress-fill">
+          </div>
+
         </div>
 
-        <div class="timer" id="timer">
+
+        <div
+          id="timer"
+          class="timer">
+
           15
+
         </div>
 
       </div>
@@ -139,19 +206,27 @@
         </span>
 
         <h2 id="quiz-question">
-          Les questions seront bientôt disponibles.
+          Question...
         </h2>
 
       </div>
 
 
-      <div id="quiz-choices" class="choices"></div>
+      <div
+        id="quiz-choices"
+        class="choices">
+      </div>
 
     </section>
 
 
-    <!-- RÉSULTAT -->
-    <section id="screen-result" class="screen">
+    <!-- =========================
+         RÉSULTAT
+    ========================== -->
+
+    <section
+      id="screen-result"
+      class="screen">
 
       <div class="result-card">
 
@@ -159,29 +234,66 @@
           🏆
         </div>
 
-        <h1>Quiz terminé !</h1>
+        <h1>
+          Quiz terminé !
+        </h1>
 
-        <p>Voici ton résultat</p>
+        <p>
+          Voici ton résultat
+        </p>
+
 
         <div class="final-score">
-          <span id="result-score">0</span>
-          <small>/ <span id="result-total">100</span></small>
+
+          <span id="result-score">
+            0
+          </span>
+
+          <small>
+            /
+            <span id="result-total">
+              0
+            </span>
+          </small>
+
         </div>
 
-        <div class="result-message" id="result-message">
+
+        <div
+          id="result-message"
+          class="result-message">
+
           Bien joué !
+
         </div>
 
-        <div class="badge" id="result-badge">
+
+        <div
+          id="result-badge"
+          class="badge">
+
           👍 Bien joué !
+
         </div>
 
-        <button class="primary-btn" id="btn-replay">
+
+        <button
+          type="button"
+          id="btn-replay"
+          class="primary-btn">
+
           🔄 Rejouer
+
         </button>
 
-        <button class="secondary-btn" id="btn-home">
+
+        <button
+          type="button"
+          id="btn-home"
+          class="secondary-btn">
+
           ← Retour aux catégories
+
         </button>
 
       </div>
@@ -191,6 +303,7 @@
   </main>
 
 
+  <!-- JAVASCRIPT -->
   <script src="js/quiz.js"></script>
 
 </body>
