@@ -1,21 +1,14 @@
 ```html
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color"
-      content="#2563eb">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
 
 <title>Konkou — Joue pour gagner</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -29,8 +22,7 @@ body{
     min-height:100vh;
 }
 
-button,
-input{
+button,input{
     font:inherit;
 }
 
@@ -42,9 +34,8 @@ button{
     max-width:850px;
     min-height:100vh;
     margin:auto;
-    padding-bottom:20px;
+    padding-bottom:30px;
 }
-
 
 /* =========================
    TOPBAR
@@ -54,21 +45,12 @@ button{
     position:sticky;
     top:0;
     z-index:20;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     padding:14px;
-
     color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #4f46e5
-        );
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
 }
 
 .logo{
@@ -80,15 +62,11 @@ button{
 .logo-icon{
     width:43px;
     height:43px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     background:rgba(255,255,255,.15);
-
     border-radius:13px;
-
     font-size:24px;
 }
 
@@ -114,16 +92,10 @@ button{
 
 .profile-button{
     border:0;
-
     color:white;
-
-    background:
-        rgba(255,255,255,.15);
-
+    background:rgba(255,255,255,.15);
     border-radius:13px;
-
     padding:6px 9px;
-
     display:flex;
     align-items:center;
     gap:7px;
@@ -141,15 +113,10 @@ button{
 
 .tickets{
     padding:10px 12px;
-
     border-radius:12px;
-
-    background:
-        rgba(255,255,255,.15);
-
+    background:rgba(255,255,255,.15);
     font-weight:bold;
 }
-
 
 /* =========================
    SCREENS
@@ -164,7 +131,6 @@ button{
     display:block;
 }
 
-
 /* =========================
    HERO
 ========================= */
@@ -172,23 +138,11 @@ button{
 .hero{
     color:white;
     text-align:center;
-
     padding:35px 22px;
-
     margin-bottom:20px;
-
     border-radius:25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7c3aed
-        );
-
-    box-shadow:
-        0 12px 30px
-        rgba(37,99,235,.2);
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    box-shadow:0 12px 30px rgba(37,99,235,.2);
 }
 
 .hero-icon{
@@ -209,9 +163,7 @@ button{
     margin-top:20px;
     padding:14px;
     border-radius:14px;
-
-    background:
-        rgba(255,255,255,.15);
+    background:rgba(255,255,255,.15);
 }
 
 .ticket-countdown{
@@ -219,36 +171,18 @@ button{
     font-size:12px;
 }
 
-
-/* =========================
-   INFO BUTTONS
-========================= */
-
 .info-card{
     width:100%;
-
     border:0;
-
     margin-bottom:13px;
-
     padding:17px;
-
     border-radius:17px;
-
     color:white;
-
     display:flex;
     align-items:center;
     gap:12px;
-
     text-align:left;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7c3aed
-        );
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
 }
 
 .info-icon{
@@ -273,11 +207,6 @@ button{
     font-size:26px;
 }
 
-
-/* =========================
-   SECTIONS
-========================= */
-
 .section-title{
     margin:25px 0 14px;
 }
@@ -288,11 +217,6 @@ button{
     margin-top:5px;
 }
 
-
-/* =========================
-   CATEGORIES
-========================= */
-
 .category-grid{
     display:grid;
     gap:12px;
@@ -300,19 +224,12 @@ button{
 
 .category-grid button{
     border:0;
-
     padding:18px;
-
     border-radius:16px;
-
     background:white;
-
     display:flex;
     justify-content:space-between;
-
-    box-shadow:
-        0 5px 15px
-        rgba(15,23,42,.08);
+    box-shadow:0 5px 15px rgba(15,23,42,.08);
 }
 
 .category-grid button span:first-child{
@@ -325,25 +242,17 @@ button{
     font-size:12px;
 }
 
-
 /* =========================
    CARDS
 ========================= */
 
 .card{
     max-width:600px;
-
     margin:15px auto;
-
     padding:26px;
-
     background:white;
-
     border-radius:24px;
-
-    box-shadow:
-        0 10px 30px
-        rgba(15,23,42,.08);
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
 }
 
 .card h2{
@@ -361,14 +270,9 @@ label{
 
 input{
     width:100%;
-
     padding:13px;
-
-    border:
-        2px solid #e2e8f0;
-
+    border:2px solid #e2e8f0;
     border-radius:12px;
-
     outline:none;
 }
 
@@ -379,34 +283,22 @@ input:focus{
 .primary,
 .secondary{
     width:100%;
-
     border:0;
-
     padding:14px;
-
     border-radius:13px;
-
     margin-top:12px;
-
     font-weight:bold;
 }
 
 .primary{
     color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #4f46e5
-        );
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
 }
 
 .secondary{
     color:#334155;
     background:#e2e8f0;
 }
-
 
 /* =========================
    QUIZ
@@ -416,19 +308,14 @@ input:focus{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     margin-bottom:12px;
-
     font-weight:bold;
 }
 
 #timer{
     padding:8px 12px;
-
     border-radius:10px;
-
     color:white;
-
     background:#2563eb;
 }
 
@@ -438,45 +325,31 @@ input:focus{
 
 .progress-track{
     height:8px;
-
     background:#dbeafe;
-
     border-radius:10px;
-
     overflow:hidden;
 }
 
 .progress-fill{
     height:100%;
-
     width:0;
-
     background:#2563eb;
 }
 
 .quiz-category{
     display:inline-block;
-
     margin:22px 0 12px;
-
     padding:7px 12px;
-
     border-radius:20px;
-
     color:#1d4ed8;
-
     background:#dbeafe;
-
     font-size:12px;
-
     font-weight:bold;
 }
 
 #quiz-question{
     font-size:24px;
-
     line-height:1.35;
-
     margin-bottom:18px;
 }
 
@@ -487,14 +360,9 @@ input:focus{
 
 .quiz-choices button{
     padding:16px;
-
-    border:
-        2px solid #e2e8f0;
-
+    border:2px solid #e2e8f0;
     background:white;
-
     border-radius:13px;
-
     text-align:left;
 }
 
@@ -510,15 +378,12 @@ input:focus{
 
 .score-line{
     margin:18px 0;
-
     font-weight:bold;
-
     color:#2563eb;
 }
 
-
 /* =========================
-   RESULT
+   RESULTAT
 ========================= */
 
 .result-icon,
@@ -534,28 +399,20 @@ input:focus{
 
 .result-score strong{
     display:block;
-
     font-size:38px;
-
     color:#2563eb;
 }
 
 .result-stats{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:10px;
 }
 
 .result-stats div{
     padding:14px 5px;
-
     background:#eff6ff;
-
     border-radius:13px;
-
     text-align:center;
 }
 
@@ -581,102 +438,70 @@ input:focus{
     color:#475569;
 }
 
-
 /* =========================
-   RANKING
+   CLASSEMENT
 ========================= */
 
 .podium{
     display:flex;
-
     align-items:end;
-
     justify-content:center;
-
     gap:8px;
-
     margin:30px 0 25px;
 }
 
 .podium-player{
     width:30%;
-
     text-align:center;
-
-    position:relative;
 }
 
 .podium-avatar{
     width:58px;
     height:58px;
-
     margin:auto;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     border-radius:50%;
-
     background:#dbeafe;
-
     font-size:28px;
 }
 
-.podium-player.first
-.podium-avatar{
+.podium-player.first .podium-avatar{
     width:75px;
     height:75px;
-
     background:#fef3c7;
-
     font-size:38px;
 }
 
-.podium-player.second
-.podium-avatar{
+.podium-player.second .podium-avatar{
     background:#e2e8f0;
 }
 
-.podium-player.third
-.podium-avatar{
+.podium-player.third .podium-avatar{
     background:#fed7aa;
 }
 
 .podium-name{
     font-weight:bold;
-
     margin-top:7px;
-
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
 }
 
 .podium-score{
     font-size:12px;
-
     color:#64748b;
-
     margin-top:3px;
 }
 
 .podium-rank{
     margin-top:8px;
-
     padding:12px 5px;
-
-    border-radius:
-        12px 12px 0 0;
-
+    border-radius:12px 12px 0 0;
     font-weight:bold;
-
     color:white;
-
     background:#2563eb;
 }
 
@@ -697,20 +522,10 @@ input:focus{
 
 .my-ranking{
     margin:20px 0;
-
     padding:18px;
-
     border-radius:18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eff6ff,
-            #eef2ff
-        );
-
-    border:
-        2px solid #bfdbfe;
+    background:linear-gradient(135deg,#eff6ff,#eef2ff);
+    border:2px solid #bfdbfe;
 }
 
 .my-ranking-title{
@@ -720,11 +535,8 @@ input:focus{
 
 .my-ranking-main{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-top:8px;
 }
 
@@ -739,25 +551,17 @@ input:focus{
 
 .ranking-row{
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
     padding:14px;
-
     margin-bottom:9px;
-
     background:#f8fafc;
-
     border-radius:13px;
 }
 
 .ranking-row.me{
     background:#dbeafe;
-
-    border:
-        1px solid #93c5fd;
+    border:1px solid #93c5fd;
 }
 
 .ranking-name{
@@ -770,14 +574,10 @@ input:focus{
     font-weight:bold;
 }
 
-
 /* =========================
    STATISTIQUES
 ========================= */
 
 .statistics{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr
+    display
 ```
