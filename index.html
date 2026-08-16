@@ -1,347 +1,529 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2563eb">
-
-  <title>Konkou — Joue pour Gagner</title>
-
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-
-<main class="app">
-
-  <!-- =========================
-       HEADER
-  ========================== -->
-  <header class="topbar">
-
-    <div class="logo">
-      <div class="logo-icon">🏆</div>
-
-      <div>
-        <strong>Konkou</strong>
-        <small>Joue pour gagner</small>
-      </div>
-    </div>
-
-    <div class="tickets">
-      🎟️ <span id="ticket-count">3</span>
-    </div>
-
-  </header>
-
-
-  <!-- =========================
-       ÉCRAN D'ACCUEIL
-  ========================== -->
-  <section id="screen-home" class="screen active">
-
-    <div class="hero">
-
-      <div class="hero-icon">🏆</div>
-
-      <h1>Prêt à relever le défi ?</h1>
-
-      <p>
-        Teste tes connaissances, gagne des points
-        et grimpe dans le classement.
-      </p>
-
-      <div class="ticket-info">
-        🎟️ Tickets disponibles :
-        <strong id="ticket-count-home">3</strong>
-      </div>
-
-    </div>
-
-
-    <div class="section-title">
-      <div>
-        <h2>Choisis une catégorie</h2>
-        <p>Teste tes connaissances</p>
-      </div>
-    </div>
-
-
-    <div id="category-list" class="category-grid"></div>
-
-  </section>
-
-
-
-  <!-- =========================
-       ÉCRAN PAIEMENT
-  ========================== -->
-  <section id="screen-payment" class="screen">
-
-    <div class="payment-box">
-
-      <h2 id="payment-title">
-        Rejoindre le concours
-      </h2>
-
-      <p class="payment-sub">
-        Ce concours est payant.
-        Le gagnant remporte une part du pot.
-      </p>
-
-
-      <div class="payment-summary">
-
-        <div class="payment-row">
-          <span>Frais d'entrée</span>
-          <strong id="payment-fee">50 HTG</strong>
-        </div>
-
-        <div class="payment-row">
-          <span>Joueurs inscrits</span>
-          <strong id="payment-players">0</strong>
-        </div>
-
-        <div class="payment-row payment-row-total">
-          <span>Pot actuel</span>
-          <strong id="payment-pot">0 HTG</strong>
-        </div>
-
-      </div>
-
-
-      <label
-        class="payment-label"
-        for="payment-phone"
-      >
-        Numéro MonCash
-      </label>
-
-
-      <input
-        id="payment-phone"
-        class="payment-input"
-        type="tel"
-        placeholder="Ex : 3712 3456"
-        inputmode="numeric"
-        autocomplete="tel"
-      >
-
-
-      <button
-        id="btn-pay"
-        class="start-btn"
-        type="button"
-      >
-        Payer et rejoindre
-      </button>
-
-
-      <button
-        id="btn-payment-cancel"
-        class="restart-btn"
-        type="button"
-      >
-        Annuler
-      </button>
-
-
-      <p
-        id="payment-status"
-        class="payment-status"
-        aria-live="polite"
-      ></p>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       ÉCRAN QUIZ
-  ========================== -->
-  <section id="screen-quiz" class="screen">
-
-    <div class="quiz-top">
-
-      <span id="quiz-progress">
-        Question 1 sur 5
-      </span>
-
-      <span id="timer">
-        15
-      </span>
-
-    </div>
-
-
-    <div class="progress-track">
-
-      <div
-        id="progress-fill"
-        class="progress-fill"
-        style="width: 0%;"
-      ></div>
-
-    </div>
-
-
-    <span
-      id="quiz-category"
-      class="quiz-category"
-    ></span>
-
-
-    <h2 id="quiz-question">
-      —
-    </h2>
-
-
-    <div
-      id="quiz-choices"
-      class="quiz-choices"
-    ></div>
-
-
-    <div class="score-line">
-      Score :
-      <span id="quiz-score">0</span>
-    </div>
-
-
-    <button
-      class="restart-btn"
-      id="btn-quit"
-      type="button"
-    >
-      Quitter la partie
-    </button>
-
-  </section>
-
-
-
-  <!-- =========================
-       ÉCRAN RÉSULTAT
-  ========================== -->
-  <section id="screen-result" class="screen">
-
-    <div class="result-box">
-
-      <div class="result-icon">
-        🏆
-      </div>
-
-
-      <h2>
-        Quiz terminé !
-      </h2>
-
-
-      <p class="result-score">
-        Ton score :
-        <strong id="result-score">0</strong>
-      </p>
-
-
-      <!-- Badge du résultat -->
-      <div
-        id="result-badge"
-        class="result-badge"
-      ></div>
-
-
-      <div class="result-stats">
-
-        <div class="result-stat">
-          <span>Score maximum</span>
-          <strong id="result-total">0</strong>
-        </div>
-
-      </div>
-
-
-      <p
-        id="result-message"
-        class="result-message"
-      >
-        Bravo !
-      </p>
-
-
-      <!-- Classement du concours payant -->
-      <div
-        id="contest-standings"
-        class="contest-standings"
-        style="display: none;"
-      ></div>
-
-
-      <button
-        id="btn-replay"
-        class="start-btn"
-        type="button"
-      >
-        Rejouer
-      </button>
-
-
-      <button
-        id="btn-home"
-        class="restart-btn"
-        type="button"
-      >
-        Retour à l'accueil
-      </button>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       ÉCRAN CLASSEMENT
-  ========================== -->
-  <section id="screen-ranking" class="screen">
-
-    <div class="ranking-box">
-
-      <h2>
-        🏆 Classement
-      </h2>
-
-      <p>
-        Les meilleurs joueurs de Konkou
-      </p>
-
-
-      <div
-        id="ranking-list"
-        class="ranking-list"
-      ></div>
-
-
-      <button
-        id="btn-ranking-home"
-        class="restart-btn"
-        type="button"
-      >
-        Retour à l'accueil
-      </button>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================== -->
-<script src="js/app.js"></script>
-
-</body>
-</html>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+  color: #0f172a;
+}
+
+.app {
+  width: 100%;
+  max-width: 900px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, .08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  font-size: 25px;
+}
+
+.logo strong {
+  display: block;
+  font-size: 20px;
+}
+
+.logo small {
+  display: block;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+.tickets {
+  padding: 10px 15px;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* ACCUEIL */
+
+.hero {
+  padding: 45px 25px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: white;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, .25);
+}
+
+.hero-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+.ticket-info {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.18);
+}
+
+.section-title {
+  margin-bottom: 15px;
+}
+
+.section-title h2 {
+  font-size: 23px;
+}
+
+.section-title p {
+  margin-top: 5px;
+  color: #64748b;
+}
+
+/* CATÉGORIES */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.category-grid button {
+  min-height: 85px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: white;
+  color: #0f172a;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(15,23,42,.06);
+  transition: .2s;
+}
+
+.category-grid button:hover {
+  transform: translateY(-4px);
+  border-color: #2563eb;
+}
+
+.category-grid button span {
+  display: block;
+}
+
+.category-grid .cat-count {
+  margin-top: 8px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.category-grid .paid-contest-btn {
+  grid-column: 1 / -1;
+  border: none;
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  color: white;
+}
+
+.category-grid .paid-contest-btn .cat-count {
+  color: white;
+}
+
+/* BOUTONS */
+
+.start-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.start-btn:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+}
+
+.restart-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+  background: white;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* PAIEMENT */
+
+.payment-box {
+  max-width: 550px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(15,23,42,.08);
+}
+
+.payment-box h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.payment-sub {
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.payment-summary {
+  padding: 15px;
+  margin-bottom: 25px;
+  background: #f8fafc;
+  border-radius: 15px;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.payment-row:last-child {
+  border-bottom: none;
+}
+
+.payment-row-total {
+  color: #2563eb;
+  font-size: 18px;
+}
+
+.payment-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.payment-input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+.payment-input:focus {
+  border-color: #2563eb;
+}
+
+.payment-status {
+  min-height: 20px;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.payment-status.error {
+  color: #dc2626;
+}
+
+.payment-status.success {
+  color: #16a34a;
+}
+
+/* QUIZ */
+
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#timer {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+#timer.low {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.progress-track {
+  height: 8px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e2e8f0;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  transition: width .3s;
+}
+
+.quiz-category {
+  display: inline-block;
+  padding: 7px 12px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  background: #ede9fe;
+  color: #6d28d9;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#quiz-question {
+  padding: 25px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  background: white;
+  font-size: 23px;
+  line-height: 1.4;
+  box-shadow: 0 8px 25px rgba(15,23,42,.08);
+}
+
+.quiz-choices {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz-choices button {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  background: white;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quiz-choices button:hover:not(:disabled) {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.quiz-choices button.correct {
+  border-color: #16a34a;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.quiz-choices button.wrong {
+  border-color: #dc2626;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.score-line {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* RÉSULTAT */
+
+.result-box {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 35px 25px;
+  border-radius: 24px;
+  background: white;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(15,23,42,.08);
+}
+
+.result-icon {
+  font-size: 65px;
+  margin-bottom: 10px;
+}
+
+.result-box h2 {
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+
+.result-score {
+  margin-bottom: 15px;
+  color: #64748b;
+  font-size: 20px;
+}
+
+.result-score strong {
+  display: block;
+  margin-top: 5px;
+  color: #2563eb;
+  font-size: 48px;
+}
+
+.result-badge {
+  display: inline-block;
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  color: white;
+  font-weight: bold;
+}
+
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.result-stat {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.result-stat span {
+  display: block;
+  margin-bottom: 5px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.result-stat strong {
+  font-size: 20px;
+}
+
+.result-message {
+  margin: 15px 0 25px;
+  color: #64748b;
+}
+
+/* CLASSEMENT */
+
+.contest-standings {
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: #f8fafc;
+  text-align: left;
+}
+
+.standing-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 70px 80px;
+  gap: 5px;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
+  background: white;
+}
+
+.standing-rank {
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.standing-score {
+  font-weight: bold;
+}
+
+.standing-prize {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  .app {
+    padding: 12px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-grid .paid-contest-btn {
+    grid-column: auto;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  #quiz-question {
+    font-size: 20px;
+  }
+
+  .result-stats {
+    flex-direction: column;
+  }
+}
+</style>
