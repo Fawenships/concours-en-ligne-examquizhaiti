@@ -9,6 +9,10 @@
 
 <style>
 
+/* =====================================================
+   STYLE GÉNÉRAL
+===================================================== */
+
 * {
     box-sizing: border-box;
 }
@@ -28,9 +32,14 @@ body {
     padding: 15px;
 }
 
-/* =========================
+button {
+    font-family: inherit;
+}
+
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .topbar {
     display: flex;
@@ -87,9 +96,10 @@ body {
     font-weight: bold;
 }
 
-/* =========================
+
+/* =====================================================
    ÉCRANS
-========================= */
+===================================================== */
 
 .screen {
     display: none;
@@ -99,9 +109,10 @@ body {
     display: block;
 }
 
-/* =========================
+
+/* =====================================================
    ACCUEIL
-========================= */
+===================================================== */
 
 .hero {
     padding: 40px 25px;
@@ -163,16 +174,14 @@ body {
     color: #64748b;
 }
 
-/* =========================
+
+/* =====================================================
    CATÉGORIES
-========================= */
+===================================================== */
 
 .category-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
@@ -247,9 +256,10 @@ body {
     color: white;
 }
 
-/* =========================
+
+/* =====================================================
    BOUTONS
-========================= */
+===================================================== */
 
 .start-btn {
     width: 100%;
@@ -306,9 +316,10 @@ body {
     background: #f8fafc;
 }
 
-/* =========================
+
+/* =====================================================
    PAIEMENT
-========================= */
+===================================================== */
 
 .payment-box {
     max-width: 550px;
@@ -362,7 +373,6 @@ body {
 
 .payment-row-total {
     color: #2563eb;
-
     font-size: 18px;
 }
 
@@ -410,9 +420,10 @@ body {
     color: #16a34a;
 }
 
-/* =========================
+
+/* =====================================================
    QUIZ
-========================= */
+===================================================== */
 
 .quiz-top {
     display: flex;
@@ -446,7 +457,6 @@ body {
 
 #timer.low {
     background: #fee2e2;
-
     color: #dc2626;
 }
 
@@ -509,7 +519,6 @@ body {
 
 .quiz-choices {
     display: grid;
-
     gap: 12px;
 }
 
@@ -533,7 +542,6 @@ body {
 
 .quiz-choices button:hover {
     border-color: #2563eb;
-
     background: #eff6ff;
 }
 
@@ -567,9 +575,10 @@ body {
     font-size: 18px;
 }
 
-/* =========================
+
+/* =====================================================
    RESULTAT
-========================= */
+===================================================== */
 
 .result-box {
     max-width: 600px;
@@ -595,7 +604,6 @@ body {
 
 .result-score {
     color: #64748b;
-
     font-size: 20px;
 }
 
@@ -637,35 +645,126 @@ body {
 
 .result-stat span {
     display: block;
-
     color: #64748b;
 }
 
 .result-stat strong {
     font-size: 22px;
-
     color: #2563eb;
 }
 
 .result-message {
     color: #64748b;
-
     line-height: 1.5;
 }
 
-.contest-standings {
+
+/* =====================================================
+   CLASSEMENT
+===================================================== */
+
+#ranking-list {
+    margin: 20px 0;
+}
+
+.ranking-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
     padding: 15px;
 
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+
+    background: #f8fafc;
+
+    border: 2px solid #e2e8f0;
 
     border-radius: 15px;
 
-    background: #f8fafc;
+    text-align: left;
 }
 
-/* =========================
+.ranking-position {
+    font-size: 25px;
+    min-width: 45px;
+}
+
+.ranking-name {
+    flex: 1;
+    font-weight: bold;
+}
+
+.ranking-score {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.ranking-empty {
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border-radius: 15px;
+
+    color: #64748b;
+}
+
+
+/* =====================================================
+   CONCOURS
+===================================================== */
+
+.contest-standings {
+    margin: 20px 0;
+
+    padding: 15px;
+
+    background: #f8fafc;
+
+    border-radius: 15px;
+}
+
+.standing-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    margin-top: 8px;
+
+    background: white;
+
+    border-radius: 10px;
+}
+
+.standing-rank {
+    font-weight: bold;
+}
+
+.standing-phone {
+    flex: 1;
+}
+
+.standing-score {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.standing-prize {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 650px) {
 
@@ -694,18 +793,24 @@ body {
         font-size: 19px;
     }
 
+    .standing-row {
+        flex-wrap: wrap;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
 <main class="app">
 
-<!-- =========================
+
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header class="topbar">
 
@@ -717,22 +822,31 @@ body {
 
         <div>
             <strong>Konkou</strong>
-            <small>Joue pour gagner</small>
+
+            <small>
+                Joue pour gagner
+            </small>
         </div>
 
     </div>
 
+
     <div class="tickets">
+
         🎟️
-        <span id="ticket-count">3</span>
+
+        <span id="ticket-count">
+            3
+        </span>
+
     </div>
 
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      ACCUEIL
-========================= -->
+===================================================== -->
 
 <section
     id="screen-home"
@@ -758,6 +872,7 @@ body {
         <div class="ticket-info">
 
             🎟️ Tickets disponibles :
+
             <strong id="ticket-count-home">
                 3
             </strong>
@@ -785,12 +900,22 @@ body {
         class="category-grid"
     ></div>
 
+
+    <button
+        id="btn-ranking"
+        class="start-btn"
+        type="button"
+        style="margin-top:20px;"
+    >
+        🏆 Voir le classement
+    </button>
+
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      PAIEMENT
-========================= -->
+===================================================== -->
 
 <section
     id="screen-payment"
@@ -804,10 +929,13 @@ body {
         </h2>
 
         <p class="payment-sub">
+
             Ce concours est payant.
             Le gagnant remporte une part
             du pot.
+
         </p>
+
 
         <div class="payment-summary">
 
@@ -823,6 +951,7 @@ body {
 
             </div>
 
+
             <div class="payment-row">
 
                 <span>
@@ -834,6 +963,7 @@ body {
                 </strong>
 
             </div>
+
 
             <div
                 class="payment-row
@@ -867,6 +997,7 @@ body {
             type="tel"
             placeholder="Ex : 3712 3456"
             inputmode="numeric"
+            autocomplete="tel"
         >
 
 
@@ -891,6 +1022,7 @@ body {
         <p
             id="payment-status"
             class="payment-status"
+            aria-live="polite"
         ></p>
 
     </div>
@@ -898,9 +1030,9 @@ body {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      QUIZ
-========================= -->
+===================================================== -->
 
 <section
     id="screen-quiz"
@@ -925,7 +1057,7 @@ body {
         <div
             id="progress-fill"
             class="progress-fill"
-            style="width:0%"
+            style="width:0%;"
         ></div>
 
     </div>
@@ -951,6 +1083,7 @@ body {
     <div class="score-line">
 
         Score :
+
         <span id="quiz-score">
             0
         </span>
@@ -969,9 +1102,9 @@ body {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      RESULTAT
-========================= -->
+===================================================== -->
 
 <section
     id="screen-result"
@@ -983,6 +1116,7 @@ body {
         <div class="result-icon">
             🏆
         </div>
+
 
         <h2>
             Quiz terminé !
@@ -1003,7 +1137,7 @@ body {
         <div
             id="result-badge"
             class="result-badge"
-            style="display:none"
+            style="display:none;"
         ></div>
 
 
@@ -1031,7 +1165,7 @@ body {
         <div
             id="contest-standings"
             class="contest-standings"
-            style="display:none"
+            style="display:none;"
         ></div>
 
 
@@ -1056,22 +1190,63 @@ body {
 
 </section>
 
+
+<!-- =====================================================
+     CLASSEMENT
+===================================================== -->
+
+<section
+    id="screen-ranking"
+    class="screen"
+>
+
+    <div class="result-box">
+
+        <div class="result-icon">
+            🏆
+        </div>
+
+
+        <h2>
+            Classement Konkou
+        </h2>
+
+
+        <p class="result-message">
+            Les meilleurs scores des joueurs
+        </p>
+
+
+        <div id="ranking-list"></div>
+
+
+        <button
+            id="btn-ranking-home"
+            class="restart-btn"
+            type="button"
+        >
+            🏠 Retour à l'accueil
+        </button>
+
+    </div>
+
+</section>
+
+
 </main>
 
 
 <script>
 
 /* =====================================================
-   KONKOU — JAVASCRIPT
+   DONNÉES DES QUESTIONS
 ===================================================== */
-
-
-/* QUESTIONS */
 
 const CATEGORIES = [
 
     {
         id: "histoire",
+
         name: "📚 Histoire d'Haïti",
 
         questions: [
@@ -1080,11 +1255,16 @@ const CATEGORIES = [
                 question:
                     "En quelle année Haïti est-elle devenue indépendante ?",
 
-                choices:
-                    ["1791", "1804", "1815", "1822"],
+                choices: [
+                    "1791",
+                    "1804",
+                    "1815",
+                    "1822"
+                ],
 
                 answerIndex: 1
             },
+
 
             {
                 question:
@@ -1099,6 +1279,7 @@ const CATEGORIES = [
 
                 answerIndex: 2
             },
+
 
             {
                 question:
@@ -1185,15 +1366,27 @@ const CATEGORIES = [
 ];
 
 
-/* CONCOURS */
+/* =====================================================
+   CONCOURS
+===================================================== */
 
 const PAID_CONTEST = {
 
     id: "concours",
 
-    name: "🏆 Concours de la semaine",
+    name: "Concours de la semaine",
 
     entryFee: 50,
+
+    winnersCount: 3,
+
+    prizeShares: [
+        0.5,
+        0.3,
+        0.2
+    ],
+
+    commission: 0.2,
 
     questions: [
 
@@ -1201,8 +1394,12 @@ const PAID_CONTEST = {
             question:
                 "En quelle année Haïti est-elle devenue indépendante ?",
 
-            choices:
-                ["1791", "1804", "1815", "1822"],
+            choices: [
+                "1791",
+                "1804",
+                "1815",
+                "1822"
+            ],
 
             answerIndex: 1
         },
@@ -1242,7 +1439,9 @@ const PAID_CONTEST = {
 };
 
 
-/* ETAT */
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 let currentCategory = null;
 
@@ -1252,7 +1451,7 @@ let currentQuestion = 0;
 
 let score = 0;
 
-let correct = 0;
+let correctAnswers = 0;
 
 let timer = null;
 
@@ -1263,7 +1462,9 @@ let answered = false;
 let tickets = 3;
 
 
-/* ELEMENTS */
+/* =====================================================
+   ÉCRANS
+===================================================== */
 
 const home =
     document.getElementById(
@@ -1285,22 +1486,30 @@ const result =
         "screen-result"
     );
 
+const ranking =
+    document.getElementById(
+        "screen-ranking"
+    );
 
-/* AFFICHAGE */
 
 function showScreen(screen) {
 
     document
         .querySelectorAll(".screen")
-        .forEach(s => {
-            s.classList.remove("active");
-        });
+        .forEach(
+            s => s.classList.remove(
+                "active"
+            )
+        );
 
     screen.classList.add("active");
+
 }
 
 
-/* MELANGE */
+/* =====================================================
+   MÉLANGE
+===================================================== */
 
 function shuffle(array) {
 
@@ -1328,10 +1537,13 @@ function shuffle(array) {
     }
 
     return array;
+
 }
 
 
-/* CATEGORIES */
+/* =====================================================
+   CATÉGORIES
+===================================================== */
 
 function displayCategories() {
 
@@ -1352,13 +1564,17 @@ function displayCategories() {
         "paid-contest-btn";
 
     contest.innerHTML = `
+
         <span>
             🏆 ${PAID_CONTEST.name}
         </span>
 
         <span class="cat-count">
-            Entrée : ${PAID_CONTEST.entryFee} HTG
+            Entrée :
+            ${PAID_CONTEST.entryFee}
+            HTG
         </span>
+
     `;
 
     contest.onclick =
@@ -1367,54 +1583,117 @@ function displayCategories() {
     list.appendChild(contest);
 
 
-    CATEGORIES.forEach(category => {
+    CATEGORIES.forEach(
+        category => {
 
-        const button =
-            document.createElement(
-                "button"
-            );
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.innerHTML = `
-            <span>
-                ${category.name}
-            </span>
+            button.innerHTML = `
 
-            <span class="cat-count">
-                ${category.questions.length}
-                questions
-            </span>
-        `;
+                <span>
+                    ${category.name}
+                </span>
 
-        button.onclick = () =>
-            startQuiz(category);
+                <span class="cat-count">
+                    ${category.questions.length}
+                    questions
+                </span>
 
-        list.appendChild(button);
+            `;
 
-    });
+            button.onclick = () =>
+                startQuiz(category);
+
+            list.appendChild(button);
+
+        }
+    );
 
 }
 
 
-/* TICKETS */
+/* =====================================================
+   TICKETS
+===================================================== */
 
 function updateTickets() {
 
     document.getElementById(
         "ticket-count"
-    ).textContent = tickets;
+    ).textContent =
+        tickets;
 
     document.getElementById(
         "ticket-count-home"
-    ).textContent = tickets;
+    ).textContent =
+        tickets;
 
 }
 
 
-/* PAIEMENT */
+/* =====================================================
+   CONCOURS / PAIEMENT
+===================================================== */
+
+function getContestEntries() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "konkou_contest_entries"
+        ) || "[]"
+    );
+
+}
+
+
+function saveContestEntries(entries) {
+
+    localStorage.setItem(
+        "konkou_contest_entries",
+        JSON.stringify(entries)
+    );
+
+}
+
+
+function refreshPaymentSummary() {
+
+    const entries =
+        getContestEntries();
+
+    const total =
+        entries.length *
+        PAID_CONTEST.entryFee;
+
+
+    document.getElementById(
+        "payment-fee"
+    ).textContent =
+        PAID_CONTEST.entryFee +
+        " HTG";
+
+
+    document.getElementById(
+        "payment-players"
+    ).textContent =
+        entries.length;
+
+
+    document.getElementById(
+        "payment-pot"
+    ).textContent =
+        total +
+        " HTG";
+
+}
+
 
 function openPayment() {
 
-    showScreen(payment);
+    refreshPaymentSummary();
 
     document.getElementById(
         "payment-phone"
@@ -1423,6 +1702,8 @@ function openPayment() {
     document.getElementById(
         "payment-status"
     ).textContent = "";
+
+    showScreen(payment);
 
 }
 
@@ -1471,6 +1752,7 @@ document.getElementById(
             "btn-pay"
         );
 
+
     button.disabled = true;
 
     button.textContent =
@@ -1479,13 +1761,35 @@ document.getElementById(
 
     setTimeout(() => {
 
+        const entries =
+            getContestEntries();
+
+
+        entries.push({
+
+            phone: phone,
+
+            score: null,
+
+            joinedAt: Date.now()
+
+        });
+
+
+        saveContestEntries(
+            entries
+        );
+
+
         button.textContent =
             "Paiement confirmé ✓";
+
 
         const status =
             document.getElementById(
                 "payment-status"
             );
+
 
         status.textContent =
             "Paiement confirmé (simulation). Bonne chance !";
@@ -1496,32 +1800,38 @@ document.getElementById(
 
         setTimeout(() => {
 
-            startQuiz(PAID_CONTEST);
+            startQuiz(
+                PAID_CONTEST
+            );
 
-            button.disabled = false;
+            button.disabled =
+                false;
 
             button.textContent =
                 "Payer et rejoindre";
 
-        }, 900);
+        },900);
 
-    }, 1200);
+    },1200);
 
 };
 
 
-/* DEMARRER QUIZ */
+/* =====================================================
+   DÉMARRER LE QUIZ
+===================================================== */
 
 function startQuiz(category) {
 
     if (
-        category.id !== "concours"
+        category.id !==
+        PAID_CONTEST.id
     ) {
 
         if (tickets <= 0) {
 
             alert(
-                "Tu n'as plus de tickets aujourd'hui."
+                "Tu n'as plus de tickets aujourd'hui. Reviens demain !"
             );
 
             return;
@@ -1547,7 +1857,7 @@ function startQuiz(category) {
 
     score = 0;
 
-    correct = 0;
+    correctAnswers = 0;
 
     showScreen(quiz);
 
@@ -1556,7 +1866,9 @@ function startQuiz(category) {
 }
 
 
-/* QUESTION */
+/* =====================================================
+   AFFICHER QUESTION
+===================================================== */
 
 function displayQuestion() {
 
@@ -1566,7 +1878,9 @@ function displayQuestion() {
 
 
     const q =
-        questions[currentQuestion];
+        questions[
+            currentQuestion
+        ];
 
 
     document.getElementById(
@@ -1590,6 +1904,7 @@ function displayQuestion() {
     document.getElementById(
         "quiz-progress"
     ).textContent =
+
         `Question ${
             currentQuestion + 1
         } sur ${
@@ -1600,6 +1915,7 @@ function displayQuestion() {
     document.getElementById(
         "progress-fill"
     ).style.width =
+
         (
             currentQuestion /
             questions.length *
@@ -1629,30 +1945,36 @@ function displayQuestion() {
             "quiz-choices"
         );
 
+
     container.innerHTML = "";
 
 
-    choices.forEach(choice => {
+    choices.forEach(
+        choice => {
 
-        const button =
-            document.createElement(
-                "button"
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.textContent =
+                choice.text;
+
+
+            button.onclick = () =>
+                answerQuestion(
+                    button,
+                    choice.correct
+                );
+
+
+            container.appendChild(
+                button
             );
 
-        button.textContent =
-            choice.text;
-
-        button.onclick = () =>
-            answerQuestion(
-                button,
-                choice.correct
-            );
-
-        container.appendChild(
-            button
-        );
-
-    });
+        }
+    );
 
 
     startTimer();
@@ -1660,19 +1982,24 @@ function displayQuestion() {
 }
 
 
-/* TIMER */
+/* =====================================================
+   TIMER
+===================================================== */
 
 function startTimer() {
 
     timeLeft = 15;
+
 
     const timerElement =
         document.getElementById(
             "timer"
         );
 
+
     timerElement.textContent =
         timeLeft;
+
 
     timerElement.classList.remove(
         "low"
@@ -1721,7 +2048,9 @@ function startTimer() {
 }
 
 
-/* REPONSE */
+/* =====================================================
+   RÉPONSE
+===================================================== */
 
 function answerQuestion(
     button,
@@ -1732,7 +2061,9 @@ function answerQuestion(
         return;
     }
 
+
     answered = true;
+
 
     clearInterval(timer);
 
@@ -1741,19 +2072,23 @@ function answerQuestion(
         .querySelectorAll(
             "#quiz-choices button"
         )
-        .forEach(b => {
+        .forEach(
+            b => {
 
-            b.disabled = true;
+                b.disabled = true;
 
-        });
+            }
+        );
 
 
     if (button) {
 
         button.classList.add(
+
             isCorrect
                 ? "correct"
                 : "wrong"
+
         );
 
     }
@@ -1763,7 +2098,7 @@ function answerQuestion(
 
         score += 10;
 
-        correct++;
+        correctAnswers++;
 
     }
 
@@ -1791,7 +2126,173 @@ function answerQuestion(
 }
 
 
-/* RESULTAT */
+/* =====================================================
+   CLASSEMENT
+===================================================== */
+
+function getRanking() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "konkou_ranking"
+        ) || "[]"
+    );
+
+}
+
+
+function saveRanking(data) {
+
+    localStorage.setItem(
+        "konkou_ranking",
+        JSON.stringify(data)
+    );
+
+}
+
+
+function addScoreToRanking(
+    playerScore
+) {
+
+    const ranking =
+        getRanking();
+
+
+    ranking.push({
+
+        name: "Joueur",
+
+        score: playerScore,
+
+        date: Date.now()
+
+    });
+
+
+    ranking.sort(
+        (a,b) =>
+            b.score - a.score
+    );
+
+
+    saveRanking(
+        ranking.slice(0,20)
+    );
+
+}
+
+
+function displayRanking() {
+
+    const list =
+        document.getElementById(
+            "ranking-list"
+        );
+
+
+    const ranking =
+        getRanking();
+
+
+    if (
+        ranking.length === 0
+    ) {
+
+        list.innerHTML = `
+
+            <div class="ranking-empty">
+
+                Aucun score pour le moment.
+
+                <br><br>
+
+                Joue une partie pour
+                apparaître dans le classement !
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    ranking.forEach(
+        (player,index) => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "ranking-item";
+
+
+            let medal;
+
+
+            if (index === 0) {
+
+                medal = "🥇";
+
+            }
+
+            else if (index === 1) {
+
+                medal = "🥈";
+
+            }
+
+            else if (index === 2) {
+
+                medal = "🥉";
+
+            }
+
+            else {
+
+                medal =
+                    "#" +
+                    (index + 1);
+
+            }
+
+
+            item.innerHTML = `
+
+                <div class="ranking-position">
+                    ${medal}
+                </div>
+
+                <div class="ranking-name">
+                    ${player.name}
+                </div>
+
+                <div class="ranking-score">
+                    ${player.score} pts
+                </div>
+
+            `;
+
+
+            list.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FIN DU QUIZ
+===================================================== */
 
 function finishQuiz() {
 
@@ -1800,6 +2301,16 @@ function finishQuiz() {
 
     const total =
         questions.length * 10;
+
+
+    /*
+       Sauvegarder le score
+       dans le classement
+    */
+
+    addScoreToRanking(
+        score
+    );
 
 
     document.getElementById(
@@ -1831,21 +2342,21 @@ function finishQuiz() {
     else if (ratio >= .7) {
 
         message =
-            "👏 Très bien !";
+            "👏 Très bien ! Tu maîtrises bien cette catégorie.";
 
     }
 
     else if (ratio >= .5) {
 
         message =
-            "👍 Bien joué !";
+            "👍 Bien joué ! Continue à t'entraîner.";
 
     }
 
     else {
 
         message =
-            "💪 Continue à t'entraîner !";
+            "💪 Continue à t'entraîner pour améliorer ton score.";
 
     }
 
@@ -1867,9 +2378,12 @@ function finishQuiz() {
         badge.style.display =
             "inline-block";
 
+
         badge.textContent =
             ratio === 1
+
                 ? "🏆 Score parfait !"
+
                 : "👍 Bien joué !";
 
     }
@@ -1887,7 +2401,9 @@ function finishQuiz() {
 }
 
 
-/* REJOUER */
+/* =====================================================
+   BOUTON REJOUER
+===================================================== */
 
 document.getElementById(
     "btn-replay"
@@ -1904,7 +2420,9 @@ document.getElementById(
 };
 
 
-/* ACCUEIL */
+/* =====================================================
+   BOUTON ACCUEIL
+===================================================== */
 
 document.getElementById(
     "btn-home"
@@ -1917,7 +2435,9 @@ document.getElementById(
 };
 
 
-/* QUITTER */
+/* =====================================================
+   QUITTER
+===================================================== */
 
 document.getElementById(
     "btn-quit"
@@ -1930,16 +2450,48 @@ document.getElementById(
 };
 
 
-/* DEMARRAGE */
+/* =====================================================
+   OUVRIR CLASSEMENT
+===================================================== */
+
+document.getElementById(
+    "btn-ranking"
+).onclick = function() {
+
+    displayRanking();
+
+    showScreen(ranking);
+
+};
+
+
+/* =====================================================
+   RETOUR DU CLASSEMENT
+===================================================== */
+
+document.getElementById(
+    "btn-ranking-home"
+).onclick = function() {
+
+    showScreen(home);
+
+};
+
+
+/* =====================================================
+   DÉMARRAGE
+===================================================== */
 
 displayCategories();
 
 updateTickets();
 
+refreshPaymentSummary();
+
 showScreen(home);
 
 console.log(
-    "🏆 Konkou fonctionne !"
+    "🏆 KONKOU est prêt !"
 );
 
 </script>
