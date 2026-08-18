@@ -1712,7 +1712,7 @@ const REGISTRATION_FEE = 50;
    Si ton serveur est hébergé ailleurs,
    mets son adresse ici.
 */
-const SERVER_URL = "";
+const SERVER_URL = "https://konkou-server-6.onrender.com";
 
 
 /* =====================================================
@@ -3503,6 +3503,56 @@ async function showRanking(){
 }
 
 
+async function refreshServerRanking(){
+
+  const rankingScreen =
+    document.getElementById("screen-ranking");
+
+  if(!rankingScreen || !rankingScreen.classList.contains("active")){
+    return;
+  }
+
+  if(!SERVER_URL){
+    return;
+  }
+
+  const name =
+    localStorage.getItem("name") ||
+    "Joueur";
+
+  try{
+
+    const response =
+      await fetch(
+        `${SERVER_URL}/api/ranking`,
+        { cache:"no-store" }
+      );
+
+    const data =
+      await response.json();
+
+    if(
+      data.success &&
+      Array.isArray(data.ranking)
+    ){
+      renderServerRanking(
+        data.ranking,
+        name
+      );
+    }
+
+  }catch(error){
+
+    console.warn(
+      "Actualisation du classement impossible :",
+      error
+    );
+
+  }
+
+}
+
+
 function renderServerRanking(
   players,
   name
@@ -3680,6 +3730,13 @@ function renderServerRanking(
       `;
 
 }
+
+
+/* Actualisation automatique du classement toutes les 3 secondes. */
+setInterval(
+  refreshServerRanking,
+  3000
+);
 
 
 function renderLocalRanking(name){
