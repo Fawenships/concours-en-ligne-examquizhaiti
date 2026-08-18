@@ -172,10 +172,13 @@ const el = {
 ========================= */
 
 function showScreen(name) {
+
   Object.values(screens).forEach(screen => {
+
     if (screen) {
       screen.classList.remove("active");
     }
+
   });
 
   if (screens[name]) {
@@ -189,11 +192,14 @@ function showScreen(name) {
 ========================= */
 
 function renderCategories() {
+
   el.categoryList.innerHTML = "";
 
-  const paidButton = document.createElement("button");
+  const paidButton =
+    document.createElement("button");
 
-  paidButton.className = "paid-contest-btn";
+  paidButton.className =
+    "paid-contest-btn";
 
   paidButton.innerHTML = `
     <span>${PAID_CONTEST.name}</span>
@@ -202,12 +208,19 @@ function renderCategories() {
     </span>
   `;
 
-  paidButton.addEventListener("click", openPaymentScreen);
+  paidButton.addEventListener(
+    "click",
+    openPaymentScreen
+  );
 
-  el.categoryList.appendChild(paidButton);
+  el.categoryList.appendChild(
+    paidButton
+  );
 
   CATEGORIES.forEach(category => {
-    const button = document.createElement("button");
+
+    const button =
+      document.createElement("button");
 
     button.innerHTML = `
       <span>${category.name}</span>
@@ -216,11 +229,17 @@ function renderCategories() {
       </span>
     `;
 
-    button.addEventListener("click", () => {
-      startQuiz(category);
-    });
+    button.addEventListener(
+      "click",
+      () => {
+        startQuiz(category);
+      }
+    );
 
-    el.categoryList.appendChild(button);
+    el.categoryList.appendChild(
+      button
+    );
+
   });
 }
 
@@ -230,6 +249,7 @@ function renderCategories() {
 ========================= */
 
 function getToday() {
+
   const date = new Date();
 
   return (
@@ -241,30 +261,50 @@ function getToday() {
   );
 }
 
+
 function updateTickets() {
+
   const today = getToday();
 
   let saved = null;
 
   try {
+
     saved = JSON.parse(
-      localStorage.getItem("konkou_tickets")
+      localStorage.getItem(
+        "konkou_tickets"
+      )
     );
+
   } catch {
+
     saved = null;
+
   }
 
-  if (saved && saved.date === today) {
-    state.tickets = saved.count;
+  if (
+    saved &&
+    saved.date === today
+  ) {
+
+    state.tickets =
+      saved.count;
+
   } else {
-    state.tickets = FREE_TICKETS_PER_DAY;
+
+    state.tickets =
+      FREE_TICKETS_PER_DAY;
+
     saveTickets();
+
   }
 
   refreshTicketDisplay();
 }
 
+
 function saveTickets() {
+
   localStorage.setItem(
     "konkou_tickets",
     JSON.stringify({
@@ -276,17 +316,23 @@ function saveTickets() {
   refreshTicketDisplay();
 }
 
+
 function refreshTicketDisplay() {
+
   if (el.ticketCount) {
-    el.ticketCount.textContent = state.tickets;
+    el.ticketCount.textContent =
+      state.tickets;
   }
 
   if (el.ticketCountHome) {
-    el.ticketCountHome.textContent = state.tickets;
+    el.ticketCountHome.textContent =
+      state.tickets;
   }
 }
 
+
 function useTicket() {
+
   if (state.tickets <= 0) {
     return false;
   }
@@ -300,11 +346,13 @@ function useTicket() {
 
 
 /* =========================
-   CONCOURS
+   CONCOURS LOCAL
 ========================= */
 
 function getContestEntries() {
+
   try {
+
     return (
       JSON.parse(
         localStorage.getItem(
@@ -312,25 +360,37 @@ function getContestEntries() {
         )
       ) || []
     );
+
   } catch {
+
     return [];
+
   }
 }
 
+
 function saveContestEntries(entries) {
+
   localStorage.setItem(
     "konkou_contest_entries",
     JSON.stringify(entries)
   );
 }
 
+
 function addPlayerToPot(phone) {
-  const entries = getContestEntries();
+
+  const entries =
+    getContestEntries();
 
   entries.push({
+
     phone: phone,
+
     score: null,
+
     joinedAt: Date.now()
+
   });
 
   saveContestEntries(entries);
@@ -338,11 +398,13 @@ function addPlayerToPot(phone) {
 
 
 /* =========================
-   PAIEMENT SIMULÉ
+   PAIEMENT
 ========================= */
 
 function refreshPaymentSummary() {
-  const entries = getContestEntries();
+
+  const entries =
+    getContestEntries();
 
   const total =
     entries.length *
@@ -358,7 +420,9 @@ function refreshPaymentSummary() {
     `${total} HTG`;
 }
 
+
 function openPaymentScreen() {
+
   el.paymentPhone.value = "";
 
   el.paymentStatus.textContent = "";
@@ -376,16 +440,20 @@ function openPaymentScreen() {
   showScreen("payment");
 }
 
+
 el.btnPaymentCancel.addEventListener(
   "click",
   () => {
+
     showScreen("home");
+
   }
 );
 
+
 el.btnPay.addEventListener(
   "click",
-  () => {
+  async () => {
 
     const phone =
       el.paymentPhone.value
@@ -413,7 +481,8 @@ el.btnPay.addEventListener(
 
     setTimeout(async () => {
 
-      state.currentPlayerPhone = phone;
+      state.currentPlayerPhone =
+        phone;
 
       const registered =
         await registerPlayerToContest();
@@ -421,7 +490,7 @@ el.btnPay.addEventListener(
       if (!registered) {
 
         el.paymentStatus.textContent =
-          "Impossible de rejoindre le concours. Vérifie ton inscription.";
+          "Impossible de rejoindre le concours.";
 
         el.paymentStatus.className =
           "payment-status error";
@@ -462,7 +531,10 @@ function startQuiz(category) {
   const isPaid =
     category.id === PAID_CONTEST.id;
 
-  if (!isPaid && !useTicket()) {
+  if (
+    !isPaid &&
+    !useTicket()
+  ) {
 
     alert(
       "Tu n'as plus de tickets aujourd'hui. Reviens demain !"
@@ -471,7 +543,8 @@ function startQuiz(category) {
     return;
   }
 
-  state.currentCategory = category;
+  state.currentCategory =
+    category;
 
   state.currentQuestions =
     shuffle([...category.questions]);
@@ -503,7 +576,9 @@ function shuffle(array) {
   ) {
 
     const j =
-      Math.floor(Math.random() * (i + 1));
+      Math.floor(
+        Math.random() * (i + 1)
+      );
 
     [
       array[i],
@@ -561,9 +636,13 @@ function showQuestion() {
   const choices =
     question.choices.map(
       (text, index) => ({
+
         text: text,
+
         isCorrect:
-          index === question.answerIndex
+          index ===
+          question.answerIndex
+
       })
     );
 
@@ -572,7 +651,9 @@ function showQuestion() {
   choices.forEach(choice => {
 
     const button =
-      document.createElement("button");
+      document.createElement(
+        "button"
+      );
 
     button.type = "button";
 
@@ -591,7 +672,9 @@ function showQuestion() {
       }
     );
 
-    el.quizChoices.appendChild(button);
+    el.quizChoices.appendChild(
+      button
+    );
 
   });
 
@@ -605,7 +688,9 @@ function showQuestion() {
 
 function startTimer() {
 
-  clearInterval(state.timer);
+  clearInterval(
+    state.timer
+  );
 
   state.timeLeft =
     TIME_PER_QUESTION;
@@ -613,37 +698,48 @@ function startTimer() {
   el.timer.textContent =
     state.timeLeft;
 
-  el.timer.classList.remove("low");
+  el.timer.classList.remove(
+    "low"
+  );
 
-  state.timer = setInterval(() => {
+  state.timer =
+    setInterval(() => {
 
-    state.timeLeft--;
+      state.timeLeft--;
 
-    el.timer.textContent =
-      state.timeLeft;
+      el.timer.textContent =
+        state.timeLeft;
 
-    if (state.timeLeft <= 5) {
+      if (
+        state.timeLeft <= 5
+      ) {
 
-      el.timer.classList.add("low");
-
-    }
-
-    if (state.timeLeft <= 0) {
-
-      clearInterval(state.timer);
-
-      if (!state.answered) {
-
-        selectAnswer(
-          null,
-          false
+        el.timer.classList.add(
+          "low"
         );
 
       }
 
-    }
+      if (
+        state.timeLeft <= 0
+      ) {
 
-  }, 1000);
+        clearInterval(
+          state.timer
+        );
+
+        if (!state.answered) {
+
+          selectAnswer(
+            null,
+            false
+          );
+
+        }
+
+      }
+
+    }, 1000);
 }
 
 
@@ -662,28 +758,36 @@ function selectAnswer(
 
   state.answered = true;
 
-  clearInterval(state.timer);
+  clearInterval(
+    state.timer
+  );
 
   const buttons =
     el.quizChoices.querySelectorAll(
       "button"
     );
 
-  buttons.forEach(currentButton => {
+  buttons.forEach(
+    currentButton => {
 
-    currentButton.disabled = true;
+      currentButton.disabled =
+        true;
 
-    if (currentButton === button) {
+      if (
+        currentButton ===
+        button
+      ) {
 
-      currentButton.classList.add(
-        isCorrect
-          ? "correct"
-          : "wrong"
-      );
+        currentButton.classList.add(
+          isCorrect
+            ? "correct"
+            : "wrong"
+        );
+
+      }
 
     }
-
-  });
+  );
 
   if (isCorrect) {
 
@@ -715,14 +819,18 @@ function selectAnswer(
 
 
 /* =========================
-   INSCRIPTION AU CONCOURS
+   INSCRIPTION SERVEUR
 ========================= */
 
 async function registerPlayerToContest() {
 
   const playerName =
-    localStorage.getItem("konkou_player_name") ||
-    localStorage.getItem("playerName");
+    localStorage.getItem(
+      "konkou_player_name"
+    ) ||
+    localStorage.getItem(
+      "playerName"
+    );
 
   if (!playerName) {
 
@@ -735,45 +843,46 @@ async function registerPlayerToContest() {
 
   try {
 
-    const response = await fetch(
-      `${API_URL}/api/register`,
-      {
-        method: "POST",
+    const response =
+      await fetch(
+        `${API_URL}/api/register`,
+        {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json"
-        },
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
 
-        body: JSON.stringify({
-          name: playerName
-        })
-      }
-    );
+          body: JSON.stringify({
+            name:
+              playerName.trim()
+          })
+        }
+      );
 
     const data =
       await response.json();
 
-    if (!response.ok || !data.success) {
+    console.log(
+      "📝 INSCRIPTION :",
+      data
+    );
 
-      console.error(
-        "❌ Inscription refusée :",
-        data
-      );
+    if (
+      !response.ok ||
+      !data.success
+    ) {
 
       return false;
     }
-
-    console.log(
-      "✅ Joueur inscrit au concours :",
-      data
-    );
 
     return true;
 
   } catch (error) {
 
     console.error(
-      "❌ Impossible d'inscrire le joueur :",
+      "❌ Erreur inscription :",
       error
     );
 
@@ -783,56 +892,103 @@ async function registerPlayerToContest() {
 
 
 /* =========================
-   ENVOYER LE SCORE AU SERVEUR
+   ENVOYER LE SCORE
 ========================= */
 
 async function sendScoreToServer() {
 
   const playerName =
-    localStorage.getItem("konkou_player_name") ||
-    localStorage.getItem("playerName") ||
-    "Joueur";
+    localStorage.getItem(
+      "konkou_player_name"
+    ) ||
+    localStorage.getItem(
+      "playerName"
+    );
+
+  if (!playerName) {
+
+    console.error(
+      "❌ Aucun nom de joueur trouvé."
+    );
+
+    return null;
+  }
 
   try {
 
-    const response = await fetch(
-      `${API_URL}/api/players`,
-      {
-        method: "POST",
+    const response =
+      await fetch(
+        `${API_URL}/api/players`,
+        {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json"
-        },
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
 
-        body: JSON.stringify({
-          name: playerName,
-          score: state.score
-        })
-      }
-    );
+          body: JSON.stringify({
 
-    if (!response.ok) {
+            name:
+              playerName.trim(),
 
-      throw new Error(
-        `Erreur serveur : ${response.status}`
+            score:
+              Number(state.score)
+
+          })
+        }
       );
-
-    }
 
     const data =
       await response.json();
 
     console.log(
-      "✅ Score envoyé au serveur Konkou :",
-      data
+      "📤 SCORE ENVOYÉ :",
+      {
+        joueur:
+          playerName,
+
+        pointsEnvoyés:
+          state.score,
+
+        réponseServeur:
+          data
+      }
     );
+
+    if (
+      !response.ok ||
+      !data.success
+    ) {
+
+      console.error(
+        "❌ Score refusé :",
+        data
+      );
+
+      return null;
+    }
+
+    if (data.player) {
+
+      console.log(
+        "🏆 SCORE TOTAL :",
+        data.player.score
+      );
+
+      console.log(
+        "🎮 PARTIES :",
+        data.player.games
+      );
+
+    }
 
     return data;
 
   } catch (error) {
 
     console.error(
-      "❌ Impossible d'envoyer le score :",
+      "❌ Erreur envoi score :",
       error
     );
 
@@ -849,35 +1005,38 @@ async function loadContestRanking() {
 
   try {
 
-    const response = await fetch(
-      `${API_URL}/api/ranking`
-    );
-
-    if (!response.ok) {
-
-      throw new Error(
-        `Erreur serveur : ${response.status}`
+    const response =
+      await fetch(
+        `${API_URL}/api/ranking`
       );
-
-    }
 
     const data =
       await response.json();
 
-    if (!data.success) {
+    console.log(
+      "📊 CLASSEMENT :",
+      data
+    );
+
+    if (
+      !response.ok ||
+      !data.success
+    ) {
 
       throw new Error(
-        "Classement indisponible."
+        "Classement indisponible"
       );
-
     }
 
     const ranking =
       data.ranking || [];
 
-    el.contestStandings.innerHTML = "";
+    el.contestStandings.innerHTML =
+      "";
 
-    if (ranking.length === 0) {
+    if (
+      ranking.length === 0
+    ) {
 
       el.contestStandings.innerHTML =
         "<p>Aucun joueur pour le moment.</p>";
@@ -888,25 +1047,43 @@ async function loadContestRanking() {
       return;
     }
 
+    const title =
+      document.createElement(
+        "h3"
+      );
+
+    title.textContent =
+      "🏆 Classement";
+
+    el.contestStandings.appendChild(
+      title
+    );
+
     ranking.forEach(player => {
 
       const item =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       item.className =
         "contest-player";
 
       item.innerHTML = `
         <span>
-          #${player.rank} ${player.name}
+          #${player.rank}
+          ${player.name}
         </span>
 
         <strong>
-          ${player.score} points
+          ${Number(player.score)}
+          points
         </strong>
       `;
 
-      el.contestStandings.appendChild(item);
+      el.contestStandings.appendChild(
+        item
+      );
 
     });
 
@@ -930,15 +1107,18 @@ async function loadContestRanking() {
 
 
 /* =========================
-   FIN
+   FIN DU QUIZ
 ========================= */
 
 async function finishQuiz() {
 
-  clearInterval(state.timer);
+  clearInterval(
+    state.timer
+  );
 
   const total =
-    state.currentQuestions.length * 10;
+    state.currentQuestions.length *
+    10;
 
   el.resultScore.textContent =
     state.score;
@@ -948,6 +1128,7 @@ async function finishQuiz() {
 
   const ratio =
     state.score / total;
+
 
   if (ratio === 1) {
 
@@ -971,6 +1152,7 @@ async function finishQuiz() {
 
   }
 
+
   el.resultBadge.style.display =
     ratio >= 0.7
       ? "inline-block"
@@ -981,32 +1163,43 @@ async function finishQuiz() {
       ? "🏆 Score parfait !"
       : "👍 Bien joué !";
 
+
   el.contestStandings.style.display =
     "none";
 
+
   /* =========================
-     ENVOYER LE SCORE
+     ENREGISTRER SCORE
   ========================= */
 
   const scoreResult =
     await sendScoreToServer();
 
+
   /* =========================
-     CHARGER LE CLASSEMENT
+     AFFICHER CLASSEMENT
   ========================= */
 
   if (scoreResult) {
+
+    if (scoreResult.player) {
+
+      el.resultScore.textContent =
+        scoreResult.player.score;
+
+    }
 
     await loadContestRanking();
 
   } else {
 
     el.contestStandings.innerHTML =
-      "<p>Le score n'a pas pu être enregistré.</p>";
+      "<p>❌ Impossible d'enregistrer ton score.</p>";
 
     el.contestStandings.style.display =
       "block";
   }
+
 
   showScreen("result");
 }
@@ -1020,12 +1213,15 @@ el.btnQuit.addEventListener(
   "click",
   () => {
 
-    clearInterval(state.timer);
+    clearInterval(
+      state.timer
+    );
 
     showScreen("home");
 
   }
 );
+
 
 el.btnReplay.addEventListener(
   "click",
@@ -1042,11 +1238,14 @@ el.btnReplay.addEventListener(
   }
 );
 
+
 el.btnHome.addEventListener(
   "click",
   () => {
 
-    clearInterval(state.timer);
+    clearInterval(
+      state.timer
+    );
 
     showScreen("home");
 
