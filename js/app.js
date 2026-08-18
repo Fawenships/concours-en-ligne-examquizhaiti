@@ -386,12 +386,14 @@ el.btnPaymentCancel.addEventListener(
 el.btnPay.addEventListener(
   "click",
   () => {
+
     const phone =
       el.paymentPhone.value
         .replace(/\s+/g, "")
         .trim();
 
     if (!/^\d{8}$/.test(phone)) {
+
       el.paymentStatus.textContent =
         "Entre un numéro MonCash valide à 8 chiffres.";
 
@@ -409,19 +411,41 @@ el.btnPay.addEventListener(
     el.paymentStatus.textContent =
       "Vérification du paiement...";
 
-    setTimeout(() => {
+    setTimeout(async () => {
+
       state.currentPlayerPhone = phone;
+
+      const registered =
+        await registerPlayerToContest();
+
+      if (!registered) {
+
+        el.paymentStatus.textContent =
+          "Impossible de rejoindre le concours. Vérifie ton inscription.";
+
+        el.paymentStatus.className =
+          "payment-status error";
+
+        el.btnPay.disabled = false;
+
+        el.btnPay.textContent =
+          "Payer et rejoindre";
+
+        return;
+      }
 
       addPlayerToPot(phone);
 
       el.paymentStatus.textContent =
-        "Paiement confirmé (simulation). Bonne chance !";
+        "Paiement confirmé. Tu es inscrit au concours !";
 
       el.paymentStatus.className =
         "payment-status success";
 
       setTimeout(() => {
+
         startQuiz(PAID_CONTEST);
+
       }, 800);
 
     }, 1200);
@@ -434,10 +458,12 @@ el.btnPay.addEventListener(
 ========================= */
 
 function startQuiz(category) {
+
   const isPaid =
     category.id === PAID_CONTEST.id;
 
   if (!isPaid && !useTicket()) {
+
     alert(
       "Tu n'as plus de tickets aujourd'hui. Reviens demain !"
     );
@@ -469,11 +495,13 @@ function startQuiz(category) {
 ========================= */
 
 function shuffle(array) {
+
   for (
     let i = array.length - 1;
     i > 0;
     i--
   ) {
+
     const j =
       Math.floor(Math.random() * (i + 1));
 
@@ -495,6 +523,7 @@ function shuffle(array) {
 ========================= */
 
 function showQuestion() {
+
   state.answered = false;
 
   const question =
@@ -541,6 +570,7 @@ function showQuestion() {
   shuffle(choices);
 
   choices.forEach(choice => {
+
     const button =
       document.createElement("button");
 
@@ -552,14 +582,17 @@ function showQuestion() {
     button.addEventListener(
       "click",
       () => {
+
         selectAnswer(
           button,
           choice.isCorrect
         );
+
       }
     );
 
     el.quizChoices.appendChild(button);
+
   });
 
   startTimer();
@@ -571,6 +604,7 @@ function showQuestion() {
 ========================= */
 
 function startTimer() {
+
   clearInterval(state.timer);
 
   state.timeLeft =
@@ -582,22 +616,33 @@ function startTimer() {
   el.timer.classList.remove("low");
 
   state.timer = setInterval(() => {
+
     state.timeLeft--;
 
     el.timer.textContent =
       state.timeLeft;
 
     if (state.timeLeft <= 5) {
+
       el.timer.classList.add("low");
+
     }
 
     if (state.timeLeft <= 0) {
+
       clearInterval(state.timer);
 
       if (!state.answered) {
-        selectAnswer(null, false);
+
+        selectAnswer(
+          null,
+          false
+        );
+
       }
+
     }
+
   }, 1000);
 }
 
@@ -610,6 +655,7 @@ function selectAnswer(
   button,
   isCorrect
 ) {
+
   if (state.answered) {
     return;
   }
@@ -624,34 +670,115 @@ function selectAnswer(
     );
 
   buttons.forEach(currentButton => {
+
     currentButton.disabled = true;
 
     if (currentButton === button) {
+
       currentButton.classList.add(
         isCorrect
           ? "correct"
           : "wrong"
       );
+
     }
+
   });
 
   if (isCorrect) {
+
     state.score += 10;
+
     state.correctAnswers++;
+
   }
 
   setTimeout(() => {
+
     state.currentIndex++;
 
     if (
       state.currentIndex <
       state.currentQuestions.length
     ) {
+
       showQuestion();
+
     } else {
+
       finishQuiz();
+
     }
+
   }, 700);
+}
+
+
+/* =========================
+   INSCRIPTION AU CONCOURS
+========================= */
+
+async function registerPlayerToContest() {
+
+  const playerName =
+    localStorage.getItem("konkou_player_name") ||
+    localStorage.getItem("playerName");
+
+  if (!playerName) {
+
+    console.error(
+      "❌ Nom du joueur introuvable."
+    );
+
+    return false;
+  }
+
+  try {
+
+    const response = await fetch(
+      `${API_URL}/api/register`,
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          name: playerName
+        })
+      }
+    );
+
+    const data =
+      await response.json();
+
+    if (!response.ok || !data.success) {
+
+      console.error(
+        "❌ Inscription refusée :",
+        data
+      );
+
+      return false;
+    }
+
+    console.log(
+      "✅ Joueur inscrit au concours :",
+      data
+    );
+
+    return true;
+
+  } catch (error) {
+
+    console.error(
+      "❌ Impossible d'inscrire le joueur :",
+      error
+    );
+
+    return false;
+  }
 }
 
 
@@ -685,9 +812,11 @@ async function sendScoreToServer() {
     );
 
     if (!response.ok) {
+
       throw new Error(
         `Erreur serveur : ${response.status}`
       );
+
     }
 
     const data =
@@ -708,6 +837,94 @@ async function sendScoreToServer() {
     );
 
     return null;
+  }
+}
+
+
+/* =========================
+   CHARGER LE CLASSEMENT
+========================= */
+
+async function loadContestRanking() {
+
+  try {
+
+    const response = await fetch(
+      `${API_URL}/api/ranking`
+    );
+
+    if (!response.ok) {
+
+      throw new Error(
+        `Erreur serveur : ${response.status}`
+      );
+
+    }
+
+    const data =
+      await response.json();
+
+    if (!data.success) {
+
+      throw new Error(
+        "Classement indisponible."
+      );
+
+    }
+
+    const ranking =
+      data.ranking || [];
+
+    el.contestStandings.innerHTML = "";
+
+    if (ranking.length === 0) {
+
+      el.contestStandings.innerHTML =
+        "<p>Aucun joueur pour le moment.</p>";
+
+      el.contestStandings.style.display =
+        "block";
+
+      return;
+    }
+
+    ranking.forEach(player => {
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "contest-player";
+
+      item.innerHTML = `
+        <span>
+          #${player.rank} ${player.name}
+        </span>
+
+        <strong>
+          ${player.score} points
+        </strong>
+      `;
+
+      el.contestStandings.appendChild(item);
+
+    });
+
+    el.contestStandings.style.display =
+      "block";
+
+  } catch (error) {
+
+    console.error(
+      "❌ Erreur classement :",
+      error
+    );
+
+    el.contestStandings.innerHTML =
+      "<p>Impossible de charger le classement.</p>";
+
+    el.contestStandings.style.display =
+      "block";
   }
 }
 
@@ -767,11 +984,29 @@ async function finishQuiz() {
   el.contestStandings.style.display =
     "none";
 
-  /*
-   * NOUVEAU :
-   * Envoi du résultat vers Render.
-   */
-  await sendScoreToServer();
+  /* =========================
+     ENVOYER LE SCORE
+  ========================= */
+
+  const scoreResult =
+    await sendScoreToServer();
+
+  /* =========================
+     CHARGER LE CLASSEMENT
+  ========================= */
+
+  if (scoreResult) {
+
+    await loadContestRanking();
+
+  } else {
+
+    el.contestStandings.innerHTML =
+      "<p>Le score n'a pas pu être enregistré.</p>";
+
+    el.contestStandings.style.display =
+      "block";
+  }
 
   showScreen("result");
 }
@@ -784,25 +1019,37 @@ async function finishQuiz() {
 el.btnQuit.addEventListener(
   "click",
   () => {
+
     clearInterval(state.timer);
+
     showScreen("home");
+
   }
 );
 
 el.btnReplay.addEventListener(
   "click",
   () => {
+
     if (state.currentCategory) {
-      startQuiz(state.currentCategory);
+
+      startQuiz(
+        state.currentCategory
+      );
+
     }
+
   }
 );
 
 el.btnHome.addEventListener(
   "click",
   () => {
+
     clearInterval(state.timer);
+
     showScreen("home");
+
   }
 );
 
