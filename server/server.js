@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
@@ -11,15 +13,20 @@ const PORT = process.env.PORT || 3000;
 
 const REGISTRATION_FEE = 50;
 
-// Le 1er joueur reçoit 70 % de la cagnotte
+// 70 % pour le gagnant
 const WINNER_PERCENTAGE = 0.70;
 
-// Les 30 % restants
+// 30 % pour la plateforme
 const PLATFORM_PERCENTAGE = 0.30;
+
+
+/* =====================================================
+   CONFIGURATION EXPRESS
+===================================================== */
 
 app.use(cors({
     origin: "*",
-    methods: ["GET", "POST", "OPTIONS"],
+    methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type"]
 }));
 
@@ -27,31 +34,156 @@ app.use(express.json());
 
 
 /* =====================================================
-   DONNÉES DES JOUEURS
+   FICHIER DE SAUVEGARDE
 ===================================================== */
 
-let players = [];
+const DATA_DIR = path.join(__dirname, "data");
+const DATA_FILE = path.join(DATA_DIR, "konkou.json");
 
 
 /* =====================================================
-   CAGNOTTE DU CONCOURS
+   CRÉER LE DOSSIER DATA
 ===================================================== */
 
-let contest = {
+if (!fs.existsSync(DATA_DIR)) {
 
-    registrations: 0,
+    fs.mkdirSync(DATA_DIR, {
+        recursive: true
+    });
 
-    prizePool: 0,
+}
 
-    winner: null,
 
-    winnerPrize: 0,
+/* =====================================================
+   DONNÉES PAR DÉFAUT
+===================================================== */
 
-    platformShare: 0,
+let data = {
 
-    status: "open"
+    players: [],
+
+    contest: {
+
+        registrations: 0,
+
+        prizePool: 0,
+
+        winner: null,
+
+        winnerPrize: 0,
+
+        platformShare: 0,
+
+        status: "open"
+
+    }
 
 };
+
+
+/* =====================================================
+   CHARGER LES DONNÉES
+===================================================== */
+
+function loadData() {
+
+    try {
+
+        if (fs.existsSync(DATA_FILE)) {
+
+            const file =
+                fs.readFileSync(
+                    DATA_FILE,
+                    "utf8"
+                );
+
+            const savedData =
+                JSON.parse(file);
+
+
+            if (
+                savedData &&
+                Array.isArray(savedData.players) &&
+                savedData.contest
+            ) {
+
+                data = savedData;
+
+                console.log(
+                    "💾 Données Konkou chargées."
+                );
+
+                console.log(
+                    `👥 ${data.players.length} joueur(s)`
+                );
+
+                console.log(
+                    `💰 Cagnotte : ${data.contest.prizePool} HTG`
+                );
+
+            }
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "❌ Impossible de charger les données :",
+            error
+        );
+
+        console.log(
+            "⚠️ Utilisation des données par défaut."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SAUVEGARDER LES DONNÉES
+===================================================== */
+
+function saveData() {
+
+    try {
+
+        fs.writeFileSync(
+
+            DATA_FILE,
+
+            JSON.stringify(
+                data,
+                null,
+                4
+            ),
+
+            "utf8"
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "❌ Erreur sauvegarde :",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CHARGEMENT AU DÉMARRAGE
+===================================================== */
+
+loadData();
 
 
 /* =====================================================
@@ -60,7 +192,7 @@ let contest = {
 
 function getRanking() {
 
-    return [...players]
+    return [...data.players]
 
         .sort((a, b) => {
 
@@ -76,28 +208,39 @@ function getRanking() {
 
         .map((player, index) => ({
 
-            rank: index + 1,
+            rank:
+                index + 1,
 
-            id: player.id,
+            id:
+                player.id,
 
-            name: player.name,
+            name:
+                player.name,
 
-            score: player.score,
+            score:
+                player.score,
 
-            games: player.games,
+            games:
+                player.games,
 
-            registered: player.registered,
+            registered:
+                player.registered,
 
-            winnings: player.winnings || 0
+            winnings:
+                player.winnings || 0
 
         }));
 
 }
 
 
+/* =====================================================
+   RECHERCHER UN JOUEUR
+===================================================== */
+
 function findPlayerByName(name) {
 
-    return players.find(
+    return data.players.find(
 
         player =>
 
@@ -110,66 +253,118 @@ function findPlayerByName(name) {
 
 
 /* =====================================================
+   NOUVEL ID
+===================================================== */
+
+function getNextPlayerId() {
+
+    if (data.players.length === 0) {
+
+        return 1;
+
+    }
+
+    return (
+
+        Math.max(
+            ...data.players.map(
+                player => player.id
+            )
+        ) + 1
+
+    );
+
+}
+
+
+/* =====================================================
    CALCULER LE GAGNANT
 ===================================================== */
 
 function updateWinner() {
 
-    const ranking = getRanking();
+    const ranking =
+        getRanking();
+
 
     if (ranking.length === 0) {
 
-        contest.winner = null;
+        data.contest.winner =
+            null;
 
-        contest.winnerPrize = 0;
+        data.contest.winnerPrize =
+            0;
 
-        contest.platformShare = 0;
+        data.contest.platformShare =
+            0;
 
         return;
 
     }
 
-    const first = ranking[0];
 
-    const winner = players.find(
-
-        player => player.id === first.id
-
-    );
-
-    if (!winner) return;
+    const first =
+        ranking[0];
 
 
-    const winnerPrize = Math.floor(
+    const winner =
+        data.players.find(
 
-        contest.prizePool *
-        WINNER_PERCENTAGE
+            player =>
+                player.id === first.id
 
-    );
+        );
 
 
-    contest.winner = winner.name;
+    if (!winner) {
 
-    contest.winnerPrize = winnerPrize;
+        return;
 
-    contest.platformShare =
+    }
 
-        contest.prizePool -
+
+    const winnerPrize =
+        Math.floor(
+
+            data.contest.prizePool *
+            WINNER_PERCENTAGE
+
+        );
+
+
+    data.contest.winner =
+        winner.name;
+
+
+    data.contest.winnerPrize =
+        winnerPrize;
+
+
+    data.contest.platformShare =
+
+        data.contest.prizePool -
         winnerPrize;
 
 
     /*
-       Mettre à jour le gain du premier.
+       Réinitialiser les gains.
     */
 
-    players.forEach(player => {
+    data.players.forEach(
+        player => {
 
-        player.winnings = 0;
+            player.winnings = 0;
 
-    });
+        }
+    );
 
 
-    winner.winnings = winnerPrize;
+    /*
+       Donner le gain au premier.
+    */
+
+    winner.winnings =
+        winnerPrize;
 
 }
 
@@ -188,19 +383,19 @@ app.get("/", (req, res) => {
             "🏆 Serveur Konkou fonctionne !",
 
         players:
-            players.length,
+            data.players.length,
 
         registrations:
-            contest.registrations,
+            data.contest.registrations,
 
         prizePool:
-            contest.prizePool,
+            data.contest.prizePool,
 
         winnerPercentage:
             "70%",
 
         status:
-            contest.status
+            data.contest.status
 
     });
 
@@ -221,19 +416,19 @@ app.get("/api", (req, res) => {
             "🏆 Serveur Konkou fonctionne !",
 
         players:
-            players.length,
+            data.players.length,
 
         registrations:
-            contest.registrations,
+            data.contest.registrations,
 
         prizePool:
-            contest.prizePool,
+            data.contest.prizePool,
 
         winnerPercentage:
             "70%",
 
         status:
-            contest.status
+            data.contest.status
 
     });
 
@@ -241,14 +436,15 @@ app.get("/api", (req, res) => {
 
 
 /* =====================================================
-   INSCRIPTION AU CONCOURS
+   INSCRIPTION
 ===================================================== */
 
 app.post("/api/register", (req, res) => {
 
     try {
 
-        const { name } = req.body;
+        const { name } =
+            req.body;
 
 
         if (
@@ -274,14 +470,13 @@ app.post("/api/register", (req, res) => {
 
 
         let player =
-            findPlayerByName(cleanName);
+            findPlayerByName(
+                cleanName
+            );
 
 
         /*
-           Si le joueur existe déjà
-           et est déjà inscrit,
-           on ne lui fait pas payer
-           une deuxième fois.
+           Déjà inscrit
         */
 
         if (
@@ -315,15 +510,18 @@ app.post("/api/register", (req, res) => {
                 contest: {
 
                     registrations:
-                        contest.registrations,
+                        data.contest.registrations,
 
                     prizePool:
-                        contest.prizePool,
+                        data.contest.prizePool,
 
                     winnerPrize:
+
                         Math.floor(
-                            contest.prizePool *
+
+                            data.contest.prizePool *
                             WINNER_PERCENTAGE
+
                         )
 
                 }
@@ -335,7 +533,6 @@ app.post("/api/register", (req, res) => {
 
         /*
            Créer le joueur
-           s'il n'existe pas.
         */
 
         if (!player) {
@@ -343,16 +540,7 @@ app.post("/api/register", (req, res) => {
             player = {
 
                 id:
-
-                    players.length > 0
-
-                        ? Math.max(
-                            ...players.map(
-                                p => p.id
-                            )
-                        ) + 1
-
-                        : 1,
+                    getNextPlayerId(),
 
                 name:
                     cleanName,
@@ -375,7 +563,9 @@ app.post("/api/register", (req, res) => {
             };
 
 
-            players.push(player);
+            data.players.push(
+                player
+            );
 
         }
 
@@ -384,37 +574,49 @@ app.post("/api/register", (req, res) => {
            Inscription
         */
 
-        player.registered = true;
+        player.registered =
+            true;
+
 
         player.registrationPaid =
             REGISTRATION_FEE;
 
 
         /*
-           Ajouter les 50 HTG
-           à la cagnotte.
+           Ajouter à la cagnotte
         */
 
-        contest.registrations += 1;
+        data.contest.registrations +=
+            1;
 
-        contest.prizePool +=
+
+        data.contest.prizePool +=
             REGISTRATION_FEE;
 
 
         /*
-           Recalculer le gagnant.
+           Recalculer le gagnant
         */
 
         updateWinner();
 
 
+        /*
+           Sauvegarder immédiatement
+        */
+
+        saveData();
+
+
         console.log(
 
-            `🎟️ ${player.name} inscrit`
+            `🎟️ ${player.name}` +
 
-            + ` → +${REGISTRATION_FEE} HTG`
+            ` inscrit` +
 
-            + ` | Cagnotte : ${contest.prizePool} HTG`
+            ` → +${REGISTRATION_FEE} HTG` +
+
+            ` | Cagnotte : ${data.contest.prizePool} HTG`
 
         );
 
@@ -442,19 +644,19 @@ app.post("/api/register", (req, res) => {
             contest: {
 
                 registrations:
-                    contest.registrations,
+                    data.contest.registrations,
 
                 registrationFee:
                     REGISTRATION_FEE,
 
                 prizePool:
-                    contest.prizePool,
+                    data.contest.prizePool,
 
                 winner:
-                    contest.winner,
+                    data.contest.winner,
 
                 winnerPrize:
-                    contest.winnerPrize
+                    data.contest.winnerPrize
 
             }
 
@@ -462,15 +664,11 @@ app.post("/api/register", (req, res) => {
 
     }
 
-
     catch (error) {
 
         console.error(
-
             "❌ Erreur /api/register :",
-
             error
-
         );
 
 
@@ -548,12 +746,10 @@ app.post("/api/players", (req, res) => {
             name.trim();
 
 
-        /*
-           Chercher le joueur
-        */
-
         let player =
-            findPlayerByName(cleanName);
+            findPlayerByName(
+                cleanName
+            );
 
 
         /*
@@ -566,16 +762,7 @@ app.post("/api/players", (req, res) => {
             player = {
 
                 id:
-
-                    players.length > 0
-
-                        ? Math.max(
-                            ...players.map(
-                                p => p.id
-                            )
-                        ) + 1
-
-                        : 1,
+                    getNextPlayerId(),
 
                 name:
                     cleanName,
@@ -598,13 +785,15 @@ app.post("/api/players", (req, res) => {
             };
 
 
-            players.push(player);
+            data.players.push(
+                player
+            );
 
         }
 
 
         /*
-           Le joueur doit être inscrit.
+           Vérifier inscription
         */
 
         if (!player.registered) {
@@ -622,17 +811,19 @@ app.post("/api/players", (req, res) => {
 
 
         /*
-           Ajouter les points.
+           Ajouter les points
         */
 
-        player.score += score;
+        player.score +=
+            score;
 
-        player.games += 1;
+
+        player.games +=
+            1;
 
 
         /*
-           Recalculer automatiquement
-           le classement et le gagnant.
+           Recalculer
         */
 
         updateWinner();
@@ -640,6 +831,13 @@ app.post("/api/players", (req, res) => {
 
         const ranking =
             getRanking();
+
+
+        /*
+           Sauvegarder
+        */
+
+        saveData();
 
 
         console.log(
@@ -680,27 +878,24 @@ app.post("/api/players", (req, res) => {
             },
 
             ranking:
-
-
                 ranking,
-
 
             contest: {
 
                 registrations:
-                    contest.registrations,
+                    data.contest.registrations,
 
                 prizePool:
-                    contest.prizePool,
+                    data.contest.prizePool,
 
                 winner:
-                    contest.winner,
+                    data.contest.winner,
 
                 winnerPrize:
-                    contest.winnerPrize,
+                    data.contest.winnerPrize,
 
                 platformShare:
-                    contest.platformShare
+                    data.contest.platformShare
 
             }
 
@@ -708,15 +903,11 @@ app.post("/api/players", (req, res) => {
 
     }
 
-
     catch (error) {
 
         console.error(
-
             "❌ Erreur /api/players :",
-
             error
-
         );
 
 
@@ -726,6 +917,69 @@ app.post("/api/players", (req, res) => {
 
             message:
                 "Erreur interne du serveur."
+
+        });
+
+    }
+
+});
+
+
+/* =====================================================
+   LISTE DE TOUS LES JOUEURS
+===================================================== */
+
+app.get("/api/players", (req, res) => {
+
+    try {
+
+        res.json({
+
+            success: true,
+
+            players:
+                data.players.map(
+                    player => ({
+
+                        id:
+                            player.id,
+
+                        name:
+                            player.name,
+
+                        score:
+                            player.score,
+
+                        games:
+                            player.games,
+
+                        registered:
+                            player.registered,
+
+                        winnings:
+                            player.winnings || 0
+
+                    })
+                )
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "❌ Erreur /api/players GET :",
+            error
+        );
+
+
+        res.status(500).json({
+
+            success: false,
+
+            message:
+                "Impossible de récupérer les joueurs."
 
         });
 
@@ -755,25 +1009,25 @@ app.get("/api/ranking", (req, res) => {
             contest: {
 
                 registrations:
-                    contest.registrations,
+                    data.contest.registrations,
 
                 registrationFee:
                     REGISTRATION_FEE,
 
                 prizePool:
-                    contest.prizePool,
+                    data.contest.prizePool,
 
                 winner:
-                    contest.winner,
+                    data.contest.winner,
 
                 winnerPrize:
-                    contest.winnerPrize,
+                    data.contest.winnerPrize,
 
                 winnerPercentage:
                     WINNER_PERCENTAGE * 100,
 
                 platformShare:
-                    contest.platformShare,
+                    data.contest.platformShare,
 
                 platformPercentage:
                     PLATFORM_PERCENTAGE * 100
@@ -784,15 +1038,11 @@ app.get("/api/ranking", (req, res) => {
 
     }
 
-
     catch (error) {
 
         console.error(
-
             "❌ Erreur classement :",
-
             error
-
         );
 
 
@@ -826,31 +1076,31 @@ app.get("/api/contest", (req, res) => {
         contest: {
 
             status:
-                contest.status,
+                data.contest.status,
 
             registrations:
-                contest.registrations,
+                data.contest.registrations,
 
             registrationFee:
                 REGISTRATION_FEE,
 
             prizePool:
-                contest.prizePool,
+                data.contest.prizePool,
 
             winner:
-                contest.winner,
+                data.contest.winner,
 
             winnerPercentage:
                 WINNER_PERCENTAGE * 100,
 
             winnerPrize:
-                contest.winnerPrize,
+                data.contest.winnerPrize,
 
             platformPercentage:
                 PLATFORM_PERCENTAGE * 100,
 
             platformShare:
-                contest.platformShare
+                data.contest.platformShare
 
         }
 
@@ -879,7 +1129,7 @@ app.get(
 
 
             const player =
-                players.find(
+                data.players.find(
 
                     p =>
                         p.name.toLowerCase() ===
@@ -953,13 +1203,11 @@ app.get(
 
         }
 
-
         catch (error) {
 
             console.error(
 
                 "❌ Erreur recherche joueur :",
-
                 error
 
             );
@@ -1000,16 +1248,67 @@ app.get(
                 "Konkou",
 
             players:
-                players.length,
+                data.players.length,
 
             registrations:
-                contest.registrations,
+                data.contest.registrations,
 
             prizePool:
-                contest.prizePool,
+                data.contest.prizePool,
 
             time:
                 new Date().toISOString()
+
+        });
+
+    }
+
+);
+
+
+/* =====================================================
+   RÉINITIALISER LE CLASSEMENT
+   ⚠️ POUR TEST UNIQUEMENT
+===================================================== */
+
+app.delete(
+    "/api/players",
+    (req, res) => {
+
+        data.players = [];
+
+        data.contest = {
+
+            registrations:
+                0,
+
+            prizePool:
+                0,
+
+            winner:
+                null,
+
+            winnerPrize:
+                0,
+
+            platformShare:
+                0,
+
+            status:
+                "open"
+
+        };
+
+
+        saveData();
+
+
+        res.json({
+
+            success: true,
+
+            message:
+                "Classement réinitialisé."
 
         });
 
@@ -1032,6 +1331,32 @@ app.use(
 
             message:
                 "Route API introuvable."
+
+        });
+
+    }
+);
+
+
+/* =====================================================
+   GESTION DES ERREURS
+===================================================== */
+
+app.use(
+    (err, req, res, next) => {
+
+        console.error(
+            "❌ Erreur serveur :",
+            err
+        );
+
+
+        res.status(500).json({
+
+            success: false,
+
+            message:
+                "Erreur interne du serveur."
 
         });
 
@@ -1078,6 +1403,10 @@ app.listen(
         );
 
         console.log(
+            "👥 Joueurs : /api/players"
+        );
+
+        console.log(
             "🏆 Classement : /api/ranking"
         );
 
@@ -1090,6 +1419,10 @@ app.listen(
         );
 
         console.log(
+            "💾 Sauvegarde : data/konkou.json"
+        );
+
+        console.log(
             "🥇 1er joueur : 70 % de la cagnotte"
         );
 
@@ -1098,6 +1431,10 @@ app.listen(
         );
 
         console.log("");
+
+        console.log(
+            "🚀 Serveur Konkou prêt !"
+        );
 
     }
 
