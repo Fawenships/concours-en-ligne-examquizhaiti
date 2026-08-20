@@ -636,7 +636,7 @@ return;
 if(!useTicket())return;
 
 state.category=i;
-state.questions=[...cats[i].questions].sort(()=>Math.random()-.5);
+state.questions=[...cats[i].questions] .sort(()=>Math.random()-.5) .slice(0,10);
 state.index=0;
 state.score=0;
 state.correct=0;
